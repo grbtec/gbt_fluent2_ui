@@ -27,4 +27,3 @@ jobs:
 
       - name: Publish
         run: yes | dart pub publish
-        working-directory: dart/${{env.PACKAGE_FOLDER_NAME}}
