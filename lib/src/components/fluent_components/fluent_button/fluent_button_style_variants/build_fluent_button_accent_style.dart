@@ -4,7 +4,6 @@ ButtonStyle _buildFluentButtonAccentStyle(
   FluentButtonStyle fluentButtonStyle,
   BuildContext context,
 ) {
-  final FluentButtonSize size = fluentButtonStyle.size;
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
 

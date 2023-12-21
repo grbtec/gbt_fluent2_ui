@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
-import 'package:gbt_fluent2_ui/src/components/conditional_parent_widget/conditional_parent_widget.dart';
 
 class FluentList extends StatelessWidget {
   final String? sectionHeaderTitle;

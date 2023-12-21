@@ -1,12 +1,12 @@
 name: gbt_fluent2_ui
-description: A starting point for Dart libraries or applications.
+description: Fluent2 Design System Material based
 publish_to: https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
-version: 3.0.0
-# repository: https://github.com/my_org/my_repo
+version: 3.0.1
+repository: https://github.com/grbtec/gbt_fluent2_ui
 
 environment:
   sdk: ^3.1.0
-  flutter: ^3.13.0
+  flutter: ">=3.13.0"
 
 dependencies:
   flutter:

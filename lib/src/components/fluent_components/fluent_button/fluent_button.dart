@@ -50,9 +50,8 @@ class FluentButton extends StatelessWidget {
     };
   }
 
+  @override
   Widget build(BuildContext context) {
-    final fluentTheme = GbtFluentThemeData.of(context);
-    @override
     final icon = this.icon;
 
     return ConditionalParentWidget(
@@ -119,12 +118,16 @@ ButtonStyle getStyle({
 }) {
   return switch (buttonVariant) {
     FluentButtonVariant.accent => _buildFluentButtonAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor), context),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        context),
     FluentButtonVariant.outlineAccent => _buildFluentButtonOutlineAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor), context),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        context),
     FluentButtonVariant.outline => _buildFluentButtonOutlineStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor), context),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        context),
     FluentButtonVariant.subtle => _buildFluentButtonSubtleStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor), context),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        context),
   };
 }
