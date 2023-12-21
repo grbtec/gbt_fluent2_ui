@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_stroke_border.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_style.dart';

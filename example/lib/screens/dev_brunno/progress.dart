@@ -1,7 +1,7 @@
 import 'package:example/screens/dev_brunno/me_control/fluent_me_control.dart';
 import 'package:example/screens/dev_brunno/me_control/fluent_me_control.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class ProgressView extends StatelessWidget {
   final Color? backgroundColor;

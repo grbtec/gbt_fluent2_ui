@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RProgressBarPage extends StatefulWidget {
   const RProgressBarPage({super.key});

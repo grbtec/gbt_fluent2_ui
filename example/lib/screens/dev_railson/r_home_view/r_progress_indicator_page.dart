@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_essentials/gbt_essentials.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RProgressIndicatorPage extends StatefulWidget {
   const RProgressIndicatorPage({super.key});

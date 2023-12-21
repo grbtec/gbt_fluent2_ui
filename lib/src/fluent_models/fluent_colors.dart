@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentColors {
 

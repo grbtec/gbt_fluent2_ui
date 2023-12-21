@@ -9,7 +9,7 @@ import 'package:example/screens/dev_railson/r_home_view/r_progress_indicator_pag
 import 'package:example/screens/dev_railson/r_home_view/r_toast_and_banner_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_essentials/gbt_essentials.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RHomeView extends StatefulWidget {
   const RHomeView({super.key});

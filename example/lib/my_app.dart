@@ -2,7 +2,7 @@ import 'package:example/routing/get_routes.dart';
 import 'package:example/routing/routes.dart';
 import 'package:example/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:get/get.dart';
 
 class MyApp extends StatelessWidget {

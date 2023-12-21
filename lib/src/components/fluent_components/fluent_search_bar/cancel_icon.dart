@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class CancelIcon extends StatelessWidget {
   final bool isLoading;
