@@ -1,7 +1,7 @@
 name: gbt_fluent2_ui
 description: A starting point for Dart libraries or applications.
 publish_to: https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
-version: 2.13.0
+version: 3.0.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
