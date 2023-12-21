@@ -1,0 +1,55 @@
+name: Publish Dart Package
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'dart/**'
+      - '!dart/**/example/**'
+
+  workflow_dispatch:
+    inputs:
+      package_folder:
+        description: Dart Package Folder for building
+        type: string
+        required: true
+
+env:
+  PACKAGE_FOLDER_NAME: ${{github.event.inputs.package_folder}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+
+      - name: Get Package Changed Folder
+        if: ${{!env.PACKAGE_FOLDER_NAME}}
+        run: |
+          CHANGED_FILE_LIST="${{ steps.changed-files.outputs.all_changed_files }}"
+          DART_FOLDER_CHANGES="$(echo $CHANGED_FILE_LIST | grep -oP 'dart/[^ ]+')"
+          FIRST_PACKAGE_FOLDER_NAME="$(echo $DART_FOLDER_CHANGES | head -n 1 | grep -oP "[^/]+" | head -n 2 | tail -n 1)"
+          if [[ $FIRST_PACKAGE_FOLDER_NAME == *'_plugin' ]]; then FIRST_PACKAGE_FOLDER_NAME=$FIRST_PACKAGE_FOLDER_NAME\/$(echo $DART_FOLDER_CHANGES | head -n 1 | grep -oP "[^/]+" | head -n 3 | tail -n 1); fi
+          echo "PACKAGE_FOLDER_NAME=$FIRST_PACKAGE_FOLDER_NAME" > $GITHUB_ENV
+
+      - name: Print ${{env.PACKAGE_FOLDER_NAME}}
+        run: echo ${{env.PACKAGE_FOLDER_NAME}}
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          channel: 'stable'
+
+      - name: Authenticate
+        run: echo "${{secrets.JETBRAINS_SPACE_TOKEN}}" | dart pub token add https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
+
+      - name: Publish
+        run: yes | dart pub publish
+        working-directory: dart/${{env.PACKAGE_FOLDER_NAME}}

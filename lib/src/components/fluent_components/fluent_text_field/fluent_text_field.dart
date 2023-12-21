@@ -1,0 +1,138 @@
+import 'package:flutter/material.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_debug.dart';
+import 'package:gbt_fluent2_ui/gbt_fluent2_theme.dart';
+import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_text_field/text_field_trailing_icon.dart';
+
+part 'fluent_text_field_controller.dart';
+
+class FluentTextField extends StatefulWidget {
+  final FluentTextFieldController? controller;
+  final String? hintText;
+  final String? label;
+  final String? assistiveText;
+  final Icon? suffixIcon;
+  final void Function(String value)? onChanged;
+  final bool readOnly;
+  final bool hasError;
+  final bool obscureText;
+
+  const FluentTextField({
+    super.key,
+    this.controller,
+    this.hintText,
+    this.assistiveText,
+    this.label,
+    this.suffixIcon,
+    this.onChanged,
+    this.readOnly = false,
+    this.hasError = false,
+    this.obscureText = false,
+  });
+
+  @override
+  State<FluentTextField> createState() => _FluentTextFieldState();
+}
+
+class _FluentTextFieldState extends State<FluentTextField> {
+  late final FluentTextFieldController fluentTextFieldController;
+
+
+  @override
+  void initState() {
+    super.initState();
+    fluentTextFieldController =
+        widget.controller ?? _InternalFluentTextFieldController();
+  }
+
+
+  @override
+  void dispose() {
+    if (fluentTextFieldController is _InternalFluentTextFieldController) {
+      fluentTextFieldController.dispose();
+    } else {
+      // fluentTextFieldController.removeListener(controllerListener);
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final hintText = widget.hintText;
+    final assistiveText = widget.assistiveText;
+    final hasFocus = fluentTextFieldController.hasFocus;
+    final isNotEmpty = fluentTextFieldController.queryString.isNotEmpty;
+    final label = widget.label;
+    final suffixIcon = widget.suffixIcon;
+    final fluentTheme = GbtFluentThemeData.of(context);
+    final onChanged = widget.onChanged;
+
+    return TextField(
+      obscureText: widget.obscureText,
+      readOnly: widget.readOnly,
+      focusNode: fluentTextFieldController._focus,
+      onTapOutside: (event) {
+        FocusScope.of(context).unfocus();
+      },
+      controller: fluentTextFieldController.textEditingController,
+      onChanged: onChanged,
+      cursorColor: FluentColors.neutralForeground3Rest,
+      style:
+          GbtFluentThemeData.of(context).fluentTextTheme?.body1?.fluentCopyWith(
+                fluentColor: hasFocus
+                    ? FluentColors.neutralForeground1Rest
+                    : FluentColors.neutralForeground2Rest,
+              ),
+      decoration: InputDecoration(
+        label: label != null ? FluentText(label) : null,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        labelStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+          fluentColor: widget.hasError
+              ? FluentColors.statusDangerForeground2Rest
+              : fluentTheme.colorScheme.primary,
+        ),
+        contentPadding: EdgeInsets.zero,
+        hintText: hintText,
+        helperText: assistiveText,
+        helperStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+          fluentColor: widget.hasError
+              ? FluentColors.statusDangerForeground2Rest
+              : FluentColors.neutralForeground2Rest,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: widget.hasError
+                ? FluentColors.statusDangerForeground2Rest
+                : FluentColors.neutralStroke1Rest,
+            width: FluentStrokeThickness.strokeWidth05.value,
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            width: FluentStrokeThickness.strokeWidth05.value,
+            color: widget.hasError
+                ? FluentColors.statusDangerForeground2Rest
+                : GbtFluentThemeData.of(context)
+                        .fluentBrandColors
+                        ?.brandStroke1Rest ??
+                    Theme.of(context).primaryColor,
+          ),
+        ),
+        hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+          fluentColor: hasFocus
+              ? FluentColors.neutralForeground2Rest
+              : FluentColors.neutralForegroundDisabled1,
+        ),
+        suffixIcon: TextFieldTrailingIcon(
+          hasFocus: hasFocus,
+          isNotEmpty: isNotEmpty,
+          icon: suffixIcon,
+          onTapCancelIcon: () {
+            fluentTextFieldController.clearQueryString();
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _InternalFluentTextFieldController extends FluentTextFieldController {}

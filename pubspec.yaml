@@ -1,0 +1,27 @@
+name: gbt_fluent2_ui
+description: A starting point for Dart libraries or applications.
+publish_to: https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
+version: 2.13.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.1.0
+  flutter: ^3.13.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  fluentui_system_icons: ^1.1.223
+  # penso que nem essa seria necessário também, mas por hora deixa aí
+  path_drawing: ^1.0.0
+
+dev_dependencies:
+  gbt_lints:
+    hosted: https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
+    version: ^1.0.0
+  test: ^1.21.0
+
+flutter:
+  uses-material-design: true
+
+

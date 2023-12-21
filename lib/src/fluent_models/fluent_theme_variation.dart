@@ -1,0 +1,4 @@
+enum FluentThemeColorVariation {
+  neutral,
+  brand
+}
