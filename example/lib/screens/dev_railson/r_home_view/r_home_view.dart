@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:example/screens/dev_railson/r_home_view/r_activity_indicator_page.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_home_controller.dart';
@@ -31,7 +30,6 @@ class _RHomeViewState extends State<RHomeView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final color = FluentBannerColor.values[Random().nextInt(3)];
     debug(Theme.of(context).colorScheme.primary);
 
     RefreshIndicator(

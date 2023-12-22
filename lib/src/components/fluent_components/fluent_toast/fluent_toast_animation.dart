@@ -23,7 +23,7 @@ class _FluentToastAnimationState extends State<_FluentToastAnimation> {
     widget.controller.attachCloseCallback(onClose);
   }
 
-  Future onClose() async {
+  Future<void> onClose() async {
     setState(() {
       animationValue = 0;
     });
@@ -49,13 +49,13 @@ class _FluentToastAnimationState extends State<_FluentToastAnimation> {
 class _FluentToastAnimationController {
   final Duration animationDuration = Duration(milliseconds: 300);
   bool _attached = false;
-  late Future Function() _attachedClose;
-  Future Function() get close => _attachedClose;
+  late Future<void> Function() _attachedClose;
+  Future<void> Function() get close => _attachedClose;
 
   _FluentToastAnimationController();
 
 
-  void attachCloseCallback(Future Function() closeCallback){
+  void attachCloseCallback(Future<void> Function() closeCallback){
     if(_attached){
       throw "close callback can only be attached once. Make sure it's called in initState()";
     }

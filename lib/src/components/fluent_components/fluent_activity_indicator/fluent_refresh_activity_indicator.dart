@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class FluentRefreshActivityIndicator extends StatefulWidget {
-  final Future Function() onRefresh;
+  final Future<void> Function() onRefresh;
   final Widget Function(BuildContext context, double? value)
       activityIndicatorBuilder;
   final Widget child;
@@ -23,7 +23,7 @@ class _FluentRefreshActivityIndicatorState
     extends State<FluentRefreshActivityIndicator> {
   final ValueNotifier<double?> overscroll = ValueNotifier(0);
   static const double _swipeOffset = 100;
-  bool? isSmooth = null;
+  bool? isSmooth;
 
   // iOS
   bool _handleScrollNotification(ScrollUpdateNotification notification) {
