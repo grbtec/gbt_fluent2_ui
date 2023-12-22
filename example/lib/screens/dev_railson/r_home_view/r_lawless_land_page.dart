@@ -13,6 +13,7 @@ class RLawlessLand extends StatefulWidget {
 class _RLawlessLandState extends State<RLawlessLand> {
   bool value = false;
   late Timer timer;
+  bool isBottomSheetSpawned = false;
 
   void onChanged(bool value) {
     setState(() {
@@ -114,7 +115,29 @@ class _RLawlessLandState extends State<RLawlessLand> {
                     padding: EdgeInsets.all(20),
                     child: FluentText("This is a bordered container"),
                   ),
+                ),
+                if(isBottomSheetSpawned)
+                SizedBox(
+                  width: 300,
+                  height: 150,
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: FluentSheet.bottom(
+                      child: Text("This is a BottomSheet"),
+                      onMinExtent: () {
+                        setState(() {
+                          isBottomSheetSpawned = false;
+                        });
+                      },
+                    ),
+                  ),
                 )
+                else
+                  FluentButton(title: "Spawn a BottomSheet", onPressed: () {
+                    setState(() {
+                      isBottomSheetSpawned = true;
+                    });
+                  },),
               ],
             ),
           ),

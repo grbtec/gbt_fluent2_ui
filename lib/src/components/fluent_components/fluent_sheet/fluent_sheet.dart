@@ -70,6 +70,9 @@ class _FluentSheetState extends State<FluentSheet> {
   }
 
   void onScrollEnd() {
+    if(!controller.draggableScrollableController.isAttached){
+      return;
+    }
     switch (direction) {
       case _Direction.up:
         controller.draggableScrollableController.animateTo(
