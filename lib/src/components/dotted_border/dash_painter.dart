@@ -53,9 +53,9 @@ class DashedPainter extends CustomPainter {
 
     Path _path;
     if (customPath != null) {
-      _path = dashPath(
+      _path = _dashPath(
         customPath!(size),
-        dashArray: CircularIntervalList(dashPattern),
+        dashArray: _CircularIntervalList(dashPattern),
       );
     } else {
       _path = _getPath(size);
@@ -84,7 +84,7 @@ class DashedPainter extends CustomPainter {
         break;
     }
 
-    return dashPath(path, dashArray: CircularIntervalList(dashPattern));
+    return _dashPath(path, dashArray: _CircularIntervalList(dashPattern));
   }
 
   /// Returns a circular path of [size]
@@ -165,5 +165,43 @@ class DashedPainter extends CustomPainter {
         oldDelegate.dashPattern != this.dashPattern ||
         oldDelegate.padding != this.padding ||
         oldDelegate.borderType != this.borderType;
+  }
+}
+
+
+Path _dashPath(
+    Path source, {
+      required _CircularIntervalList<double> dashArray,
+    }) {
+  assert(dashArray != null); // ignore: unnecessary_null_comparison
+
+  final Path dest = Path();
+  for (final PathMetric metric in source.computeMetrics()) {
+    double distance = 0;
+    bool draw = true;
+    while (distance < metric.length) {
+      final double len = dashArray.next;
+      if (draw) {
+        dest.addPath(metric.extractPath(distance, distance + len), Offset.zero);
+      }
+      distance += len;
+      draw = !draw;
+    }
+  }
+
+  return dest;
+}
+
+class _CircularIntervalList<T> {
+  _CircularIntervalList(this._vals);
+
+  final List<T> _vals;
+  int _idx = 0;
+
+  T get next {
+    if (_idx >= _vals.length) {
+      _idx = 0;
+    }
+    return _vals[_idx++];
   }
 }

@@ -12,8 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   fluentui_system_icons: ^1.1.223
-  # penso que nem essa seria necessário também, mas por hora deixa aí
-  path_drawing: ^1.0.0
 
 dev_dependencies:
   gbt_lints:

@@ -95,6 +95,26 @@ class _RLawlessLandState extends State<RLawlessLand> {
                     },
                   ),
                 ),
+                FluentStrokeDivider(
+                  style: FluentStrokeStyle(
+                    color: Colors.red,
+                    thickness: FluentStrokeThickness.strokeWidth20,
+                    dashArray: [4, 8, 2, 8],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FluentContainer(
+                    strokeStyle: FluentStrokeStyle(
+                      thickness: FluentStrokeThickness.strokeWidth20,
+                      color: Colors.red,
+                      dashArray: [4, 8, 2, 8],
+                    ),
+                    cornerRadius: FluentCornerRadius.large,
+                    padding: EdgeInsets.all(20),
+                    child: FluentText("This is a bordered container"),
+                  ),
+                )
               ],
             ),
           ),
