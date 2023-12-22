@@ -88,7 +88,7 @@ class _RToastAndBannerPageState extends State<RToastAndBannerPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: showToast,
-        tooltip: 'Show Toast',
+        tooltip: 'Showa Toast',
         child: const Icon(Icons.open_in_browser),
       ), //
       body: SingleChildScrollView(

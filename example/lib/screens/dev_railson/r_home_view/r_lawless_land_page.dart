@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RLawlessLand extends StatefulWidget {
-  const RLawlessLand({super.key});
+  final VoidCallback openTheRootBottomSheet;
+
+  const RLawlessLand({
+    super.key,
+    required this.openTheRootBottomSheet,
+  });
 
   @override
   State<RLawlessLand> createState() => _RLawlessLandState();
@@ -14,6 +19,7 @@ class _RLawlessLandState extends State<RLawlessLand> {
   bool value = false;
   late Timer timer;
   bool isBottomSheetSpawned = false;
+  Widget? globalBottomSheet = null;
 
   void onChanged(bool value) {
     setState(() {
@@ -38,6 +44,7 @@ class _RLawlessLandState extends State<RLawlessLand> {
 
   @override
   Widget build(BuildContext context) {
+
     return FluentScaffold(
       // fluentBottomSheet: FluentSheet.bottom(
       //   headerHeight: 40,
@@ -81,8 +88,10 @@ class _RLawlessLandState extends State<RLawlessLand> {
                           child: ListView.builder(
                               controller: scrollController,
                               itemCount: 25,
-                              itemBuilder: (BuildContext context, int index) {
-                                return ListTile(title: Text("Item $index"));
+                              itemBuilder:
+                                  (BuildContext context, int index) {
+                                return ListTile(
+                                    title: Text("Item $index"));
                               }),
                         );
                       }),
@@ -116,28 +125,36 @@ class _RLawlessLandState extends State<RLawlessLand> {
                     child: FluentText("This is a bordered container"),
                   ),
                 ),
-                if(isBottomSheetSpawned)
-                SizedBox(
-                  width: 300,
-                  height: 150,
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: FluentSheet.bottom(
-                      child: Text("This is a BottomSheet"),
-                      onMinExtent: () {
-                        setState(() {
-                          isBottomSheetSpawned = false;
-                        });
-                      },
+                FluentTextField(),
+                if (isBottomSheetSpawned)
+                  SizedBox(
+                    width: 300,
+                    height: 150,
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: FluentSheet.bottom(
+                        headerTitle: Text("This is a BottomSheet"),
+                        child: FluentButton(
+                          title: "Open the root one",
+                          onPressed: widget.openTheRootBottomSheet,
+                        ),
+                        onMinExtent: () {
+                          setState(() {
+                            isBottomSheetSpawned = false;
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                )
+                  )
                 else
-                  FluentButton(title: "Spawn a BottomSheet", onPressed: () {
-                    setState(() {
-                      isBottomSheetSpawned = true;
-                    });
-                  },),
+                  FluentButton(
+                    title: "Spawn a BottomSheet",
+                    onPressed: () {
+                      setState(() {
+                        isBottomSheetSpawned = true;
+                      });
+                    },
+                  ),
               ],
             ),
           ),
@@ -165,6 +182,7 @@ class _RLawlessLandState extends State<RLawlessLand> {
       //   headerHeight: 50,
       // ),
     );
+
   }
 
   @override
