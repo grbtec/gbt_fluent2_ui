@@ -17,18 +17,18 @@ on:
     branches:
       - 'main'
     paths:
-      - 'dart/gbt_fluent2_theme/example/**'
+      - 'example/**'
 
   pull_request:
     types: [opened, synchronize]
     branches:
       - 'main'
     paths:
-      - 'dart/gbt_fluent2_theme/example/**'
+      - 'example/**'
 
 env:
   APP_NAME: 'fluent2-example'
-  PROJECT: 'dart/gbt_fluent2_theme/example'
+  PROJECT: 'example'
   FLAVOR: ${{github.event.inputs.tag && github.event.inputs.tag || 'production' }}
   # TODO: Create a Firebase App for PRODUCTION
   FIREBASE_IOS_SETTINGS: secrets.FIREBASE_IOS_PRODUCTION_SETTINGS
