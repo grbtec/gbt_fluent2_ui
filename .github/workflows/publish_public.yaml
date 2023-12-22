@@ -20,7 +20,7 @@ jobs:
           channel: 'stable'
 
       - name: Remove private dev_dependencies
-        run: dart run remove_private_dev_dependencies.dart
+        run: dart run remove_private_dependencies.dart
 
       - name: Install dependencies
         run: flutter pub get
