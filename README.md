@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/grbtec/gbt_fluent2_ui/cicd.yaml)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/grbtec/gbt_fluent2_ui/publish_public.yaml)
 
 Fluent2 Design System Material based
 

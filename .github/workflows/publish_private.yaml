@@ -1,4 +1,4 @@
-name: Publish Dart Package
+name: Publish Dart Package Private Repo
 
 on:
   push:
