@@ -25,6 +25,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - uses: dart-lang/setup-dart@v1
+
       - name: Publish - dry run
         run: dart pub publish --dry-run
 
