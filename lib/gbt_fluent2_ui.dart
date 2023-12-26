@@ -51,11 +51,3 @@ export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_style.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_theme.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_theme_data_model.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_theme_variation.dart';
-
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_corner_radius.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_font_weight.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_shadow.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_shadow_theme.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_style.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_theme.dart';
-export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_theme.dart';

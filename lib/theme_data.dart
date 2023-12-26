@@ -4,8 +4,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_style.dart';
-import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_corner_radius.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_font_weight.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_shadow.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_shadow_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_stroke_style.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_stroke_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_text_style.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_text_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_theme.dart';
 
 final theme = getTheme(
   brandColor: MaterialColor(

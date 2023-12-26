@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_shadow_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_stroke_theme.dart';
+import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_text_theme.dart';
 
 // Deriving these values is black magic. The spec claims that pressed buttons
 // have a highlight of 0x66999999, but that's clearly wrong. The videos in the
