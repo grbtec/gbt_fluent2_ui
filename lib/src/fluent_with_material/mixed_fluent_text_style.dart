@@ -3,7 +3,6 @@ import 'package:gbt_fluent2_ui/src/fluent_models/fluent_font_weight.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_style.dart';
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_font_weight.dart';
 
-
 class MixedFluentTextStyle extends TextStyle implements FluentTextStyle {
   @override
   final double? fluentLineHeight;
@@ -17,7 +16,6 @@ class MixedFluentTextStyle extends TextStyle implements FluentTextStyle {
   @override
   final Color? fluentColor;
 
-
   @override
   MixedFluentTextStyle fluentCopyWith({
     double? fluentSize,
@@ -25,13 +23,10 @@ class MixedFluentTextStyle extends TextStyle implements FluentTextStyle {
     FluentFontWeight? fluentWeight,
     Color? fluentColor,
   }) {
-    assert(fluentWeight is MixedFluentFontWeight?,
-    'fluentWeight is not a MixedFluentFontWeight. Why? 🤨');
-
     return MixedFluentTextStyle(
-        fluentWeight: fluentWeight is MixedFluentFontWeight
-            ? fluentWeight as MixedFluentFontWeight
-            : this.fluentWeight,
+        fluentWeight: fluentWeight == null
+            ? null
+            : MixedFluentFontWeight.values[fluentWeight.index],
         fluentSize: fluentSize ?? this.fluentSize,
         fluentColor: fluentColor ?? this.fluentColor,
         fluentLineHeight: fluentLineHeight ?? this.fluentLineHeight);
@@ -44,9 +39,9 @@ class MixedFluentTextStyle extends TextStyle implements FluentTextStyle {
     this.fluentSize,
     this.fluentColor,
   }) : super(
-    height: fluentLineHeight,
-    fontSize: fluentSize,
-    fontWeight: fluentWeight?.fontWeight,
-    color: fluentColor,
-  );
+          height: fluentLineHeight,
+          fontSize: fluentSize,
+          fontWeight: fluentWeight?.fontWeight,
+          color: fluentColor,
+        );
 }
