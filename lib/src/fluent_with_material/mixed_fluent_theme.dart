@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
+import 'package:gbt_fluent2_ui/src/fluent_models/fluent_colors.dart';
+import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_thickness.dart';
+import 'package:gbt_fluent2_ui/src/fluent_models/fluent_theme_data_model.dart';
+import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_shadow_theme.dart';
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_theme.dart';
+import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_theme.dart';
 
 // Deriving these values is black magic. The spec claims that pressed buttons
 // have a highlight of 0x66999999, but that's clearly wrong. The videos in the
@@ -143,36 +147,36 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     TimePickerThemeData? timePickerTheme,
     ToggleButtonsThemeData? toggleButtonsTheme,
     TooltipThemeData?
-        tooltipTheme, // DEPRECATED (newest deprecations at the bottom)
+    tooltipTheme, // DEPRECATED (newest deprecations at the bottom)
     @Deprecated(
         'Use ThemeData.useMaterial3 or override ScrollBehavior.buildOverscrollIndicator. '
-        'This feature was deprecated after v2.13.0-0.0.pre.')
+            'This feature was deprecated after v2.13.0-0.0.pre.')
     AndroidOverscrollIndicator? androidOverscrollIndicator,
     @Deprecated(
       'No longer used by the framework, please remove any reference to it. '
-      'For more information, consult the migration guide at '
-      'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
-      'This feature was deprecated after v3.4.0-19.0.pre.',
+          'For more information, consult the migration guide at '
+          'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
+          'This feature was deprecated after v3.4.0-19.0.pre.',
     )
     Color? toggleableActiveColor,
     @Deprecated(
       'No longer used by the framework, please remove any reference to it. '
-      'This feature was deprecated after v3.1.0-0.0.pre.',
+          'This feature was deprecated after v3.1.0-0.0.pre.',
     )
     Color? selectedRowColor,
     @Deprecated(
       'Use colorScheme.error instead. '
-      'This feature was deprecated after v2.6.0-11.0.pre.',
+          'This feature was deprecated after v2.6.0-11.0.pre.',
     )
     Color? errorColor,
     @Deprecated(
       'Use colorScheme.background instead. '
-      'This feature was deprecated after v2.6.0-11.0.pre.',
+          'This feature was deprecated after v2.6.0-11.0.pre.',
     )
     Color? backgroundColor,
     @Deprecated(
       'Use BottomAppBarTheme.color instead. '
-      'This feature was deprecated after v3.3.0-0.6.pre.',
+          'This feature was deprecated after v3.3.0-0.6.pre.',
     )
     Color? bottomAppBarColor,
   }) {
@@ -189,13 +193,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
 
       // GENERAL CONFIGURATION
       applyElevationOverlayColor:
-          applyElevationOverlayColor ?? this.applyElevationOverlayColor,
+      applyElevationOverlayColor ?? this.applyElevationOverlayColor,
       extensions: (extensions != null)
           ? _themeExtensionIterableToMap(extensions)
           : this.extensions,
       inputDecorationTheme: inputDecorationTheme ?? this.inputDecorationTheme,
       materialTapTargetSize:
-          materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize ?? this.materialTapTargetSize,
       pageTransitionsTheme: pageTransitionsTheme ?? this.pageTransitionsTheme,
       platform: platform ?? this.platform,
       scrollbarTheme: scrollbarTheme ?? this.scrollbarTheme,
@@ -205,10 +209,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // COLOR
       canvasColor: canvasColor ?? this.canvasColor,
       cardColor: cardColor ?? this.cardColor,
-      colorScheme:
-          (colorScheme ?? this.colorScheme).copyWith(brightness: brightness),
+      colorScheme: (colorScheme ?? this.colorScheme).copyWith(
+        brightness: brightness,
+        error: errorColor ?? this.colorScheme.error,
+        background: backgroundColor ?? this.colorScheme.background,
+      ),
       dialogBackgroundColor:
-          dialogBackgroundColor ?? this.dialogBackgroundColor,
+      dialogBackgroundColor ?? this.dialogBackgroundColor,
       disabledColor: disabledColor ?? this.disabledColor,
       dividerColor: dividerColor ?? this.dividerColor,
       focusColor: focusColor ?? this.focusColor,
@@ -220,12 +227,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       primaryColorDark: primaryColorDark ?? this.primaryColorDark,
       primaryColorLight: primaryColorLight ?? this.primaryColorLight,
       scaffoldBackgroundColor:
-          scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
+      scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
       secondaryHeaderColor: secondaryHeaderColor ?? this.secondaryHeaderColor,
       shadowColor: shadowColor ?? this.shadowColor,
       splashColor: splashColor ?? this.splashColor,
       unselectedWidgetColor:
-          unselectedWidgetColor ?? this.unselectedWidgetColor,
+      unselectedWidgetColor ?? this.unselectedWidgetColor,
       // TYPOGRAPHY & ICONOGRAPHY
       iconTheme: iconTheme ?? this.iconTheme,
       primaryIconTheme: primaryIconTheme ?? this.primaryIconTheme,
@@ -239,7 +246,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       bannerTheme: bannerTheme ?? this.bannerTheme,
       bottomAppBarTheme: bottomAppBarTheme ?? this.bottomAppBarTheme,
       bottomNavigationBarTheme:
-          bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
+      bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
       bottomSheetTheme: bottomSheetTheme ?? this.bottomSheetTheme,
       buttonBarTheme: buttonBarTheme ?? this.buttonBarTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
@@ -256,7 +263,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       expansionTileTheme: expansionTileTheme ?? this.expansionTileTheme,
       filledButtonTheme: filledButtonTheme ?? this.filledButtonTheme,
       floatingActionButtonTheme:
-          floatingActionButtonTheme ?? this.floatingActionButtonTheme,
+      floatingActionButtonTheme ?? this.floatingActionButtonTheme,
       iconButtonTheme: iconButtonTheme ?? this.iconButtonTheme,
       listTileTheme: listTileTheme ?? this.listTileTheme,
       menuBarTheme: menuBarTheme ?? this.menuBarTheme,
@@ -264,12 +271,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       menuTheme: menuTheme ?? this.menuTheme,
       navigationBarTheme: navigationBarTheme ?? this.navigationBarTheme,
       navigationDrawerTheme:
-          navigationDrawerTheme ?? this.navigationDrawerTheme,
+      navigationDrawerTheme ?? this.navigationDrawerTheme,
       navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
       outlinedButtonTheme: outlinedButtonTheme ?? this.outlinedButtonTheme,
       popupMenuTheme: popupMenuTheme ?? this.popupMenuTheme,
       progressIndicatorTheme:
-          progressIndicatorTheme ?? this.progressIndicatorTheme,
+      progressIndicatorTheme ?? this.progressIndicatorTheme,
       radioTheme: radioTheme ?? this.radioTheme,
       searchBarTheme: searchBarTheme ?? this.searchBarTheme,
       searchViewTheme: searchViewTheme ?? this.searchViewTheme,
@@ -284,12 +291,16 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       toggleButtonsTheme: toggleButtonsTheme ?? this.toggleButtonsTheme,
       tooltipTheme: tooltipTheme ?? this.tooltipTheme,
       // DEPRECATED (newest deprecations at the bottom)
-      toggleableActiveColor:
-          toggleableActiveColor ?? this.toggleableActiveColor,
-      selectedRowColor: selectedRowColor ?? this.selectedRowColor,
-      errorColor: errorColor ?? this.errorColor,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      bottomAppBarColor: bottomAppBarColor ?? this.bottomAppBarColor,
+      // ignore: deprecated_member_use_from_same_package
+      toggleableActiveColor: _deprecated,
+      // ignore: deprecated_member_use_from_same_package
+      selectedRowColor: _deprecated,
+      // ignore: deprecated_member_use_from_same_package
+      errorColor: colorScheme?.error??this.colorScheme.error,
+      // ignore: deprecated_member_use_from_same_package
+      backgroundColor: colorScheme?.background??this.colorScheme.background,
+      // ignore: deprecated_member_use_from_same_package
+      bottomAppBarColor: bottomAppBarTheme?.color??this.bottomAppBarTheme.color??_deprecated,
     );
   }
 
@@ -394,29 +405,29 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     required super.tooltipTheme,
     @Deprecated(
       'No longer used by the framework, please remove any reference to it. '
-      'For more information, consult the migration guide at '
-      'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
-      'This feature was deprecated after v3.4.0-19.0.pre.',
+          'For more information, consult the migration guide at '
+          'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
+          'This feature was deprecated after v3.4.0-19.0.pre.',
     )
     super.toggleableActiveColor,
     @Deprecated(
       'No longer used by the framework, please remove any reference to it. '
-      'This feature was deprecated after v3.1.0-0.0.pre.',
+          'This feature was deprecated after v3.1.0-0.0.pre.',
     )
     super.selectedRowColor,
     @Deprecated(
       'Use colorScheme.error instead. '
-      'This feature was deprecated after v3.3.0-0.5.pre.',
+          'This feature was deprecated after v3.3.0-0.5.pre.',
     )
     super.errorColor,
     @Deprecated(
       'Use colorScheme.background instead. '
-      'This feature was deprecated after v3.3.0-0.5.pre.',
+          'This feature was deprecated after v3.3.0-0.5.pre.',
     )
     super.backgroundColor,
     @Deprecated(
       'Use BottomAppBarTheme.color instead. '
-      'This feature was deprecated after v3.3.0-0.6.pre.',
+          'This feature was deprecated after v3.3.0-0.6.pre.',
     )
     super.bottomAppBarColor,
   }) : super.raw(cupertinoOverrideTheme: null);
@@ -550,8 +561,8 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     final bool useInkSparkle = platform == TargetPlatform.android && !kIsWeb;
     splashFactory ??= useMaterial3
         ? useInkSparkle
-            ? InkSparkle.splashFactory
-            : InkRipple.splashFactory
+        ? InkSparkle.splashFactory
+        : InkRipple.splashFactory
         : InkSplash.splashFactory;
 
     // COLOR
@@ -564,9 +575,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     final Brightness effectiveBrightness =
         brightness ?? colorScheme?.brightness ?? Brightness.light;
     final bool isDark = effectiveBrightness == Brightness.dark;
-    Color? bottomAppBarColor;
-    Color? errorColor;
-    Color? myBackgroundColor;
 
     if (colorSchemeSeed != null || useMaterial3) {
       if (colorSchemeSeed != null) {
@@ -577,35 +585,29 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
 
       // For surfaces that use primary color in light themes and surface color in dark
       final Color primarySurfaceColor =
-          isDark ? colorScheme.surface : colorScheme.primary;
+      isDark ? colorScheme.surface : colorScheme.primary;
       final Color onPrimarySurfaceColor =
-          isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+      isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
       // Default some of the color settings to values from the color scheme
       primaryColor ??= primarySurfaceColor;
       canvasColor ??= colorScheme.background;
       scaffoldBackgroundColor ??= colorScheme.background;
-      bottomAppBarColor = colorScheme.surface;
       cardColor ??= colorScheme.surface;
       dividerColor ??= colorScheme.outline;
-      myBackgroundColor = colorScheme.background;
       dialogBackgroundColor ??= colorScheme.background;
       indicatorColor ??= onPrimarySurfaceColor;
-      errorColor = colorScheme.error;
       applyElevationOverlayColor ??= brightness == Brightness.dark;
     }
     applyElevationOverlayColor ??= false;
     primarySwatch ??= Colors.blue;
     primaryColor ??= isDark ? Colors.grey[900]! : primarySwatch;
     final Brightness estimatedPrimaryColorBrightness =
-        ThemeData.estimateBrightnessForColor(primaryColor);
+    ThemeData.estimateBrightnessForColor(primaryColor);
     primaryColorLight ??= isDark ? Colors.grey[500]! : primarySwatch[100]!;
     primaryColorDark ??= isDark ? Colors.black : primarySwatch[700]!;
     final bool primaryIsDark =
         estimatedPrimaryColorBrightness == Brightness.dark;
-    final toggleableActiveColor = isDark
-        ? Colors.tealAccent[200]!
-        : (colorScheme?.secondary ?? primarySwatch[600]!);
     focusColor ??= isDark
         ? Colors.white.withOpacity(0.12)
         : Colors.black.withOpacity(0.12);
@@ -627,7 +629,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       errorColor: Colors.red[700],
       brightness: effectiveBrightness,
     );
-    final selectedRowColor = Colors.grey[100]!;
     unselectedWidgetColor ??= isDark ? Colors.white70 : Colors.black54;
     // Spec doesn't specify a dark theme secondaryHeaderColor, this is a guess.
     secondaryHeaderColor ??= isDark ? Colors.grey[700]! : primarySwatch[50]!;
@@ -650,7 +651,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     );
     disabledColor ??= isDark ? Colors.white38 : Colors.black38;
     highlightColor ??=
-        isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
+    isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
     splashColor ??= isDark ? _kDarkThemeSplashColor : _kLightThemeSplashColor;
 
     // TYPOGRAPHY & ICONOGRAPHY
@@ -659,7 +660,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
         : Typography.material2014(platform: platform);
     TextTheme defaultTextTheme = isDark ? typography.white : typography.black;
     TextTheme defaultPrimaryTextTheme =
-        primaryIsDark ? typography.white : typography.black;
+    primaryIsDark ? typography.white : typography.black;
     if (fontFamily != null) {
       defaultTextTheme = defaultTextTheme.apply(fontFamily: fontFamily);
       defaultPrimaryTextTheme =
@@ -829,11 +830,16 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       toggleButtonsTheme: toggleButtonsTheme,
       tooltipTheme: tooltipTheme,
       // DEPRECATED (newest deprecations at the bottom)
-      toggleableActiveColor: toggleableActiveColor,
-      selectedRowColor: selectedRowColor,
-      errorColor: errorColor,
-      backgroundColor: myBackgroundColor,
-      bottomAppBarColor: bottomAppBarColor,
+      // ignore: deprecated_member_use_from_same_package
+      toggleableActiveColor: _deprecated,
+      // ignore: deprecated_member_use_from_same_package
+      selectedRowColor: _deprecated,
+      // ignore: deprecated_member_use_from_same_package
+      errorColor: colorScheme.error,
+      // ignore: deprecated_member_use_from_same_package
+      backgroundColor: colorScheme.background,
+      // ignore: deprecated_member_use_from_same_package
+      bottomAppBarColor: bottomAppBarTheme.color??_deprecated,
     );
   }
 }
@@ -917,8 +923,6 @@ const ColorScheme _colorSchemeDarkM3 = ColorScheme(
 
 // END GENERATED TOKEN PROPERTIES - ColorScheme
 
-
-
 /// Quick FIx
 ///
 const Color kDefaultIconLightColor = Colors.white;
@@ -927,3 +931,7 @@ const Color kDefaultIconLightColor = Colors.white;
 /// [Brightness.dark]. This color is used in [IconButton] to detect whether
 /// [IconTheme.of(context).color] is the same as the default color of [ThemeData.iconTheme].
 const Color kDefaultIconDarkColor = Colors.black87;
+
+@Deprecated(
+    "Deprecated since Flutter 3.x, remove it as soon as possible in Flutter 4.x")
+const Color _deprecated = Colors.red;
