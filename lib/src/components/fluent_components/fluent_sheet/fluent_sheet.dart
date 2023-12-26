@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
@@ -72,6 +70,9 @@ class _FluentSheetState extends State<FluentSheet> {
   }
 
   void onScrollEnd() {
+    if(!controller.draggableScrollableController.isAttached){
+      return;
+    }
     switch (direction) {
       case _Direction.up:
         controller.draggableScrollableController.animateTo(
@@ -100,117 +101,125 @@ class _FluentSheetState extends State<FluentSheet> {
         return false;
       },
       child: LayoutBuilder(builder: (context, constraints) {
-        childMinSize = widget.headerHeight / constraints.maxHeight;
-        return DraggableScrollableSheet(
-          controller: controller.draggableScrollableController,
-          maxChildSize: childMaxSize,
-          initialChildSize: childMinSize,
-          minChildSize: childMinSize,
-          builder: (BuildContext context, ScrollController scrollController) {
-            return Stack(
-              children: [
-                FluentContainer(
-                  shadow: GbtFluentThemeData.of(context)
-                      .fluentShadowTheme
-                      ?.brandShadow28,
-                  cornerRadius: FluentCornerRadius.xLarge,
-                ),
-                Positioned.fill(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(FluentCornerRadius.xLarge.value),
-                      topRight:
-                          Radius.circular(FluentCornerRadius.xLarge.value),
+        childMinSize = (widget.headerHeight+MediaQuery.of(context).padding.bottom) / constraints.maxHeight;
+        return SafeArea(
+          left: false,
+          right: false,
+          bottom: false,
+          child: DraggableScrollableSheet(
+            controller: controller.draggableScrollableController,
+            maxChildSize: childMaxSize,
+            initialChildSize: childMinSize,
+            minChildSize: childMinSize,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return Material(
+                color: Colors.transparent,
+                child: Stack(
+                  children: [
+                    FluentContainer(
+                      shadow: GbtFluentThemeData.of(context)
+                          .fluentShadowTheme
+                          ?.brandShadow28,
+                      cornerRadius: FluentCornerRadius.xLarge,
                     ),
-                    child: Container(
-                      color: FluentColors.neutralBackground2Rest,
-                      child: SingleChildScrollView(
-                        controller: scrollController,
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8),
-                                child: FluentContainer(
-                                  cornerRadius: FluentCornerRadius.circle,
-                                  width: 36,
-                                  height: 4,
-                                  color: FluentColors.neutralStroke1Rest,
+                    Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(FluentCornerRadius.xLarge.value),
+                          topRight:
+                              Radius.circular(FluentCornerRadius.xLarge.value),
+                        ),
+                        child: Container(
+                          color: FluentColors.neutralBackground2Rest,
+                          child: SingleChildScrollView(
+                            controller: scrollController,
+                            child: Column(
+                              children: [
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8),
+                                    child: FluentContainer(
+                                      cornerRadius: FluentCornerRadius.circle,
+                                      width: 36,
+                                      height: 4,
+                                      color: FluentColors.neutralStroke1Rest,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                if (hasHeader)
+                                  SizedBox(
+                                    height: _headerHeight,
+                                    child: Stack(
+                                      children: [
+                                        if (widget.headerLeading != null)
+                                          Positioned(
+                                            left: 16,
+                                            child: DefaultTextStyle(
+                                              style: GbtFluentThemeData.of(context)
+                                                      .fluentTextTheme
+                                                      ?.body1
+                                                      ?.fluentCopyWith(
+                                                          fluentColor: FluentColors
+                                                              .neutralForeground2Rest) ??
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              child: Container(
+                                                height: _headerHeight,
+                                                alignment: Alignment.centerLeft,
+                                                child: widget.headerLeading,
+                                              ),
+                                            ),
+                                          ),
+                                        if (widget.headerTrailing != null)
+                                          Positioned(
+                                            right: 16,
+                                            child: DefaultTextStyle(
+                                              style: GbtFluentThemeData.of(context)
+                                                      .fluentTextTheme
+                                                      ?.body1
+                                                      ?.fluentCopyWith(
+                                                          fluentColor: FluentColors
+                                                              .neutralForeground2Rest) ??
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              child: Container(
+                                                height: _headerHeight,
+                                                alignment: Alignment.centerRight,
+                                                child: widget.headerTrailing,
+                                              ),
+                                            ),
+                                          ),
+                                        if (widget.headerTitle != null)
+                                          Positioned(
+                                            child: DefaultTextStyle(
+                                              style: GbtFluentThemeData.of(context)
+                                                      .fluentTextTheme
+                                                      ?.body1
+                                                      ?.fluentCopyWith(
+                                                          fluentColor: FluentColors
+                                                              .neutralForeground1Rest) ??
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              child: Center(
+                                                child: widget.headerTitle,
+                                              ),
+                                            ),
+                                          )
+                                      ],
+                                    ),
+                                  ),
+                                widget.child
+                              ],
                             ),
-                            if (hasHeader)
-                              SizedBox(
-                                height: _headerHeight,
-                                child: Stack(
-                                  children: [
-                                    if (widget.headerLeading != null)
-                                      Positioned(
-                                        left: 16,
-                                        child: DefaultTextStyle(
-                                          style: GbtFluentThemeData.of(context)
-                                                  .fluentTextTheme
-                                                  ?.body1
-                                                  ?.fluentCopyWith(
-                                                      fluentColor: FluentColors
-                                                          .neutralForeground2Rest) ??
-                                              DefaultTextStyle.of(context)
-                                                  .style,
-                                          child: Container(
-                                            height: _headerHeight,
-                                            alignment: Alignment.centerLeft,
-                                            child: widget.headerLeading,
-                                          ),
-                                        ),
-                                      ),
-                                    if (widget.headerTrailing != null)
-                                      Positioned(
-                                        right: 16,
-                                        child: DefaultTextStyle(
-                                          style: GbtFluentThemeData.of(context)
-                                                  .fluentTextTheme
-                                                  ?.body1
-                                                  ?.fluentCopyWith(
-                                                      fluentColor: FluentColors
-                                                          .neutralForeground2Rest) ??
-                                              DefaultTextStyle.of(context)
-                                                  .style,
-                                          child: Container(
-                                            height: _headerHeight,
-                                            alignment: Alignment.centerRight,
-                                            child: widget.headerTrailing,
-                                          ),
-                                        ),
-                                      ),
-                                    if (widget.headerTitle != null)
-                                      Positioned(
-                                        child: DefaultTextStyle(
-                                          style: GbtFluentThemeData.of(context)
-                                                  .fluentTextTheme
-                                                  ?.body1
-                                                  ?.fluentCopyWith(
-                                                      fluentColor: FluentColors
-                                                          .neutralForeground1Rest) ??
-                                              DefaultTextStyle.of(context)
-                                                  .style,
-                                          child: Center(
-                                            child: widget.headerTitle,
-                                          ),
-                                        ),
-                                      )
-                                  ],
-                                ),
-                              ),
-                            widget.child
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                )
-              ],
-            );
-          },
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
         );
       }),
     );

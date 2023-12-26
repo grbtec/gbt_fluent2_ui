@@ -16,6 +16,9 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
   Future<void> onRefresh() async {
     debug("Fetching");
     await Future.delayed(Duration(seconds: 3));
+    if(!mounted){
+      return;
+    }
     setState(() {
       lastRefresh = DateTime.now();
     });

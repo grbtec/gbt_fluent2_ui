@@ -4,7 +4,6 @@ ButtonStyle _buildFluentButtonAccentStyle(
   FluentButtonStyle fluentButtonStyle,
   BuildContext context,
 ) {
-  final FluentButtonSize size = fluentButtonStyle.size;
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
 
@@ -29,12 +28,14 @@ ButtonStyle _buildFluentButtonAccentStyle(
       (states) {
         if (states.contains(MaterialState.disabled)) {
           return FluentColors.neutralForegroundDisabled1;
-        } else {
-          Colors.white;
         }
         return Colors.white;
       },
     ),
-  ).merge(_fluentButtonDefaultStyle(
-      fluentButtonStyle: fluentButtonStyle, context: context));
+  ).merge(
+    _fluentButtonDefaultStyle(
+      fluentButtonStyle: fluentButtonStyle,
+      context: context,
+    ),
+  );
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
-import 'package:gbt_fluent2_ui/src/components/conditional_parent_widget/conditional_parent_widget.dart';
 
 class FluentList extends StatelessWidget {
+  final bool _isOneLine;
   final String? sectionHeaderTitle;
   final IconData? sectionHeaderTitleIcon;
   final SectionHeaderTitleVariant? sectionHeaderTitleVariant;
@@ -32,7 +31,8 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
-  })  : listType = FluentListType.oneLine,
+  })  : _isOneLine = true,
+        listType = FluentListType.oneLine,
         assert(
           sectionDescriptionText != null && sectionDescriptionIcon == null ||
               sectionDescriptionText != null &&
@@ -60,7 +60,8 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
-  })  : listType = FluentListType.multiLine,
+  })  : _isOneLine = false,
+        listType = FluentListType.multiLine,
         assert(
           sectionDescriptionText != null && sectionDescriptionIcon == null ||
               sectionDescriptionText != null &&
@@ -75,13 +76,83 @@ class FluentList extends StatelessWidget {
           'Cannot pass sectionHeaderTitleIcon icon without pass sectionHeaderTitle',
         );
 
+  /// FluentList's constructor
+  FluentList.builderOneLine({
+    super.key,
+    required int itemCount,
+    required FluentListItemOneLine Function(BuildContext context, int index)
+        itemBuilder,
+    this.sectionHeaderTitle,
+    this.sectionHeaderActions,
+    this.sectionDescriptionIcon,
+    this.sectionDescriptionText,
+    this.sectionHeaderTitleIcon,
+    this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
+    this.sectionHeaderBackgroundColor,
+    this.sectionDescriptionBackgroundColor,
+    this.separator,
+  })  : _isOneLine = true,
+        listType = FluentListType.oneLine,
+        assert(
+          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+              sectionDescriptionText != null &&
+                  sectionDescriptionIcon != null ||
+              sectionDescriptionText == null && sectionDescriptionIcon == null,
+          'Cannot pass only sectionDescriptionIcon to list section description',
+        ),
+        assert(
+          sectionHeaderTitle != null && sectionHeaderTitleIcon != null ||
+              sectionHeaderTitle != null && sectionHeaderTitleIcon == null ||
+              sectionHeaderTitle == null && sectionHeaderTitleIcon == null,
+          'Cannot pass sectionHeaderTitleIcon icon without pass sectionHeaderTitle',
+        ),
+        listItems = [
+          for (var index = 0; index < itemCount; index++)
+            Builder(builder: (context) => itemBuilder(context, index))
+        ];
+
+  /// FluentList's constructor
+  FluentList.builderMultiLine({
+    super.key,
+    required int itemCount,
+    required FluentListItemMultiLine Function(BuildContext context, int index)
+        itemBuilder,
+    this.sectionHeaderTitle,
+    this.sectionHeaderActions,
+    this.sectionDescriptionIcon,
+    this.sectionDescriptionText,
+    this.sectionHeaderTitleIcon,
+    this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
+    this.sectionHeaderBackgroundColor,
+    this.sectionDescriptionBackgroundColor,
+    this.separator,
+  })  : _isOneLine = false,
+        listType = FluentListType.multiLine,
+        assert(
+          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+              sectionDescriptionText != null &&
+                  sectionDescriptionIcon != null ||
+              sectionDescriptionText == null && sectionDescriptionIcon == null,
+          'Cannot pass only sectionDescriptionIcon to list section description',
+        ),
+        assert(
+          sectionHeaderTitle != null && sectionHeaderTitleIcon != null ||
+              sectionHeaderTitle != null && sectionHeaderTitleIcon == null ||
+              sectionHeaderTitle == null && sectionHeaderTitleIcon == null,
+          'Cannot pass sectionHeaderTitleIcon icon without pass sectionHeaderTitle',
+        ),
+        listItems = [
+          for (var index = 0; index < itemCount; index++)
+            Builder(builder: (context) => itemBuilder(context, index))
+        ];
+
   @override
   Widget build(BuildContext context) {
     final sectionHeaderTitle = this.sectionHeaderTitle;
     final sectionDescriptionText = this.sectionDescriptionText;
     final separator = this.separator;
     return Container(
-      padding: listItems is List<FluentListItemOneLine>
+      padding: _isOneLine
           ? EdgeInsets.only(
               top: FluentSize.size160.value,
               left: FluentSize.size160.value,
@@ -104,7 +175,7 @@ class FluentList extends StatelessWidget {
               if (separator != null && listItems.indexOf(item) != 0) separator,
               FluentContainer(
                 color: FluentColors.neutralBackground3Rest,
-                cornerRadius: listItems is List<FluentListItemOneLine>
+                cornerRadius: _isOneLine
                     ? FluentCornerRadius.xLarge
                     : FluentCornerRadius.none,
                 child: item,

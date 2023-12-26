@@ -32,6 +32,7 @@ ButtonStyle _buildFluentButtonSubtleStyle(
           ),
         );
       }
+      return null;
     }),
     foregroundColor: MaterialStateProperty.resolveWith(
       (states) {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentHeadsUpDisplayDialog extends StatefulWidget {
-  final Future future;
+  final Future<void> future;
   final String confirmStopMessage;
   final Widget hud;
 
@@ -24,7 +24,7 @@ class FluentHeadsUpDisplayDialog extends StatefulWidget {
 
   static Future<bool?> showDialog({
     required BuildContext context,
-    required Future future,
+    required Future<void> future,
     required String confirmStopMessage,
     required Widget hud,
   }) {

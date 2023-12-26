@@ -8,13 +8,9 @@
 import 'package:example/my_app.dart';
 import 'package:example/routing/routes.dart';
 import 'package:example/screens/dev_leticya/l_home_view/l_home_view.dart';
-import 'package:example/screens/dev_railson/r_home_view/r_home_view.dart';
-import 'package:example/screens/home/home_view.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:example/main.dart';
 
 void main() {
   testWidgets('Pump MyApp with Routes.home', (WidgetTester tester) async {
