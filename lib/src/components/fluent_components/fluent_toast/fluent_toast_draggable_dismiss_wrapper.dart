@@ -5,7 +5,6 @@ class _FluentToastDraggableDismissWrapper extends StatefulWidget {
   final Widget child;
 
   const _FluentToastDraggableDismissWrapper({
-    super.key,
     required this.onDismiss,
     required this.child,
   });

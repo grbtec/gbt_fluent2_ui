@@ -12,16 +12,14 @@ class FluentText extends StatelessWidget {
   final TextHeightBehavior? textHeightBehavior;
   final Locale? locale;
   final bool? softWrap;
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
   final String? semanticsLabel;
   final TextWidthBasis? textWidthBasis;
   final Color? selectionColor;
   final StrutStyle? strutStyle;
 
-
   /// FluentText's constructor
-  const FluentText(
-    this.data, {
+  FluentText(this.data, {
     this.style,
     this.textAlign,
     this.textDirection,
@@ -33,9 +31,14 @@ class FluentText extends StatelessWidget {
     this.softWrap,
     this.selectionColor,
     this.locale,
-    this.textScaleFactor,
+    @Deprecated(
+      'Use textScaler instead. '
+          'Use of textScaleFactor was deprecated in preparation for the upcoming nonlinear text scaling support. '
+          'This feature was deprecated after v3.12.0-2.0.pre.',
+    ) double? textScaleFactor,
+    TextScaler? textScaler,
     this.strutStyle,
-  });
+  }) : this.textScaler =textScaler ??(textScaleFactor==null? null:TextScaler.linear(textScaleFactor));
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,7 @@ class FluentText extends StatelessWidget {
       softWrap: softWrap,
       semanticsLabel: semanticsLabel,
       textWidthBasis: textWidthBasis,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       strutStyle: strutStyle,
     );
   }

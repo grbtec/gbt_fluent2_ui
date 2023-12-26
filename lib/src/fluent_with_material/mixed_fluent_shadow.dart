@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_debug.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_shadow.dart';
 
-
 class MixedFluentShadow implements FluentShadow {
   final BoxShadow boxShadow1;
   final BoxShadow boxShadow2;
-
-  // Cor da brand a qual, com base na luminosidade
-  final Color? brandColor;
 
   @override
   final double blurShadow1;
@@ -43,11 +39,15 @@ class MixedFluentShadow implements FluentShadow {
     required this.yAxisShadow2,
     required this.opacityShadow1,
     required this.opacityShadow2,
-    this.brandColor,
+    @Deprecated(
+      'No longer used by the framework, please remove any reference to it. '
+      'This feature was deprecated after v3.2.0',
+    )
+    Color? brandColor,
   });
 
   static double _getColorLuminosity(Color color) {
-    if(GbtFluent2Debug.printIsEnabled){
+    if (GbtFluent2Debug.printIsEnabled) {
       print('RED: ${color.red}');
       print('GREEN: ${color.green}');
       print('BLUE: ${color.blue}');
@@ -124,18 +124,20 @@ class MixedFluentShadow implements FluentShadow {
     );
   }
 
-  factory MixedFluentShadow.brandColor(int shadowNumber,
-      Color brandColor,
-      ElevationRamp elevation,) {
+  factory MixedFluentShadow.brandColor(
+    int shadowNumber,
+    Color brandColor,
+    ElevationRamp elevation,
+  ) {
     final double blurShadow1 = 1.0 * shadowNumber;
     final double blurShadow2 =
-    elevation == ElevationRamp.low ? 1.0 * shadowNumber : 8;
+        elevation == ElevationRamp.low ? 1.0 * shadowNumber : 8;
 
     const double xAxis = 0;
 
     final double yAxisShadow1 = 0.5 * shadowNumber;
     final double yAxisShadow2 =
-    elevation == ElevationRamp.low ? 0.5 * shadowNumber : 0;
+        elevation == ElevationRamp.low ? 0.5 * shadowNumber : 0;
 
     final luminosity = _getColorLuminosity(brandColor);
 

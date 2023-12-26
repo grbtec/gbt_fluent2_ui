@@ -103,16 +103,12 @@ class _FluentHeadsUpDisplayDialogState
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      // canPop: false,
-      // onPopInvoked: (didPop) {
-      //   if (!didPop) {
-      //     onTryCancel();
-      //   }
-      // },
-      onWillPop: () async {
-        onTryCancel();
-        return false;
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (!didPop) {
+          onTryCancel();
+        }
       },
       child: GestureDetector(
         onTap: onTryCancel,

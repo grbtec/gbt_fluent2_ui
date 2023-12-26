@@ -11,7 +11,7 @@ class FluentSearchBar extends StatefulWidget {
   /// This function is intended to be used with the cancel button and icon cancel
   /// to stop the ongoing operation. It helps in halting any asynchronous task
   final void Function() onCancelOperation;
-  final searchBarAlignment;
+  final SearchBarAlignment searchBarAlignment;
   final Icon? trailingIcon;
   final String? hintText;
   final Future<void> Function(String value) onSearch;
@@ -101,17 +101,19 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
     required bool isLoading,
     required void Function() onTapCancelIcon,
   }) {
-    if (isNotEmpty && isLoading)
+    if (isNotEmpty && isLoading){
       return CancelIcon(
         isLoading: isLoading,
         onTap: onTapCancelIcon,
       );
-    if (hasFocus && isNotEmpty)
+    }
+    if (hasFocus && isNotEmpty){
       return CancelIcon(
         isLoading: isLoading,
         onTap: onTapCancelIcon,
       );
-    if (icon != null)
+    }
+    if (icon != null){
       IconTheme(
         data: IconThemeData(
           color: FluentColors.neutralForeground2Rest,
@@ -119,6 +121,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
         ),
         child: icon,
       );
+    }
     return null;
   }
 

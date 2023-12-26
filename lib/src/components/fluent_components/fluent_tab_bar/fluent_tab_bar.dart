@@ -224,7 +224,6 @@ class _TabBarButton extends StatelessWidget {
   final bool isSelected;
 
   const _TabBarButton({
-    super.key,
     required this.item,
     required this.isSelected,
   });

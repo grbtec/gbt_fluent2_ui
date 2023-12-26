@@ -5,7 +5,6 @@ class _FluentToastAnimation extends StatefulWidget {
   final _FluentToastAnimationController controller;
 
   const _FluentToastAnimation({
-    super.key,
     required this.controller,
     required this.child,
   });

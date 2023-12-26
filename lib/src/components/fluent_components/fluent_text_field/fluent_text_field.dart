@@ -60,7 +60,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final hintText = widget.hintText;
     final assistiveText = widget.assistiveText;
     final hasFocus = fluentTextFieldController.hasFocus;
-    final isNotEmpty = fluentTextFieldController.queryString.isNotEmpty;
+    final isNotEmpty = fluentTextFieldController.textEditingController.value.text.isNotEmpty;
     final label = widget.label;
     final suffixIcon = widget.suffixIcon;
     final fluentTheme = GbtFluentThemeData.of(context);
@@ -127,7 +127,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
           isNotEmpty: isNotEmpty,
           icon: suffixIcon,
           onTapCancelIcon: () {
-            fluentTextFieldController.clearQueryString();
+            fluentTextFieldController.textEditingController.value = TextEditingValue(text: "");
           },
         ),
       ),

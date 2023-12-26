@@ -75,7 +75,7 @@ class DottedBorder extends StatelessWidget {
     Set<double>? _dashSet = dashPattern?.toSet();
     if (_dashSet == null) return false;
     if (_dashSet.length == 1 && _dashSet.elementAt(0) == 0.0) return false;
-    if (_dashSet.length == 0) return false;
+    if (_dashSet.isEmpty) return false;
     return true;
   }
 }
