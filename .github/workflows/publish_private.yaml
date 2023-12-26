@@ -28,5 +28,7 @@ jobs:
       - name: Set private repo
         run: dart run set_private_repo.dart
 
+      - run: flutter analyze lib
+
       - name: Publish
         run: yes | dart pub publish
