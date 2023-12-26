@@ -1,3 +1,7 @@
+## 3.3.0
+
+- Change Flutter constraints from ">=3.13.0" to ">=3.16.0"
+
 ## 3.0.2
 
 - Remove unnecessary dependencies 
