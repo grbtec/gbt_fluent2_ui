@@ -23,8 +23,8 @@ class FluentInitials extends StatelessWidget {
 
   /// Show the initials of a person's name. This component must be used within FluentAvatar.
   const FluentInitials({
-    super.key,
     required this.name,
+    super.key,
     this.foregroundColor,
     this.backgroundColor,
     this.size,
@@ -39,15 +39,10 @@ class FluentInitials extends StatelessWidget {
     for (var i = 0; i < nameParts.length && i < 3; i++) {
       final part = nameParts[i];
 
-      if (part.length > 0) {
+      if (part.isNotEmpty) {
         final firstLetter = part[0].toUpperCase();
 
         initials += firstLetter;
-
-        print('is not empty => ${part.runtimeType}');
-        print('And this is the first letter => $firstLetter');
-      } else {
-        print('is empty => ${part.runtimeType}');
       }
     }
 
@@ -81,4 +76,8 @@ class FluentInitials extends StatelessWidget {
   }
 }
 
-enum InitialsFontWeight { regular, medium }
+/// Preset value font weight to component initials
+enum InitialsFontWeight {
+  regular,
+  medium,
+}
