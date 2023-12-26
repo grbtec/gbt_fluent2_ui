@@ -20,7 +20,8 @@ export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_progress_
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_switch_toggle/fluent_switch_toggle.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_banner/fluent_banner_material_extensions.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_nav_bar/fluent_nav_titles_variants.dart';
-export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_avatar.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_avatar/fluent_avatar.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_avatar/fluent_initials.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_chip/fluent_chip.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_sheet/fluent_sheet.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_container.dart';
