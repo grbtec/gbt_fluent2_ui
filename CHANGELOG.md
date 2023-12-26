@@ -1,6 +1,6 @@
-## 3.3.1
+## 4.0.0
 
-- Solve warning
+- Solve warnings
 
 ## 3.3.0
 

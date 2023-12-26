@@ -6,7 +6,7 @@ class FluentTextFieldController {
   TextEditingController textEditingController = TextEditingController();
   @Deprecated("There is no sense of existing it here")
   bool _isLoading = false;
-  FocusNode _focus = FocusNode();
+  final FocusNode _focus = FocusNode();
 
   bool get hasFocus => _focus.hasFocus;
 

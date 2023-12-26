@@ -24,7 +24,7 @@ class FluentStrokeDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final thickness = style?.thickness;
-    final indent = this.startIndent;
+    final indent = startIndent;
     final height = this.height;
 
     final double strokeGapWithoutThickness =

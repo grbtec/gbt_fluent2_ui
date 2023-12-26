@@ -27,10 +27,13 @@ const Color _kDarkThemeSplashColor = Color(0x40CCCCCC);
 
 /// GbtFluentThemeData
 class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
+  @override
   final MixedFluentTextTheme? fluentTextTheme;
+  @override
   final MixedFluentStrokeTheme? fluentStrokeTheme;
+  @override
   final MixedFluentShadowTheme? fluentShadowTheme;
-
+  @override
   final FluentColors? fluentBrandColors;
 
   /// Convert the [extensionsIterable] passed to [ThemeData.new] or [copyWith]

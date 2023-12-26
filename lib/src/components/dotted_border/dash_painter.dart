@@ -23,7 +23,7 @@ class DashedPainter extends CustomPainter {
     this.strokeWidth = 2,
     this.dashPattern = const <double>[3, 1],
     this.color = Colors.black,
-    this.borderType = BorderType.Rect,
+    this.borderType = BorderType.rect,
     this.radius = const Radius.circular(0),
     this.strokeCap = StrokeCap.butt,
     this.customPath,
@@ -33,15 +33,15 @@ class DashedPainter extends CustomPainter {
   }
 
   @override
-  void paint(Canvas canvas, Size originalSize) {
-    final Size size;
+  void paint(Canvas canvas, Size size) {
+    final Size localSize;
     if (padding == EdgeInsets.zero) {
-      size = originalSize;
+      localSize = size;
     } else {
       canvas.translate(padding.left, padding.top);
-      size = Size(
-        originalSize.width - padding.horizontal,
-        originalSize.height - padding.vertical,
+      localSize = Size(
+        size.width - padding.horizontal,
+        size.height - padding.vertical,
       );
     }
 
@@ -51,35 +51,35 @@ class DashedPainter extends CustomPainter {
       ..strokeCap = strokeCap
       ..style = PaintingStyle.stroke;
 
-    Path _path;
+    Path path;
     if (customPath != null) {
-      _path = _dashPath(
-        customPath!(size),
+      path = _dashPath(
+        customPath!(localSize),
         dashArray: _CircularIntervalList(dashPattern),
       );
     } else {
-      _path = _getPath(size);
+      path = _getPath(localSize);
     }
 
-    canvas.drawPath(_path, paint);
+    canvas.drawPath(path, paint);
   }
 
   /// Returns a [Path] based on the the [borderType] parameter
   Path _getPath(Size size) {
     Path path;
     switch (borderType) {
-      case BorderType.Circle:
+      case BorderType.circle:
         path = _getCirclePath(size);
         break;
-      case BorderType.RRect:
+      case BorderType.rRect:
         path = _getRRectPath(size, radius);
         break;
-      case BorderType.Rect:
+      case BorderType.rect:
         path = _getRectPath(size);
         break;
-      case BorderType.Oval:
+      case BorderType.oval:
         path = _getOvalPath(size);
-      case BorderType.Line:
+      case BorderType.line:
         path = _getLinePath(size);
         break;
     }
@@ -160,11 +160,11 @@ class DashedPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(DashedPainter oldDelegate) {
-    return oldDelegate.strokeWidth != this.strokeWidth ||
-        oldDelegate.color != this.color ||
-        oldDelegate.dashPattern != this.dashPattern ||
-        oldDelegate.padding != this.padding ||
-        oldDelegate.borderType != this.borderType;
+    return oldDelegate.strokeWidth != strokeWidth ||
+        oldDelegate.color != color ||
+        oldDelegate.dashPattern != dashPattern ||
+        oldDelegate.padding != padding ||
+        oldDelegate.borderType != borderType;
   }
 }
 

@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-class _RenderInnerAspectRatio extends RenderProxyBox {
-  _RenderInnerAspectRatio({
+class RenderInnerAspectRatio extends RenderProxyBox {
+  RenderInnerAspectRatio({
     required double aspectRatio,
   }) : _aspectRatio = aspectRatio;
 
@@ -21,7 +21,7 @@ class _RenderInnerAspectRatio extends RenderProxyBox {
 
   @override
   void performLayout() {
-    child?..layout(constraints, parentUsesSize: true);
+    child?.layout(constraints, parentUsesSize: true);
     final childSize = child?.size ?? Size.zero;
     final sideLength = max(childSize.width, childSize.height);
     final widthDiff = sideLength - childSize.width;
@@ -70,19 +70,19 @@ class InnerAspectRatio extends SingleChildRenderObjectWidget {
   final double aspectRatio;
 
   const InnerAspectRatio({
+    super.key,
     required this.aspectRatio,
     super.child,
-    Key? key,
-  }) : super(key: key);
+  });
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return _RenderInnerAspectRatio(aspectRatio: aspectRatio);
+    return RenderInnerAspectRatio(aspectRatio: aspectRatio);
   }
 
   @override
   void updateRenderObject(
-      BuildContext context, _RenderInnerAspectRatio renderObject) {
+      BuildContext context, RenderInnerAspectRatio renderObject) {
     renderObject.aspectRatio = aspectRatio;
   }
 }

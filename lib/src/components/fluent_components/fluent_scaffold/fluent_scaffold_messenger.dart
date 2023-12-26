@@ -7,9 +7,9 @@ class FluentScaffoldMessenger extends StatefulWidget {
 
   @override
   State<FluentScaffoldMessenger> createState() =>
-      _FluentScaffoldMessengerState();
+      FluentScaffoldMessengerState();
 
-  static _FluentScaffoldMessengerState of(BuildContext context) {
+  static FluentScaffoldMessengerState of(BuildContext context) {
     final value = context
         .dependOnInheritedWidgetOfExactType<_InheritedFluentScaffoldMessenger>();
     if (value == null) {
@@ -19,7 +19,7 @@ class FluentScaffoldMessenger extends StatefulWidget {
   }
 }
 
-class _FluentScaffoldMessengerState extends State<FluentScaffoldMessenger> {
+class FluentScaffoldMessengerState extends State<FluentScaffoldMessenger> {
   List<Widget> _banners = [];
 
   void addBanner(Widget banner) {
@@ -50,7 +50,7 @@ class _FluentScaffoldMessengerState extends State<FluentScaffoldMessenger> {
 }
 
 class _InheritedFluentScaffoldMessenger extends InheritedWidget {
-  final _FluentScaffoldMessengerState state;
+  final FluentScaffoldMessengerState state;
 
   _InheritedFluentScaffoldMessenger({
     required this.state,

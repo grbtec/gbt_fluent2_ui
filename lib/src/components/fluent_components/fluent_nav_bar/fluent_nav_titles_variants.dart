@@ -12,10 +12,13 @@ abstract interface class NavTitleVariation {
 
 /// Left title
 class NavLeftTitle extends NavTitleVariation {
+  @override
   final Widget? avatar;
 
+  @override
   final String? subtitle;
 
+  @override
   final String title;
 
   /// NavBarLeftTitle's constructor
@@ -27,10 +30,13 @@ class NavLeftTitle extends NavTitleVariation {
 
 /// Left title with subtitle
 class NavLeftSubtitle extends NavTitleVariation {
+  @override
   final Widget? avatar;
 
+  @override
   final String subtitle;
 
+  @override
   final String title;
 
   /// NavBarLeftTitle's constructor
@@ -43,10 +49,13 @@ class NavLeftSubtitle extends NavTitleVariation {
 
 /// Center title
 class NavCenterTitle extends NavTitleVariation {
+  @override
   final Widget? avatar;
 
+  @override
   final String? subtitle;
 
+  @override
   final String title;
 
   /// NavCenterTitle's constructor
@@ -58,10 +67,13 @@ class NavCenterTitle extends NavTitleVariation {
 
 /// Center title with subtitle
 class NavCenterSubtitle extends NavTitleVariation {
+  @override
   final String subtitle;
 
+  @override
   final String title;
 
+  @override
   final Widget? avatar;
 
   /// NavCenterSubtitle's constructor

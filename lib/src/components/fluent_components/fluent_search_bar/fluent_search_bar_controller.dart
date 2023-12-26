@@ -4,7 +4,7 @@ class FluentSearchBarController {
   TextEditingController textEditingController = TextEditingController();
   final Debouncer _debounce = Debouncer(delay: Duration(milliseconds: 800));
   bool _isLoading = false;
-  FocusNode _focus = FocusNode();
+  final FocusNode _focus = FocusNode();
 
   String get queryString => textEditingController.value.text;
 
