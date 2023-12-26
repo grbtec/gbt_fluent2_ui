@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_debug.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_theme.dart';
 import 'package:gbt_fluent2_ui/utils/debouncer.dart';
 
 import 'cancel_icon.dart';
