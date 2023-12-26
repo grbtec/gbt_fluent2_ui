@@ -279,7 +279,7 @@ class _TabBarButton extends StatelessWidget {
             FluentText(
               item.label!,
               textOverflow: TextOverflow.ellipsis,
-              style: GbtFluentThemeData.of(context)
+              style: FluentThemeDataModel.of(context)
                   .fluentTextTheme
                   ?.caption2
                   ?.fluentCopyWith(

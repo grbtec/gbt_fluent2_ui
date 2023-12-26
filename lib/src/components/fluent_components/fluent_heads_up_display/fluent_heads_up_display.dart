@@ -44,7 +44,7 @@ class _FluentHeadsUpDisplayState extends State<FluentHeadsUpDisplay> {
                 ),
                 FluentText(
                   text,
-                  style: GbtFluentThemeData.of(context)
+                  style: FluentThemeDataModel.of(context)
                       .fluentTextTheme
                       ?.body1
                       ?.fluentCopyWith(

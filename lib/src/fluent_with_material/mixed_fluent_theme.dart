@@ -41,10 +41,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     });
   }
 
-  static GbtFluentThemeData of(BuildContext context) {
-    return Theme.of(context) as GbtFluentThemeData;
-  }
-
   @override
   ThemeData copyWith({
     MixedFluentTextTheme? fluentTextTheme,

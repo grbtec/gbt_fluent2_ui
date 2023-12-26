@@ -53,7 +53,7 @@ class FluentBanner extends StatelessWidget {
             child: Center(
               child: FluentText(
                 text,
-                style: GbtFluentThemeData.of(context)
+                style: FluentThemeDataModel.of(context)
                     .fluentTextTheme
                     ?.body2
                     ?.fluentCopyWith(

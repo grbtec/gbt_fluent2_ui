@@ -46,7 +46,7 @@ class FluentListItemOneLine extends StatelessWidget {
               child: FluentContainer(
                 child: FluentText(
                   text,
-                  style: GbtFluentThemeData.of(context)
+                  style: FluentThemeDataModel.of(context)
                       .fluentTextTheme
                       ?.body1
                       ?.fluentCopyWith(

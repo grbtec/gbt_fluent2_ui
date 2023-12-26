@@ -149,6 +149,6 @@ class FluentColors {
   });
 
   static FluentColors? of(BuildContext context) {
-    return GbtFluentThemeData.of(context).fluentBrandColors;
+    return FluentThemeDataModel.of(context).fluentBrandColors;
   }
 }

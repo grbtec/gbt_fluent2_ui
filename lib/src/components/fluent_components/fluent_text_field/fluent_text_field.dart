@@ -57,13 +57,13 @@ class _FluentTextFieldState extends State<FluentTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     final hintText = widget.hintText;
     final assistiveText = widget.assistiveText;
     final hasFocus = fluentTextFieldController.hasFocus;
     final isNotEmpty = fluentTextFieldController.textEditingController.value.text.isNotEmpty;
     final label = widget.label;
     final suffixIcon = widget.suffixIcon;
-    final fluentTheme = GbtFluentThemeData.of(context);
     final onChanged = widget.onChanged;
 
     return TextField(
@@ -77,7 +77,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
       onChanged: onChanged,
       cursorColor: FluentColors.neutralForeground3Rest,
       style:
-          GbtFluentThemeData.of(context).fluentTextTheme?.body1?.fluentCopyWith(
+          fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
                 fluentColor: hasFocus
                     ? FluentColors.neutralForeground1Rest
                     : FluentColors.neutralForeground2Rest,
@@ -111,7 +111,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
             width: FluentStrokeThickness.strokeWidth05.value,
             color: widget.hasError
                 ? FluentColors.statusDangerForeground2Rest
-                : GbtFluentThemeData.of(context)
+                : FluentThemeDataModel.of(context)
                         .fluentBrandColors
                         ?.brandStroke1Rest ??
                     Theme.of(context).primaryColor,

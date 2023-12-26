@@ -53,13 +53,13 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                 FluentText(
                   title?.title ?? '',
                   style: title is NavLeftTitle
-                      ? GbtFluentThemeData.of(context).fluentTextTheme?.title1?.fluentCopyWith(
+                      ? FluentThemeDataModel.of(context).fluentTextTheme?.title1?.fluentCopyWith(
                           fluentColor:
                               themeColorVariation == FluentThemeColorVariation.brand
                                   ? FluentColors.controlsNavBarForeground1Rest
                                   : FluentColors.neutralForeground1Rest,
                         )
-                      : GbtFluentThemeData.of(context).fluentTextTheme?.body1Strong
+                      : FluentThemeDataModel.of(context).fluentTextTheme?.body1Strong
                           ?.fluentCopyWith(
                           fluentColor:
                               themeColorVariation == FluentThemeColorVariation.brand
@@ -70,7 +70,7 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                 if (title?.subtitle != null)
                   FluentText(
                     title?.subtitle ?? '',
-                    style: GbtFluentThemeData.of(context).fluentTextTheme?.caption2
+                    style: FluentThemeDataModel.of(context).fluentTextTheme?.caption2
                         ?.fluentCopyWith(
                       fluentColor: themeColorVariation == FluentThemeColorVariation.brand
                           ? FluentColors.controlsNavBarForeground2Rest

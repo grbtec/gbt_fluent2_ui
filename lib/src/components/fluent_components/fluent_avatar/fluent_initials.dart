@@ -54,18 +54,18 @@ class FluentInitials extends StatelessWidget {
     return FluentContainer(
       cornerRadius: FluentCornerRadius.circle,
       color: backgroundColor ??
-          GbtFluentThemeData.of(context).colorScheme.primary.withOpacity(0.3),
+          Theme.of(context).colorScheme.primary.withOpacity(0.3),
       width: size?.width ?? double.maxFinite,
       height: size?.height ?? double.maxFinite,
       alignment: Alignment.center,
       child: FluentText(
         _getInitials(name),
-        style: GbtFluentThemeData.of(context)
+        style: FluentThemeDataModel.of(context)
             .fluentTextTheme
             ?.caption2
             ?.fluentCopyWith(
               fluentColor: foregroundColor ??
-                  GbtFluentThemeData.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.primary,
               fluentSize: fontSize,
               fluentWeight: fontWeight == InitialsFontWeight.medium
                   ? MixedFluentFontWeight.semibold

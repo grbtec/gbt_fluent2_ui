@@ -3,7 +3,7 @@ part of '../fluent_button.dart';
 ButtonStyle _fluentButtonDefaultStyle(
     {required FluentButtonStyle fluentButtonStyle,
     required BuildContext context}) {
-  final fluentTheme = GbtFluentThemeData.of(context);
+  final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
 
   return ButtonStyle(
     minimumSize: MaterialStateProperty.all(Size(

@@ -93,6 +93,7 @@ class _FluentSheetState extends State<FluentSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     return NotificationListener(
       onNotification: (ScrollEndNotification not) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -117,7 +118,7 @@ class _FluentSheetState extends State<FluentSheet> {
                 child: Stack(
                   children: [
                     FluentContainer(
-                      shadow: GbtFluentThemeData.of(context)
+                      shadow: FluentThemeDataModel.of(context)
                           .fluentShadowTheme
                           ?.brandShadow28,
                       cornerRadius: FluentCornerRadius.xLarge,
@@ -155,7 +156,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                           Positioned(
                                             left: 16,
                                             child: DefaultTextStyle(
-                                              style: GbtFluentThemeData.of(context)
+                                              style: fluentTheme
                                                       .fluentTextTheme
                                                       ?.body1
                                                       ?.fluentCopyWith(
@@ -174,7 +175,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                           Positioned(
                                             right: 16,
                                             child: DefaultTextStyle(
-                                              style: GbtFluentThemeData.of(context)
+                                              style: fluentTheme
                                                       .fluentTextTheme
                                                       ?.body1
                                                       ?.fluentCopyWith(
@@ -192,7 +193,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                         if (widget.headerTitle != null)
                                           Positioned(
                                             child: DefaultTextStyle(
-                                              style: GbtFluentThemeData.of(context)
+                                              style: fluentTheme
                                                       .fluentTextTheme
                                                       ?.body1
                                                       ?.fluentCopyWith(

@@ -52,7 +52,7 @@ class FluentListItemMultiLine extends StatelessWidget {
                     if (text != null)
                       FluentText(
                         text,
-                        style: GbtFluentThemeData.of(context)
+                        style: FluentThemeDataModel.of(context)
                             .fluentTextTheme
                             ?.body1
                             ?.fluentCopyWith(
@@ -62,7 +62,7 @@ class FluentListItemMultiLine extends StatelessWidget {
                     if (subtext != null)
                       FluentText(
                         subtext,
-                        style: GbtFluentThemeData.of(context)
+                        style: FluentThemeDataModel.of(context)
                             .fluentTextTheme
                             ?.caption1
                             ?.fluentCopyWith(

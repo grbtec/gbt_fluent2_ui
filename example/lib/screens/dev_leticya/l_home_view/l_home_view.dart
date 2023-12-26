@@ -62,7 +62,7 @@ class _LHomeViewState extends State<LHomeView> {
                 child: FluentText(
                   querySearch,
                   textAlign: TextAlign.center,
-                  style: GbtFluentThemeData.of(context)
+                  style: FluentThemeDataModel.of(context)
                       .fluentTextTheme
                       ?.body2
                       ?.fluentCopyWith(
@@ -101,7 +101,7 @@ class _LHomeViewState extends State<LHomeView> {
                   sectionDescriptionIcon: Icons.info_outline,
                   separator: FluentStrokeDivider(
                     startIndent: FluentStrokeBorderIndent.strokeIndent16,
-                    style: GbtFluentThemeData.of(context)
+                    style: FluentThemeDataModel.of(context)
                         .fluentStrokeTheme
                         ?.stroke2,
                   ),
@@ -283,7 +283,7 @@ class _LHomeViewState extends State<LHomeView> {
                             margin: EdgeInsets.only(right: 17),
                             child: FluentText(
                               'Checkbox1',
-                              style: GbtFluentThemeData.of(context)
+                              style: FluentThemeDataModel.of(context)
                                   .fluentTextTheme
                                   ?.caption1
                                   ?.fluentCopyWith(fluentColor: Colors.white),
@@ -298,7 +298,7 @@ class _LHomeViewState extends State<LHomeView> {
                             margin: EdgeInsets.only(right: 17),
                             child: FluentText(
                               'Checkbox2',
-                              style: GbtFluentThemeData.of(context)
+                              style: FluentThemeDataModel.of(context)
                                   .fluentTextTheme
                                   ?.caption1
                                   ?.fluentCopyWith(fluentColor: Colors.white),
@@ -312,7 +312,7 @@ class _LHomeViewState extends State<LHomeView> {
                             padding: EdgeInsets.all(7),
                             child: FluentText(
                               'Checkbox3',
-                              style: GbtFluentThemeData.of(context)
+                              style: FluentThemeDataModel.of(context)
                                   .fluentTextTheme
                                   ?.caption1
                                   ?.fluentCopyWith(fluentColor: Colors.white),
@@ -350,7 +350,7 @@ class _LHomeViewState extends State<LHomeView> {
                 sectionHeaderTitleIcon: Icons.lightbulb,
                 separator: FluentStrokeDivider(
                   style:
-                      GbtFluentThemeData.of(context).fluentStrokeTheme?.stroke1,
+                  FluentThemeDataModel.of(context).fluentStrokeTheme?.stroke1,
                 ),
                 listItems: [
                   FluentListItemMultiLine(
@@ -420,11 +420,13 @@ class FluentCheckBoxWithTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GbtFluentThemeData.of(context)
+          style: FluentThemeDataModel.of(context)
               .fluentTextTheme
               ?.caption2
               ?.fluentCopyWith(
-                  fluentColor: FluentColors.neutralForeground2Rest),
+                  fluentColor: FluentColors.neutralForeground2Rest,
+            // ⚠️ ⚠️ ⚠️ Why do not use FluentText rather than do unnecessary casting
+          ) as TextStyle,
         ),
         FluentCheckbox(value: value, onChanged: onChange)
       ],

@@ -73,7 +73,7 @@ class _FluentHeadsUpDisplayDialogState
         return AlertDialog.adaptive(
           title: FluentText(
             widget.confirmStopMessage,
-            style: GbtFluentThemeData.of(context).fluentTextTheme?.body1,
+            style: FluentThemeDataModel.of(context).fluentTextTheme?.body1,
           ),
           titlePadding: EdgeInsets.symmetric(
             horizontal: FluentSize.size160.value,

@@ -39,11 +39,6 @@ class MixedFluentShadow implements FluentShadow {
     required this.yAxisShadow2,
     required this.opacityShadow1,
     required this.opacityShadow2,
-    @Deprecated(
-      'No longer used by the framework, please remove any reference to it. '
-      'This feature was deprecated after v3.2.0',
-    )
-    Color? brandColor,
   });
 
   static double _getColorLuminosity(Color color) {

@@ -101,19 +101,19 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
     required bool isLoading,
     required void Function() onTapCancelIcon,
   }) {
-    if (isNotEmpty && isLoading){
+    if (isNotEmpty && isLoading) {
       return CancelIcon(
         isLoading: isLoading,
         onTap: onTapCancelIcon,
       );
     }
-    if (hasFocus && isNotEmpty){
+    if (hasFocus && isNotEmpty) {
       return CancelIcon(
         isLoading: isLoading,
         onTap: onTapCancelIcon,
       );
     }
-    if (icon != null){
+    if (icon != null) {
       IconTheme(
         data: IconThemeData(
           color: FluentColors.neutralForeground2Rest,
@@ -127,6 +127,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     final trailingIcon = widget.trailingIcon;
     final isNotEmpty = searchBarController.queryString.isNotEmpty;
     final isLoading = searchBarController._isLoading;
@@ -148,11 +149,12 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
               controller: searchBarController.textEditingController,
               onChanged: onChange,
               cursorColor: FluentColors.neutralForeground3Rest,
-              style: GbtFluentThemeData.of(context)
+              style: fluentTheme
                   .fluentTextTheme
                   ?.body1
                   ?.fluentCopyWith(
-                      fluentColor: FluentColors.neutralForeground1Rest),
+                    fluentColor: FluentColors.neutralForeground1Rest,
+                  ),
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.transparent),
@@ -170,7 +172,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                 fillColor: FluentColors.neutralBackground5Rest,
                 filled: true,
                 hintText: hintText,
-                hintStyle: GbtFluentThemeData.of(context)
+                hintStyle: fluentTheme
                     .fluentTextTheme
                     ?.body1
                     ?.fluentCopyWith(

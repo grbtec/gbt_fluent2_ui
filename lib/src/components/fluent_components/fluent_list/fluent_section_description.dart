@@ -46,7 +46,7 @@ class FluentSectionDescription extends StatelessWidget {
           Expanded(
             child: FluentText(
               description,
-              style: GbtFluentThemeData.of(context)
+              style: FluentThemeDataModel.of(context)
                   .fluentTextTheme
                   ?.caption1
                   ?.fluentCopyWith(

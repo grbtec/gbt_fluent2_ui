@@ -17,7 +17,7 @@ class BHomeView extends StatelessWidget {
         title: NavCenterSubtitle(title: "Home Page", subtitle: "for brunno"),
       ),
       drawer: FluentLeftNav(
-          headerAvatar: FluentAvatar(size: FluentAvatarSize.size32,child: Container(width: double.maxFinite,alignment: Alignment.center, height: double.maxFinite ,color: FluentColors.of(context)?.brandBackgroundDisabledRest ,child: FluentText("KM", style: GbtFluentThemeData.of(context).fluentTextTheme?.caption1?.fluentCopyWith(  fluentColor: FluentColors.of(context)?.brandForeground1Pressed),))),
+          headerAvatar: FluentAvatar(size: FluentAvatarSize.size32,child: Container(width: double.maxFinite,alignment: Alignment.center, height: double.maxFinite ,color: FluentColors.of(context)?.brandBackgroundDisabledRest ,child: FluentText("KM", style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1?.fluentCopyWith(  fluentColor: FluentColors.of(context)?.brandForeground1Pressed),))),
           header: Column(
             children: [
               FluentListItemMultiLine(
@@ -30,7 +30,7 @@ class BHomeView extends StatelessWidget {
                     )),
                 text: "Krystal McKinney",
                 subtext: "k.mckinny@schooloffineart.com",
-                additionalContent: FluentText("Add or switch accounts",style: GbtFluentThemeData.of(context).fluentTextTheme?.body1?.fluentCopyWith(fluentColor: Colors.lightBlueAccent)),
+                additionalContent: FluentText("Add or switch accounts",style: FluentThemeDataModel.of(context).fluentTextTheme?.body1?.fluentCopyWith(fluentColor: Colors.lightBlueAccent)),
 
               )
             ],

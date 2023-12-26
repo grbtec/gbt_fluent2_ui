@@ -49,13 +49,13 @@ class FluentSectionHeader extends StatelessWidget {
               FluentText(
                 title,
                 style: titleVariant == SectionHeaderTitleVariant.bold
-                    ? GbtFluentThemeData.of(context)
+                    ? FluentThemeDataModel.of(context)
                         .fluentTextTheme
                         ?.body1Strong
                         ?.fluentCopyWith(
                           fluentColor: FluentColors.neutralForeground1Rest,
                         )
-                    : GbtFluentThemeData.of(context)
+                    : FluentThemeDataModel.of(context)
                         .fluentTextTheme
                         ?.caption1
                         ?.fluentCopyWith(

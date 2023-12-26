@@ -136,8 +136,8 @@ class _FluentToastState extends State<FluentToast> {
         child: FluentContainer(
           cornerRadius: FluentCornerRadius.xLarge,
           shadow:switch (widget.toastColor) {
-            FluentToastColor.accent => GbtFluentThemeData.of(context).fluentShadowTheme?.brandShadow16,
-            _ => GbtFluentThemeData.of(context).fluentShadowTheme?.shadow16
+            FluentToastColor.accent => FluentThemeDataModel.of(context).fluentShadowTheme?.brandShadow16,
+            _ => FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16
           },
           color: switch (widget.toastColor) {
             FluentToastColor.accent => ColorTween(
@@ -173,7 +173,7 @@ class _FluentToastState extends State<FluentToast> {
                       children: [
                         FluentText(
                           widget.text,
-                          style: GbtFluentThemeData.of(context)
+                          style: FluentThemeDataModel.of(context)
                               .fluentTextTheme
                               ?.body2Strong
                               ?.fluentCopyWith(
@@ -183,7 +183,7 @@ class _FluentToastState extends State<FluentToast> {
                         if (subText != null)
                           FluentText(
                             subText,
-                            style: GbtFluentThemeData.of(context)
+                            style: FluentThemeDataModel.of(context)
                                 .fluentTextTheme
                                 ?.body2
                                 ?.fluentCopyWith(

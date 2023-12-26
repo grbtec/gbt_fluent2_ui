@@ -61,7 +61,7 @@ class FluentCard extends StatelessWidget {
         color: FluentColors.neutralBackground2Rest,
         width: 280,
         cornerRadius: FluentCornerRadius.large,
-        shadow: GbtFluentThemeData.of(context).fluentShadowTheme?.shadow2,
+        shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow2,
         child: Column(
           children: [
             if (coverImage != null)
@@ -90,14 +90,14 @@ class FluentCard extends StatelessWidget {
                     children: [
                       FluentText(
                         text,
-                        style: GbtFluentThemeData.of(context)
+                        style: FluentThemeDataModel.of(context)
                             .fluentTextTheme
                             ?.body2,
                       ),
                       if (shortenedString != null)
                         FluentText(
                           shortenedString,
-                          style: GbtFluentThemeData.of(context)
+                          style: FluentThemeDataModel.of(context)
                               .fluentTextTheme
                               ?.caption1,
                         ),
