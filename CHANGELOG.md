@@ -1,3 +1,7 @@
+## 4.1.0
+
+- Add FluentIcon 
+
 ## 4.0.0
 
 - Solve warnings
