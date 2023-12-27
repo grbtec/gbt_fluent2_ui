@@ -1,5 +1,5 @@
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_theme.dart';
-import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_stroke_style.dart';
+import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_style.dart';
 
 
 

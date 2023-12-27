@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_font_weight.dart';
 
 class FluentInitials extends StatelessWidget {
   final String name;

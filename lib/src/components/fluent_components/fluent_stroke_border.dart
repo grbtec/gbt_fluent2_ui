@@ -26,7 +26,7 @@ class FluentStrokeBorder extends StatelessWidget {
       padding: EdgeInsets.all(strokeStyle?.padding ??
           (strokeStyle?.thickness?.value ?? defaultStrokeThickness.value) / 2),
       strokeCap: StrokeCap.square,
-      borderType: child != null ? BorderType.RRect : BorderType.Line,
+      borderType: child != null ? BorderType.rRect : BorderType.line,
       radius: Radius.circular(cornerRadius?.value ?? defaultCornerRadius.value),
       color: strokeStyle?.color ?? defaultStrokeColor,
       strokeWidth: (strokeStyle?.thickness ?? defaultStrokeThickness).value,

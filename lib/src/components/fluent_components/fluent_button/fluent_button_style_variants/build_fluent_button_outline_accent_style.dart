@@ -7,15 +7,14 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
   final FluentButtonSize size = fluentButtonStyle.size;
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
-  final Color? strokeRestColor =
-      FluentColors.of(context)?.brandStroke1Rest;
-  final Color? strokePressedColor =
-      FluentColors.of(context)?.brandStroke1Pressed;
-  final Color? strokeFocusedColor = FluentColors.neutralStrokeFocus2Rest;
-  final Color strokeDisabledColor = FluentColors.neutralStrokeDisabledRest;
+  final strokeRestColor = FluentColors.of(context)?.brandStroke1Rest;
+  final strokePressedColor = FluentColors.of(context)?.brandStroke1Pressed;
+  const strokeFocusedColor = FluentColors.neutralStrokeFocus2Rest;
+  const strokeDisabledColor = FluentColors.neutralStrokeDisabledRest;
 
   return ButtonStyle(
-    backgroundColor: backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
+    backgroundColor:
+        backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
     shape: MaterialStateProperty.resolveWith(
       (states) {
         if (states.length == 1) {
@@ -32,18 +31,16 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
                     ),
                   )
                 : null,
-            MaterialState.focused => strokeFocusedColor != null
-                ? RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: strokeFocusedColor,
-                        width: FluentStrokeThickness.strokeWidth20.value),
-                    borderRadius: BorderRadius.circular(
-                      size == FluentButtonSize.large
-                          ? FluentCornerRadius.xLarge.value
-                          : FluentCornerRadius.large.value,
-                    ),
-                  )
-                : null,
+            MaterialState.focused => RoundedRectangleBorder(
+              side: BorderSide(
+                  color: strokeFocusedColor,
+                  width: FluentStrokeThickness.strokeWidth20.value),
+              borderRadius: BorderRadius.circular(
+                size == FluentButtonSize.large
+                    ? FluentCornerRadius.xLarge.value
+                    : FluentCornerRadius.large.value,
+              ),
+            ),
             MaterialState.disabled => RoundedRectangleBorder(
                 side: BorderSide(
                   color: strokeDisabledColor,
@@ -85,8 +82,6 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
         }
         if (states.contains(MaterialState.disabled)) {
           return FluentColors.neutralForegroundDisabled1;
-        } else {
-          Colors.white;
         }
         return FluentColors.of(context)?.brandForeground1Rest;
       },

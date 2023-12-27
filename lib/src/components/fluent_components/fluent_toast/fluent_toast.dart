@@ -39,7 +39,7 @@ class FluentToast extends StatefulWidget {
     required BuildContext context,
     Duration? duration = const Duration(seconds: 3),
     double yOffset = -64,
-    VoidCallback? onDismissed = null,
+    VoidCallback? onDismissed,
   }) {
     _showOverlay(
       context,
@@ -58,7 +58,7 @@ class FluentToast extends StatefulWidget {
     Widget? action,
     Duration? duration = const Duration(seconds: 3),
     double yOffset = -64,
-    VoidCallback? onDismissed = null,
+    VoidCallback? onDismissed,
   }) async {
     _showOverlay(
       context,

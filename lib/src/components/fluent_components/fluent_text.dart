@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_style.dart';
-import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_text_style.dart';
+import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_style.dart';
 
 class FluentText extends StatelessWidget {
   final String data;
@@ -19,7 +19,8 @@ class FluentText extends StatelessWidget {
   final StrutStyle? strutStyle;
 
   /// FluentText's constructor
-  FluentText(this.data, {
+  FluentText(
+    this.data, {
     this.style,
     this.textAlign,
     this.textDirection,
@@ -33,12 +34,16 @@ class FluentText extends StatelessWidget {
     this.locale,
     @Deprecated(
       'Use textScaler instead. '
-          'Use of textScaleFactor was deprecated in preparation for the upcoming nonlinear text scaling support. '
-          'This feature was deprecated after v3.12.0-2.0.pre.',
-    ) double? textScaleFactor,
+      'Use of textScaleFactor was deprecated in preparation for the upcoming nonlinear text scaling support. '
+      'This feature was deprecated after v3.12.0-2.0.pre.',
+    )
+    double? textScaleFactor,
     TextScaler? textScaler,
     this.strutStyle,
-  }) : this.textScaler =textScaler ??(textScaleFactor==null? null:TextScaler.linear(textScaleFactor));
+  }) : textScaler = textScaler ??
+            (textScaleFactor == null
+                ? null
+                : TextScaler.linear(textScaleFactor));
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 
 
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_shadow_theme.dart';
-import 'package:gbt_fluent2_ui/mixed_fluent_with_material/mixed_fluent_shadow.dart';
+import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_shadow.dart';
 
 class MixedFluentShadowTheme implements FluentShadowTheme {
   @override

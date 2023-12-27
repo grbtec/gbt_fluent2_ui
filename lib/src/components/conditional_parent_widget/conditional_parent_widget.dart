@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 
 class ConditionalParentWidget extends StatefulWidget {
   const ConditionalParentWidget({
-    Key? key,
+    super.key,
     required this.condition,
     required this.child,
     required this.parentBuilder,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final bool condition;
@@ -22,6 +22,6 @@ class _ConditionalParentWidgetState extends State<ConditionalParentWidget> {
   @override
   Widget build(BuildContext context) {
     final child = KeyedSubtree(key: key, child: widget.child);
-    return widget.condition ? this.widget.parentBuilder(context, child) : child;
+    return widget.condition ? widget.parentBuilder(context, child) : child;
   }
 }
