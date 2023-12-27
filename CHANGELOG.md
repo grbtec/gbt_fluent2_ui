@@ -1,3 +1,7 @@
+## 4.1.1
+
+- Dart format  
+
 ## 4.1.0
 
 - Add FluentIcon 
