@@ -1,6 +1,6 @@
 import 'package:example/screens/dev_leticya/buttons_row.dart';
+import 'package:example/screens/dev_leticya/example_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_essentials/gbt_essentials.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
 
@@ -45,7 +45,7 @@ class _LHomeViewState extends State<LHomeView> {
                     setState(() {});
                   },
                   onCancelOperation: () {
-                    debug('OPERATION IS BEING CANCELED');
+                    debugPrint('OPERATION IS BEING CANCELED');
                   },
                 ),
               ),
@@ -109,11 +109,11 @@ class _LHomeViewState extends State<LHomeView> {
                     FluentListItemOneLine(
                       onTap: isRadioBlock
                           ? () {
-                              debug('Is radio block');
+                              debugPrint('Is radio block');
                             }
                           : () {
                               setState(() {
-                                debug('is not block');
+                                debugPrint('is not block');
                                 _pet = Pet.dog;
                               });
                             },
@@ -134,11 +134,11 @@ class _LHomeViewState extends State<LHomeView> {
                     FluentListItemOneLine(
                       onTap: isRadioBlock
                           ? () {
-                              debug('Is radio block');
+                              debugPrint('Is radio block');
                             }
                           : () {
                               setState(() {
-                                debug('is not block');
+                                debugPrint('is not block');
                                 _pet = Pet.cat;
                               });
                             },
@@ -159,11 +159,11 @@ class _LHomeViewState extends State<LHomeView> {
                     FluentListItemOneLine(
                       onTap: isRadioBlock
                           ? () {
-                              debug('Is radio block');
+                              debugPrint('Is radio block');
                             }
                           : () {
                               setState(() {
-                                debug('is not block');
+                                debugPrint('is not block');
                                 _pet = Pet.bird;
                               });
                             },
@@ -323,7 +323,7 @@ class _LHomeViewState extends State<LHomeView> {
                   ],
                 ),
               ),
-              SizedBox(height: 52),
+              ExampleIcons(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: FluentContainer(
@@ -349,8 +349,9 @@ class _LHomeViewState extends State<LHomeView> {
                 sectionHeaderTitle: 'Fluent Multiline List',
                 sectionHeaderTitleIcon: Icons.lightbulb,
                 separator: FluentStrokeDivider(
-                  style:
-                  FluentThemeDataModel.of(context).fluentStrokeTheme?.stroke1,
+                  style: FluentThemeDataModel.of(context)
+                      .fluentStrokeTheme
+                      ?.stroke1,
                 ),
                 listItems: [
                   FluentListItemMultiLine(
@@ -424,9 +425,9 @@ class FluentCheckBoxWithTitle extends StatelessWidget {
               .fluentTextTheme
               ?.caption2
               ?.fluentCopyWith(
-                  fluentColor: FluentColors.neutralForeground2Rest,
-            // ⚠️ ⚠️ ⚠️ Why do not use FluentText rather than do unnecessary casting
-          ) as TextStyle,
+                fluentColor: FluentColors.neutralForeground2Rest,
+                // ⚠️ ⚠️ ⚠️ Why do not use FluentText rather than do unnecessary casting
+              ) as TextStyle,
         ),
         FluentCheckbox(value: value, onChanged: onChange)
       ],

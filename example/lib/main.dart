@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:gbt_essentials/gbt_essentials.dart';
 
 Future<void> main() async {
-  debug('main()');
-  debug('begin initialization');
+  debugPrint('main()');
+  debugPrint('begin initialization');
 
-  debug('runing app (splash)');
+  debugPrint('runing app (splash)');
   runApp(MyApp(home: SplashScreenView()));
 
   await Future.delayed(Duration(seconds: 3));
 
-  debug('runing app (home)');
+  debugPrint('runing app (home)');
   runApp(MyApp(home: HomeView()));
 }

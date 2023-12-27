@@ -42,12 +42,6 @@ class MixedFluentShadow implements FluentShadow {
   });
 
   static double _getColorLuminosity(Color color) {
-    if (GbtFluent2Debug.printIsEnabled) {
-      print('RED: ${color.red}');
-      print('GREEN: ${color.green}');
-      print('BLUE: ${color.blue}');
-    }
-    // 31.89 + 69.3744 + 12.7794 = 114.0438
     return (0.2126 * color.red) +
         (0.7152 * color.green) +
         (0.0722 * color.blue);

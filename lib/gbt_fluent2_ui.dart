@@ -35,6 +35,7 @@ export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_radio_but
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_checkbox/fluent_checkbox.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_card.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_left_nav/fluent_left_nav.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_icon/fluent_icon.dart';
 
 
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_avatar_size.dart';
