@@ -305,7 +305,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // ignore: deprecated_member_use_from_same_package
       bottomAppBarColor: bottomAppBarTheme?.color ??
           this.bottomAppBarTheme.color ??
-      // ignore: deprecated_member_use_from_same_package
+          // ignore: deprecated_member_use_from_same_package
           _deprecated,
     );
   }
