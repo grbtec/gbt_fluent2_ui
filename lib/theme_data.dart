@@ -29,7 +29,6 @@ GbtFluentThemeData getTheme({
   final fluentColors = convert(brandColor);
 
   return GbtFluentThemeData(
-
     splashColor: Colors.transparent,
     splashFactory: NoSplash.splashFactory,
     useMaterial3: true,

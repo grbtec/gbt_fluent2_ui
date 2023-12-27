@@ -44,7 +44,6 @@ class _RLawlessLandState extends State<RLawlessLand> {
 
   @override
   Widget build(BuildContext context) {
-
     return FluentScaffold(
       // fluentBottomSheet: FluentSheet.bottom(
       //   headerHeight: 40,
@@ -88,10 +87,8 @@ class _RLawlessLandState extends State<RLawlessLand> {
                           child: ListView.builder(
                               controller: scrollController,
                               itemCount: 25,
-                              itemBuilder:
-                                  (BuildContext context, int index) {
-                                return ListTile(
-                                    title: Text("Item $index"));
+                              itemBuilder: (BuildContext context, int index) {
+                                return ListTile(title: Text("Item $index"));
                               }),
                         );
                       }),
@@ -182,7 +179,6 @@ class _RLawlessLandState extends State<RLawlessLand> {
       //   headerHeight: 50,
       // ),
     );
-
   }
 
   @override

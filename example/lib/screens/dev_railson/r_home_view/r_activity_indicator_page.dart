@@ -23,6 +23,7 @@ class _RActivityIndicatorPageState extends State<RActivityIndicatorPage> {
         });
       }
     }
+
     final future = tryUpdateDate();
 
     FluentHeadsUpDisplayDialog(
@@ -58,7 +59,7 @@ class _RActivityIndicatorPageState extends State<RActivityIndicatorPage> {
       body: FluentRefreshActivityIndicator(
         onRefresh: updateDate,
         activityIndicatorBuilder: (BuildContext context, double? value) {
-          if(value == null){
+          if (value == null) {
             return SizedBox.shrink();
           }
           return FluentActivityIndicator(value: value);

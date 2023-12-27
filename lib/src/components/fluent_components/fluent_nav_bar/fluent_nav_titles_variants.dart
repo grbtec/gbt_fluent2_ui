@@ -9,7 +9,6 @@ abstract interface class NavTitleVariation {
   String? get subtitle;
 }
 
-
 /// Left title
 class NavLeftTitle extends NavTitleVariation {
   @override

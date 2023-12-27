@@ -10,7 +10,6 @@ class FluentStrokeBorderIndent {
     this.value,
   );
 
-
   static const FluentStrokeBorderIndent strokeIndent0 =
       FluentStrokeBorderIndent._(1, 0);
 
@@ -28,8 +27,6 @@ class FluentStrokeBorderIndent {
 
   static const FluentStrokeBorderIndent strokeIndent108 =
       FluentStrokeBorderIndent._(1, 108);
-
-
 
   /// A list of all the stroke indents.
   static const List<FluentStrokeBorderIndent> values =

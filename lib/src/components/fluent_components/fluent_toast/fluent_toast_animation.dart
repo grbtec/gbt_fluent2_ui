@@ -53,9 +53,8 @@ class _FluentToastAnimationController {
 
   _FluentToastAnimationController();
 
-
-  void attachCloseCallback(Future<void> Function() closeCallback){
-    if(_attached){
+  void attachCloseCallback(Future<void> Function() closeCallback) {
+    if (_attached) {
       throw "close callback can only be attached once. Make sure it's called in initState()";
     }
     _attached = true;

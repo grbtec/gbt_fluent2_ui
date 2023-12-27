@@ -135,8 +135,9 @@ class _FluentToastState extends State<FluentToast> {
         color: Colors.transparent,
         child: FluentContainer(
           cornerRadius: FluentCornerRadius.xLarge,
-          shadow:switch (widget.toastColor) {
-            FluentToastColor.accent => FluentThemeDataModel.of(context).fluentShadowTheme?.brandShadow16,
+          shadow: switch (widget.toastColor) {
+            FluentToastColor.accent =>
+              FluentThemeDataModel.of(context).fluentShadowTheme?.brandShadow16,
             _ => FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16
           },
           color: switch (widget.toastColor) {

@@ -32,15 +32,15 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
                   )
                 : null,
             MaterialState.focused => RoundedRectangleBorder(
-              side: BorderSide(
-                  color: strokeFocusedColor,
-                  width: FluentStrokeThickness.strokeWidth20.value),
-              borderRadius: BorderRadius.circular(
-                size == FluentButtonSize.large
-                    ? FluentCornerRadius.xLarge.value
-                    : FluentCornerRadius.large.value,
+                side: BorderSide(
+                    color: strokeFocusedColor,
+                    width: FluentStrokeThickness.strokeWidth20.value),
+                borderRadius: BorderRadius.circular(
+                  size == FluentButtonSize.large
+                      ? FluentCornerRadius.xLarge.value
+                      : FluentCornerRadius.large.value,
+                ),
               ),
-            ),
             MaterialState.disabled => RoundedRectangleBorder(
                 side: BorderSide(
                   color: strokeDisabledColor,

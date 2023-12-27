@@ -22,8 +22,6 @@ class FluentSearchBarTrailingIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final icon = this.icon;
 
-
-
     return FluentContainer(
       child: isNotEmpty && isLoading
           ? CancelIcon(
@@ -36,12 +34,12 @@ class FluentSearchBarTrailingIcon extends StatelessWidget {
                   onTap: onTapCancelIcon,
                 )
               : IconTheme(
-                      data: IconThemeData(
-                        color: FluentColors.neutralForeground2Rest,
-                        size: FluentSize.size200.value,
-                      ),
-                      child: icon,
-                    ),
+                  data: IconThemeData(
+                    color: FluentColors.neutralForeground2Rest,
+                    size: FluentSize.size200.value,
+                  ),
+                  child: icon,
+                ),
     );
   }
 }

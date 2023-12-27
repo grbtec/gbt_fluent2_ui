@@ -50,7 +50,8 @@ class FluentListItemOneLine extends StatelessWidget {
                       .fluentTextTheme
                       ?.body1
                       ?.fluentCopyWith(
-                        fluentColor: textColor ?? FluentColors.neutralForeground1Rest,
+                        fluentColor:
+                            textColor ?? FluentColors.neutralForeground1Rest,
                       ),
                 ),
               ),

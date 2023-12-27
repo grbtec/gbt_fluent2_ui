@@ -8,7 +8,7 @@ class RHomeController {
 
   RHomeController({
     required TickerProvider vsync,
-  }):tabController = TabController(length: 6, vsync: vsync){
+  }) : tabController = TabController(length: 6, vsync: vsync) {
     tabController.addListener(tabControllerListener);
     fluentTabBarController.addListener(fluentTabBarControllerListener);
   }

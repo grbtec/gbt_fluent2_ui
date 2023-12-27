@@ -70,7 +70,7 @@ class _FluentSheetState extends State<FluentSheet> {
   }
 
   void onScrollEnd() {
-    if(!controller.draggableScrollableController.isAttached){
+    if (!controller.draggableScrollableController.isAttached) {
       return;
     }
     switch (direction) {
@@ -102,7 +102,9 @@ class _FluentSheetState extends State<FluentSheet> {
         return false;
       },
       child: LayoutBuilder(builder: (context, constraints) {
-        childMinSize = (widget.headerHeight+MediaQuery.of(context).padding.bottom) / constraints.maxHeight;
+        childMinSize =
+            (widget.headerHeight + MediaQuery.of(context).padding.bottom) /
+                constraints.maxHeight;
         return SafeArea(
           left: false,
           right: false,
@@ -126,7 +128,8 @@ class _FluentSheetState extends State<FluentSheet> {
                     Positioned.fill(
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(FluentCornerRadius.xLarge.value),
+                          topLeft:
+                              Radius.circular(FluentCornerRadius.xLarge.value),
                           topRight:
                               Radius.circular(FluentCornerRadius.xLarge.value),
                         ),
@@ -157,8 +160,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                             left: 16,
                                             child: DefaultTextStyle(
                                               style: fluentTheme
-                                                      .fluentTextTheme
-                                                      ?.body1
+                                                      .fluentTextTheme?.body1
                                                       ?.fluentCopyWith(
                                                           fluentColor: FluentColors
                                                               .neutralForeground2Rest) ??
@@ -176,8 +178,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                             right: 16,
                                             child: DefaultTextStyle(
                                               style: fluentTheme
-                                                      .fluentTextTheme
-                                                      ?.body1
+                                                      .fluentTextTheme?.body1
                                                       ?.fluentCopyWith(
                                                           fluentColor: FluentColors
                                                               .neutralForeground2Rest) ??
@@ -185,7 +186,8 @@ class _FluentSheetState extends State<FluentSheet> {
                                                       .style,
                                               child: Container(
                                                 height: _headerHeight,
-                                                alignment: Alignment.centerRight,
+                                                alignment:
+                                                    Alignment.centerRight,
                                                 child: widget.headerTrailing,
                                               ),
                                             ),
@@ -194,8 +196,7 @@ class _FluentSheetState extends State<FluentSheet> {
                                           Positioned(
                                             child: DefaultTextStyle(
                                               style: fluentTheme
-                                                      .fluentTextTheme
-                                                      ?.body1
+                                                      .fluentTextTheme?.body1
                                                       ?.fluentCopyWith(
                                                           fluentColor: FluentColors
                                                               .neutralForeground1Rest) ??

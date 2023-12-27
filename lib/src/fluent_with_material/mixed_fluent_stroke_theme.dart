@@ -1,10 +1,7 @@
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_theme.dart';
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_style.dart';
 
-
-
 class MixedFluentStrokeTheme implements FluentStrokeTheme {
-
   @override
   final MixedFluentStrokeStyle? stroke1;
   @override
@@ -20,6 +17,5 @@ class MixedFluentStrokeTheme implements FluentStrokeTheme {
     required this.stroke2,
     required this.strokeAccessible,
     required this.strokeDisabled,
-  }) ;
-
+  });
 }

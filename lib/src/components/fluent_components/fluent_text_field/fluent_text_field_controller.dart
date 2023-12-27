@@ -1,7 +1,5 @@
 part of 'fluent_text_field.dart';
 
-
-
 class FluentTextFieldController {
   TextEditingController textEditingController = TextEditingController();
   @Deprecated("There is no sense of existing it here")
@@ -22,14 +20,14 @@ class FluentTextFieldController {
   void clearQueryString() {
     textEditingController.value = TextEditingValue(text: "");
   }
+
   @Deprecated("There is no sense of existing it here")
   void toggleIsLoading() {
     _isLoading = !_isLoading;
   }
 
-
   FluentTextFieldController() {
-    if(GbtFluent2Debug.printIsEnabled) {
+    if (GbtFluent2Debug.printIsEnabled) {
       _focus.addListener(() {
         print('focus changed: ${_focus.hasFocus}');
       });
@@ -41,4 +39,3 @@ class FluentTextFieldController {
     _focus.dispose();
   }
 }
-

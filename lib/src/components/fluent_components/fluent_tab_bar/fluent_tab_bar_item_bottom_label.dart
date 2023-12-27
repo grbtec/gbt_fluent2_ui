@@ -7,6 +7,6 @@ class FluentTabBarItemBottomLabel extends FluentTabBarItem {
     super.showBadge = false,
     super.tooltip,
   }) : super._raw(
-    axis: Axis.vertical,
-  );
+          axis: Axis.vertical,
+        );
 }

@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_font_weight.dart';
 
-
-
 class MixedFluentFontWeight implements FluentFontWeight {
   final FluentFontWeight _weight;
   final FontWeight fontWeight;

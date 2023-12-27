@@ -7,6 +7,6 @@ class FluentTabBarItemRightLabel extends FluentTabBarItem {
     super.showBadge = false,
     super.tooltip,
   }) : super._raw(
-    axis: Axis.horizontal,
-  );
+          axis: Axis.horizontal,
+        );
 }

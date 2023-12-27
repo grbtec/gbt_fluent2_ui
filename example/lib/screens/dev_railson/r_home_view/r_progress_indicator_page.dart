@@ -16,7 +16,7 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
   Future<void> onRefresh() async {
     debug("Fetching");
     await Future.delayed(Duration(seconds: 3));
-    if(!mounted){
+    if (!mounted) {
       return;
     }
     setState(() {
@@ -44,9 +44,9 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
           children: [
             Center(child: Text("👆👆👆👆")),
             Center(child: Text("ProgressIndicator")),
-            if(defaultTargetPlatform == TargetPlatform.iOS)
+            if (defaultTargetPlatform == TargetPlatform.iOS)
               Center(child: Text("ios: elastico")),
-            if(defaultTargetPlatform == TargetPlatform.android)
+            if (defaultTargetPlatform == TargetPlatform.android)
               Center(child: Text("android: linear")),
             Center(child: Text("👆👆👆👆")),
             FluentStrokeDivider(

@@ -24,6 +24,6 @@ class MixedFluentStrokeStyle implements FluentStrokeStyle {
     this.color,
     this.dashArray,
     this.padding,
-     this.cornerRadius,
+    this.cornerRadius,
   });
 }

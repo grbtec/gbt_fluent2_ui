@@ -8,4 +8,4 @@ class FluentTabBarController extends ValueNotifier<int> {
   }
 }
 
-class _InternalFluentTabBarController extends FluentTabBarController{}
+class _InternalFluentTabBarController extends FluentTabBarController {}

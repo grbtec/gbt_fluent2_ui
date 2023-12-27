@@ -14,8 +14,9 @@ class _InheritedFluentBanner extends InheritedWidget {
   }
 
   static List<Widget> of(BuildContext context) {
-    final value = context.dependOnInheritedWidgetOfExactType<_InheritedFluentBanner>();
-    if(value == null){
+    final value =
+        context.dependOnInheritedWidgetOfExactType<_InheritedFluentBanner>();
+    if (value == null) {
       throw "_InheritedFluentBanner was not found on the tree. Did you remember to use the FluentProvider?";
     }
     return value.banners;

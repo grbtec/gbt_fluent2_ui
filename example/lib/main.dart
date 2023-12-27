@@ -1,4 +1,3 @@
-
 import 'package:example/my_app.dart';
 import 'package:example/screens/home/home_view.dart';
 import 'package:example/splash_screen.dart';

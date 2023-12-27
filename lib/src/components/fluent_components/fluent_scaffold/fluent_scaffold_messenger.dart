@@ -10,8 +10,8 @@ class FluentScaffoldMessenger extends StatefulWidget {
       FluentScaffoldMessengerState();
 
   static FluentScaffoldMessengerState of(BuildContext context) {
-    final value = context
-        .dependOnInheritedWidgetOfExactType<_InheritedFluentScaffoldMessenger>();
+    final value = context.dependOnInheritedWidgetOfExactType<
+        _InheritedFluentScaffoldMessenger>();
     if (value == null) {
       throw "_InheritedFluentScaffoldMessenger was not found on the tree. Did you remember to use the FluentProvider?";
     }
@@ -23,17 +23,17 @@ class FluentScaffoldMessengerState extends State<FluentScaffoldMessenger> {
   List<Widget> _banners = [];
 
   void addBanner(Widget banner) {
-    if(_banners.contains(banner)){
+    if (_banners.contains(banner)) {
       return;
     }
     setState(() {
-      _banners = [..._banners,banner];
+      _banners = [..._banners, banner];
     });
   }
 
   void removeBanner(Widget banner) {
     setState(() {
-      _banners = _banners.where((element) => element!=banner).toList();
+      _banners = _banners.where((element) => element != banner).toList();
     });
   }
 
@@ -42,7 +42,7 @@ class FluentScaffoldMessengerState extends State<FluentScaffoldMessenger> {
     return _InheritedFluentScaffoldMessenger(
       state: this,
       child: _InheritedFluentBanner(
-        banners:_banners,
+        banners: _banners,
         child: widget.child,
       ),
     );

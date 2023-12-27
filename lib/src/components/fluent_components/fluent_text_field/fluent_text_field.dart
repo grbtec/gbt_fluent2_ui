@@ -36,14 +36,12 @@ class FluentTextField extends StatefulWidget {
 class _FluentTextFieldState extends State<FluentTextField> {
   late final FluentTextFieldController fluentTextFieldController;
 
-
   @override
   void initState() {
     super.initState();
     fluentTextFieldController =
         widget.controller ?? _InternalFluentTextFieldController();
   }
-
 
   @override
   void dispose() {
@@ -61,7 +59,8 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final hintText = widget.hintText;
     final assistiveText = widget.assistiveText;
     final hasFocus = fluentTextFieldController.hasFocus;
-    final isNotEmpty = fluentTextFieldController.textEditingController.value.text.isNotEmpty;
+    final isNotEmpty =
+        fluentTextFieldController.textEditingController.value.text.isNotEmpty;
     final label = widget.label;
     final suffixIcon = widget.suffixIcon;
     final onChanged = widget.onChanged;
@@ -76,12 +75,11 @@ class _FluentTextFieldState extends State<FluentTextField> {
       controller: fluentTextFieldController.textEditingController,
       onChanged: onChanged,
       cursorColor: FluentColors.neutralForeground3Rest,
-      style:
-          fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-                fluentColor: hasFocus
-                    ? FluentColors.neutralForeground1Rest
-                    : FluentColors.neutralForeground2Rest,
-              ),
+      style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+        fluentColor: hasFocus
+            ? FluentColors.neutralForeground1Rest
+            : FluentColors.neutralForeground2Rest,
+      ),
       decoration: InputDecoration(
         label: label != null ? FluentText(label) : null,
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -127,7 +125,8 @@ class _FluentTextFieldState extends State<FluentTextField> {
           isNotEmpty: isNotEmpty,
           icon: suffixIcon,
           onTapCancelIcon: () {
-            fluentTextFieldController.textEditingController.value = TextEditingValue(text: "");
+            fluentTextFieldController.textEditingController.value =
+                TextEditingValue(text: "");
           },
         ),
       ),

@@ -17,7 +17,7 @@ class _FluentToastWrapper extends StatelessWidget {
       left: 16,
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(bottom: max(0,-yOffset)),
+          padding: EdgeInsets.only(bottom: max(0, -yOffset)),
           child: _FluentToastDraggableDismissWrapper(
             onDismiss: () {
               FluentToastOverlayEntry.of(context).remove();

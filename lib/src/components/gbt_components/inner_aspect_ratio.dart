@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 import 'package:flutter/rendering.dart';
@@ -62,7 +61,9 @@ class RenderInnerAspectRatio extends RenderProxyBox {
     final finalWidthDiff = width - childSize.width;
     final finalHeightDiff = height - childSize.height;
     super.paint(
-        context, Offset(offset.dx + finalWidthDiff / 2, offset.dy + finalHeightDiff / 2));
+        context,
+        Offset(
+            offset.dx + finalWidthDiff / 2, offset.dy + finalHeightDiff / 2));
   }
 }
 

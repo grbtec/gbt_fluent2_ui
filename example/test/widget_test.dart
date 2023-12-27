@@ -11,7 +11,6 @@ import 'package:example/screens/dev_leticya/l_home_view/l_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
   testWidgets('Pump MyApp with Routes.home', (WidgetTester tester) async {
     // Build our app and trigger a frame.
@@ -33,7 +32,6 @@ void main() {
       home: LHomeView(),
     ));
   });
-
 }
 
 Widget buildByRoute(String route) {

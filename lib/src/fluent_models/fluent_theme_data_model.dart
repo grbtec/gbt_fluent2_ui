@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
-
-
 abstract interface class FluentThemeDataModel {
   final FluentTextTheme? fluentTextTheme;
   final FluentStrokeTheme? fluentStrokeTheme;
@@ -14,9 +12,8 @@ abstract interface class FluentThemeDataModel {
     return Theme.of(context) as FluentThemeDataModel;
   }
 
-
   /// FluentThemeData's constructor
-  FluentThemeDataModel( {
+  FluentThemeDataModel({
     this.fluentTextTheme,
     this.fluentShadowTheme,
     this.fluentStrokeTheme,

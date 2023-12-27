@@ -144,8 +144,10 @@ class ExampleIcons extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: FluentThemeDataModel.of(context)
                       .fluentTextTheme
-                      ?.caption2?.fluentCopyWith(fluentColor: Colors.pink.shade700, fluentWeight: FluentFontWeight.semibold
-                  ),
+                      ?.caption2
+                      ?.fluentCopyWith(
+                          fluentColor: Colors.pink.shade700,
+                          fluentWeight: FluentFontWeight.semibold),
                 ),
                 SizedBox(
                   height: FluentSize.size160.value,
@@ -177,8 +179,10 @@ class ExampleIcons extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: FluentThemeDataModel.of(context)
                       .fluentTextTheme
-                      ?.caption2?.fluentCopyWith(fluentColor: Colors.pink.shade700, fluentWeight: FluentFontWeight.semibold
-                  ),
+                      ?.caption2
+                      ?.fluentCopyWith(
+                          fluentColor: Colors.pink.shade700,
+                          fluentWeight: FluentFontWeight.semibold),
                 ),
                 SizedBox(
                   height: FluentSize.size160.value,

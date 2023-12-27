@@ -28,7 +28,8 @@ class FluentProgressBar extends StatelessWidget {
             color: FluentColors.neutralStroke1Rest,
             padding: value == null
                 ? null
-                : EdgeInsets.only(right: max(0,(1 - value) * constraints.maxWidth)),
+                : EdgeInsets.only(
+                    right: max(0, (1 - value) * constraints.maxWidth)),
             //constraints.maxWidth*(value??0),
             child: value == null
                 ? _Animated()
@@ -43,7 +44,6 @@ class FluentProgressBar extends StatelessWidget {
 }
 
 class _Animated extends StatefulWidget {
-
   @override
   State<_Animated> createState() => _AnimatedState();
 }

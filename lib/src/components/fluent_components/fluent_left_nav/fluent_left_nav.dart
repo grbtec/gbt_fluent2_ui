@@ -8,7 +8,11 @@ class FluentLeftNav extends StatelessWidget {
   final FluentAvatar? headerAvatar;
 
   const FluentLeftNav(
-      {super.key, this.header, this.backgroundColor, required this.body, this.headerAvatar});
+      {super.key,
+      this.header,
+      this.backgroundColor,
+      required this.body,
+      this.headerAvatar});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +33,7 @@ class FluentLeftNav extends StatelessWidget {
                 child: SizedBox(
                   width: 70,
                   child: headerAvatar,
-
                 ),
-
               ),
             if (header != null) ...[
               header,

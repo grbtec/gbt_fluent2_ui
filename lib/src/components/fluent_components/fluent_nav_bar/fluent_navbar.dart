@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
-
 class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final NavTitleVariation? title;
@@ -53,29 +52,37 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                 FluentText(
                   title?.title ?? '',
                   style: title is NavLeftTitle
-                      ? FluentThemeDataModel.of(context).fluentTextTheme?.title1?.fluentCopyWith(
-                          fluentColor:
-                              themeColorVariation == FluentThemeColorVariation.brand
-                                  ? FluentColors.controlsNavBarForeground1Rest
-                                  : FluentColors.neutralForeground1Rest,
-                        )
-                      : FluentThemeDataModel.of(context).fluentTextTheme?.body1Strong
+                      ? FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.title1
                           ?.fluentCopyWith(
-                          fluentColor:
-                              themeColorVariation == FluentThemeColorVariation.brand
-                                  ? FluentColors.controlsNavBarForeground1Rest
-                                  : FluentColors.neutralForeground1Rest,
-                        ),
+                            fluentColor: themeColorVariation ==
+                                    FluentThemeColorVariation.brand
+                                ? FluentColors.controlsNavBarForeground1Rest
+                                : FluentColors.neutralForeground1Rest,
+                          )
+                      : FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.body1Strong
+                          ?.fluentCopyWith(
+                            fluentColor: themeColorVariation ==
+                                    FluentThemeColorVariation.brand
+                                ? FluentColors.controlsNavBarForeground1Rest
+                                : FluentColors.neutralForeground1Rest,
+                          ),
                 ),
                 if (title?.subtitle != null)
                   FluentText(
                     title?.subtitle ?? '',
-                    style: FluentThemeDataModel.of(context).fluentTextTheme?.caption2
+                    style: FluentThemeDataModel.of(context)
+                        .fluentTextTheme
+                        ?.caption2
                         ?.fluentCopyWith(
-                      fluentColor: themeColorVariation == FluentThemeColorVariation.brand
-                          ? FluentColors.controlsNavBarForeground2Rest
-                          : FluentColors.neutralForeground2Rest,
-                    ),
+                          fluentColor: themeColorVariation ==
+                                  FluentThemeColorVariation.brand
+                              ? FluentColors.controlsNavBarForeground2Rest
+                              : FluentColors.neutralForeground2Rest,
+                        ),
                   ),
               ],
             ),

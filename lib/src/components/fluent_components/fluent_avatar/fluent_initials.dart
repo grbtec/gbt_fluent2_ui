@@ -64,8 +64,8 @@ class FluentInitials extends StatelessWidget {
             .fluentTextTheme
             ?.caption2
             ?.fluentCopyWith(
-              fluentColor: foregroundColor ??
-                  Theme.of(context).colorScheme.primary,
+              fluentColor:
+                  foregroundColor ?? Theme.of(context).colorScheme.primary,
               fluentSize: fontSize,
               fluentWeight: fontWeight == InitialsFontWeight.medium
                   ? MixedFluentFontWeight.semibold

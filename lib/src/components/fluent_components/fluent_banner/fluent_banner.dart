@@ -15,30 +15,27 @@ class FluentBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = switch(bannerColor){
+    final textColor = switch (bannerColor) {
       FluentBannerColor.accent => Theme.of(context).primaryColor,
       FluentBannerColor.subtle => Theme.of(context).primaryColor,
       FluentBannerColor.neutral => FluentColors.neutralForeground2Rest,
     };
-    final backgroundColor = switch(bannerColor){
+    final backgroundColor = switch (bannerColor) {
       FluentBannerColor.accent => ColorTween(
-        begin: Theme.of(context).primaryColor,
-        end: Colors.white,
-      ).lerp(0.7),
+          begin: Theme.of(context).primaryColor,
+          end: Colors.white,
+        ).lerp(0.7),
       FluentBannerColor.subtle => FluentColors.neutralBackground1Rest,
       FluentBannerColor.neutral => FluentColors.neutralBackground5Rest,
     };
 
-    var buildBorder = ({required Widget child})=>child;
+    var buildBorder = ({required Widget child}) => child;
 
-    if(bannerColor == FluentBannerColor.subtle){
-      buildBorder = ({required Widget child}){
+    if (bannerColor == FluentBannerColor.subtle) {
+      buildBorder = ({required Widget child}) {
         return Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            FluentStrokeDivider(),
-            child
-          ],
+          children: [FluentStrokeDivider(), child],
         );
       };
     }
@@ -57,8 +54,8 @@ class FluentBanner extends StatelessWidget {
                     .fluentTextTheme
                     ?.body2
                     ?.fluentCopyWith(
-                  fluentColor: textColor,
-                ),
+                      fluentColor: textColor,
+                    ),
               ),
             ),
           ),

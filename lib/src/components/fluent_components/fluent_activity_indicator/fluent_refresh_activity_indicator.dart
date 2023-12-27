@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class FluentRefreshActivityIndicator extends StatefulWidget {
@@ -27,7 +26,7 @@ class _FluentRefreshActivityIndicatorState
 
   // iOS
   bool _handleScrollNotification(ScrollUpdateNotification notification) {
-    if (overscroll.value == null || isSmooth==false) {
+    if (overscroll.value == null || isSmooth == false) {
       return false;
     }
     final pixels = notification.metrics.pixels;
@@ -42,9 +41,9 @@ class _FluentRefreshActivityIndicatorState
 
   // Android
   bool _handleOverscrollNotification(OverscrollNotification notification) {
-    if(isSmooth == null){
+    if (isSmooth == null) {
       isSmooth = false;
-    }else if(isSmooth == true){
+    } else if (isSmooth == true) {
       return false;
     }
     if (notification.overscroll < 0) {
@@ -64,7 +63,7 @@ class _FluentRefreshActivityIndicatorState
       widget.onRefresh().whenComplete(() {
         overscroll.value = 0;
       });
-    } else if(isSmooth == false){
+    } else if (isSmooth == false) {
       overscroll.value = 0;
     }
     return false;

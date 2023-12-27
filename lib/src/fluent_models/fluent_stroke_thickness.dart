@@ -8,28 +8,36 @@ class FluentStrokeThickness {
   final double value;
 
   ///  StrokeWidthNone
-  static const FluentStrokeThickness strokeWidthNone = FluentStrokeThickness._(0, 0);
+  static const FluentStrokeThickness strokeWidthNone =
+      FluentStrokeThickness._(0, 0);
 
   /// StrokeWidth05
-  static const FluentStrokeThickness strokeWidth05 = FluentStrokeThickness._(1, 0.5);
+  static const FluentStrokeThickness strokeWidth05 =
+      FluentStrokeThickness._(1, 0.5);
 
   /// StrokeWidth10
-  static const FluentStrokeThickness strokeWidth10 = FluentStrokeThickness._(2, 1);
+  static const FluentStrokeThickness strokeWidth10 =
+      FluentStrokeThickness._(2, 1);
 
   /// StrokeWidth15
-  static const FluentStrokeThickness strokeWidth15 = FluentStrokeThickness._(2, 1.5);
+  static const FluentStrokeThickness strokeWidth15 =
+      FluentStrokeThickness._(2, 1.5);
 
   /// StrokeWidth20
-  static const FluentStrokeThickness strokeWidth20 = FluentStrokeThickness._(2, 2);
+  static const FluentStrokeThickness strokeWidth20 =
+      FluentStrokeThickness._(2, 2);
 
   /// StrokeWidth30
-  static const FluentStrokeThickness strokeWidth30 = FluentStrokeThickness._(2, 3);
+  static const FluentStrokeThickness strokeWidth30 =
+      FluentStrokeThickness._(2, 3);
 
   /// StrokeWidth40
-  static const FluentStrokeThickness strokeWidth40 = FluentStrokeThickness._(2, 4);
+  static const FluentStrokeThickness strokeWidth40 =
+      FluentStrokeThickness._(2, 4);
 
   /// StrokeWidth60
-  static const FluentStrokeThickness strokeWidth60 = FluentStrokeThickness._(2, 6);
+  static const FluentStrokeThickness strokeWidth60 =
+      FluentStrokeThickness._(2, 6);
 
   /// A list of all the thickness.
   static const List<FluentStrokeThickness> values = <FluentStrokeThickness>[

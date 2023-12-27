@@ -16,7 +16,6 @@ class TextFieldTrailingIcon extends StatelessWidget {
     this.icon,
   });
 
-
   Widget iconToWidget(Icon? icon) {
     if (icon != null) {
       return IconTheme(
@@ -35,12 +34,12 @@ class TextFieldTrailingIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final Widget trailingWidget = icon != null
         ? IconTheme(
-      data: IconThemeData(
-        size: FluentSize.size240.value,
-        color: FluentColors.neutralForeground2Rest,
-      ),
-      child: iconToWidget(icon),
-    )
+            data: IconThemeData(
+              size: FluentSize.size240.value,
+              color: FluentColors.neutralForeground2Rest,
+            ),
+            child: iconToWidget(icon),
+          )
         : SizedBox();
 
     return FluentContainer(

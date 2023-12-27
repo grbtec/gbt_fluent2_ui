@@ -11,7 +11,7 @@ class RInputsPage extends StatefulWidget {
 
 class _RRInputsPageState extends State<RInputsPage> {
   final FluentTextFieldController controller = FluentTextFieldController();
-  String? error ;
+  String? error;
 
   @override
   void initState() {
@@ -23,7 +23,6 @@ class _RRInputsPageState extends State<RInputsPage> {
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +47,8 @@ class _RRInputsPageState extends State<RInputsPage> {
             FluentTextField(
               label: "Label do field2",
               hintText: "Dica",
-              assistiveText: error??"assistive",
-              hasError: error!=null,
+              assistiveText: error ?? "assistive",
+              hasError: error != null,
             ),
             FluentTextField(
               readOnly: true,

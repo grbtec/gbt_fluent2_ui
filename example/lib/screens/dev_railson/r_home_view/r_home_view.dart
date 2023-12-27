@@ -1,4 +1,3 @@
-
 import 'package:example/screens/dev_railson/r_home_view/r_activity_indicator_page.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_home_controller.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_inputs_page.dart';

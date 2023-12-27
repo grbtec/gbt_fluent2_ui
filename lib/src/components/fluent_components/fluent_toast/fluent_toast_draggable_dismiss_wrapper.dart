@@ -31,8 +31,8 @@ class _FluentToastDraggableDismissWrapperState
   }
 
   void _onDismiss() {
-    _animationController.animateTo(1).whenComplete((){
-    widget.onDismiss();
+    _animationController.animateTo(1).whenComplete(() {
+      widget.onDismiss();
     });
   }
 

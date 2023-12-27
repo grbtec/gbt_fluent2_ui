@@ -1,7 +1,3 @@
 part of 'fluent_banner.dart';
 
-enum FluentBannerColor {
-  accent,
-  subtle,
-  neutral
-}
+enum FluentBannerColor { accent, subtle, neutral }

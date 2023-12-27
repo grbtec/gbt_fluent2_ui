@@ -1,22 +1,13 @@
-
-
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_size.dart';
-
-
 
 class MixedFluentSize {
   final FluentSize _size;
 
-
   int get index => _size.index;
-
 
   double get value => _size.value;
 
   const MixedFluentSize._(this._size);
-
-
-
 
   /// Size none
   static const MixedFluentSize sizeNone = MixedFluentSize._(

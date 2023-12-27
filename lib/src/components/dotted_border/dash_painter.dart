@@ -153,9 +153,8 @@ class DashedPainter extends CustomPainter {
   Path _getLinePath(Size size) {
     // return Path()..addPath(path, Offset.zero);
     return Path()
-    ..moveTo(0, size.height/2)
-      ..lineTo(size.width, size.height /2 );
-
+      ..moveTo(0, size.height / 2)
+      ..lineTo(size.width, size.height / 2);
   }
 
   @override
@@ -168,11 +167,10 @@ class DashedPainter extends CustomPainter {
   }
 }
 
-
 Path _dashPath(
-    Path source, {
-      required _CircularIntervalList<double> dashArray,
-    }) {
+  Path source, {
+  required _CircularIntervalList<double> dashArray,
+}) {
   assert(dashArray != null); // ignore: unnecessary_null_comparison
 
   final Path dest = Path();

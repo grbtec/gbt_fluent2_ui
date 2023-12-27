@@ -7,18 +7,25 @@ class NavHeader extends StatelessWidget {
   final headerpadding;
   final avatarbackgroundcolor;
 
-  const NavHeader({super.key, this.headerpadding, this.avatarbackgroundcolor, this.headersubtext, this.headertext});
+  const NavHeader(
+      {super.key,
+      this.headerpadding,
+      this.avatarbackgroundcolor,
+      this.headersubtext,
+      this.headertext});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       padding: EdgeInsets.only(top: headerpadding ?? 75),
       child: FluentListItemMultiLine(
-        leading:  FluentAvatar(child:CircleAvatar(backgroundColor: avatarbackgroundcolor ?? Colors.grey,)) ,
+        leading: FluentAvatar(
+            child: CircleAvatar(
+          backgroundColor: avatarbackgroundcolor ?? Colors.grey,
+        )),
         text: headertext ?? "John Doe",
         subtext: headersubtext ?? "lorem ipsum dolor sit amet",
       ),
-
     );
   }
 }

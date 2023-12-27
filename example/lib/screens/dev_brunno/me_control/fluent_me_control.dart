@@ -41,11 +41,9 @@ class FluentMeControl extends StatelessWidget {
             // ),
             FluentList.multiLine(
               sectionHeaderTitle: 'Qualquer coisa',
-
               sectionHeaderActions: FluentSectionHeaderActions(
-                action1: Icon(Icons.access_alarm_rounded),
-                action2: Icon(Icons.account_circle)
-              ),
+                  action1: Icon(Icons.access_alarm_rounded),
+                  action2: Icon(Icons.account_circle)),
               listItems: [
                 FluentListItemMultiLine(
                   text: "John Doe",

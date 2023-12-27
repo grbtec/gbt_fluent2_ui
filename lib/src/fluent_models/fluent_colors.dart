@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentColors {
-
   static const Color controlsSegmentForeground2Rest = Color(0xFF616161);
   static const Color controlsSegmentForeground2Pressed = Color(0xFF242424);
   static const Color controlsSegmentForeground2Selected = Color(0xFF242424);
@@ -101,7 +100,6 @@ class FluentColors {
   static const Color statusWarningForeground2Rest = Color(0xFFBC4B09);
   static const Color statusWarningStroke1Rest = Color(0xFFDA3B01);
 
-
   final Color brandBackground1Rest;
   final Color brandBackground1Pressed;
   final Color brandBackground1Selected;
@@ -123,29 +121,25 @@ class FluentColors {
   final Color brandStroke1Pressed;
   final Color brandStroke1Selected;
 
-
   FluentColors({
-  required this.brandBackground1Rest,
-  required this.brandBackground1Pressed,
-  required this.brandBackground1Selected,
-  required this.brandBackground2Rest,
-  required this.brandBackground2Pressed,
-  required this.brandBackground2Selected,
-  required this.brandBackground3Rest,
-  required this.brandBackgroundTint,
-  required this.brandBackgroundDisabledRest,
-
-  required this.brandForeground1Rest,
-  required this.brandForeground1Pressed,
-  required this.brandForeground1Selected,
-  required this.brandForegroundTint,
-  required this.brandForegroundDisabled1Rest,
-  required this.brandForegroundDisabled2Rest,
-
-  required this.brandStroke1Rest,
-  required this.brandStroke1Pressed,
-  required this.brandStroke1Selected,
-
+    required this.brandBackground1Rest,
+    required this.brandBackground1Pressed,
+    required this.brandBackground1Selected,
+    required this.brandBackground2Rest,
+    required this.brandBackground2Pressed,
+    required this.brandBackground2Selected,
+    required this.brandBackground3Rest,
+    required this.brandBackgroundTint,
+    required this.brandBackgroundDisabledRest,
+    required this.brandForeground1Rest,
+    required this.brandForeground1Pressed,
+    required this.brandForeground1Selected,
+    required this.brandForegroundTint,
+    required this.brandForegroundDisabled1Rest,
+    required this.brandForegroundDisabled2Rest,
+    required this.brandStroke1Rest,
+    required this.brandStroke1Pressed,
+    required this.brandStroke1Selected,
   });
 
   static FluentColors? of(BuildContext context) {

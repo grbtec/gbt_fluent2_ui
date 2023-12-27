@@ -60,7 +60,7 @@ class FluentChip extends StatelessWidget {
           FluentChipColor.neutral => FluentColors.neutralBackground5Rest,
         },
       FluentChipColorStyle.filled => switch (chipColor) {
-          FluentChipColor.brand =>Theme.of(context).primaryColor,
+          FluentChipColor.brand => Theme.of(context).primaryColor,
           FluentChipColor.danger => FluentColors.statusDangerBackground2Rest,
           FluentChipColor.severe => FluentColors.statusSevereBackground2Rest,
           FluentChipColor.warning => FluentColors.statusWarningBackground2Rest,

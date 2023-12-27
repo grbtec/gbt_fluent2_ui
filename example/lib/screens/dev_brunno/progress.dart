@@ -14,14 +14,7 @@ class ProgressView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Stack(
-          children: [
-            FluentMeControl(
-
-            ),
-            Container(
-              
-            )
-          ],
+          children: [FluentMeControl(), Container()],
         ),
       ),
     );

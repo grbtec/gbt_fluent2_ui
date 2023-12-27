@@ -13,31 +13,32 @@ ButtonStyle _buildFluentButtonOutlineStyle(
   const strokeDisabledColor = FluentColors.neutralStrokeDisabledRest;
 
   return ButtonStyle(
-    backgroundColor: backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
+    backgroundColor:
+        backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
     shape: MaterialStateProperty.resolveWith(
       (states) {
         if (states.length == 1) {
           return switch (states.single) {
             MaterialState.pressed => RoundedRectangleBorder(
-              side: BorderSide(
-                color: strokePressedColor,
+                side: BorderSide(
+                  color: strokePressedColor,
+                ),
+                borderRadius: BorderRadius.circular(
+                  size == FluentButtonSize.large
+                      ? FluentCornerRadius.xLarge.value
+                      : FluentCornerRadius.large.value,
+                ),
               ),
-              borderRadius: BorderRadius.circular(
-                size == FluentButtonSize.large
-                    ? FluentCornerRadius.xLarge.value
-                    : FluentCornerRadius.large.value,
-              ),
-            ),
             MaterialState.focused => RoundedRectangleBorder(
-              side: BorderSide(
-                  color: strokeFocusedColor,
-                  width: FluentStrokeThickness.strokeWidth20.value),
-              borderRadius: BorderRadius.circular(
-                size == FluentButtonSize.large
-                    ? FluentCornerRadius.xLarge.value
-                    : FluentCornerRadius.large.value,
+                side: BorderSide(
+                    color: strokeFocusedColor,
+                    width: FluentStrokeThickness.strokeWidth20.value),
+                borderRadius: BorderRadius.circular(
+                  size == FluentButtonSize.large
+                      ? FluentCornerRadius.xLarge.value
+                      : FluentCornerRadius.large.value,
+                ),
               ),
-            ),
             MaterialState.disabled => RoundedRectangleBorder(
                 side: BorderSide(
                   color: strokeDisabledColor,

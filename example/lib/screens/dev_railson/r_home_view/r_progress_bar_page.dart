@@ -87,7 +87,6 @@ class _RProgressBarPageState extends State<RProgressBarPage> {
                 FluentProgressBar(value: 1),
 
                 SizedBox(height: 10),
-
               ],
             ),
           ),

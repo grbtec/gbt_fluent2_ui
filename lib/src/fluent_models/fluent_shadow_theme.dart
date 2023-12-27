@@ -1,7 +1,5 @@
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_shadow.dart';
 
-
-
 class FluentShadowTheme {
   final FluentShadow? shadow2;
   final FluentShadow? shadow4;
@@ -16,19 +14,17 @@ class FluentShadowTheme {
   final FluentShadow? brandShadow28;
   final FluentShadow? brandShadow64;
 
-
-  FluentShadowTheme({
-    this.shadow2,
-    this.shadow4,
-    this.shadow8,
-    this.shadow16,
-    this.shadow28,
-    this.shadow64,
-    this.brandShadow2,
-    this.brandShadow4,
-    this.brandShadow8,
-    this.brandShadow16,
-    this.brandShadow28,
-    this.brandShadow64
-});
+  FluentShadowTheme(
+      {this.shadow2,
+      this.shadow4,
+      this.shadow8,
+      this.shadow16,
+      this.shadow28,
+      this.shadow64,
+      this.brandShadow2,
+      this.brandShadow4,
+      this.brandShadow8,
+      this.brandShadow16,
+      this.brandShadow28,
+      this.brandShadow64});
 }

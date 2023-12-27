@@ -24,12 +24,13 @@ class FluentSectionDescription extends StatelessWidget {
     return FluentContainer(
       color: backgroundColor,
       width: double.infinity,
-      padding: padding ?? EdgeInsets.only(
-        top: FluentSize.size240.value,
-        right: FluentSize.size160.value,
-        bottom: FluentSize.size80.value,
-        left: FluentSize.size160.value,
-      ),
+      padding: padding ??
+          EdgeInsets.only(
+            top: FluentSize.size240.value,
+            right: FluentSize.size160.value,
+            bottom: FluentSize.size80.value,
+            left: FluentSize.size160.value,
+          ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -50,7 +51,8 @@ class FluentSectionDescription extends StatelessWidget {
                   .fluentTextTheme
                   ?.caption1
                   ?.fluentCopyWith(
-                    fluentColor: foregroundColor ?? FluentColors.neutralForeground2Rest,
+                    fluentColor:
+                        foregroundColor ?? FluentColors.neutralForeground2Rest,
                   ),
             ),
           ),

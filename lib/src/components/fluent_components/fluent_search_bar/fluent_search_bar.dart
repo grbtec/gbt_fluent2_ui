@@ -149,12 +149,9 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
               controller: searchBarController.textEditingController,
               onChanged: onChange,
               cursorColor: FluentColors.neutralForeground3Rest,
-              style: fluentTheme
-                  .fluentTextTheme
-                  ?.body1
-                  ?.fluentCopyWith(
-                    fluentColor: FluentColors.neutralForeground1Rest,
-                  ),
+              style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+                fluentColor: FluentColors.neutralForeground1Rest,
+              ),
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.transparent),
@@ -172,12 +169,9 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                 fillColor: FluentColors.neutralBackground5Rest,
                 filled: true,
                 hintText: hintText,
-                hintStyle: fluentTheme
-                    .fluentTextTheme
-                    ?.body1
-                    ?.fluentCopyWith(
-                      fluentColor: FluentColors.neutralForeground2Rest,
-                    ),
+                hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+                  fluentColor: FluentColors.neutralForeground2Rest,
+                ),
                 suffixIcon: buildTrailingIcon(
                     icon: trailingIcon,
                     hasFocus: hasFocus,

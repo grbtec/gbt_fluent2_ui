@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:gbt_fluent2_ui/src/fluent_models/fluent_font_weight.dart';
 
-
 abstract interface class FluentTextStyle {
   final double? fluentSize;
   final double? fluentLineHeight;
@@ -24,5 +23,3 @@ abstract interface class FluentTextStyle {
     Color? fluentColor,
   });
 }
-
-
