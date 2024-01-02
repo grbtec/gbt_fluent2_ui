@@ -22,15 +22,32 @@ class _LHomeViewState extends State<LHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: FluentNavBar(),
+      appBar: FluentNavBar(
+        title: NavLeftSubtitle(
+          title: 'Home Page',
+          subtitle: 'Demonstração de alguns componentes',
+        ),
+        foregroundColor: Colors.white,
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          stops: [0.4, 1],
+          colors: [
+            FluentColors.of(context)?.brandBackground2Pressed ??
+                Colors.transparent,
+            FluentColors.of(context)?.brandBackground2Rest ??
+                Colors.transparent,
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: FluentSize.size160.value,
-                ),
+                    horizontal: FluentSize.size160.value,
+                    vertical: FluentSize.size240.value),
                 child: FluentSearchBar.leftAligned(
                   hintText: "Qual vaga você procura hoje?",
                   trailingIcon: Icon(
@@ -50,7 +67,7 @@ class _LHomeViewState extends State<LHomeView> {
                 ),
               ),
               FluentContainer(
-                margin: EdgeInsets.only(top: 20, bottom: 20),
+                margin: EdgeInsets.only(bottom: 20),
                 padding: EdgeInsets.symmetric(
                   vertical: 7,
                   horizontal: 10,
@@ -267,7 +284,12 @@ class _LHomeViewState extends State<LHomeView> {
                 padding: EdgeInsets.all(7),
                 child: Column(
                   children: [
-                    Text('Valores Selecionados:'),
+                    FluentText(
+                      'Valores Selecionados:',
+                      style: FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.body2Strong,
+                    ),
                     SizedBox(
                       height: 7,
                     ),

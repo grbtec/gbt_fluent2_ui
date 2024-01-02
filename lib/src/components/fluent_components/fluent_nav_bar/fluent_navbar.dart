@@ -44,47 +44,56 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             title?.avatar ?? const SizedBox(),
             if (title?.avatar != null) const SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: isTitleCentered
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
-              children: [
-                FluentText(
-                  title?.title ?? '',
-                  style: title is NavLeftTitle
-                      ? FluentThemeDataModel.of(context)
-                          .fluentTextTheme
-                          ?.title1
-                          ?.fluentCopyWith(
-                            fluentColor: themeColorVariation ==
-                                    FluentThemeColorVariation.brand
-                                ? FluentColors.controlsNavBarForeground1Rest
-                                : FluentColors.neutralForeground1Rest,
-                          )
-                      : FluentThemeDataModel.of(context)
-                          .fluentTextTheme
-                          ?.body1Strong
-                          ?.fluentCopyWith(
-                            fluentColor: themeColorVariation ==
-                                    FluentThemeColorVariation.brand
-                                ? FluentColors.controlsNavBarForeground1Rest
-                                : FluentColors.neutralForeground1Rest,
-                          ),
-                ),
-                if (title?.subtitle != null)
+            Flexible(
+              child: Column(
+                crossAxisAlignment: isTitleCentered
+                    ? CrossAxisAlignment.center
+                    : CrossAxisAlignment.start,
+                children: [
                   FluentText(
-                    title?.subtitle ?? '',
-                    style: FluentThemeDataModel.of(context)
-                        .fluentTextTheme
-                        ?.caption2
-                        ?.fluentCopyWith(
-                          fluentColor: themeColorVariation ==
-                                  FluentThemeColorVariation.brand
-                              ? FluentColors.controlsNavBarForeground2Rest
-                              : FluentColors.neutralForeground2Rest,
-                        ),
+                    title?.title ?? '',
+                    style: title is NavLeftTitle
+                        ? FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.title1
+                            ?.fluentCopyWith(
+                              fluentColor: foregroundColor ??
+                                  (themeColorVariation ==
+                                          FluentThemeColorVariation.brand
+                                      ? FluentColors
+                                          .controlsNavBarForeground1Rest
+                                      : FluentColors.neutralForeground1Rest),
+                            )
+                        : FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.body1Strong
+                            ?.fluentCopyWith(
+                              fluentColor: foregroundColor ??
+                                  (themeColorVariation ==
+                                          FluentThemeColorVariation.brand
+                                      ? FluentColors
+                                          .controlsNavBarForeground1Rest
+                                      : FluentColors.neutralForeground1Rest),
+                              fluentWeight: FluentFontWeight.bold,
+                            ),
                   ),
-              ],
+                  if (title?.subtitle != null)
+                    FluentText(
+                      title?.subtitle ?? '',
+                      textOverflow: TextOverflow.ellipsis,
+                      style: FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.caption2
+                          ?.fluentCopyWith(
+                            fluentColor: foregroundColor ??
+                                (themeColorVariation ==
+                                        FluentThemeColorVariation.brand
+                                    ? FluentColors.controlsNavBarForeground2Rest
+                                    : FluentColors.neutralForeground2Rest),
+                          ),
+                    ),
+                ],
+              ),
             ),
           ],
         ),
@@ -111,9 +120,10 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
             (themeColorVariation == FluentThemeColorVariation.brand
                 ? Theme.of(context).primaryColor
                 : FluentColors.neutralBackground3Rest),
-        foregroundColor: themeColorVariation == FluentThemeColorVariation.brand
-            ? Colors.white
-            : FluentColors.neutralForeground2Rest,
+        foregroundColor: foregroundColor ??
+            (themeColorVariation == FluentThemeColorVariation.brand
+                ? Colors.white
+                : FluentColors.neutralForeground2Rest),
         bottom: child != null
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(48),
