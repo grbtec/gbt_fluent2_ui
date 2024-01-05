@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FluentRefreshActivityIndicator extends StatefulWidget {
-  final Future<void> Function() onRefresh;
-  final Widget Function(BuildContext context, double? value)
+  final void Function() onRefresh;
+  final Widget Function(BuildContext context, double value)
       activityIndicatorBuilder;
   final Widget child;
 
@@ -60,9 +60,7 @@ class _FluentRefreshActivityIndicatorState
     }
     if ((overscroll.value ?? 0) >= _swipeOffset) {
       overscroll.value = null;
-      widget.onRefresh().whenComplete(() {
-        overscroll.value = 0;
-      });
+      widget.onRefresh();
     } else if (isSmooth == false) {
       overscroll.value = 0;
     }
@@ -85,12 +83,12 @@ class _FluentRefreshActivityIndicatorState
                   child: ValueListenableBuilder(
                     valueListenable: overscroll,
                     builder: (context, value, __) {
-                      if (value == 0) {
+                      if (value == 0 || value == null) {
                         return SizedBox.shrink();
                       }
                       return widget.activityIndicatorBuilder(
                         context,
-                        value == null ? null : value / _swipeOffset,
+                        value / _swipeOffset,
                       );
                     },
                   ),

@@ -17,17 +17,7 @@ class FluentActivityIndicator extends StatefulWidget {
 }
 
 class _FluentActivityIndicatorState extends State<FluentActivityIndicator> {
-  bool canTrig = false;
-  bool get loading => canTrig && widget.value == null;
-
-  void onValueChanged(double value) {
-    if (!canTrig) {
-      if (value >= 1) {
-        canTrig = true;
-      }
-    }
-  }
-
+  bool get loading => widget.value == null;
   @override
   Widget build(BuildContext context) {
     if (loading) {
@@ -45,10 +35,7 @@ class _FluentActivityIndicatorState extends State<FluentActivityIndicator> {
     }
 
     final value = widget.value;
-    if (value != null) {
-      onValueChanged(value);
-    }
-    if (value == null) {
+    if(value == null){
       return SizedBox.shrink();
     }
     return SizedBox(

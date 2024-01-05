@@ -12,16 +12,26 @@ class RProgressIndicatorPage extends StatefulWidget {
 
 class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
   DateTime lastRefresh = DateTime.now();
+  bool isLoading = false;
 
   Future<void> onRefresh() async {
     debug("Fetching");
-    await Future.delayed(Duration(seconds: 3));
-    if (!mounted) {
-      return;
-    }
     setState(() {
-      lastRefresh = DateTime.now();
+      isLoading = true;
     });
+    try {
+      await Future.delayed(Duration(seconds: 3));
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        lastRefresh = DateTime.now();
+      });
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
     debug("Terminou");
   }
 
@@ -42,6 +52,7 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
         },
         child: ListView(
           children: [
+            if (isLoading) FluentActivityIndicator(value: null),
             Center(child: Text("👆👆👆👆")),
             Center(child: Text("ProgressIndicator")),
             if (defaultTargetPlatform == TargetPlatform.iOS)
