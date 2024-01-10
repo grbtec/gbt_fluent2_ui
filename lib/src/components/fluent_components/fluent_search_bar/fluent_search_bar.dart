@@ -181,7 +181,6 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                       setState(() {
                         searchBarController.clearQueryString();
                       });
-                      widget.onCancelOperation();
                     }),
                 prefixIcon: Icon(
                   Icons.search,
