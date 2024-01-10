@@ -12,6 +12,7 @@ class FluentSearchBar extends StatefulWidget {
   /// to stop the ongoing operation. It helps in halting any asynchronous task
   final void Function() onCancelOperation;
   final void Function()? onClearOperation;
+  final void Function()? onEmpty;
   final SearchBarAlignment searchBarAlignment;
   final Icon? trailingIcon;
   final String? hintText;
@@ -22,6 +23,7 @@ class FluentSearchBar extends StatefulWidget {
     required this.onSearch,
     required this.onCancelOperation,
     this.onClearOperation,
+    this.onEmpty,
     this.searchBarAlignment = SearchBarAlignment.centered,
     this.hintText,
   }) : trailingIcon = null;
@@ -32,6 +34,7 @@ class FluentSearchBar extends StatefulWidget {
     required this.onSearch,
     required this.onCancelOperation,
     this.onClearOperation,
+    this.onEmpty,
     this.searchBarAlignment = SearchBarAlignment.leftAligned,
     this.hintText,
   });
@@ -82,6 +85,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
             }
           });
         } else {
+          widget.onEmpty?.call();
           if (GbtFluent2Debug.printIsEnabled) {
             print('NOT RUNNING ASYNC FUNCTION');
           }
