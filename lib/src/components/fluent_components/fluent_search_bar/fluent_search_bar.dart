@@ -11,6 +11,8 @@ class FluentSearchBar extends StatefulWidget {
   /// This function is intended to be used with the cancel button and icon cancel
   /// to stop the ongoing operation. It helps in halting any asynchronous task
   final void Function() onCancelOperation;
+  final void Function()? onClearOperation;
+  final void Function()? onEmpty;
   final SearchBarAlignment searchBarAlignment;
   final Icon? trailingIcon;
   final String? hintText;
@@ -20,6 +22,8 @@ class FluentSearchBar extends StatefulWidget {
     super.key,
     required this.onSearch,
     required this.onCancelOperation,
+    this.onClearOperation,
+    this.onEmpty,
     this.searchBarAlignment = SearchBarAlignment.centered,
     this.hintText,
   }) : trailingIcon = null;
@@ -29,6 +33,8 @@ class FluentSearchBar extends StatefulWidget {
     this.trailingIcon,
     required this.onSearch,
     required this.onCancelOperation,
+    this.onClearOperation,
+    this.onEmpty,
     this.searchBarAlignment = SearchBarAlignment.leftAligned,
     this.hintText,
   });
@@ -79,6 +85,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
             }
           });
         } else {
+          widget.onEmpty?.call();
           if (GbtFluent2Debug.printIsEnabled) {
             print('NOT RUNNING ASYNC FUNCTION');
           }
@@ -181,7 +188,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                       setState(() {
                         searchBarController.clearQueryString();
                       });
-                      widget.onCancelOperation();
+                      widget.onClearOperation?.call();
                     }),
                 prefixIcon: Icon(
                   Icons.search,
