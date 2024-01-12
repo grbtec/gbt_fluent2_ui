@@ -11,14 +11,14 @@ final theme = getTheme(
   brandColor: MaterialColor(
     0XFF2886DE,
     <int, Color>{
-      50: Color(0XFF0C3B5E),
-      100: Color(0XFF0E4775),
-      200: Color(0XFF0F548C),
-      300: Color(0XFF115EA3),
-      400: Color(0XFF0F6CBD),
-      500: Color(0XFF2886DE),
-      700: Color(0XFFB4D6FA),
-      800: Color(0XFFCFE4FA),
+      50: Color(0XFFCFE4FA),
+      100: Color(0XFFB4D6FA),
+      200: Color(0XFF2886DE),
+      300: Color(0XFF0F6CBD),
+      400: Color(0XFF115EA3),
+      500: Color(0XFF0F548C),
+      600: Color(0XFF0E4775),
+      700: Color(0XFF0C3B5E),
     },
   ),
 );
@@ -143,25 +143,26 @@ GbtFluentThemeData getTheme({
   );
 }
 
+// TODO : REORGANIZAR A ORDEM DAS CORES DE 50 A 700  - E DEPOIS REORGANIZAR ABAIXO
 FluentColors convert(MaterialColor colors) {
   return FluentColors(
-    brandBackground1Rest: colors[400]!,
-    brandBackground1Pressed: colors[100]!,
-    brandBackground1Selected: colors[200]!,
-    brandBackground2Rest: colors[300]!,
-    brandBackground2Pressed: colors[50]!,
-    brandBackground2Selected: colors[50]!,
-    brandBackground3Rest: colors[200]!,
-    brandBackgroundTint: colors[800]!,
-    brandBackgroundDisabledRest: colors[700]!,
-    brandForeground1Rest: colors[400]!,
-    brandForeground1Pressed: colors[100]!,
-    brandForeground1Selected: colors[200]!,
-    brandForegroundTint: colors[200]!,
-    brandForegroundDisabled1Rest: colors[500]!,
-    brandForegroundDisabled2Rest: colors[700]!,
-    brandStroke1Rest: colors[400]!,
-    brandStroke1Pressed: colors[100]!,
-    brandStroke1Selected: colors[200]!,
+    brandBackground1Rest: colors[300]!,
+    brandBackground1Pressed: colors[600]!,
+    brandBackground1Selected: colors[500]!,
+    brandBackground2Rest: colors[400]!,
+    brandBackground2Pressed: colors[700]!,
+    brandBackground2Selected: colors[700]!,
+    brandBackground3Rest: colors[500]!,
+    brandBackgroundTint: colors[50]!,
+    brandBackgroundDisabledRest: colors[100]!,
+    brandForeground1Rest: colors[300]!,
+    brandForeground1Pressed: colors[600]!,
+    brandForeground1Selected: colors[500]!,
+    brandForegroundTint: colors[500]!,
+    brandForegroundDisabled1Rest: colors[200]!,
+    brandForegroundDisabled2Rest: colors[200]!,
+    brandStroke1Rest: colors[300]!,
+    brandStroke1Pressed: colors[600]!,
+    brandStroke1Selected: colors[500]!,
   );
 }
