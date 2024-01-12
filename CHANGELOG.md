@@ -1,3 +1,8 @@
+## 4.x
+
+- Reorder colors in theme_data conversion function
+- Fix FluentSearchBar
+
 ## 4.1.1
 
 - Dart format  
