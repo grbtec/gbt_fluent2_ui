@@ -15,6 +15,7 @@ class FluentSheet extends StatefulWidget {
   final Widget? headerTitle;
   final Widget? headerTrailing;
   final Widget child;
+  final Widget Function(BuildContext int, double size)? overlayBuilder;
 
   const FluentSheet.bottom({
     this.controller,
@@ -26,6 +27,7 @@ class FluentSheet extends StatefulWidget {
     this.headerTitle,
     this.headerTrailing,
     required this.child,
+    this.overlayBuilder,
   }) : assert(headerHeight >= 20);
 
   @override
@@ -94,6 +96,7 @@ class _FluentSheetState extends State<FluentSheet> {
   @override
   Widget build(BuildContext context) {
     final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
+    final overlayBuilder = widget.overlayBuilder;
     return NotificationListener(
       onNotification: (ScrollEndNotification not) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -135,84 +138,116 @@ class _FluentSheetState extends State<FluentSheet> {
                         ),
                         child: Container(
                           color: FluentColors.neutralBackground2Rest,
-                          child: SingleChildScrollView(
-                            controller: scrollController,
-                            child: Column(
-                              children: [
-                                Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 8),
-                                    child: FluentContainer(
-                                      cornerRadius: FluentCornerRadius.circle,
-                                      width: 36,
-                                      height: 4,
-                                      color: FluentColors.neutralStroke1Rest,
-                                    ),
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: SingleChildScrollView(
+                                  controller: scrollController,
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 8),
+                                          child: FluentContainer(
+                                            cornerRadius:
+                                                FluentCornerRadius.circle,
+                                            width: 36,
+                                            height: 4,
+                                            color:
+                                                FluentColors.neutralStroke1Rest,
+                                          ),
+                                        ),
+                                      ),
+                                      if (hasHeader)
+                                        SizedBox(
+                                          height: _headerHeight,
+                                          child: Stack(
+                                            children: [
+                                              if (widget.headerLeading != null)
+                                                Positioned(
+                                                  left: 16,
+                                                  child: DefaultTextStyle(
+                                                    style: fluentTheme
+                                                            .fluentTextTheme
+                                                            ?.body1
+                                                            ?.fluentCopyWith(
+                                                                fluentColor:
+                                                                    FluentColors
+                                                                        .neutralForeground2Rest) ??
+                                                        DefaultTextStyle.of(
+                                                                context)
+                                                            .style,
+                                                    child: Container(
+                                                      height: _headerHeight,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child:
+                                                          widget.headerLeading,
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.headerTrailing != null)
+                                                Positioned(
+                                                  right: 16,
+                                                  child: DefaultTextStyle(
+                                                    style: fluentTheme
+                                                            .fluentTextTheme
+                                                            ?.body1
+                                                            ?.fluentCopyWith(
+                                                                fluentColor:
+                                                                    FluentColors
+                                                                        .neutralForeground2Rest) ??
+                                                        DefaultTextStyle.of(
+                                                                context)
+                                                            .style,
+                                                    child: Container(
+                                                      height: _headerHeight,
+                                                      alignment:
+                                                          Alignment.centerRight,
+                                                      child:
+                                                          widget.headerTrailing,
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.headerTitle != null)
+                                                Positioned(
+                                                  child: DefaultTextStyle(
+                                                    style: fluentTheme
+                                                            .fluentTextTheme
+                                                            ?.body1
+                                                            ?.fluentCopyWith(
+                                                                fluentColor:
+                                                                    FluentColors
+                                                                        .neutralForeground1Rest) ??
+                                                        DefaultTextStyle.of(
+                                                                context)
+                                                            .style,
+                                                    child: Center(
+                                                      child: widget.headerTitle,
+                                                    ),
+                                                  ),
+                                                )
+                                            ],
+                                          ),
+                                        ),
+                                      widget.child
+                                    ],
                                   ),
                                 ),
-                                if (hasHeader)
-                                  SizedBox(
-                                    height: _headerHeight,
-                                    child: Stack(
-                                      children: [
-                                        if (widget.headerLeading != null)
-                                          Positioned(
-                                            left: 16,
-                                            child: DefaultTextStyle(
-                                              style: fluentTheme
-                                                      .fluentTextTheme?.body1
-                                                      ?.fluentCopyWith(
-                                                          fluentColor: FluentColors
-                                                              .neutralForeground2Rest) ??
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              child: Container(
-                                                height: _headerHeight,
-                                                alignment: Alignment.centerLeft,
-                                                child: widget.headerLeading,
-                                              ),
-                                            ),
-                                          ),
-                                        if (widget.headerTrailing != null)
-                                          Positioned(
-                                            right: 16,
-                                            child: DefaultTextStyle(
-                                              style: fluentTheme
-                                                      .fluentTextTheme?.body1
-                                                      ?.fluentCopyWith(
-                                                          fluentColor: FluentColors
-                                                              .neutralForeground2Rest) ??
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              child: Container(
-                                                height: _headerHeight,
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: widget.headerTrailing,
-                                              ),
-                                            ),
-                                          ),
-                                        if (widget.headerTitle != null)
-                                          Positioned(
-                                            child: DefaultTextStyle(
-                                              style: fluentTheme
-                                                      .fluentTextTheme?.body1
-                                                      ?.fluentCopyWith(
-                                                          fluentColor: FluentColors
-                                                              .neutralForeground1Rest) ??
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              child: Center(
-                                                child: widget.headerTitle,
-                                              ),
-                                            ),
-                                          )
-                                      ],
-                                    ),
-                                  ),
-                                widget.child
-                              ],
-                            ),
+                              ),
+                              if (overlayBuilder != null)
+                                AnimatedBuilder(
+                                  animation:
+                                      controller.draggableScrollableController,
+                                  builder: (context, _) {
+                                    return overlayBuilder(
+                                        context,
+                                        controller.draggableScrollableController
+                                            .size);
+                                  },
+                                ),
+                            ],
                           ),
                         ),
                       ),

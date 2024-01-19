@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
@@ -157,13 +159,37 @@ class _RLawlessLandState extends State<RLawlessLand> {
           ),
           Positioned.fill(
             child: FluentSheet.bottom(
+              overlayBuilder: (_, size) {
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Opacity(
+                    opacity: max(0, size * 1.4 - 0.4),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: FluentButton(
+                        isFullWidget: true,
+                        size: FluentButtonSize.large,
+                        onPressed: () {},
+                        title: "Action",
+                      ),
+                    ),
+                  ),
+                );
+              },
               headerHeight: 20,
               headerLeading: Text("Leading"),
               headerTitle: Text("Title"),
               headerTrailing: Text("Trailing"),
               child: Container(
                 color: Colors.red,
-                child: Text("This is a child"),
+                child: Column(
+                  children: [
+                    Text("This is a child"),
+                    FluentButton(title: "Content Button", onPressed: () {
+
+                    },)
+                  ],
+                ),
               ),
               onMaxExtent: () {
                 print("max extent");
