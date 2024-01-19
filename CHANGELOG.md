@@ -2,6 +2,7 @@
 
 - Reorder colors in theme_data conversion function
 - Fix FluentSearchBar
+- Add fontWeight variant in section header bold title
 
 ## 4.1.1
 
