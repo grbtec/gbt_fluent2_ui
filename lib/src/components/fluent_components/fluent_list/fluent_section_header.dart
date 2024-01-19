@@ -53,8 +53,8 @@ class FluentSectionHeader extends StatelessWidget {
                         .fluentTextTheme
                         ?.body1Strong
                         ?.fluentCopyWith(
-                          fluentColor: FluentColors.neutralForeground1Rest,
-                        )
+                            fluentColor: FluentColors.neutralForeground1Rest,
+                            fluentWeight: FluentFontWeight.semibold)
                     : FluentThemeDataModel.of(context)
                         .fluentTextTheme
                         ?.caption1
