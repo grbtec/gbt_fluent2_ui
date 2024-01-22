@@ -65,26 +65,28 @@ class FluentSectionHeader extends StatelessWidget {
             ],
           ),
           if (actions != null)
-            Row(
-              children: [
-                if (action1 != null) ...[
-                  if (action1 is Icon)
-                    IconTheme(
-                        data: IconThemeData(size: FluentSize.size200.value),
-                        child: action1)
-                  else
-                    action1,
+            Expanded(
+              child: Row(
+                children: [
+                  if (action1 != null) ...[
+                    if (action1 is Icon)
+                      IconTheme(
+                          data: IconThemeData(size: FluentSize.size200.value),
+                          child: action1)
+                    else
+                      action1,
+                  ],
+                  if (action2 != null) ...[
+                    SizedBox(width: FluentSize.size200.value),
+                    if (action2 is Icon)
+                      IconTheme(
+                          data: IconThemeData(size: FluentSize.size200.value),
+                          child: action2)
+                    else
+                      action2,
+                  ]
                 ],
-                SizedBox(width: FluentSize.size200.value),
-                if (action2 != null) ...[
-                  if (action2 is Icon)
-                    IconTheme(
-                        data: IconThemeData(size: FluentSize.size200.value),
-                        child: action2)
-                  else
-                    action2,
-                ]
-              ],
+              ),
             ),
         ],
       ),
