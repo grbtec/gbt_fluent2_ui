@@ -20,6 +20,7 @@ class FluentListItemOneLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final text = this.text;
 
     return GestureDetector(
@@ -50,8 +51,11 @@ class FluentListItemOneLine extends StatelessWidget {
                       .fluentTextTheme
                       ?.body1
                       ?.fluentCopyWith(
-                        fluentColor:
-                            textColor ?? FluentColors.neutralForeground1Rest,
+                        fluentColor: textColor ??
+                            colorMode(
+                              FluentColors.neutralForeground1Rest,
+                              FluentDarkColors.neutralForeground1Rest,
+                            ),
                       ),
                 ),
               ),

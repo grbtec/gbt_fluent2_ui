@@ -98,26 +98,34 @@ class FluentIcon extends StatelessWidget {
         iconColor = null;
 
   Color? getBackgroundColor(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return switch (iconVariant) {
       FluentIconVariant.filled => backgroundColor ?? Colors.transparent,
       FluentIconVariant.accentIcon =>
         colorScheme ?? FluentColors.of(context)?.brandBackground1Rest,
       FluentIconVariant.outlinedPrimaryIcon =>
         FluentColors.of(context)?.brandBackgroundTint,
-      FluentIconVariant.outlineIcon =>
-        colorScheme?.withOpacity(0.3) ?? FluentColors.neutralBackground5Rest,
+      FluentIconVariant.outlineIcon => colorScheme?.withOpacity(0.3) ??
+          colorMode(
+            FluentColors.neutralBackground5Rest,
+            FluentDarkColors.neutralBackground5Rest,
+          ),
     };
   }
 
   Color? getIconColor(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return switch (iconVariant) {
       FluentIconVariant.filled =>
         iconColor ?? FluentColors.of(context)?.brandForeground1Rest,
       FluentIconVariant.accentIcon => Colors.white,
       FluentIconVariant.outlinedPrimaryIcon =>
         FluentColors.of(context)?.brandForegroundTint,
-      FluentIconVariant.outlineIcon =>
-        colorScheme ?? FluentColors.neutralForeground2Rest,
+      FluentIconVariant.outlineIcon => colorScheme ??
+          colorMode(
+            FluentColors.neutralForeground2Rest,
+            FluentDarkColors.neutralForeground2Rest,
+          ),
     };
   }
 

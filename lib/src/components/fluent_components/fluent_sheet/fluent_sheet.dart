@@ -95,6 +95,7 @@ class _FluentSheetState extends State<FluentSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     final overlayBuilder = widget.overlayBuilder;
     return NotificationListener(
@@ -137,7 +138,10 @@ class _FluentSheetState extends State<FluentSheet> {
                               Radius.circular(FluentCornerRadius.xLarge.value),
                         ),
                         child: Container(
-                          color: FluentColors.neutralBackground2Rest,
+                          color: colorMode(
+                            FluentColors.neutralBackground2Rest,
+                            FluentDarkColors.neutralBackground2Rest,
+                          ),
                           child: Stack(
                             children: [
                               Positioned.fill(
@@ -154,8 +158,10 @@ class _FluentSheetState extends State<FluentSheet> {
                                                 FluentCornerRadius.circle,
                                             width: 36,
                                             height: 4,
-                                            color:
-                                                FluentColors.neutralStroke1Rest,
+                                            color: colorMode(
+                                              FluentColors.neutralStroke1Rest,
+                                              FluentDarkColors.neutralStroke1Rest,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -172,9 +178,14 @@ class _FluentSheetState extends State<FluentSheet> {
                                                             .fluentTextTheme
                                                             ?.body1
                                                             ?.fluentCopyWith(
-                                                                fluentColor:
-                                                                    FluentColors
-                                                                        .neutralForeground2Rest) ??
+                                                          fluentColor:
+                                                              colorMode(
+                                                            FluentColors
+                                                                .neutralForeground2Rest,
+                                                            FluentDarkColors
+                                                                .neutralForeground2Rest,
+                                                          ),
+                                                        ) ??
                                                         DefaultTextStyle.of(
                                                                 context)
                                                             .style,
@@ -195,9 +206,14 @@ class _FluentSheetState extends State<FluentSheet> {
                                                             .fluentTextTheme
                                                             ?.body1
                                                             ?.fluentCopyWith(
-                                                                fluentColor:
-                                                                    FluentColors
-                                                                        .neutralForeground2Rest) ??
+                                                          fluentColor:
+                                                              colorMode(
+                                                            FluentColors
+                                                                .neutralForeground2Rest,
+                                                            FluentDarkColors
+                                                                .neutralForeground2Rest,
+                                                          ),
+                                                        ) ??
                                                         DefaultTextStyle.of(
                                                                 context)
                                                             .style,
@@ -217,9 +233,14 @@ class _FluentSheetState extends State<FluentSheet> {
                                                             .fluentTextTheme
                                                             ?.body1
                                                             ?.fluentCopyWith(
-                                                                fluentColor:
-                                                                    FluentColors
-                                                                        .neutralForeground1Rest) ??
+                                                          fluentColor:
+                                                              colorMode(
+                                                            FluentColors
+                                                                .neutralForeground1Rest,
+                                                            FluentDarkColors
+                                                                .neutralForeground1Rest,
+                                                          ),
+                                                        ) ??
                                                         DefaultTextStyle.of(
                                                                 context)
                                                             .style,

@@ -20,6 +20,7 @@ class FluentSectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final actions = this.actions;
     final action1 = actions?.action1;
     final action2 = actions?.action2;
@@ -42,7 +43,10 @@ class FluentSectionHeader extends StatelessWidget {
                 Icon(
                   titleIcon,
                   size: FluentSize.size240.value,
-                  color: FluentColors.neutralForeground3Rest,
+                  color: colorMode(
+                    FluentColors.neutralForeground3Rest,
+                    FluentDarkColors.neutralForeground3Rest,
+                  ),
                 ),
                 SizedBox(width: FluentSize.size80.value),
               ],
@@ -53,13 +57,20 @@ class FluentSectionHeader extends StatelessWidget {
                         .fluentTextTheme
                         ?.body1Strong
                         ?.fluentCopyWith(
-                            fluentColor: FluentColors.neutralForeground1Rest,
-                            fluentWeight: FluentFontWeight.semibold)
+                          fluentColor: colorMode(
+                            FluentColors.neutralForeground1Rest,
+                            FluentDarkColors.neutralForeground1Rest,
+                          ),
+                    fluentWeight: FluentFontWeight.semibold
+                        )
                     : FluentThemeDataModel.of(context)
                         .fluentTextTheme
                         ?.caption1
                         ?.fluentCopyWith(
-                          fluentColor: FluentColors.neutralForeground2Rest,
+                          fluentColor: colorMode(
+                            FluentColors.neutralForeground2Rest,
+                            FluentDarkColors.neutralForeground2Rest,
+                          ),
                         ),
               ),
             ],

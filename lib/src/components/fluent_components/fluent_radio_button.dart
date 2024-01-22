@@ -344,6 +344,7 @@ class _FluentRadioButtonState<T> extends State<
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     assert(debugCheckHasMaterial(context));
     // final RadioThemeData radioTheme = RadioTheme.of(context);
     // final RadioThemeData defaults = Theme.of(context).useMaterial3
@@ -445,7 +446,10 @@ class _FluentRadioButtonState<T> extends State<
                   Icons.check,
                   color: isInteractive
                       ? FluentColors.of(context)?.brandForeground1Rest
-                      : FluentColors.neutralForegroundDisabled1,
+                      : colorMode(
+                          FluentColors.neutralForegroundDisabled1Rest,
+                          FluentDarkColors.neutralForegroundDisabled1Rest,
+                        ),
                 )
               : null,
         ),

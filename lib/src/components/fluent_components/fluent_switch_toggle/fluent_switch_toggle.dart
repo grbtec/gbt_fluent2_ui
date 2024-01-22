@@ -14,11 +14,15 @@ class FluentSwitchToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
       activeColor: Theme.of(context).primaryColor,
-      trackColor: FluentColors.neutralBackground5Rest,
+      trackColor: colorMode(
+        FluentColors.neutralBackground5Rest,
+        FluentDarkColors.neutralBackground5Rest,
+      ),
     );
   }
 }

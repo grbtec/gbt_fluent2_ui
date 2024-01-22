@@ -13,6 +13,7 @@ class FluentProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final value = this.value;
     return SizedBox(
       width: double.maxFinite,
@@ -25,7 +26,10 @@ class FluentProgressBar extends StatelessWidget {
           return Container(
             width: constraints.maxWidth,
             height: 20,
-            color: FluentColors.neutralStroke1Rest,
+            color: colorMode(
+              FluentColors.neutralStroke1Rest,
+              FluentDarkColors.neutralStroke1Rest,
+            ),
             padding: value == null
                 ? null
                 : EdgeInsets.only(

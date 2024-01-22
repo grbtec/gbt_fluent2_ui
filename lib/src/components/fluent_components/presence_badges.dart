@@ -146,6 +146,7 @@ class OfflinePresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -157,11 +158,14 @@ class OfflinePresenceBadge extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
         ),
-        child: const Padding(
+        child:  Padding(
           padding: EdgeInsets.all(3),
           child: Icon(
             Icons.cancel_outlined,
-            color: FluentColors.neutralForeground3Rest,
+            color: colorMode(
+              FluentColors.neutralForeground3Rest,
+              FluentDarkColors.neutralForeground3Rest,
+            ),
             size: 15,
           ),
         ),
@@ -204,6 +208,7 @@ class UnknownPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -215,11 +220,14 @@ class UnknownPresenceBadge extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
         ),
-        child: const Padding(
+        child: Padding(
           padding: EdgeInsets.all(3),
           child: Icon(
             Icons.circle_outlined,
-            color: FluentColors.neutralForeground3Rest,
+            color: colorMode(
+              FluentColors.neutralForeground3Rest,
+              FluentDarkColors.neutralForeground3Rest,
+            ),
             size: 15,
           ),
         ),

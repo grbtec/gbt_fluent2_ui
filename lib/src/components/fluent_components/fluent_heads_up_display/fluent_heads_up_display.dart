@@ -16,6 +16,7 @@ class FluentHeadsUpDisplay extends StatefulWidget {
 class _FluentHeadsUpDisplayState extends State<FluentHeadsUpDisplay> {
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final text = widget.text;
     return ConstrainedBox(
       constraints: BoxConstraints(
@@ -25,7 +26,10 @@ class _FluentHeadsUpDisplayState extends State<FluentHeadsUpDisplay> {
         minHeight: text == null ? 100 : 108,
       ),
       child: FluentContainer(
-        color: FluentColors.neutralBackgroundStaticDarkRest,
+        color: colorMode(
+          FluentColors.neutralBackgroundStaticDarkRest,
+          FluentDarkColors.neutralBackgroundStaticDarkRest,
+        ),
         cornerRadius: FluentCornerRadius.medium,
         child: Padding(
           padding: EdgeInsets.all(
@@ -36,7 +40,10 @@ class _FluentHeadsUpDisplayState extends State<FluentHeadsUpDisplay> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircularProgressIndicator(
-                color: FluentColors.controlsHudForeground2,
+                color: colorMode(
+                  FluentColors.controlsHudForeground2Rest,
+                  FluentDarkColors.controlsHudForeground2Rest,
+                ),
               ),
               if (text != null) ...[
                 SizedBox(
@@ -48,7 +55,10 @@ class _FluentHeadsUpDisplayState extends State<FluentHeadsUpDisplay> {
                       .fluentTextTheme
                       ?.body1
                       ?.fluentCopyWith(
-                        fluentColor: FluentColors.neutralForegroundStaticLight,
+                        fluentColor: colorMode(
+                          FluentColors.neutralForegroundStaticLightRest,
+                          FluentDarkColors.neutralForegroundStaticLightRest,
+                        ),
                       ),
                 ),
               ],

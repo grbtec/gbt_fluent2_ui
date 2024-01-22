@@ -13,6 +13,7 @@ class FluentCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final onChanged = this.onChanged;
     return Center(
       child: GestureDetector(
@@ -32,8 +33,14 @@ class FluentCheckbox extends StatelessWidget {
                   color: value
                       ? Colors.transparent
                       : onChanged != null
-                          ? FluentColors.neutralStrokeAccessibleRest
-                          : FluentColors.neutralStrokeDisabledRest,
+                          ? colorMode(
+                              FluentColors.neutralStrokeAccessibleRest,
+                              FluentDarkColors.neutralStrokeAccessibleRest,
+                            )
+                          : colorMode(
+                              FluentColors.neutralStrokeDisabledRest,
+                              FluentDarkColors.neutralStrokeDisabledRest,
+                            ),
                   thickness: FluentStrokeThickness.strokeWidth10,
                 ),
                 child: CircleAvatar(

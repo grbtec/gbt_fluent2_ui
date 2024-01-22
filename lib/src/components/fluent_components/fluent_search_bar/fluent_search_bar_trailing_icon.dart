@@ -20,8 +20,8 @@ class FluentSearchBarTrailingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final icon = this.icon;
-
     return FluentContainer(
       child: isNotEmpty && isLoading
           ? CancelIcon(
@@ -35,7 +35,10 @@ class FluentSearchBarTrailingIcon extends StatelessWidget {
                 )
               : IconTheme(
                   data: IconThemeData(
-                    color: FluentColors.neutralForeground2Rest,
+                    color: colorMode(
+                      FluentColors.neutralForeground2Rest,
+                      FluentDarkColors.neutralForeground2Rest,
+                    ),
                     size: FluentSize.size200.value,
                   ),
                   child: icon,

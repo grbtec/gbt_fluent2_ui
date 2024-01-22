@@ -230,6 +230,7 @@ class _TabBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return Center(
       child: Flex(
         direction: item._axis,
@@ -245,7 +246,10 @@ class _TabBarButton extends StatelessWidget {
                     size: 22,
                     color: isSelected
                         ? Theme.of(context).primaryColor
-                        : FluentColors.neutralForeground3Rest,
+                        : colorMode(
+                            FluentColors.neutralForeground3Rest,
+                      FluentDarkColors.neutralForeground3Rest,
+                          ),
                   ),
                   child: item.icon,
                 ),
@@ -267,7 +271,10 @@ class _TabBarButton extends StatelessWidget {
                         child: Icon(
                           Icons.circle,
                           size: 8,
-                          color: FluentColors.statusDangerBackground2Rest,
+                          color: colorMode(
+                            FluentColors.statusDangerBackground2Rest,
+                            FluentDarkColors.statusDangerBackground2Rest,
+                          ),
                         ),
                       )
                     ],
@@ -285,7 +292,10 @@ class _TabBarButton extends StatelessWidget {
                   ?.fluentCopyWith(
                     fluentColor: isSelected
                         ? Theme.of(context).primaryColor
-                        : FluentColors.neutralForeground3Rest,
+                        : colorMode(
+                            FluentColors.neutralForeground3Rest,
+                            FluentDarkColors.neutralForeground3Rest,
+                          ),
                   ),
             )
         ],

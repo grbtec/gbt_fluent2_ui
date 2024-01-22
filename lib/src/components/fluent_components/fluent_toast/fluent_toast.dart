@@ -114,20 +114,39 @@ class FluentToast extends StatefulWidget {
 class _FluentToastState extends State<FluentToast> {
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final subText = widget.subText;
     final icon = widget.icon;
     final action = widget.action;
     final textColor = switch (widget.toastColor) {
       FluentToastColor.accent => Theme.of(context).primaryColor,
-      FluentToastColor.warning => FluentColors.statusWarningForeground1Rest,
-      FluentToastColor.danger => FluentColors.statusDangerForeground1Rest,
-      FluentToastColor.neutral => FluentColors.neutralForeground1Rest,
+      FluentToastColor.warning => colorMode(
+          FluentColors.statusWarningForeground1Rest,
+          FluentDarkColors.statusWarningForeground1Rest,
+        ),
+      FluentToastColor.danger => colorMode(
+          FluentColors.statusDangerForeground1Rest,
+          FluentDarkColors.statusDangerForeground1Rest,
+        ),
+      FluentToastColor.neutral => colorMode(
+          FluentColors.neutralForeground1Rest,
+          FluentDarkColors.neutralForeground1Rest,
+        ),
     };
     final subTextColor = switch (widget.toastColor) {
       FluentToastColor.accent => Theme.of(context).primaryColor,
-      FluentToastColor.warning => FluentColors.statusWarningForeground1Rest,
-      FluentToastColor.danger => FluentColors.statusDangerForeground1Rest,
-      FluentToastColor.neutral => FluentColors.neutralForeground2Rest,
+      FluentToastColor.warning => colorMode(
+          FluentColors.statusWarningForeground1Rest,
+          FluentDarkColors.statusWarningForeground1Rest,
+        ),
+      FluentToastColor.danger => colorMode(
+          FluentColors.statusDangerForeground1Rest,
+          FluentDarkColors.statusDangerForeground1Rest,
+        ),
+      FluentToastColor.neutral => colorMode(
+          FluentColors.neutralForeground2Rest,
+          FluentDarkColors.neutralForeground2Rest,
+        ),
     };
     return SizedBox(
       height: widget.subText != null ? 64 : 52,
@@ -145,10 +164,18 @@ class _FluentToastState extends State<FluentToast> {
                 begin: Theme.of(context).primaryColor,
                 end: Colors.white,
               ).lerp(0.7),
-            FluentToastColor.warning =>
-              FluentColors.statusWarningBackground1Rest,
-            FluentToastColor.danger => FluentColors.statusDangerBackground1Rest,
-            FluentToastColor.neutral => FluentColors.neutralBackground4Rest,
+            FluentToastColor.warning => colorMode(
+                FluentColors.statusWarningBackground1Rest,
+                FluentDarkColors.statusWarningBackground1Rest,
+              ),
+            FluentToastColor.danger => colorMode(
+                FluentColors.statusDangerBackground1Rest,
+                FluentDarkColors.statusDangerBackground1Rest,
+              ),
+            FluentToastColor.neutral => colorMode(
+                FluentColors.neutralBackground4Rest,
+                FluentDarkColors.neutralBackground4Rest,
+              ),
           },
           child:
               // unnecessary

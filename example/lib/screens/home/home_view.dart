@@ -1,5 +1,6 @@
 import 'package:example/screens/dev_leticya/l_home_view/l_home_view.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_home_view.dart';
+import 'package:example/theme_mode_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_essentials/gbt_essentials.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
@@ -11,6 +12,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeModeProviderState =ThemeModeProvider.of(context);
     debug(Theme.of(context).colorScheme.primary);
     return FluentScaffold(
       appBar: FluentNavBar(
@@ -70,6 +72,22 @@ class HomeView extends StatelessWidget {
                 ));
               },
               child: Text('Brunno'),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("light"),
+                FluentSwitchToggle(value: Theme.of(context).brightness == Brightness.dark, onChanged: (value) {
+                  if(themeModeProviderState.themeMode ==  ThemeMode.dark){
+                    themeModeProviderState.themeMode = ThemeMode.light;
+                  }else{
+                    themeModeProviderState.themeMode = ThemeMode.dark;
+                  }
+
+                },),
+                Text("dark"),
+
+              ],
             ),
           ],
         ),

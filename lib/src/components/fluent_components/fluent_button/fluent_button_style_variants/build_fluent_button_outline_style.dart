@@ -4,13 +4,26 @@ ButtonStyle _buildFluentButtonOutlineStyle(
   FluentButtonStyle fluentButtonStyle,
   BuildContext context,
 ) {
+  final colorMode = createColorMode(Theme.of(context).brightness);
   final FluentButtonSize size = fluentButtonStyle.size;
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
-  const strokeRestColor = FluentColors.neutralStroke1Rest;
-  const strokePressedColor = FluentColors.neutralStroke1Pressed;
-  const strokeFocusedColor = FluentColors.neutralStrokeFocus2Rest;
-  const strokeDisabledColor = FluentColors.neutralStrokeDisabledRest;
+  final strokeRestColor = colorMode(
+    FluentColors.neutralStroke1Rest,
+    FluentDarkColors.neutralStroke1Rest,
+  );
+  final strokePressedColor = colorMode(
+    FluentColors.neutralStroke1Pressed,
+    FluentDarkColors.neutralStroke1Pressed,
+  );
+  final strokeFocusedColor = colorMode(
+    FluentColors.neutralStrokeFocus2Rest,
+    FluentDarkColors.neutralStrokeFocus2Rest,
+  );
+  final strokeDisabledColor = colorMode(
+    FluentColors.neutralStrokeDisabledRest,
+    FluentDarkColors.neutralStrokeDisabledRest,
+  );
 
   return ButtonStyle(
     backgroundColor:
@@ -67,9 +80,15 @@ ButtonStyle _buildFluentButtonOutlineStyle(
     foregroundColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.disabled)) {
-          return FluentColors.neutralForegroundDisabled1;
+          return colorMode(
+            FluentColors.neutralForegroundDisabled1Rest,
+            FluentDarkColors.neutralForegroundDisabled1Rest,
+          );
         }
-        return FluentColors.neutralForeground1Rest;
+        return colorMode(
+          FluentColors.neutralForeground1Rest,
+          FluentDarkColors.neutralForeground1Rest,
+        );
       },
     ),
     shadowColor: MaterialStateProperty.all(Colors.transparent),

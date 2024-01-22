@@ -29,6 +29,7 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final title = this.title;
 
     final bool isTitleCentered =
@@ -60,9 +61,17 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                               fluentColor: foregroundColor ??
                                   (themeColorVariation ==
                                           FluentThemeColorVariation.brand
-                                      ? FluentColors
-                                          .controlsNavBarForeground1Rest
-                                      : FluentColors.neutralForeground1Rest),
+                                      ? colorMode(
+                                          FluentColors
+                                              .controlsNavBarForeground1Rest,
+                                          FluentDarkColors
+                                              .controlsNavBarForeground1Rest,
+                                        )
+                                      : colorMode(
+                                          FluentColors.neutralForeground1Rest,
+                                          FluentDarkColors
+                                              .neutralForeground1Rest,
+                                        )),
                             )
                         : FluentThemeDataModel.of(context)
                             .fluentTextTheme
@@ -71,9 +80,17 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                               fluentColor: foregroundColor ??
                                   (themeColorVariation ==
                                           FluentThemeColorVariation.brand
-                                      ? FluentColors
-                                          .controlsNavBarForeground1Rest
-                                      : FluentColors.neutralForeground1Rest),
+                                      ? colorMode(
+                                          FluentColors
+                                              .controlsNavBarForeground1Rest,
+                                          FluentDarkColors
+                                              .controlsNavBarForeground1Rest,
+                                        )
+                                      : colorMode(
+                                          FluentColors.neutralForeground1Rest,
+                                          FluentDarkColors
+                                              .neutralForeground1Rest,
+                                        )),
                               fluentWeight: FluentFontWeight.bold,
                             ),
                   ),
@@ -88,8 +105,16 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                             fluentColor: foregroundColor ??
                                 (themeColorVariation ==
                                         FluentThemeColorVariation.brand
-                                    ? FluentColors.controlsNavBarForeground2Rest
-                                    : FluentColors.neutralForeground2Rest),
+                                    ? colorMode(
+                                        FluentColors
+                                            .controlsNavBarForeground2Rest,
+                                        FluentDarkColors
+                                            .controlsNavBarForeground2Rest,
+                                      )
+                                    : colorMode(
+                                        FluentColors.neutralForeground2Rest,
+                                        FluentDarkColors.neutralForeground2Rest,
+                                      )),
                           ),
                     ),
                 ],
@@ -119,11 +144,17 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: backgroundColor ??
             (themeColorVariation == FluentThemeColorVariation.brand
                 ? Theme.of(context).primaryColor
-                : FluentColors.neutralBackground3Rest),
+                : colorMode(
+                    FluentColors.neutralBackground3Rest,
+                    FluentDarkColors.neutralBackground3Rest,
+                  )),
         foregroundColor: foregroundColor ??
             (themeColorVariation == FluentThemeColorVariation.brand
                 ? Colors.white
-                : FluentColors.neutralForeground2Rest),
+                : colorMode(
+                    FluentColors.neutralForeground2Rest,
+                    FluentDarkColors.neutralForeground2Rest,
+                  )),
         bottom: child != null
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(48),

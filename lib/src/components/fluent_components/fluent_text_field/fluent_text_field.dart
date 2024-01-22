@@ -55,6 +55,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     final hintText = widget.hintText;
     final assistiveText = widget.assistiveText;
@@ -74,18 +75,30 @@ class _FluentTextFieldState extends State<FluentTextField> {
       },
       controller: fluentTextFieldController.textEditingController,
       onChanged: onChanged,
-      cursorColor: FluentColors.neutralForeground3Rest,
+      cursorColor: colorMode(
+        FluentColors.neutralForeground3Rest,
+        FluentDarkColors.neutralForeground3Rest,
+      ),
       style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
         fluentColor: hasFocus
-            ? FluentColors.neutralForeground1Rest
-            : FluentColors.neutralForeground2Rest,
+            ? colorMode(
+                FluentColors.neutralForeground1Rest,
+                FluentDarkColors.neutralForeground1Rest,
+              )
+            : colorMode(
+                FluentColors.neutralForeground2Rest,
+                FluentDarkColors.neutralForeground2Rest,
+              ),
       ),
       decoration: InputDecoration(
         label: label != null ? FluentText(label) : null,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
           fluentColor: widget.hasError
-              ? FluentColors.statusDangerForeground2Rest
+              ? colorMode(
+                  FluentColors.statusDangerForeground2Rest,
+                  FluentDarkColors.statusDangerForeground2Rest,
+                )
               : fluentTheme.colorScheme.primary,
         ),
         contentPadding: EdgeInsets.zero,
@@ -93,14 +106,26 @@ class _FluentTextFieldState extends State<FluentTextField> {
         helperText: assistiveText,
         helperStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
           fluentColor: widget.hasError
-              ? FluentColors.statusDangerForeground2Rest
-              : FluentColors.neutralForeground2Rest,
+              ? colorMode(
+                  FluentColors.statusDangerForeground2Rest,
+                  FluentDarkColors.statusDangerForeground2Rest,
+                )
+              : colorMode(
+                  FluentColors.neutralForeground2Rest,
+                  FluentDarkColors.neutralForeground2Rest,
+                ),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: widget.hasError
-                ? FluentColors.statusDangerForeground2Rest
-                : FluentColors.neutralStroke1Rest,
+                ? colorMode(
+                    FluentColors.statusDangerForeground2Rest,
+                    FluentDarkColors.statusDangerForeground2Rest,
+                  )
+                : colorMode(
+                    FluentColors.neutralStroke1Rest,
+                    FluentDarkColors.neutralStroke1Rest,
+                  ),
             width: FluentStrokeThickness.strokeWidth05.value,
           ),
         ),
@@ -108,7 +133,10 @@ class _FluentTextFieldState extends State<FluentTextField> {
           borderSide: BorderSide(
             width: FluentStrokeThickness.strokeWidth05.value,
             color: widget.hasError
-                ? FluentColors.statusDangerForeground2Rest
+                ? colorMode(
+                    FluentColors.statusDangerForeground2Rest,
+                    FluentDarkColors.statusDangerForeground2Rest,
+                  )
                 : FluentThemeDataModel.of(context)
                         .fluentBrandColors
                         ?.brandStroke1Rest ??
@@ -117,8 +145,14 @@ class _FluentTextFieldState extends State<FluentTextField> {
         ),
         hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
           fluentColor: hasFocus
-              ? FluentColors.neutralForeground2Rest
-              : FluentColors.neutralForegroundDisabled1,
+              ? colorMode(
+                  FluentColors.neutralForeground2Rest,
+                  FluentDarkColors.neutralForeground2Rest,
+                )
+              : colorMode(
+                  FluentColors.neutralForegroundDisabled1Rest,
+                  FluentDarkColors.neutralForegroundDisabled1Rest,
+                ),
         ),
         suffixIcon: TextFieldTrailingIcon(
           hasFocus: hasFocus,

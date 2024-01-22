@@ -20,6 +20,7 @@ class FluentListItemMultiLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final text = this.text;
     final subtext = this.subtext;
     final additionalContent = this.additionalContent;
@@ -27,7 +28,10 @@ class FluentListItemMultiLine extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          tileColor: FluentColors.neutralBackground3Rest,
+          tileColor: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
+          ),
           contentPadding: EdgeInsets.symmetric(
             horizontal: FluentSize.size160.value,
             vertical: FluentSize.size120.value,
@@ -56,7 +60,10 @@ class FluentListItemMultiLine extends StatelessWidget {
                             .fluentTextTheme
                             ?.body1
                             ?.fluentCopyWith(
-                              fluentColor: FluentColors.neutralForeground1Rest,
+                              fluentColor: colorMode(
+                                FluentColors.neutralForeground1Rest,
+                                FluentDarkColors.neutralForeground1Rest,
+                              ),
                             ),
                       ),
                     if (subtext != null)
@@ -66,7 +73,10 @@ class FluentListItemMultiLine extends StatelessWidget {
                             .fluentTextTheme
                             ?.caption1
                             ?.fluentCopyWith(
-                              fluentColor: FluentColors.neutralForeground2Rest,
+                              fluentColor: colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground2Rest,
+                              ),
                             ),
                       ),
                     if (additionalContent != null) additionalContent

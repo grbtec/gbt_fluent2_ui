@@ -13,6 +13,7 @@ class CancelIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -21,7 +22,10 @@ class CancelIcon extends StatelessWidget {
           height: FluentSize.size240.value,
           child: isLoading
               ? CircularProgressIndicator(
-                  color: FluentColors.neutralForeground3Rest,
+                  color: colorMode(
+                    FluentColors.neutralForeground3Rest,
+                    FluentDarkColors.neutralForeground3Rest,
+                  ),
                   strokeWidth: FluentStrokeThickness.strokeWidth20.value,
                 )
               : null,
@@ -31,7 +35,10 @@ class CancelIcon extends StatelessWidget {
           child: Icon(
             Icons.cancel,
             size: FluentSize.size200.value,
-            color: FluentColors.neutralForeground2Rest,
+            color: colorMode(
+              FluentColors.neutralForeground2Rest,
+              FluentDarkColors.neutralForeground2Rest,
+            ),
           ),
         )
       ],

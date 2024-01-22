@@ -101,13 +101,15 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
     }
   }
 
-  Widget? buildTrailingIcon({
+  Widget? buildTrailingIcon(
+    BuildContext context, {
     Icon? icon,
     required bool isNotEmpty,
     required bool hasFocus,
     required bool isLoading,
     required void Function() onTapCancelIcon,
   }) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     if (isNotEmpty && isLoading) {
       return CancelIcon(
         isLoading: isLoading,
@@ -123,7 +125,10 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
     if (icon != null) {
       IconTheme(
         data: IconThemeData(
-          color: FluentColors.neutralForeground2Rest,
+          color: colorMode(
+            FluentColors.neutralForeground2Rest,
+            FluentDarkColors.neutralForeground2Rest,
+          ),
           size: FluentSize.size200.value,
         ),
         child: icon,
@@ -134,6 +139,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
     final trailingIcon = widget.trailingIcon;
     final isNotEmpty = searchBarController.queryString.isNotEmpty;
@@ -155,9 +161,15 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
               // Instaciando o objeto e usando na mesma linha.
               controller: searchBarController.textEditingController,
               onChanged: onChange,
-              cursorColor: FluentColors.neutralForeground3Rest,
+              cursorColor: colorMode(
+                FluentColors.neutralForeground3Rest,
+                FluentDarkColors.neutralForeground3Rest,
+              ),
               style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-                fluentColor: FluentColors.neutralForeground1Rest,
+                fluentColor: colorMode(
+                  FluentColors.neutralForeground1Rest,
+                  FluentDarkColors.neutralForeground1Rest,
+                ),
               ),
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -173,26 +185,34 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                   ),
                 ),
                 contentPadding: EdgeInsets.zero,
-                fillColor: FluentColors.neutralBackground5Rest,
+                fillColor: colorMode(
+                  FluentColors.neutralBackground5Rest,
+                  FluentDarkColors.neutralBackground5Rest,
+                ),
                 filled: true,
                 hintText: hintText,
                 hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-                  fluentColor: FluentColors.neutralForeground2Rest,
+                  fluentColor: colorMode(
+                    FluentColors.neutralForeground2Rest,
+                    FluentDarkColors.neutralForeground2Rest,
+                  ),
                 ),
-                suffixIcon: buildTrailingIcon(
+                suffixIcon: buildTrailingIcon(context,
                     icon: trailingIcon,
                     hasFocus: hasFocus,
                     isLoading: isLoading,
-                    isNotEmpty: isNotEmpty,
-                    onTapCancelIcon: () {
-                      setState(() {
-                        searchBarController.clearQueryString();
-                      });
-                      widget.onClearOperation?.call();
-                    }),
+                    isNotEmpty: isNotEmpty, onTapCancelIcon: () {
+                  setState(() {
+                    searchBarController.clearQueryString();
+                  });
+                  widget.onClearOperation?.call();
+                }),
                 prefixIcon: Icon(
                   Icons.search,
-                  color: FluentColors.neutralForeground1Rest,
+                  color: colorMode(
+                    FluentColors.neutralForeground1Rest,
+                    FluentDarkColors.neutralForeground1Rest,
+                  ),
                   size: FluentSize.size200.value,
                 ),
               ),
