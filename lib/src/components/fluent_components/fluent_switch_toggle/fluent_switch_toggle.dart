@@ -18,7 +18,7 @@ class FluentSwitchToggle extends StatelessWidget {
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
-      activeColor: Theme.of(context).primaryColor,
+      activeColor: FluentColors.of(context)?.brandBackground1Rest,
       trackColor: colorMode(
         FluentColors.neutralBackground5Rest,
         FluentDarkColors.neutralBackground5Rest,

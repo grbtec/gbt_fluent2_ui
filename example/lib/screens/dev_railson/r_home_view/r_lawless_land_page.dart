@@ -72,9 +72,23 @@ class _RLawlessLandState extends State<RLawlessLand> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text("👉Switch Toggle👈"),
                 ),
-                FluentSwitchToggle(
-                  value: value,
-                  onChanged: onChanged,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FluentSwitchToggle(
+                      value: value,
+                      onChanged: onChanged,
+                    ),
+                    FluentSwitchToggle(
+                      value: false,
+                      onChanged: null,
+                    ),
+                    FluentSwitchToggle(
+                      value: true,
+                      onChanged: null,
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 200,
