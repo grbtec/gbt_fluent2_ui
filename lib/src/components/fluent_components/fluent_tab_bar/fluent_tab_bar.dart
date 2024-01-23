@@ -12,9 +12,9 @@ part 'fluent_tab_bar_item_right_label.dart';
 
 part 'fluent_tab_bar_item_bottom_label.dart';
 
-const _controlTabBarBackgroundRest = Color(0xFFF8F8F8);
+const _controlsTabBarBackgroundRest = Color(0xFFF8F8F8);
+const _darkControlsTabBarBackgroundRest = Color(0xFF141414);
 
-/// TODO: Auto show "More" tab when it's needed
 class FluentTabBar extends StatefulWidget {
   final FluentTabBarController? controller;
   final List<FluentTabBarItem> items;
@@ -88,6 +88,7 @@ class _FluentTabBarState extends State<FluentTabBar>
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final selectedItem = _selectedItem;
 
     if (widget.items.length <= 3 && _animationController.value > 0) {
@@ -101,7 +102,10 @@ class _FluentTabBarState extends State<FluentTabBar>
       children: [
         FluentStrokeDivider(),
         FluentContainer(
-          color: _controlTabBarBackgroundRest,
+          color: colorMode(
+            _controlsTabBarBackgroundRest,
+            _darkControlsTabBarBackgroundRest,
+          ),
           child: SafeArea(
             child: Padding(
               padding:
@@ -143,7 +147,13 @@ class _FluentTabBarState extends State<FluentTabBar>
                                     child: child,
                                   );
                                 },
-                                child: Icon(Icons.expand_more_sharp),
+                                child: Icon(
+                                  Icons.expand_more_sharp,
+                                  color: colorMode(
+                                    FluentColors.neutralForeground3Rest,
+                                    FluentDarkColors.neutralForeground3Rest,
+                                  ),
+                                ),
                               ),
                             )
                           else
@@ -245,10 +255,10 @@ class _TabBarButton extends StatelessWidget {
                   data: IconThemeData(
                     size: 22,
                     color: isSelected
-                        ? Theme.of(context).primaryColor
+                        ? FluentColors.of(context)?.brandForeground1Rest
                         : colorMode(
                             FluentColors.neutralForeground3Rest,
-                      FluentDarkColors.neutralForeground3Rest,
+                            FluentDarkColors.neutralForeground3Rest,
                           ),
                   ),
                   child: item.icon,
@@ -263,7 +273,10 @@ class _TabBarButton extends StatelessWidget {
                       Icon(
                         Icons.circle,
                         size: 12,
-                        color: _controlTabBarBackgroundRest,
+                        color: colorMode(
+                          _controlsTabBarBackgroundRest,
+                          _darkControlsTabBarBackgroundRest,
+                        ),
                       ),
                       Positioned(
                         right: 2,
@@ -291,7 +304,7 @@ class _TabBarButton extends StatelessWidget {
                   ?.caption2
                   ?.fluentCopyWith(
                     fluentColor: isSelected
-                        ? Theme.of(context).primaryColor
+                        ? FluentColors.of(context)?.brandForeground1Rest
                         : colorMode(
                             FluentColors.neutralForeground3Rest,
                             FluentDarkColors.neutralForeground3Rest,
