@@ -8,18 +8,18 @@ import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_styl
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_theme.dart';
 
 const _brandColor = MaterialColor(
-  0XFF2886DE,
+  0XFF0F6CBD,
   <int, Color>{
-    50: Color(0XFFCFE4FA),
-    100: Color(0XFFB4D6FA),
-    200: Color(0XFF2886DE),
-    300: Color(0XFF0F6CBD),
-    400: Color(0XFF115EA3),
-    500: Color(0XFF0F548C),
-    600: Color(0XFF0E4775),
-    700: Color(0XFF0C3B5E),
-    // 800: null,
-    // 900: null,
+    50: Color(0XFFddf5ff),
+    100: Color(0XFFb2dcfe),
+    200: Color(0XFF86c3f9),
+    300: Color(0XFF58abf3),
+    400: Color(0XFF2a93ee),
+    500: Color(0XFF1179d5),
+    600: Color(0XFF055ea6),
+    700: Color(0XFF004378),
+    800: Color(0XFF00284b),
+    900: Color(0XFF000e1f),
   },
 );
 final theme = getTheme(
@@ -35,7 +35,7 @@ GbtFluentThemeData getTheme({
   Brightness brightness = Brightness.light,
 }) {
   final colorMode = createColorMode(brightness);
-  final fluentColors = convert(brandColor);
+  final fluentColors = convert(brandColor, brightness);
 
   return GbtFluentThemeData(
     splashColor: Colors.transparent,
@@ -157,39 +157,64 @@ GbtFluentThemeData getTheme({
   );
 }
 
-FluentColors convert(MaterialColor colors) {
-  // final fluentColor = <int, Color>{};
-  // for (var i = 0; i <= 15; i += 10) {
-  //   const materialStep = 900 / 16;
-  //   final materialLevel = 900 - i * materialStep;
-  //   final rest = (materialLevel % 100).toInt();
-  //   final percentage = rest / 100;
-  //   final lower = materialLevel ~/ 100 * 100;
-  //   final higher = rest == 0 ? lower : lower + rest;
-  //   fluentColor[(i + 1) * 10] = ColorTween(
-  //     begin: colors[lower]!,
-  //     end: colors[higher]!,
-  //   ).lerp(percentage)!;
-  // }
+FluentColors convert(MaterialColor materialColor,
+    [Brightness brightness = Brightness.light]) {
+  final fluentColor = <int, Color>{};
+  for (var i = 0; i <= 15; i++) {
+    const materialStep = 900 / 16;
+    final materialLevel = 900 - i * materialStep;
+    final rest = (materialLevel % 100).toInt();
+    final percentage = rest / 100;
+    final lower = materialLevel ~/ 100 * 100;
+    final higher = rest == 0 ? lower : lower + 100;
+    final lowerColor = materialColor[lower] ?? Colors.white;
+    final higherColor = materialColor[higher] ?? Colors.black;
+    fluentColor[(i + 1) * 10] = ColorTween(
+      begin: lowerColor,
+      end: higherColor,
+    ).lerp(percentage)!;
+  }
 
-  return FluentColors(
-    brandBackground1Rest: colors[300]!,
-    brandBackground1Pressed: colors[600]!,
-    brandBackground1Selected: colors[500]!,
-    brandBackground2Rest: colors[400]!,
-    brandBackground2Pressed: colors[700]!,
-    brandBackground2Selected: colors[700]!,
-    brandBackground3Rest: colors[500]!,
-    brandBackgroundTint: colors[50]!,
-    brandBackgroundDisabledRest: colors[100]!,
-    brandForeground1Rest: colors[300]!,
-    brandForeground1Pressed: colors[600]!,
-    brandForeground1Selected: colors[500]!,
-    brandForegroundTint: colors[500]!,
-    brandForegroundDisabled1Rest: colors[200]!,
-    brandForegroundDisabled2Rest: colors[200]!,
-    brandStroke1Rest: colors[300]!,
-    brandStroke1Pressed: colors[600]!,
-    brandStroke1Selected: colors[500]!,
-  );
+  return switch (brightness) {
+    Brightness.light => FluentColors(
+        brandBackground1Rest: fluentColor[80]!,
+        brandBackground1Pressed: fluentColor[50]!,
+        brandBackground1Selected: fluentColor[60]!,
+        brandBackground2Rest: fluentColor[70]!,
+        brandBackground2Pressed: fluentColor[40]!,
+        brandBackground2Selected: fluentColor[50]!,
+        brandBackground3Rest: fluentColor[60]!,
+        brandBackgroundTintRest: fluentColor[150]!,
+        brandBackgroundDisabledRest: fluentColor[140]!,
+        brandForeground1Rest: fluentColor[80]!,
+        brandForeground1Pressed: fluentColor[50]!,
+        brandForeground1Selected: fluentColor[60]!,
+        brandForegroundTintRest: fluentColor[60]!,
+        brandForegroundDisabled1Rest: fluentColor[90]!,
+        brandForegroundDisabled2Rest: fluentColor[140]!,
+        brandStroke1Rest: fluentColor[80]!,
+        brandStroke1Pressed: fluentColor[50]!,
+        brandStroke1Selected: fluentColor[60]!,
+      ),
+    Brightness.dark => FluentColors(
+        brandBackground1Rest: fluentColor[100]!,
+        brandBackground1Pressed: fluentColor[130]!,
+        brandBackground1Selected: fluentColor[120]!,
+        brandBackground2Rest: Colors.transparent,
+        brandBackground2Pressed: Colors.transparent,
+        brandBackground2Selected: Colors.transparent,
+        brandBackground3Rest: Colors.transparent,
+        brandBackgroundTintRest: fluentColor[40]!,
+        brandBackgroundDisabledRest: fluentColor[40]!,
+        brandForeground1Rest: fluentColor[100]!,
+        brandForeground1Pressed: fluentColor[130]!,
+        brandForeground1Selected: fluentColor[120]!,
+        brandForegroundTintRest: fluentColor[130]!,
+        brandForegroundDisabled1Rest: fluentColor[90]!,
+        brandForegroundDisabled2Rest: fluentColor[40]!,
+        brandStroke1Rest: fluentColor[100]!,
+        brandStroke1Pressed: fluentColor[130]!,
+        brandStroke1Selected: fluentColor[120]!,
+      ),
+  };
 }
