@@ -137,9 +137,8 @@ class _FluentTextFieldState extends State<FluentTextField> {
                     FluentColors.statusDangerForeground2Rest,
                     FluentDarkColors.statusDangerForeground2Rest,
                   )
-                : FluentThemeDataModel.of(context)
-                        .fluentBrandColors
-                        ?.brandStroke1Rest ??
+                : FluentColors.of(context)?.brandStroke1Rest ??
+                    // ❕ Never reached fallback
                     Theme.of(context).primaryColor,
           ),
         ),
@@ -154,7 +153,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   FluentDarkColors.neutralForegroundDisabled1Rest,
                 ),
         ),
-        suffixIcon: TextFieldTrailingIcon(
+        suffixIcon:TextFieldTrailingIcon(
           hasFocus: hasFocus,
           isNotEmpty: isNotEmpty,
           icon: suffixIcon,
