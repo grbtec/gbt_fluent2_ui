@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
+Color? _controlsNavBarBackground1Rest(BuildContext context) =>
+    FluentColors.of(context)?.brandBackground1Rest;
+const _darkControlsNavBarBackground1Rest = FluentDarkColors.neutralBackground3Rest;
+
 class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final NavTitleVariation? title;
@@ -143,7 +147,10 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         backgroundColor: backgroundColor ??
             (themeColorVariation == FluentThemeColorVariation.brand
-                ? Theme.of(context).primaryColor
+                ? colorMode(
+                    _controlsNavBarBackground1Rest(context),
+                    _darkControlsNavBarBackground1Rest,
+                  )
                 : colorMode(
                     FluentColors.neutralBackground3Rest,
                     FluentDarkColors.neutralBackground3Rest,
