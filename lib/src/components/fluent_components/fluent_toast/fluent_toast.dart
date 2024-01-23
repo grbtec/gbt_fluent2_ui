@@ -119,7 +119,7 @@ class _FluentToastState extends State<FluentToast> {
     final icon = widget.icon;
     final action = widget.action;
     final textColor = switch (widget.toastColor) {
-      FluentToastColor.accent => Theme.of(context).primaryColor,
+      FluentToastColor.accent => FluentColors.of(context)?.brandForegroundTintRest,
       FluentToastColor.warning => colorMode(
           FluentColors.statusWarningForeground1Rest,
           FluentDarkColors.statusWarningForeground1Rest,
@@ -134,7 +134,7 @@ class _FluentToastState extends State<FluentToast> {
         ),
     };
     final subTextColor = switch (widget.toastColor) {
-      FluentToastColor.accent => Theme.of(context).primaryColor,
+      FluentToastColor.accent => FluentColors.of(context)?.brandForegroundTintRest,
       FluentToastColor.warning => colorMode(
           FluentColors.statusWarningForeground1Rest,
           FluentDarkColors.statusWarningForeground1Rest,
@@ -160,10 +160,7 @@ class _FluentToastState extends State<FluentToast> {
             _ => FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16
           },
           color: switch (widget.toastColor) {
-            FluentToastColor.accent => ColorTween(
-                begin: Theme.of(context).primaryColor,
-                end: Colors.white,
-              ).lerp(0.7),
+            FluentToastColor.accent => FluentColors.of(context)?.brandBackgroundTintRest,
             FluentToastColor.warning => colorMode(
                 FluentColors.statusWarningBackground1Rest,
                 FluentDarkColors.statusWarningBackground1Rest,
