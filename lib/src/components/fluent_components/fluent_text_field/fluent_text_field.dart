@@ -153,7 +153,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   FluentDarkColors.neutralForegroundDisabled1Rest,
                 ),
         ),
-        suffixIcon:TextFieldTrailingIcon(
+        suffixIcon:widget.readOnly?null: TextFieldTrailingIcon(
           hasFocus: hasFocus,
           isNotEmpty: isNotEmpty,
           icon: suffixIcon,
