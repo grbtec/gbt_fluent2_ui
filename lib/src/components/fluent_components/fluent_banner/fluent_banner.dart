@@ -17,18 +17,15 @@ class FluentBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
     final textColor = switch (bannerColor) {
-      FluentBannerColor.accent => Theme.of(context).primaryColor,
-      FluentBannerColor.subtle => Theme.of(context).primaryColor,
+      FluentBannerColor.accent => FluentColors.of(context)?.brandForegroundTintRest,
+      FluentBannerColor.subtle => FluentColors.of(context)?.brandForeground1Rest,
       FluentBannerColor.neutral => colorMode(
           FluentColors.neutralForeground2Rest,
           FluentDarkColors.neutralForeground2Rest,
         ),
     };
     final backgroundColor = switch (bannerColor) {
-      FluentBannerColor.accent => ColorTween(
-          begin: Theme.of(context).primaryColor,
-          end: Colors.white,
-        ).lerp(0.7),
+      FluentBannerColor.accent => FluentColors.of(context)?.brandBackgroundTintRest,
       FluentBannerColor.subtle => colorMode(
           FluentColors.neutralBackground1Rest,
           FluentDarkColors.neutralBackground1Rest,
