@@ -4,6 +4,7 @@
 - Fix FluentSearchBar
 - Add fontWeight variant in section header bold title
 - Rearrange actions in FluentSectionHeader
+- Add Dark Mode compatibility
 
 ## 4.1.1
 
