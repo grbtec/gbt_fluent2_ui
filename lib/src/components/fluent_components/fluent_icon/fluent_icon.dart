@@ -104,7 +104,7 @@ class FluentIcon extends StatelessWidget {
       FluentIconVariant.accentIcon =>
         colorScheme ?? FluentColors.of(context)?.brandBackground1Rest,
       FluentIconVariant.outlinedPrimaryIcon =>
-        FluentColors.of(context)?.brandBackgroundTint,
+        FluentColors.of(context)?.brandBackgroundTintRest,
       FluentIconVariant.outlineIcon => colorScheme?.withOpacity(0.3) ??
           colorMode(
             FluentColors.neutralBackground5Rest,
@@ -120,7 +120,7 @@ class FluentIcon extends StatelessWidget {
         iconColor ?? FluentColors.of(context)?.brandForeground1Rest,
       FluentIconVariant.accentIcon => Colors.white,
       FluentIconVariant.outlinedPrimaryIcon =>
-        FluentColors.of(context)?.brandForegroundTint,
+        FluentColors.of(context)?.brandForegroundTintRest,
       FluentIconVariant.outlineIcon => colorScheme ??
           colorMode(
             FluentColors.neutralForeground2Rest,
