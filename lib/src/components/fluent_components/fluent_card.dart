@@ -49,6 +49,7 @@ class FluentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final subText = this.subText;
     final shortenedString = subText != null
         ? subText.length > 20
@@ -58,7 +59,10 @@ class FluentCard extends StatelessWidget {
 
     return conditionalButton(
       child: FluentContainer(
-        color: FluentColors.neutralBackground2Rest,
+        color: colorMode(
+          FluentColors.neutralBackground2Rest,
+          FluentDarkColors.neutralBackground2Rest,
+        ),
         width: 280,
         cornerRadius: FluentCornerRadius.large,
         shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow2,

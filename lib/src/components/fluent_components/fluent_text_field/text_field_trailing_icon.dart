@@ -16,12 +16,17 @@ class TextFieldTrailingIcon extends StatelessWidget {
     this.icon,
   });
 
-  Widget iconToWidget(Icon? icon) {
+  Widget iconToWidget(BuildContext context, Icon? icon) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
+
     if (icon != null) {
       return IconTheme(
         data: IconThemeData(
           size: FluentSize.size240.value,
-          color: FluentColors.neutralForeground2Rest,
+          color: colorMode(
+            FluentColors.neutralForeground2Rest,
+            FluentDarkColors.neutralForeground2Rest,
+          ),
         ),
         child: icon,
       );
@@ -32,13 +37,17 @@ class TextFieldTrailingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final Widget trailingWidget = icon != null
         ? IconTheme(
             data: IconThemeData(
               size: FluentSize.size240.value,
-              color: FluentColors.neutralForeground2Rest,
+              color: colorMode(
+                FluentColors.neutralForeground2Rest,
+                FluentDarkColors.neutralForeground2Rest,
+              ),
             ),
-            child: iconToWidget(icon),
+            child: iconToWidget(context, icon),
           )
         : SizedBox();
 

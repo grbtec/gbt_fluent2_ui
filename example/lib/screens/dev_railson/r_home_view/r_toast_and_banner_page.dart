@@ -78,7 +78,7 @@ class _RToastAndBannerPageState extends State<RToastAndBannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FluentScaffold(
       appBar: FluentNavBar(
         themeColorVariation: FluentThemeColorVariation.brand,
         title: NavLeftSubtitle(

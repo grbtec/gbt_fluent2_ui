@@ -43,6 +43,7 @@ class FluentAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     assert(
       (cutout == null) || (size?.value == 40 || size?.value == 56),
       'The cutout can only be passed for sizes 40 and 56.',
@@ -57,7 +58,10 @@ class FluentAvatar extends StatelessWidget {
           strokeStyle: strokeStyle,
           width: size?.value ?? 56,
           height: size?.value ?? 56,
-          color: FluentColors.neutralBackground5Rest,
+          color: colorMode(
+            FluentColors.neutralBackground5Rest,
+            FluentDarkColors.neutralBackground5Rest,
+          ),
           cornerRadius: isGroup != true
               ? FluentCornerRadius.circle
               : FluentCornerRadius.large,
@@ -89,7 +93,10 @@ class FluentAvatar extends StatelessWidget {
             right: -4,
             bottom: -4,
             child: FluentContainer(
-              color: FluentColors.neutralBackground5Rest,
+              color: colorMode(
+                FluentColors.neutralBackground5Rest,
+                FluentDarkColors.neutralBackground5Rest,
+              ),
               cornerRadius: FluentCornerRadius.circle,
               width: cutoutSize == CutoutSize.size28 ? 28 : 20,
               height: cutoutSize == CutoutSize.size28 ? 28 : 20,

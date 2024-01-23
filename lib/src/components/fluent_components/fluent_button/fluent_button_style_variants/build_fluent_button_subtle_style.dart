@@ -4,6 +4,7 @@ ButtonStyle _buildFluentButtonSubtleStyle(
   FluentButtonStyle fluentButtonStyle,
   BuildContext context,
 ) {
+  final colorMode = createColorMode(Theme.of(context).brightness);
   final FluentButtonSize size = fluentButtonStyle.size;
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
@@ -11,7 +12,10 @@ ButtonStyle _buildFluentButtonSubtleStyle(
       FluentColors.of(context)?.brandForeground1Pressed;
   final Color? foregroundFocusedColor =
       FluentColors.of(context)?.brandForeground1Rest;
-  final Color foregroundDisabledColor = FluentColors.neutralForegroundDisabled1;
+  final Color foregroundDisabledColor = colorMode(
+    FluentColors.neutralForegroundDisabled1Rest,
+    FluentDarkColors.neutralForegroundDisabled1Rest,
+  );
   final Color? foregroundRestColor =
       FluentColors.of(context)?.brandForeground1Rest;
 
@@ -22,7 +26,10 @@ ButtonStyle _buildFluentButtonSubtleStyle(
       if (states.contains(MaterialState.focused)) {
         return RoundedRectangleBorder(
           side: BorderSide(
-            color: FluentColors.neutralStrokeFocus2Rest,
+            color: colorMode(
+              FluentColors.neutralStrokeFocus2Rest,
+              FluentDarkColors.neutralStrokeFocus2Rest,
+            ),
             width: FluentStrokeThickness.strokeWidth20.value,
           ),
           borderRadius: BorderRadius.circular(

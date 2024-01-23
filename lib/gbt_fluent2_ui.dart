@@ -59,3 +59,5 @@ export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_shadow_them
 export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_style.dart';
 export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_text_theme.dart';
 export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_theme.dart';
+
+export 'package:gbt_fluent2_ui/color_mode.dart';

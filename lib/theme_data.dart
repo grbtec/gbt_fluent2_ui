@@ -2,30 +2,40 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gbt_fluent2_ui/color_mode.dart';
 
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_style.dart';
 import 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_stroke_theme.dart';
 
+const _brandColor = MaterialColor(
+  0XFF2886DE,
+  <int, Color>{
+    50: Color(0XFFCFE4FA),
+    100: Color(0XFFB4D6FA),
+    200: Color(0XFF2886DE),
+    300: Color(0XFF0F6CBD),
+    400: Color(0XFF115EA3),
+    500: Color(0XFF0F548C),
+    600: Color(0XFF0E4775),
+    700: Color(0XFF0C3B5E),
+    // 800: null,
+    // 900: null,
+  },
+);
 final theme = getTheme(
-  brandColor: MaterialColor(
-    0XFF2886DE,
-    <int, Color>{
-      50: Color(0XFFCFE4FA),
-      100: Color(0XFFB4D6FA),
-      200: Color(0XFF2886DE),
-      300: Color(0XFF0F6CBD),
-      400: Color(0XFF115EA3),
-      500: Color(0XFF0F548C),
-      600: Color(0XFF0E4775),
-      700: Color(0XFF0C3B5E),
-    },
-  ),
+  brandColor: _brandColor,
+);
+final darkTheme = getTheme(
+  brandColor: _brandColor,
+  brightness: Brightness.dark,
 );
 
 GbtFluentThemeData getTheme({
   required MaterialColor brandColor,
+  Brightness brightness = Brightness.light,
 }) {
+  final colorMode = createColorMode(brightness);
   final fluentColors = convert(brandColor);
 
   return GbtFluentThemeData(
@@ -139,11 +149,30 @@ GbtFluentThemeData getTheme({
         cornerRadius: MixedFluentCornerRadius.xLarge,
       ),
     ),
-    colorScheme: ColorScheme.fromSeed(seedColor: brandColor),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: brandColor,
+      brightness: brightness,
+      background: colorMode(FluentColors.neutralBackground1Rest,
+          FluentDarkColors.neutralBackground1Rest),
+    ),
   );
 }
 
 FluentColors convert(MaterialColor colors) {
+  // final fluentColor = <int, Color>{};
+  // for (var i = 0; i <= 15; i += 10) {
+  //   const materialStep = 900 / 16;
+  //   final materialLevel = 900 - i * materialStep;
+  //   final rest = (materialLevel % 100).toInt();
+  //   final percentage = rest / 100;
+  //   final lower = materialLevel ~/ 100 * 100;
+  //   final higher = rest == 0 ? lower : lower + rest;
+  //   fluentColor[(i + 1) * 10] = ColorTween(
+  //     begin: colors[lower]!,
+  //     end: colors[higher]!,
+  //   ).lerp(percentage)!;
+  // }
+
   return FluentColors(
     brandBackground1Rest: colors[300]!,
     brandBackground1Pressed: colors[600]!,

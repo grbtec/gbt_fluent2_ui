@@ -1,5 +1,6 @@
 import 'package:example/routing/routes.dart';
 import 'package:example/theme.dart';
+import 'package:example/theme_mode_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
@@ -11,11 +12,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentProvider(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        routes: Routes.routingTable,
-        theme: theme,
-        home: home,
+      child: ThemeModeProvider(
+        child: Builder(
+          builder: (context) {
+            final themeMode  = ThemeModeProvider.of(context).themeMode;
+            return MaterialApp(
+              title: 'Flutter Demo',
+              routes: Routes.routingTable,
+              theme: theme,
+              darkTheme: darkTheme,
+              themeMode: themeMode,
+              home: home,
+            );
+          }
+        ),
       ),
     );
   }

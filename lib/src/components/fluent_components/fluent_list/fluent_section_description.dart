@@ -20,6 +20,7 @@ class FluentSectionDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final icon = this.icon;
     return FluentContainer(
       color: backgroundColor,
@@ -38,7 +39,11 @@ class FluentSectionDescription extends StatelessWidget {
             Icon(
               icon,
               size: FluentSize.size160.value,
-              color: foregroundColor ?? FluentColors.neutralForeground2Rest,
+              color: foregroundColor ??
+                  colorMode(
+                    FluentColors.neutralForeground2Rest,
+                    FluentDarkColors.neutralForeground2Rest,
+                  ),
             ),
           if (icon != null)
             SizedBox(
@@ -51,8 +56,11 @@ class FluentSectionDescription extends StatelessWidget {
                   .fluentTextTheme
                   ?.caption1
                   ?.fluentCopyWith(
-                    fluentColor:
-                        foregroundColor ?? FluentColors.neutralForeground2Rest,
+                    fluentColor: foregroundColor ??
+                        colorMode(
+                          FluentColors.neutralForeground2Rest,
+                          FluentDarkColors.neutralForeground2Rest,
+                        ),
                   ),
             ),
           ),

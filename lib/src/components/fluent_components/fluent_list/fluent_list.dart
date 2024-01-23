@@ -148,6 +148,7 @@ class FluentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
     final sectionHeaderTitle = this.sectionHeaderTitle;
     final sectionDescriptionText = this.sectionDescriptionText;
     final separator = this.separator;
@@ -174,7 +175,10 @@ class FluentList extends StatelessWidget {
             for (var item in listItems) ...[
               if (separator != null && listItems.indexOf(item) != 0) separator,
               FluentContainer(
-                color: FluentColors.neutralBackground3Rest,
+                color: colorMode(
+                  FluentColors.neutralBackground3Rest,
+                  FluentDarkColors.neutralBackground3Rest,
+                ),
                 cornerRadius: _isOneLine
                     ? FluentCornerRadius.xLarge
                     : FluentCornerRadius.none,
