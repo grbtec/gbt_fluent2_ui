@@ -37,7 +37,8 @@ class FluentChip extends StatelessWidget {
     final colorMode = createColorMode(Theme.of(context).brightness);
     final textColor = switch (chipColorsStyle) {
       FluentChipColorStyle.tint => switch (chipColor) {
-          FluentChipColor.brand => Theme.of(context).primaryColor,
+          FluentChipColor.brand =>
+            FluentColors.of(context)?.brandForegroundTintRest,
           FluentChipColor.danger => colorMode(
               FluentColors.statusDangerForeground1Rest,
               FluentDarkColors.statusDangerForeground1Rest,
@@ -76,55 +77,54 @@ class FluentChip extends StatelessWidget {
     final backgroundColor = switch (chipColorsStyle) {
       FluentChipColorStyle.tint => switch (chipColor) {
           FluentChipColor.brand =>
-            ColorTween(begin: Theme.of(context).primaryColor, end: Colors.white)
-                .lerp(0.7),
+            FluentColors.of(context)?.brandBackgroundTintRest,
           FluentChipColor.danger => colorMode(
               FluentColors.statusDangerBackground1Rest,
               FluentDarkColors.statusDangerBackground1Rest,
             ),
           FluentChipColor.severe => colorMode(
               FluentColors.statusSevereBackground1Rest,
-            FluentDarkColors.statusSevereBackground1Rest,
+              FluentDarkColors.statusSevereBackground1Rest,
             ),
           FluentChipColor.warning => colorMode(
               FluentColors.statusWarningBackground1Rest,
-            FluentDarkColors.statusWarningBackground1Rest,
+              FluentDarkColors.statusWarningBackground1Rest,
             ),
           FluentChipColor.success => colorMode(
               FluentColors.statusSuccessBackground1Rest,
-            FluentDarkColors.statusSuccessBackground1Rest,
+              FluentDarkColors.statusSuccessBackground1Rest,
             ),
           FluentChipColor.neutral => colorMode(
               FluentColors.neutralBackground5Rest,
-            FluentDarkColors.neutralBackground5Rest,
+              FluentDarkColors.neutralBackground5Rest,
             ),
         },
       FluentChipColorStyle.filled => switch (chipColor) {
-          FluentChipColor.brand => Theme.of(context).primaryColor,
+          FluentChipColor.brand => FluentColors.of(context)?.brandBackground1Rest,
           FluentChipColor.danger => colorMode(
               FluentColors.statusDangerBackground2Rest,
-            FluentDarkColors.statusDangerBackground2Rest,
+              FluentDarkColors.statusDangerBackground2Rest,
             ),
           FluentChipColor.severe => colorMode(
               FluentColors.statusSevereBackground2Rest,
-            FluentDarkColors.statusSevereBackground2Rest,
+              FluentDarkColors.statusSevereBackground2Rest,
             ),
           FluentChipColor.warning => colorMode(
               FluentColors.statusWarningBackground2Rest,
-            FluentDarkColors.statusWarningBackground2Rest,
+              FluentDarkColors.statusWarningBackground2Rest,
             ),
           FluentChipColor.success => colorMode(
               FluentColors.statusSuccessBackground2Rest,
-            FluentDarkColors.statusSuccessBackground2Rest,
+              FluentDarkColors.statusSuccessBackground2Rest,
             ),
           FluentChipColor.neutral => colorMode(
               FluentColors.neutralBackground5Selected,
-            FluentDarkColors.neutralBackground5Selected,
+              FluentDarkColors.neutralBackground5Selected,
             ),
         },
       FluentChipColorStyle.disabled => colorMode(
           FluentColors.neutralBackground5Rest,
-        FluentDarkColors.neutralBackground5Rest,
+          FluentDarkColors.neutralBackground5Rest,
         ),
     };
 
