@@ -9,7 +9,7 @@
   <key>provisioningProfiles</key>
 	<dict>
 		<key>br.com.grbtec.flutter.fluent2</key>
-		<string>iOS Team Store Provisioning Profile: br.com.grbtec.flutter.fluent2</string>
+		<string>Gbt Fluent2 Example Distribution PP</string>
 	</dict>
 </dict>
 </plist>

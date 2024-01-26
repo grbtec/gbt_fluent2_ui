@@ -99,21 +99,18 @@ jobs:
       # https://www.andrewhoog.com/post/how-to-build-an-ios-app-with-github-actions-2023/
       - name: Install the Apple certificate and provisioning profile
         env:
-          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
-          BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          DISTRIBUTION_CERTIFICATE_BASE64: ${{ secrets.DISTRIBUTION_CERTIFICATE_BASE64 }}
+          DISTRIBUTION_P12_PASSWORD: ${{ secrets.DISTRIBUTION_P12_PASSWORD }}
           DISTRIBUTION_PROVISION_PROFILE_BASE64: ${{ secrets.DISTRIBUTION_PROVISION_PROFILE_BASE64 }}
         run: |
           KEYCHAIN_PASSWORD=$(openssl rand -base64 48)
           # create variables
-          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          BUILD_PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          CERTIFICATE_PATH=$RUNNER_TEMP/distribution_certificate.p12
           DISTRIBUTION_PP_PATH=$RUNNER_TEMP/distribution_pp.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
-          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
-          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $BUILD_PP_PATH
+          echo -n "$DISTRIBUTION_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
           echo -n "$DISTRIBUTION_PROVISION_PROFILE_BASE64" | base64 --decode -o $DISTRIBUTION_PP_PATH
 
           # create temporary keychain
@@ -122,12 +119,11 @@ jobs:
           security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
 
           # import certificate to keychain
-          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security import $CERTIFICATE_PATH -P "$DISTRIBUTION_P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $BUILD_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles  
           cp $DISTRIBUTION_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles  
 
       - run: flutter pub get
@@ -135,7 +131,7 @@ jobs:
       - name: (${{env.FLAVOR}}) Flutter Build iOS IPA
         run: |
           PARAMS=${{format('--release {0}', env.FLAVOR != 'production' && format('--flavor={0}',env.FLAVOR) || '')}}
-          flutter build ipa --obfuscate --split-debug-info debug-files-ios $PARAMS
+          flutter build ipa --obfuscate --split-debug-info debug-files-ios --export-options-plist=ios/ExportOptions.plist $PARAMS
 
       #     disable flutter analyze at moment
       #      - run: flutter analyze
