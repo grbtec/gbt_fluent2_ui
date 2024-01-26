@@ -102,16 +102,19 @@ jobs:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
           BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          DISTRIBUTION_PROVISION_PROFILE_BASE64: ${{ secrets.DISTRIBUTION_PROVISION_PROFILE_BASE64 }}
         run: |
           KEYCHAIN_PASSWORD=$(openssl rand -base64 48)
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          BUILD_PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          DISTRIBUTION_PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
           echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
-          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $PP_PATH
+          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $BUILD_PP_PATH
+          echo -n "$DISTRIBUTION_PROVISION_PROFILE_BASE64" | base64 --decode -o $BUILD_PP_PATH
 
           # create temporary keychain
           security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
@@ -124,14 +127,15 @@ jobs:
 
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles  
+          cp $BUILD_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles  
+          cp $DISTRIBUTION_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles  
 
       - run: flutter pub get
 
       - name: (${{env.FLAVOR}}) Flutter Build iOS IPA
         run: |
           PARAMS=${{format('--release {0}', env.FLAVOR != 'production' && format('--flavor={0}',env.FLAVOR) || '')}}
-          flutter build ipa --obfuscate --split-debug-info debug-files-ios --export-options-plist=ios/ExportOptions.plist $PARAMS
+          flutter build ipa --obfuscate --split-debug-info debug-files-ios $PARAMS
 
       #     disable flutter analyze at moment
       #      - run: flutter analyze
