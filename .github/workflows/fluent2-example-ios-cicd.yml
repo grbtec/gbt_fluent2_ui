@@ -81,6 +81,9 @@ jobs:
           flutter-version: '3.13.9'
           channel: 'stable'
 
+      - name: Authenticate
+        run: echo "${{secrets.JETBRAINS_SPACE_TOKEN}}" | dart pub token add https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
+
       # ⚠️ I'm wondering about committing these files on repository, they are not secrets though
       # 🔴 Cons - Using production firebase settings for development would be tough for tracking only production crashes and analytics
       - name: Import Firebase Settings
