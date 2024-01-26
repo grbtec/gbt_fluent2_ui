@@ -131,7 +131,7 @@ jobs:
       - name: (${{env.FLAVOR}}) Flutter Build iOS IPA
         run: |
           PARAMS=${{format('--release {0}', env.FLAVOR != 'production' && format('--flavor={0}',env.FLAVOR) || '')}}
-          flutter build ipa --obfuscate --split-debug-info debug-files-ios $PARAMS
+          flutter build ipa --obfuscate --split-debug-info debug-files-ios --export-options-plist=ios/ExportOptions.plist $PARAMS
 
       #     disable flutter analyze at moment
       #      - run: flutter analyze
