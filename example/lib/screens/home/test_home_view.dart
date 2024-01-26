@@ -1,5 +1,6 @@
 import 'package:example/screens/components_example_view/fluent_avatar_view.dart';
 import 'package:example/screens/components_example_view/fluent_button_view.dart';
+import 'package:example/screens/components_example_view/fluent_card_view.dart';
 import 'package:example/screens/components_example_view/fluent_list_view/fluent_list_example_view.dart';
 import 'package:example/screens/design_tokens_view/shadow_view.dart';
 import 'package:example/screens/design_tokens_view/size_view.dart';
@@ -58,6 +59,12 @@ class TestHomeView extends StatelessWidget {
           "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
       view: FluentAvatarView(),
       coverImage: FluentIcon(FluentIcons.person_5_20_filled),
+    ),
+    CardComponentPage(
+      description: "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
+      title: "Fluent Card",
+      view: FluentCardView(),
+      coverImage: FluentIcon(FluentIcons.card_ui_24_filled),
     )
   ];
 
@@ -142,15 +149,6 @@ class TestHomeView extends StatelessWidget {
                 )
               ],
             ),
-            FluentCard(
-              text: "Shadow",
-              coverImage: Image.network(
-                "https://images.pexels.com/photos/87812/pexels-photo-87812.jpeg?auto=compress&cs=tinysrgb&w=800",
-                width: double.maxFinite,
-                height: double.maxFinite,
-                fit: BoxFit.cover,
-              ),
-            )
           ],
         ),
       ),
