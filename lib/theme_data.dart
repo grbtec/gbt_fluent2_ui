@@ -107,12 +107,12 @@ GbtFluentThemeData getTheme({
       ),
     ),
     fluentShadowTheme: MixedFluentShadowTheme(
-      shadow2: MixedFluentShadow.lowElevation(2),
-      shadow4: MixedFluentShadow.lowElevation(4),
-      shadow8: MixedFluentShadow.lowElevation(8),
-      shadow16: MixedFluentShadow.lowElevation(16),
-      shadow28: MixedFluentShadow.hightElevation(28),
-      shadow64: MixedFluentShadow.hightElevation(64),
+      shadow2: MixedFluentShadow.lowElevation(2, brightness),
+      shadow4: MixedFluentShadow.lowElevation(4, brightness),
+      shadow8: MixedFluentShadow.lowElevation(8, brightness),
+      shadow16: MixedFluentShadow.lowElevation(16, brightness),
+      shadow28: MixedFluentShadow.hightElevation(28, brightness),
+      shadow64: MixedFluentShadow.hightElevation(64, brightness),
       brandShadow2:
           MixedFluentShadow.brandColor(2, brandColor, ElevationRamp.low),
       brandShadow4:

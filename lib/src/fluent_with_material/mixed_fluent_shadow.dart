@@ -46,14 +46,15 @@ class MixedFluentShadow implements FluentShadow {
         (0.0722 * color.blue);
   }
 
-  factory MixedFluentShadow.lowElevation(int shadowNumber) {
+  factory MixedFluentShadow.lowElevation(int shadowNumber,
+      [Brightness brightness = Brightness.light]) {
     final double blurShadow1 = 1.0 * shadowNumber;
     final double blurShadow2 = 1.0 * shadowNumber;
     const double xAxis = 0;
     final double yAxisShadow1 = 0.5 * shadowNumber;
     final double yAxisShadow2 = 0.5 * shadowNumber;
     const double opacityShadow2 = 0.14;
-    const double opacityShadow1 = 0.14;
+    final double opacityShadow1 = brightness == Brightness.light ? 0.14 : 0.28;
 
     final BoxShadow boxShadow1 = BoxShadow(
       blurRadius: blurShadow1,
@@ -79,13 +80,13 @@ class MixedFluentShadow implements FluentShadow {
     );
   }
 
-  factory MixedFluentShadow.hightElevation(int shadowNumber) {
+  factory MixedFluentShadow.hightElevation(int shadowNumber, [Brightness brightness = Brightness.light]) {
     final double blurShadow1 = 1.0 * shadowNumber;
-    const double blurShadow2 = 8;
+    final double blurShadow2 = brightness == Brightness.light ? 8 : 2;
     const double xAxis = 0;
     final double yAxisShadow1 = 0.5 * shadowNumber;
     const double yAxisShadow2 = 0;
-    const double opacityShadow1 = 0.24;
+    final double opacityShadow1 = brightness == Brightness.light ? 0.24 : 0.28;
     const double opacityShadow2 = 0.20;
 
     final BoxShadow boxShadow1 = BoxShadow(

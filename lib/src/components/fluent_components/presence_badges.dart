@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class AvaliablePresenceBadge extends StatelessWidget {
@@ -6,23 +7,26 @@ class AvaliablePresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      cornerRadius: FluentCornerRadius.circle,
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(3),
-      child: Container(
-        padding: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-          color: Colors.green.shade600,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
+          ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_available_12_filled,
+        color: colorMode(
+          Color(0xFF13A10E),
+          Color(0xFF3DB838),
         ),
-        child: const Icon(
-          Icons.check,
-          color: Colors.white,
-          size: 15,
-        ),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -33,25 +37,23 @@ class AwayPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      cornerRadius: FluentCornerRadius.circle,
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.access_time_filled_outlined,
-            color: Colors.white,
-            size: 15,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
-        ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_away_12_filled,
+        color: Color(0xFFEAA300),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -62,22 +64,26 @@ class BlockedPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      cornerRadius: FluentCornerRadius.circle,
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(2),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-          color: Colors.red,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
+          ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_blocked_12_regular,
+        color: colorMode(
+          Color(0xFFD13438),
+          Color(0xFFD7494C),
         ),
-        child: const Icon(
-          Icons.block,
-          color: Colors.white,
-          size: 20,
-        ),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -88,25 +94,23 @@ class BusyPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      cornerRadius: FluentCornerRadius.circle,
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.circle,
-            color: Colors.white,
-            size: 15,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
-        ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_busy_12_filled,
+        color: colorMode(Color(0xFFD13438), Color(0xFFD7494C)),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -117,25 +121,23 @@ class DNDPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.minimize_rounded,
-            color: Colors.white,
-            size: 15,
+      cornerRadius: FluentCornerRadius.circle,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
-        ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_dnd_12_filled,
+        color: colorMode(Color(0xFFD13438), Color(0xFFD7494C)),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -147,28 +149,25 @@ class OfflinePresenceBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    return FluentContainer(
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child:  Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.cancel_outlined,
-            color: colorMode(
-              FluentColors.neutralForeground3Rest,
-              FluentDarkColors.neutralForeground3Rest,
-            ),
-            size: 15,
+      cornerRadius: FluentCornerRadius.circle,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_offline_12_regular,
+        color: colorMode(
+          FluentColors.neutralForeground3Rest,
+          FluentDarkColors.neutralForeground3Rest,
         ),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -179,25 +178,26 @@ class OOFPresenceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    return FluentContainer(
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.keyboard_backspace_rounded,
-            color: Colors.purple,
-            size: 15,
+      cornerRadius: FluentCornerRadius.circle,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_oof_12_regular,
+        color: colorMode(
+          Color(0xFFC239B3),
+          Color(0xFFD161C4),
         ),
+        size: FluentSize.size120.value,
       ),
     );
   }
@@ -209,28 +209,25 @@ class UnknownPresenceBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
+    return FluentContainer(
+      color: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
       ),
-      padding: const EdgeInsets.all(4),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(FluentCornerRadius.circle.value),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(3),
-          child: Icon(
-            Icons.circle_outlined,
-            color: colorMode(
-              FluentColors.neutralForeground3Rest,
-              FluentDarkColors.neutralForeground3Rest,
-            ),
-            size: 15,
+      cornerRadius: FluentCornerRadius.circle,
+      strokeStyle: FluentStrokeStyle(
+          color: colorMode(
+            FluentColors.neutralBackground3Rest,
+            FluentDarkColors.neutralBackground3Rest,
           ),
+          thickness: FluentStrokeThickness.strokeWidth20),
+      child: Icon(
+        FluentIcons.presence_unknown_12_regular,
+        color: colorMode(
+          FluentColors.neutralForeground3Rest,
+          FluentDarkColors.neutralForeground3Rest,
         ),
+        size: FluentSize.size120.value,
       ),
     );
   }

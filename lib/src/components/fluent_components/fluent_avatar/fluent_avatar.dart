@@ -74,14 +74,46 @@ class FluentAvatar extends StatelessWidget {
         // Status Presence Badge
         if (statusPresenceBadge != null && cutout == null)
           switch (statusPresenceBadge) {
-            StatusPresenceBadge.avaliable => const AvaliablePresenceBadge(),
-            StatusPresenceBadge.away => const AwayPresenceBadge(),
-            StatusPresenceBadge.blocked => const BlockedPresenceBadge(),
-            StatusPresenceBadge.busy => const BusyPresenceBadge(),
-            StatusPresenceBadge.dnd => const DNDPresenceBadge(),
-            StatusPresenceBadge.offline => const OfflinePresenceBadge(),
-            StatusPresenceBadge.oof => const OOFPresenceBadge(),
-            StatusPresenceBadge.unknown => const UnknownPresenceBadge(),
+            StatusPresenceBadge.avaliable => Positioned(
+                right: -1,
+                bottom: -1,
+                child: AvaliablePresenceBadge(),
+              ),
+            StatusPresenceBadge.away => Positioned(
+                right: -1,
+                bottom: -1,
+                child: AwayPresenceBadge(),
+              ),
+            StatusPresenceBadge.blocked => Positioned(
+                right: -1,
+                bottom: -1,
+                child: BlockedPresenceBadge(),
+              ),
+            StatusPresenceBadge.busy => const Positioned(
+                right: -1,
+                bottom: -1,
+                child: BusyPresenceBadge(),
+              ),
+            StatusPresenceBadge.dnd => Positioned(
+                right: -1,
+                bottom: -1,
+                child: DNDPresenceBadge(),
+              ),
+            StatusPresenceBadge.offline => Positioned(
+                right: -1,
+                bottom: -1,
+                child: OfflinePresenceBadge(),
+              ),
+            StatusPresenceBadge.oof => Positioned(
+                right: -1,
+                bottom: -1,
+                child: OOFPresenceBadge(),
+              ),
+            StatusPresenceBadge.unknown => Positioned(
+                right: -1,
+                bottom: -1,
+                child: UnknownPresenceBadge(),
+              ),
             _ => throw Exception('Invalid value in status presence badge')
           },
 
@@ -102,7 +134,8 @@ class FluentAvatar extends StatelessWidget {
               height: cutoutSize == CutoutSize.size28 ? 28 : 20,
               strokeStyle: FluentStrokeStyle(
                 thickness: FluentStrokeThickness.strokeWidth20,
-                color: Colors.white,
+                color: colorMode(FluentColors.neutralBackground3Rest,
+                    FluentDarkColors.neutralBackground3Rest),
               ),
               padding: const EdgeInsets.all(2),
               child: cutout,
@@ -114,6 +147,7 @@ class FluentAvatar extends StatelessWidget {
 }
 
 enum StatusPresenceBadge {
+  // TODO: fix this name in the next version => available
   avaliable,
   away,
   blocked,
