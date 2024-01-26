@@ -54,7 +54,8 @@ class TestHomeView extends StatelessWidget {
     ),
     CardComponentPage(
       title: "Fluent Avatar",
-      description: "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
+      description:
+          "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
       view: FluentAvatarView(),
       coverImage: FluentIcon(FluentIcons.person_5_20_filled),
     )
@@ -140,6 +141,15 @@ class TestHomeView extends StatelessWidget {
                   ),
                 )
               ],
+            ),
+            FluentCard(
+              text: "Shadow",
+              coverImage: Image.network(
+                "https://images.pexels.com/photos/87812/pexels-photo-87812.jpeg?auto=compress&cs=tinysrgb&w=800",
+                width: double.maxFinite,
+                height: double.maxFinite,
+                fit: BoxFit.cover,
+              ),
             )
           ],
         ),

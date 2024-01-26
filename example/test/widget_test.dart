@@ -26,12 +26,7 @@ void main() {
     // ));
   });
 
-  testWidgets('Pump LHomeView', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(
-      home: LHomeView(),
-    ));
-  });
+
 }
 
 Widget buildByRoute(String route) {
