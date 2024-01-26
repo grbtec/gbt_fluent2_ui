@@ -34,6 +34,7 @@ export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_button/fl
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_radio_button.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_checkbox/fluent_checkbox.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_card.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_card_container.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_left_nav/fluent_left_nav.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_icon/fluent_icon.dart';
 
@@ -46,6 +47,7 @@ export 'package:gbt_fluent2_ui/src/fluent_models/fluent_shadow.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_shadow_theme.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_style.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_theme.dart';
+export 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_thickness.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_style.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_theme.dart';

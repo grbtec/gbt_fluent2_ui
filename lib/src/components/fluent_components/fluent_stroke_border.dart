@@ -7,7 +7,6 @@ class FluentStrokeBorder extends StatelessWidget {
   final FluentStrokeStyle? strokeStyle;
   final FluentCornerRadius? cornerRadius;
 
-  static final defaultStrokeColor = Color(0xffE0E0E0);
   static final defaultCornerRadius = FluentCornerRadius.circle;
   static final defaultStrokeThickness = FluentStrokeThickness.strokeWidth05;
   static final defaultDashArray = <double>[1, 0, 1, 0];
@@ -22,6 +21,12 @@ class FluentStrokeBorder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
+    final defaultStrokeColor = colorMode(
+      FluentColors.neutralStroke2Rest,
+      FluentDarkColors.neutralStroke2Rest,
+    );
+
     return DottedBorder(
       padding: EdgeInsets.all(strokeStyle?.padding ??
           (strokeStyle?.thickness?.value ?? defaultStrokeThickness.value) / 2),

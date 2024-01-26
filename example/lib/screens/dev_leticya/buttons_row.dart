@@ -6,6 +6,8 @@ class ButtonsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
+
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: FluentSize.size80.value,
@@ -17,7 +19,10 @@ class ButtonsRow extends StatelessWidget {
             horizontal: FluentSize.size120.value,
           ),
           decoration: BoxDecoration(
-            color: FluentColors.neutralBackground4Rest,
+            color: colorMode(
+              FluentColors.neutralBackground2Rest,
+              FluentDarkColors.neutralBackground2Rest,
+            ),
             borderRadius: BorderRadius.circular(
               FluentCornerRadius.xLarge.value,
             ),
@@ -157,7 +162,10 @@ class ButtonsRow extends StatelessWidget {
             horizontal: FluentSize.size120.value,
           ),
           decoration: BoxDecoration(
-            color: FluentColors.neutralBackground4Rest,
+            color: colorMode(
+              FluentColors.neutralBackground2Rest,
+              FluentDarkColors.neutralBackground2Rest,
+            ),
             borderRadius: BorderRadius.circular(
               FluentCornerRadius.xLarge.value,
             ),

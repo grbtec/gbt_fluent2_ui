@@ -1,9 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_stroke_border.dart';
-import 'package:gbt_fluent2_ui/src/fluent_models/fluent_stroke_border_indent.dart';
 
 class FluentStrokeDivider extends StatelessWidget {
   final FluentStrokeStyle? style;
@@ -53,7 +51,7 @@ class FluentStrokeDivider extends StatelessWidget {
                 ),
                 child: FluentStrokeBorder(
                   cornerRadius: cornerRadius ?? FluentCornerRadius.circle,
-                  strokeStyle: style,
+                  strokeStyle: style
                 ),
               ),
             ),

@@ -172,19 +172,26 @@ class FluentList extends StatelessWidget {
                 titleVariant: sectionHeaderTitleVariant,
                 backgroundColor: sectionHeaderBackgroundColor,
               ),
-            for (var item in listItems) ...[
-              if (separator != null && listItems.indexOf(item) != 0) separator,
-              FluentContainer(
-                color: colorMode(
-                  FluentColors.neutralBackground3Rest,
-                  FluentDarkColors.neutralBackground3Rest,
-                ),
-                cornerRadius: _isOneLine
-                    ? FluentCornerRadius.xLarge
-                    : FluentCornerRadius.none,
-                child: item,
+            FluentContainer(
+              color: colorMode(
+                FluentColors.neutralBackground3Rest,
+                FluentDarkColors.neutralBackground3Rest,
               ),
-            ],
+              cornerRadius: _isOneLine
+                  ? FluentCornerRadius.xLarge
+                  : FluentCornerRadius.none,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    for (var item in listItems) ...[
+                      if (separator != null && listItems.indexOf(item) != 0)
+                        separator,
+                      item
+                    ],
+                  ],
+                ),
+              ),
+            ),
             if (sectionDescriptionText != null)
               FluentSectionDescription(
                 description: sectionDescriptionText,

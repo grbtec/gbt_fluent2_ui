@@ -3,7 +3,8 @@ import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 Color? _controlsNavBarBackground1Rest(BuildContext context) =>
     FluentColors.of(context)?.brandBackground1Rest;
-const _darkControlsNavBarBackground1Rest = FluentDarkColors.neutralBackground3Rest;
+const _darkControlsNavBarBackground1Rest =
+    FluentDarkColors.neutralBackground3Rest;
 
 class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
@@ -165,13 +166,31 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
         bottom: child != null
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(48),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: child,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: FluentSize.size160.value,
+                        left: FluentSize.size160.value,
+                        bottom: FluentSize.size80.value,
+                      ),
+                      child: child,
+                    ),
+                    FluentStrokeDivider()
+                  ],
                 ),
               )
-            : null,
+            : PreferredSize(
+                preferredSize: const Size.fromHeight(2),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: FluentSize.size80.value,
+                    ),
+                    FluentStrokeDivider()
+                  ],
+                ),
+              ),
       ),
     );
   }

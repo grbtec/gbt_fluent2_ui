@@ -128,22 +128,34 @@ GbtFluentThemeData getTheme({
     ),
     fluentStrokeTheme: MixedFluentStrokeTheme(
       stroke1: MixedFluentStrokeStyle(
-        color: FluentColors.neutralStroke1Rest,
+        color: colorMode(
+          FluentColors.neutralStroke1Rest,
+          FluentDarkColors.neutralStroke1Rest,
+        ),
         thickness: FluentStrokeThickness.strokeWidth05,
         cornerRadius: MixedFluentCornerRadius.none,
       ),
       stroke2: MixedFluentStrokeStyle(
-        color: FluentColors.neutralStroke2Rest,
+        color: colorMode(
+          FluentColors.neutralStroke2Rest,
+          FluentDarkColors.neutralStroke2Rest,
+        ),
         thickness: FluentStrokeThickness.strokeWidth05,
         cornerRadius: MixedFluentCornerRadius.none,
       ),
       strokeAccessible: MixedFluentStrokeStyle(
-        color: FluentColors.neutralStrokeAccessibleRest,
+        color: colorMode(
+          FluentColors.neutralStrokeAccessibleRest,
+          FluentDarkColors.neutralStrokeAccessibleRest,
+        ),
         thickness: FluentStrokeThickness.strokeWidth10,
         cornerRadius: MixedFluentCornerRadius.none,
       ),
       strokeDisabled: MixedFluentStrokeStyle(
-        color: FluentColors.neutralStrokeDisabledRest,
+        color: colorMode(
+          FluentColors.neutralStrokeDisabledRest,
+          FluentDarkColors.neutralStrokeDisabledRest,
+        ),
         thickness: FluentStrokeThickness.strokeWidth10,
         cornerRadius: MixedFluentCornerRadius.xLarge,
       ),

@@ -10,6 +10,7 @@ class FluentContainer extends StatelessWidget {
   final FluentShadow? shadow;
   final Gradient? gradient;
   final AlignmentGeometry? alignment;
+  final BoxConstraints? constraints;
 
   // Other 'Container' props
   final Color? color;
@@ -32,6 +33,7 @@ class FluentContainer extends StatelessWidget {
     this.shadow,
     this.gradient,
     this.alignment,
+    this.constraints,
   });
 
   @override
@@ -87,6 +89,7 @@ class FluentContainer extends StatelessWidget {
                   : (shadow as MixedFluentShadow?)?.value,
             ),
             alignment: alignment,
+            constraints: constraints,
             width: width,
             height: height,
             padding: padding,

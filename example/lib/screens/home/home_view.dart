@@ -1,5 +1,6 @@
 import 'package:example/screens/dev_leticya/l_home_view/l_home_view.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_home_view.dart';
+import 'package:example/screens/home/test_home_view.dart';
 import 'package:example/theme_mode_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_essentials/gbt_essentials.dart';
@@ -12,8 +13,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeModeProviderState =ThemeModeProvider.of(context);
-    debug(Theme.of(context).colorScheme.primary);
+    final themeModeProviderState = ThemeModeProvider.of(context);
+
     return FluentScaffold(
       appBar: FluentNavBar(
         title: NavLeftSubtitle(
@@ -72,6 +73,16 @@ class HomeView extends StatelessWidget {
                 ));
               },
               child: Text('Brunno'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return TestHomeView();
+                  },
+                ));
+              },
+              child: Text('Test Home View'),
             ),
             Row(
               mainAxisSize: MainAxisSize.min,

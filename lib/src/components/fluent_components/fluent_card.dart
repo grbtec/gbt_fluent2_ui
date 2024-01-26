@@ -49,7 +49,8 @@ class FluentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorMode = createColorMode(Theme.of(context).brightness);
+    final coverImage = this.coverImage;
+
     final subText = this.subText;
     final shortenedString = subText != null
         ? subText.length > 20
@@ -58,60 +59,53 @@ class FluentCard extends StatelessWidget {
         : null;
 
     return conditionalButton(
-      child: FluentContainer(
-        color: colorMode(
-          FluentColors.neutralBackground2Rest,
-          FluentDarkColors.neutralBackground2Rest,
-        ),
-        width: 280,
-        cornerRadius: FluentCornerRadius.large,
-        shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow2,
-        child: Column(
-          children: [
-            if (coverImage != null)
-              SizedBox(
-                height: 130,
-                width: double.maxFinite,
+      child:  FluentCardContainer(
+          width: 280,
+          constraints: BoxConstraints(maxHeight: 192),
+          child: Column(
+            children: [
+              if (coverImage != null)
+              Expanded(
                 child: coverImage,
               ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  if (iconImage != null) ...[
-                    Image.network(
-                      iconImage.toString(),
-                      height: 24,
-                      width: 24,
-                      fit: BoxFit.cover,
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                  ],
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      FluentText(
-                        text,
-                        style: FluentThemeDataModel.of(context)
-                            .fluentTextTheme
-                            ?.body2,
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  children: [
+                    if (iconImage != null) ...[
+                      Image.network(
+                        iconImage.toString(),
+                        height: 24,
+                        width: 24,
+                        fit: BoxFit.cover,
                       ),
-                      if (shortenedString != null)
+                      const SizedBox(
+                        width: 12,
+                      ),
+                    ],
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         FluentText(
-                          shortenedString,
+                          text,
                           style: FluentThemeDataModel.of(context)
                               .fluentTextTheme
-                              ?.caption1,
+                              ?.body2,
                         ),
-                    ],
-                  ),
-                ],
+                        if (shortenedString != null)
+                          FluentText(
+                            shortenedString,
+                            style: FluentThemeDataModel.of(context)
+                                .fluentTextTheme
+                                ?.caption1,
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
       ),
     );
   }
