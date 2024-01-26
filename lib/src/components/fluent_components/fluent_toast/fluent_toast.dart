@@ -84,8 +84,9 @@ class FluentToast extends StatefulWidget {
   ) {
     final fluentToastAnimationController = _FluentToastAnimationController();
     // final List<OverlayEntry> entries = [];
+    final overlay = Overlay.of(context);
     final overlayEntry = FluentToastOverlayEntry(
-      yOffset: yOffset,
+      yOffset: yOffset-MediaQuery.of(overlay.context).viewInsets.bottom,
       onDismissed: onDismissed,
       child: _FluentToastAnimation(
         controller: fluentToastAnimationController,
@@ -93,8 +94,6 @@ class FluentToast extends StatefulWidget {
       ),
     );
     // entries.add(overlayEntry);
-
-    final overlay = Overlay.of(context);
 
     overlay.insert(overlayEntry);
 
