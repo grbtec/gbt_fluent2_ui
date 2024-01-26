@@ -37,7 +37,7 @@ env:
 
 jobs:
   build:
-    runs-on: with-xcode
+    runs-on: macOS-latest
 
     outputs:
       artifact-name: flutter-ios-${{env.FLAVOR}}-release-${{ steps.variables.outputs.app_version }}
@@ -140,7 +140,7 @@ jobs:
 
 
   deploy-testflight:
-    runs-on: with-xcode
+    runs-on: macOS-latest
     timeout-minutes: 4
     needs:
       - build
