@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ThemeModeProvider extends StatefulWidget {
@@ -22,6 +24,7 @@ class _ThemeModeProviderState extends State<ThemeModeProvider> {
 
   void set themeMode(ThemeMode value) {
     _themeMode = value;
+    
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setState(() {}));
   }

@@ -16,9 +16,12 @@ class MyApp extends StatelessWidget {
         child: Builder(
           builder: (context) {
             final themeMode  = ThemeModeProvider.of(context).themeMode;
+
             return MaterialApp(
               title: 'Flutter Demo',
+              themeAnimationDuration: Duration.zero,
               routes: Routes.routingTable,
+
               theme: theme,
               darkTheme: darkTheme,
               themeMode: themeMode,

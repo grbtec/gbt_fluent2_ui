@@ -14,7 +14,13 @@ class SizeView extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: FluentContainer(),
+        child: FluentContainer(
+          child: Column(
+            children: [
+
+            ],
+          ),
+        ),
       ),
     );
   }

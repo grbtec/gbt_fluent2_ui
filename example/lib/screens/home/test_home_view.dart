@@ -3,6 +3,7 @@ import 'package:example/screens/components_example_view/fluent_button_view.dart'
 import 'package:example/screens/components_example_view/fluent_card_view.dart';
 import 'package:example/screens/components_example_view/fluent_list_view/fluent_list_example_view.dart';
 import 'package:example/screens/design_tokens_view/shadow_view.dart';
+import 'package:example/screens/design_tokens_view/shapes_view.dart';
 import 'package:example/screens/design_tokens_view/size_view.dart';
 import 'package:example/screens/design_tokens_view/typography_view.dart';
 import 'package:example/theme_mode_provider.dart';
@@ -39,6 +40,7 @@ class TestHomeView extends StatelessWidget {
     DesignTokenItem(title: "Shadow", view: ShadowView()),
     DesignTokenItem(title: "Typography", view: TypographyView()),
     DesignTokenItem(title: "Size", view: SizeView()),
+    DesignTokenItem(title: "Shapes", view: ShapesView())
   ];
   final cards = <CardComponentPage>[
     CardComponentPage(
@@ -61,7 +63,8 @@ class TestHomeView extends StatelessWidget {
       coverImage: FluentIcon(FluentIcons.person_5_20_filled),
     ),
     CardComponentPage(
-      description: "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
+      description:
+          "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
       title: "Fluent Card",
       view: FluentCardView(),
       coverImage: FluentIcon(FluentIcons.card_ui_24_filled),
