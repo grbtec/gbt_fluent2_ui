@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
@@ -18,48 +22,39 @@ class FluentAvatarView extends StatelessWidget {
   final people = [
     PeopleExample(
       name: "Aubrey",
-      coverImageUrl:
-          "https://images.pexels.com/photos/39866/entrepreneur-startup-start-up-man-39866.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar1.jpeg",
     ),
     PeopleExample(
       name: "Kristin",
-      coverImageUrl:
-          "https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar2.jpeg",
     ),
     PeopleExample(
       name: "Dustin",
-      coverImageUrl:
-          "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar3.jpeg",
     ),
     PeopleExample(
       name: "Lee",
-      coverImageUrl:
-          "https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar4.jpeg",
     ),
     PeopleExample(
       name: "Elara",
-      coverImageUrl:
-          "https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar5.jpeg",
     ),
     PeopleExample(
       name: "Júlia",
-      coverImageUrl:
-          "https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar3.jpeg",
     ),
     PeopleExample(
       name: "Marcos",
-      coverImageUrl:
-          "https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar4.jpeg",
     ),
     PeopleExample(
       name: "Diego",
-      coverImageUrl:
-          "https://images.pexels.com/photos/2918513/pexels-photo-2918513.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar1.jpeg",
     ),
     PeopleExample(
       name: "Sara",
-      coverImageUrl:
-          "https://images.pexels.com/photos/4906334/pexels-photo-4906334.jpeg?auto=compress&cs=tinysrgb&w=800",
+      coverImageUrl: "assets/images/avatars/avatar3.jpeg",
     ),
   ];
 
@@ -95,7 +90,7 @@ class FluentAvatarView extends StatelessWidget {
                           children: [
                             FluentAvatar(
                               size: FluentAvatarSize.size56,
-                              child: Image.network(
+                              child: Image.asset(
                                 value.coverImageUrl,
                                 width: double.maxFinite,
                                 height: double.maxFinite,
@@ -139,8 +134,8 @@ class FluentAvatarView extends StatelessWidget {
                     thickness: FluentStrokeThickness.strokeWidth15,
                     padding: FluentSize.size20.value,
                   ),
-                  child: Image.network(
-                    'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800',
+                  child: Image.asset(
+                    'assets/images/avatars/avatar3.jpeg',
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,
@@ -157,8 +152,8 @@ class FluentAvatarView extends StatelessWidget {
                 leading: FluentAvatar(
                   statusPresenceBadge: StatusPresenceBadge.away,
                   size: FluentAvatarSize.size40,
-                  child: Image.network(
-                    'https://images.pexels.com/photos/1080213/pexels-photo-1080213.jpeg?auto=compress&cs=tinysrgb&w=800',
+                  child: Image.asset(
+                    'assets/images/avatars/avatar2.jpeg',
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,
@@ -178,8 +173,8 @@ class FluentAvatarView extends StatelessWidget {
                     FluentIcons.heart_12_filled,
                     size: FluentSize.size160.value,
                   ),
-                  child: Image.network(
-                    'https://images.pexels.com/photos/1080213/pexels-photo-1080213.jpeg?auto=compress&cs=tinysrgb&w=800',
+                  child: Image.asset(
+                    'assets/images/avatars/avatar1.jpeg',
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,
@@ -196,8 +191,8 @@ class FluentAvatarView extends StatelessWidget {
                 leading: FluentAvatar(
                   size: FluentAvatarSize.size56,
                   statusPresenceBadge: StatusPresenceBadge.dnd,
-                  child: Image.network(
-                    'https://images.pexels.com/photos/1080213/pexels-photo-1080213.jpeg?auto=compress&cs=tinysrgb&w=800',
+                  child: Image.asset(
+                    'assets/images/avatars/avatar5.jpeg',
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,

@@ -22,6 +22,7 @@ class FluentListItemOneLine extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
     final text = this.text;
+    final leading = this.leading;
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -37,7 +38,17 @@ class FluentListItemOneLine extends StatelessWidget {
               FluentContainer(
                 width: FluentSize.size240.value,
                 height: FluentSize.size240.value,
-                child: leading,
+                child: leading is Icon
+                    ? IconTheme(
+                        data: IconThemeData(
+                          color: colorMode(
+                            FluentColors.neutralForeground3Rest,
+                            FluentDarkColors.neutralForeground3Rest,
+                          ),
+                        ),
+                        child: leading,
+                      )
+                    : leading,
               ),
               SizedBox(
                 width: FluentSize.size160.value,

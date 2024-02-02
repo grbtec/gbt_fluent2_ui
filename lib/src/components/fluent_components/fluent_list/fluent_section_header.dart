@@ -36,68 +36,71 @@ class FluentSectionHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Row(
-            children: [
-              if (titleIcon != null) ...[
-                Icon(
-                  titleIcon,
-                  size: FluentSize.size240.value,
-                  color: colorMode(
-                    FluentColors.neutralForeground3Rest,
-                    FluentDarkColors.neutralForeground3Rest,
+          Expanded(
+            child: Row(
+              children: [
+                if (titleIcon != null) ...[
+                  Icon(
+                    titleIcon,
+                    size: FluentSize.size240.value,
+                    color: colorMode(
+                      FluentColors.neutralForeground3Rest,
+                      FluentDarkColors.neutralForeground3Rest,
+                    ),
                   ),
-                ),
-                SizedBox(width: FluentSize.size80.value),
+                  SizedBox(width: FluentSize.size80.value),
+                ],
+                Expanded(
+                  child: FluentText(
+                    title,
+                    textOverflow: TextOverflow.ellipsis,
+                    style: titleVariant == SectionHeaderTitleVariant.bold
+                        ? FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.body1Strong
+                            ?.fluentCopyWith(
+                                fluentColor: colorMode(
+                                  FluentColors.neutralForeground1Rest,
+                                  FluentDarkColors.neutralForeground1Rest,
+                                ),
+                                fluentWeight: FluentFontWeight.semibold)
+                        : FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.caption1
+                            ?.fluentCopyWith(
+                              fluentColor: colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground2Rest,
+                              ),
+                            ),
+                  ),
+                )
               ],
-              FluentText(
-                title,
-                style: titleVariant == SectionHeaderTitleVariant.bold
-                    ? FluentThemeDataModel.of(context)
-                        .fluentTextTheme
-                        ?.body1Strong
-                        ?.fluentCopyWith(
-                          fluentColor: colorMode(
-                            FluentColors.neutralForeground1Rest,
-                            FluentDarkColors.neutralForeground1Rest,
-                          ),
-                    fluentWeight: FluentFontWeight.semibold
-                        )
-                    : FluentThemeDataModel.of(context)
-                        .fluentTextTheme
-                        ?.caption1
-                        ?.fluentCopyWith(
-                          fluentColor: colorMode(
-                            FluentColors.neutralForeground2Rest,
-                            FluentDarkColors.neutralForeground2Rest,
-                          ),
-                        ),
-              ),
-            ],
+            ),
           ),
           if (actions != null)
-            Expanded(
-              child: Row(
-                children: [
-                  if (action1 != null) ...[
-                    if (action1 is Icon)
-                      IconTheme(
-                          data: IconThemeData(size: FluentSize.size200.value),
-                          child: action1)
-                    else
-                      action1,
-                  ],
-                  if (action2 != null) ...[
-                    SizedBox(width: FluentSize.size200.value),
-                    if (action2 is Icon)
-                      IconTheme(
-                          data: IconThemeData(size: FluentSize.size200.value),
-                          child: action2)
-                    else
-                      action2,
-                  ]
+            Row(
+              children: [
+                if (action1 != null) ...[
+                  if (action1 is Icon)
+                    IconTheme(
+                        data: IconThemeData(size: FluentSize.size200.value),
+                        child: action1)
+                  else
+                    action1,
                 ],
-              ),
+                if (action2 != null) ...[
+                  SizedBox(width: FluentSize.size200.value),
+                  if (action2 is Icon)
+                    IconTheme(
+                        data: IconThemeData(size: FluentSize.size200.value),
+                        child: action2)
+                  else
+                    action2,
+                ]
+              ],
             ),
         ],
       ),

@@ -25,7 +25,7 @@ class MixedFluentTextStyle extends TextStyle implements FluentTextStyle {
   }) {
     return MixedFluentTextStyle(
         fluentWeight: fluentWeight == null
-            ? null
+            ? this.fluentWeight
             : MixedFluentFontWeight.values[fluentWeight.index],
         fluentSize: fluentSize ?? this.fluentSize,
         fluentColor: fluentColor ?? this.fluentColor,

@@ -5,20 +5,29 @@ class FluentCard extends StatelessWidget {
   final Widget? coverImage;
   final String text;
   final String? subText;
+  @Deprecated("Use 'leading' instead. Since v4.x")
   final Uri? iconImage;
+  final double? leadingBoxSize;
+  final Widget? leading;
   final VoidCallback? onPressed;
   final Color? highlightColor;
 
   /// FluentCard's constructor
   const FluentCard({
+    super.key,
     required this.text,
     this.subText,
-    super.key,
     this.coverImage,
-    this.iconImage,
     this.onPressed,
     this.highlightColor,
-  });
+    this.leading,
+    this.leadingBoxSize = 24,
+    @Deprecated("Use 'leading' instead. Since v4.x") this.iconImage,
+  }) : assert(
+            leading != null && iconImage == null ||
+                leading == null && iconImage != null ||
+                leading == null && iconImage == null,
+            "You can't pass both leading and iconImage");
 
   Widget conditionalButton({required Widget child}) {
     if (onPressed == null) {
@@ -50,40 +59,64 @@ class FluentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final coverImage = this.coverImage;
-
+    final leading = this.leading;
     final subText = this.subText;
-    final shortenedString = subText != null
-        ? subText.length > 20
-            ? subText.replaceAll(subText.substring(20), '...')
-            : subText
-        : null;
+    final colorMode = createColorMode(Theme.of(context).brightness);
 
     return conditionalButton(
-      child:  FluentCardContainer(
-          width: 280,
-          constraints: BoxConstraints(maxHeight: 192),
-          child: Column(
-            children: [
-              if (coverImage != null)
+      child: FluentCardContainer(
+        width: 280,
+        constraints: BoxConstraints(maxHeight: 192),
+        child: Column(
+          children: [
+            if (coverImage != null)
               Expanded(
                 child: coverImage,
               ),
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Row(
-                  children: [
-                    if (iconImage != null) ...[
-                      Image.network(
-                        iconImage.toString(),
-                        height: 24,
-                        width: 24,
-                        fit: BoxFit.cover,
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  // if (iconImage != null) ...[
+                  //   Image.network(
+                  //     iconImage.toString(),
+                  //     height: 24,
+                  //     width: 24,
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  //   const SizedBox(
+                  //     width: 12,
+                  //   ),
+                  // ],
+                  if (iconImage != null) ...[
+                    Image.network(
+                      iconImage.toString(),
+                      height: leadingBoxSize,
+                      width: leadingBoxSize,
+                      fit: BoxFit.cover,
+                    ),
+                    const SizedBox(width: 12),
+                  ] else if (leading != null)
+                    if (leading is Icon) ...[
+                      IconTheme(
+                        data: IconThemeData(
+                            color: colorMode(
+                          FluentColors.neutralForeground3Rest,
+                          FluentDarkColors.neutralForeground3Rest,
+                        )),
+                        child: leading,
                       ),
-                      const SizedBox(
-                        width: 12,
+                      const SizedBox(width: 12),
+                    ] else ...[
+                      FluentContainer(
+                        width: leadingBoxSize,
+                        height: leadingBoxSize,
+                        child: leading,
                       ),
+                      const SizedBox(width: 12),
                     ],
-                    Column(
+                  Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         FluentText(
@@ -92,20 +125,22 @@ class FluentCard extends StatelessWidget {
                               .fluentTextTheme
                               ?.body2,
                         ),
-                        if (shortenedString != null)
+                        if (subText != null)
                           FluentText(
-                            shortenedString,
+                            subText,
+                            textOverflow: TextOverflow.ellipsis,
                             style: FluentThemeDataModel.of(context)
                                 .fluentTextTheme
                                 ?.caption1,
                           ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
       ),
     );
   }

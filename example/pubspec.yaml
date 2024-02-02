@@ -44,6 +44,15 @@ flutter:
   assets:
     - assets/images/fluent.png
     - assets/images/gbt_fluent2_ui.png
+    - assets/images/gbt_logo.png
+    - assets/images/avatars/avatar1.jpeg
+    - assets/images/avatars/avatar2.jpeg
+    - assets/images/avatars/avatar3.jpeg
+    - assets/images/avatars/avatar4.jpeg
+    - assets/images/avatars/avatar5.jpeg
+    - assets/images/cards/card1.jpeg
+    - assets/images/cards/card2.jpeg
+    - assets/images/cards/card3.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

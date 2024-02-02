@@ -54,7 +54,7 @@ class FluentInitials extends StatelessWidget {
     return FluentContainer(
       cornerRadius: FluentCornerRadius.circle,
       color: backgroundColor ??
-          Theme.of(context).colorScheme.primary.withOpacity(0.3),
+          FluentColors.of(context)?.brandForegroundDisabled2Rest,
       width: size?.width ?? double.maxFinite,
       height: size?.height ?? double.maxFinite,
       alignment: Alignment.center,

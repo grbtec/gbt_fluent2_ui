@@ -26,8 +26,8 @@ class FluentCardView extends StatelessWidget {
                 FluentCard(
                   text: "Card 1 example",
                   subText: "This is a description text",
-                  coverImage: Image.network(
-                    "https://images.pexels.com/photos/87812/pexels-photo-87812.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  coverImage: Image.asset(
+                    "assets/images/cards/card1.jpeg",
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,
@@ -39,8 +39,8 @@ class FluentCardView extends StatelessWidget {
                 FluentCard(
                   text: "Card 2 example",
                   subText: "This is a description text",
-                  coverImage: Image.network(
-                    "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  coverImage: Image.asset(
+                    "assets/images/cards/card2.jpeg",
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,
@@ -54,8 +54,8 @@ class FluentCardView extends StatelessWidget {
                   subText: "This is a description text",
                   iconImage: Uri.parse(
                       "https://images.pexels.com/photos/4050347/pexels-photo-4050347.jpeg?auto=compress&cs=tinysrgb&w=800"),
-                  coverImage: Image.network(
-                    "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=800",
+                  coverImage: Image.asset(
+                    "assets/images/cards/card3.jpeg",
                     width: double.maxFinite,
                     height: double.maxFinite,
                     fit: BoxFit.cover,

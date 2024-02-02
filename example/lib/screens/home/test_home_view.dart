@@ -1,7 +1,9 @@
 import 'package:example/screens/components_example_view/fluent_avatar_view.dart';
+import 'package:example/screens/components_example_view/fluent_banner_view.dart';
 import 'package:example/screens/components_example_view/fluent_button_view.dart';
 import 'package:example/screens/components_example_view/fluent_card_view.dart';
 import 'package:example/screens/components_example_view/fluent_list_view/fluent_list_example_view.dart';
+import 'package:example/screens/components_example_view/fluent_toast_view.dart';
 import 'package:example/screens/design_tokens_view/shadow_view.dart';
 import 'package:example/screens/design_tokens_view/shapes_view.dart';
 import 'package:example/screens/design_tokens_view/size_view.dart';
@@ -15,59 +17,91 @@ class CardComponentPage {
   final String description;
   final String title;
   final Widget view;
-  final Widget coverImage;
+  final IconData previewIcon;
 
   CardComponentPage({
     required this.description,
     required this.title,
     required this.view,
-    required this.coverImage,
+    required this.previewIcon,
   });
 }
 
 class DesignTokenItem {
   final String title;
   final Widget view;
+  final IconData leadingIcon;
 
   DesignTokenItem({
     required this.title,
     required this.view,
+    required this.leadingIcon,
   });
 }
 
 class TestHomeView extends StatelessWidget {
-  final designTokens = <DesignTokenItem>[
-    DesignTokenItem(title: "Shadow", view: ShadowView()),
-    DesignTokenItem(title: "Typography", view: TypographyView()),
-    DesignTokenItem(title: "Size", view: SizeView()),
-    DesignTokenItem(title: "Shapes", view: ShapesView())
-  ];
   final cards = <CardComponentPage>[
     CardComponentPage(
       title: "Fluent List",
       description: "Lists organize data in rows",
       view: FluentListView(),
-      coverImage: FluentIcon(FluentIcons.content_settings_16_filled),
+      previewIcon: FluentIcons.list_20_regular,
     ),
     CardComponentPage(
       title: "Fluent Button",
       description: "Lists organize data in rows",
       view: FluentButtonView(),
-      coverImage: FluentIcon(FluentIcons.content_settings_16_filled),
+      previewIcon: FluentIcons.button_20_regular,
     ),
     CardComponentPage(
       title: "Fluent Avatar",
       description:
           "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
       view: FluentAvatarView(),
-      coverImage: FluentIcon(FluentIcons.person_5_20_filled),
+      previewIcon: FluentIcons.person_circle_20_regular,
     ),
     CardComponentPage(
       description:
           "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
       title: "Fluent Card",
       view: FluentCardView(),
-      coverImage: FluentIcon(FluentIcons.card_ui_24_filled),
+      previewIcon: FluentIcons.card_ui_24_regular,
+    ),
+    CardComponentPage(
+      description: "Show only for peristent notifications until completion",
+      title: "Fluent Banner",
+      view: FluentBannerView(),
+      previewIcon: FluentIcons.rectangle_landscape_12_filled,
+    ),
+    CardComponentPage(
+      description:
+          "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
+      title: "Fluent Toast",
+      view: FluentToastView(),
+      previewIcon: FluentIcons.square_shadow_12_regular,
+    )
+  ];
+
+  final designTokens = <DesignTokenItem>[
+    DesignTokenItem(
+      title: "Shadow",
+      view: ShadowView(),
+      leadingIcon: FluentIcons.square_shadow_12_regular,
+    ),
+    DesignTokenItem(
+      title: "Size",
+      view: SizeView(),
+      leadingIcon: FluentIcons.slide_size_20_regular,
+    ),
+    DesignTokenItem(
+      title: "Typography",
+      view: TypographyView(),
+      leadingIcon: FluentIcons.text_12_regular,
+    ),
+    DesignTokenItem(
+      title: "Shapes",
+      view: ShapesView(),
+      leadingIcon: FluentIcons.shapes_16_regular,
     )
   ];
 
@@ -76,6 +110,7 @@ class TestHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeModeProviderState = ThemeModeProvider.of(context);
+    final colorMode = createColorMode(Theme.of(context).brightness);
 
     return FluentScaffold(
       appBar: FluentNavBar(
@@ -95,64 +130,101 @@ class TestHomeView extends StatelessWidget {
                 }
               })
         ],
+        child: FluentSearchBar.leftAligned(
+          themeColorVariation: FluentThemeColorVariation.brand,
+          hintText: "Search",
+          onSearch: (value) async {
+            await Future.delayed(
+              Duration(seconds: 2),
+            );
+          },
+          onCancelOperation: () {},
+        ),
       ),
-      body: SafeArea(
-        child: Column(
+      drawer: FluentLeftNav(
+        headerAvatar: FluentAvatar(
+          size: FluentAvatarSize.size36,
+          strokeStyle: colorMode(
+            null,
+            FluentStrokeStyle(
+              thickness: FluentStrokeThickness.strokeWidth20,
+              color: FluentDarkColors.neutralBackground1Rest,
+            ),
+          ),
+          child: FluentInitials(
+            name: "Krystal McKinney",
+          ),
+        ),
+        header: FluentListItemMultiLine(
+          text: "Krystal McKinney",
+          subtext: "l.mckinney@schoolofineart.com",
+          leading: FluentAvatar(
+            size: FluentAvatarSize.size40,
+            child: FluentIcon.outlinedPrimaryIcon(
+              FluentIcons.person_12_filled,
+            ),
+          ),
+        ),
+        body: Column(
           children: [
-            Flexible(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.all(
-                  FluentSize.size160.value,
-                ),
-                child: Row(
-                  children: [
-                    for (CardComponentPage card in cards) ...[
-                      Container(
-                        height: 192,
-                        child: FluentCard(
-                          text: card.title,
-                          subText: card.description,
-                          coverImage: FluentIcon(
-                            FluentIcons.list_24_regular,
-                            boxSize: 30,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => card.view,
-                              ),
-                            );
-                          },
+            ...designTokens.map(
+              (value) => FluentListItemOneLine(
+                leading: Icon(value.leadingIcon),
+                text: value.title,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return value.view;
+                      },
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: FluentContainer(
+              width: double.maxFinite,
+              padding: EdgeInsets.symmetric(vertical: FluentSize.size240.value),
+              child: Column(
+                children: [
+                  for (CardComponentPage card in cards) ...[
+                    Container(
+                      height: 192,
+                      child: FluentCard(
+                        leading: Icon(FluentIcons.puzzle_cube_piece_20_filled),
+                        text: card.title,
+                        subText: card.description,
+                        coverImage: FluentIcon.outlinedPrimaryIcon(
+                          card.previewIcon,
+                          cornerRadius: FluentCornerRadius.none,
+                          iconSize: FluentSize.size560.value,
                         ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => card.view,
+                            ),
+                          );
+                        },
                       ),
-                      SizedBox(
-                        width: FluentSize.size120.value,
-                      ),
-                    ],
+                    ),
+                    SizedBox(
+                      height: FluentSize.size120.value,
+                    ),
                   ],
-                ),
+                ],
               ),
             ),
-            FluentList.oneLine(
-              sectionHeaderTitle: "Design tokens",
-              separator: FluentStrokeDivider(),
-              listItems: [
-                ...designTokens.map(
-                  (value) => FluentListItemOneLine(
-                    text: value.title,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) {
-                          return value.view;
-                        },
-                      ));
-                    },
-                  ),
-                )
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

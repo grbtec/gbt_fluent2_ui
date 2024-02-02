@@ -5,6 +5,7 @@ class FluentCardContainer extends StatelessWidget {
   final Widget? child;
   final double? width;
   final double? height;
+  final Color? color;
   final EdgeInsetsGeometry? margin;
   final EdgeInsets? padding;
   final FluentShadow? shadow;
@@ -21,6 +22,7 @@ class FluentCardContainer extends StatelessWidget {
     this.margin,
     this.shadow,
     this.height,
+    this.color,
     this.width,
     this.child,
   });
@@ -36,7 +38,7 @@ class FluentCardContainer extends StatelessWidget {
         width: width,
         height: height,
         constraints: constraints,
-        color: colorMode(
+        color: color ?? colorMode(
           FluentColors.neutralBackground2Rest,
           FluentDarkColors.neutralBackground2Rest,
         ),

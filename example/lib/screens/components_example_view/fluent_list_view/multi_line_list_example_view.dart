@@ -28,8 +28,7 @@ class MultiLineListExampleView extends StatelessWidget {
       ExampleListUser(
         name: "Bessie Cooper",
         text: "You: Let's do it",
-        coverImageUrl:
-            'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800',
+        coverImageUrl: 'assets/images/avatars/avatar1.jpeg',
         trailing: FluentText(
           "1m ago",
           style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
@@ -38,8 +37,7 @@ class MultiLineListExampleView extends StatelessWidget {
       ExampleListUser(
           name: "Darrel Steward",
           text: "Sounds good -- thanks!",
-          coverImageUrl:
-              'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=800',
+          coverImageUrl: 'assets/images/avatars/avatar2.jpeg',
           trailing: FluentText(
             "3:19 PM",
             style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
@@ -47,8 +45,7 @@ class MultiLineListExampleView extends StatelessWidget {
       ExampleListUser(
           name: "Katri Ahokas",
           text: "Sure thing :)",
-          coverImageUrl:
-              'https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&w=800',
+          coverImageUrl: 'assets/images/avatars/avatar3.jpeg',
           trailing: FluentText(
             "2:30 PM",
             style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
@@ -56,8 +53,7 @@ class MultiLineListExampleView extends StatelessWidget {
       ExampleListUser(
           name: "Juliet Finch",
           text: "i am available for a sync when you",
-          coverImageUrl:
-              'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=800',
+          coverImageUrl: 'assets/images/avatars/avatar4.jpeg',
           trailing: FluentText(
             "2:13 PM",
             style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
@@ -65,8 +61,7 @@ class MultiLineListExampleView extends StatelessWidget {
       ExampleListUser(
           name: "jon Harrington",
           text: "Thanks, i will respond to the request",
-          coverImageUrl:
-              'https://images.pexels.com/photos/1161668/pexels-photo-1161668.jpeg?auto=compress&cs=tinysrgb&w=800',
+          coverImageUrl: 'assets/images/avatars/avatar5.jpeg',
           trailing: FluentText(
             "1:59 PM",
             style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
@@ -78,16 +73,14 @@ class MultiLineListExampleView extends StatelessWidget {
           "4:02 PM",
           style: FluentThemeDataModel.of(context).fluentTextTheme?.caption1,
         ),
-        coverImageUrl:
-            "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        coverImageUrl: 'assets/images/avatars/avatar3.jpeg',
       ),
       ExampleListUser(
         name: "Jane Cooper",
         text: "Product design",
         trailing: FluentIcon(FluentIcons.chevron_right_12_filled),
         aditionalText: "Office",
-        coverImageUrl:
-            "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+        coverImageUrl: 'assets/images/avatars/avatar1.jpeg',
       )
     ];
 
@@ -113,7 +106,7 @@ class MultiLineListExampleView extends StatelessWidget {
                     subtext: user.text,
                     trailing: user.trailing,
                     leading: FluentAvatar(
-                      child: Image.network(
+                      child: Image.asset(
                         user.coverImageUrl,
                         fit: BoxFit.cover,
                         width: double.maxFinite,
@@ -136,11 +129,10 @@ class MultiLineListExampleView extends StatelessWidget {
                           .fluentTextTheme
                           ?.caption1
                           ?.fluentCopyWith(
-                        fluentColor: colorMode(
-                            FluentColors.neutralForeground2Rest,
-                            FluentDarkColors.neutralForeground3Rest
-                        ),
-                      )),
+                            fluentColor: colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground3Rest),
+                          )),
                 ),
                 FluentListItemMultiLine(
                   text: "FY25 Sales Projection",
@@ -151,11 +143,10 @@ class MultiLineListExampleView extends StatelessWidget {
                           .fluentTextTheme
                           ?.caption1
                           ?.fluentCopyWith(
-                        fluentColor: colorMode(
-                            FluentColors.neutralForeground2Rest,
-                            FluentDarkColors.neutralForeground3Rest
-                        ),
-                      )),
+                            fluentColor: colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground3Rest),
+                          )),
                 ),
                 FluentListItemMultiLine(
                   text: "Edge Brand growth MSAI ",
@@ -166,11 +157,10 @@ class MultiLineListExampleView extends StatelessWidget {
                           .fluentTextTheme
                           ?.caption1
                           ?.fluentCopyWith(
-                        fluentColor: colorMode(
-                            FluentColors.neutralForeground2Rest,
-                            FluentDarkColors.neutralForeground3Rest
-                        ),
-                      )),
+                            fluentColor: colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground3Rest),
+                          )),
                 ),
                 FluentListItemMultiLine(
                   text: "Design hiring matrix",
@@ -181,9 +171,8 @@ class MultiLineListExampleView extends StatelessWidget {
                           ?.caption1
                           ?.fluentCopyWith(
                             fluentColor: colorMode(
-                              FluentColors.neutralForeground2Rest,
-                              FluentDarkColors.neutralForeground3Rest
-                            ),
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground3Rest),
                           )),
                   leading: FluentIcon(FluentIcons.square_12_filled),
                 )
