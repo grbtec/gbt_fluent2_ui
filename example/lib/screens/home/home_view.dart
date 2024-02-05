@@ -3,7 +3,6 @@ import 'package:example/screens/dev_railson/r_home_view/r_home_view.dart';
 import 'package:example/screens/home/test_home_view.dart';
 import 'package:example/theme_mode_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_essentials/gbt_essentials.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 import '../dev_brunno/b_home.dart';

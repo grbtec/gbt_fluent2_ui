@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentCardView extends StatelessWidget {
@@ -52,8 +51,7 @@ class FluentCardView extends StatelessWidget {
                 FluentCard(
                   text: "Card 3 example",
                   subText: "This is a description text",
-                  iconImage: Uri.parse(
-                      "https://images.pexels.com/photos/4050347/pexels-photo-4050347.jpeg?auto=compress&cs=tinysrgb&w=800"),
+                  leading: Image.network("https://images.pexels.com/photos/4050347/pexels-photo-4050347.jpeg?auto=compress&cs=tinysrgb&w=800"),
                   coverImage: Image.asset(
                     "assets/images/cards/card3.jpeg",
                     width: double.maxFinite,

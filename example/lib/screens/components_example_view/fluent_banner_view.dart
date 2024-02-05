@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
-import 'package:get/get.dart';
 
 class FluentBannerView extends StatefulWidget {
   const FluentBannerView({super.key});
