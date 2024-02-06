@@ -200,7 +200,7 @@ class SizeView extends StatelessWidget {
                   left: FluentSize.size160.value,
                   right: FluentSize.size160.value,
                 ),
-                child: Row(
+                child: Wrap(
                   children: [
                     FluentContainer(
                       alignment: Alignment.center,

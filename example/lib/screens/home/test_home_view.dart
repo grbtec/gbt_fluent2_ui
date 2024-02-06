@@ -1,46 +1,21 @@
 import 'package:example/routing/routes.dart';
-import 'package:example/screens/components_example_view/fluent_avatar_view.dart';
-import 'package:example/screens/components_example_view/fluent_banner_view.dart';
-import 'package:example/screens/components_example_view/fluent_button_view.dart';
-import 'package:example/screens/components_example_view/fluent_card_view.dart';
-import 'package:example/screens/components_example_view/fluent_list_view/fluent_list_example_view.dart';
-import 'package:example/screens/components_example_view/fluent_toast_view.dart';
-import 'package:example/screens/design_tokens_view/shadow_view.dart';
-import 'package:example/screens/design_tokens_view/shapes_view.dart';
-import 'package:example/screens/design_tokens_view/size_view.dart';
-import 'package:example/screens/design_tokens_view/typography_view.dart';
 import 'package:example/theme_mode_provider.dart';
+import 'package:example/utils/diacritics.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
-class CardComponentPage {
-  final String description;
-  final String title;
-  final String route;
-  final IconData previewIcon;
+class TestHomeView extends StatefulWidget {
+  const TestHomeView({super.key});
 
-  CardComponentPage({
-    required this.description,
-    required this.title,
-    required this.route,
-    required this.previewIcon,
-  });
+  @override
+  State<TestHomeView> createState() => _TestHomeViewState();
 }
 
-class DesignTokenItem {
-  final String title;
-  final String route;
-  final IconData leadingIcon;
+class _TestHomeViewState extends State<TestHomeView> {
+  final diacritics = Diacritics();
+  String queryString = "";
 
-  DesignTokenItem({
-    required this.title,
-    required this.route,
-    required this.leadingIcon,
-  });
-}
-
-class TestHomeView extends StatelessWidget {
   final cards = <CardComponentPage>[
     CardComponentPage(
       title: "Fluent List",
@@ -57,13 +32,13 @@ class TestHomeView extends StatelessWidget {
     CardComponentPage(
       title: "Fluent Avatar",
       description:
-      "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
+          "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
       route: Routes.fluentAvatarView,
       previewIcon: FluentIcons.person_circle_20_regular,
     ),
     CardComponentPage(
       description:
-      "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
+          "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
       title: "Fluent Card",
       route: Routes.fluentCardView,
       previewIcon: FluentIcons.card_ui_24_regular,
@@ -76,30 +51,30 @@ class TestHomeView extends StatelessWidget {
     ),
     CardComponentPage(
       description:
-      "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
+          "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
       title: "Fluent Toast",
       route: Routes.fluentToastView,
       previewIcon: FluentIcons.square_shadow_12_regular,
     ),
     CardComponentPage(
       description:
-      "Assistive texts, icons and suffixes are optional and hidden by default in the text fields components.",
+          "Assistive texts, icons and suffixes are optional and hidden by default in the text fields components.",
       title: "Fluent Text Field",
       route: Routes.fluentTextFieldView,
       previewIcon: FluentIcons.text_field_16_filled,
     ),
     CardComponentPage(
       description:
-      "Use activity indicators and progress bars to let people know your app isn’t stalled and to give them some idea of how long they’ll be waiting.",
+          "Use activity indicators and progress bars to let people know your app isn’t stalled and to give them some idea of how long they’ll be waiting.",
       title: "Fluent Progress Bar",
       route: Routes.fluentProgressIndicatorsView,
       previewIcon: FluentIcons.line_horizontal_1_24_regular,
     ),
     CardComponentPage(
-        title: "Fluent Controls",
-        description: 'Fluent Controls Components',
-        route: Routes.fluentControlsView,
-        previewIcon: FluentIcons.checkbox_2_20_regular,
+      title: "Fluent Controls",
+      description: 'Fluent Controls Components',
+      route: Routes.fluentControlsView,
+      previewIcon: FluentIcons.checkbox_2_20_regular,
     )
   ];
 
@@ -126,14 +101,73 @@ class TestHomeView extends StatelessWidget {
     )
   ];
 
-  TestHomeView({super.key});
+  List<Widget> returnComponents() {
+    if (queryString.trim().length == 0) {
+      return cards
+          .map((card) => Container(
+                height: 192,
+                margin: EdgeInsets.only(bottom: FluentSize.size120.value),
+                child: FluentCard(
+                  leading: Icon(FluentIcons.puzzle_cube_piece_20_filled),
+                  text: card.title,
+                  subText: card.description,
+                  coverImage: FluentIcon.outlinedPrimaryIcon(
+                    card.previewIcon,
+                    cornerRadius: FluentCornerRadius.none,
+                    iconSize: FluentSize.size560.value,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(card.route);
+                  },
+                ),
+              ))
+          .toList();
+    } else {
+      final lowerQueryString =
+          queryString.toLowerCase().withoutDiacritics(diacritics);
+      List<CardComponentPage> filteredComponentsList = cards.where((element) {
+        final title = element.title.toLowerCase().withoutDiacritics(diacritics);
+
+        return title.contains(lowerQueryString);
+      }).toList();
+
+      if (filteredComponentsList.length == 0) {
+        print("LISTA VAZIA");
+        return [
+          Center(
+            child: FluentText("Nenhum componente corresponde a pesquisa"),
+          )
+        ];
+      } else {
+        print("LISTA COM ITEMS");
+
+        return filteredComponentsList
+            .map((card) => Container(
+                  height: 192,
+                  margin: EdgeInsets.only(bottom: FluentSize.size120.value),
+                  child: FluentCard(
+                    leading: Icon(FluentIcons.puzzle_cube_piece_20_filled),
+                    text: card.title,
+                    subText: card.description,
+                    coverImage: FluentIcon.outlinedPrimaryIcon(
+                      card.previewIcon,
+                      cornerRadius: FluentCornerRadius.none,
+                      iconSize: FluentSize.size560.value,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(card.route);
+                    },
+                  ),
+                ))
+            .toList();
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final themeModeProviderState = ThemeModeProvider.of(context);
-    final colorMode = createColorMode(Theme
-        .of(context)
-        .brightness);
+    final colorMode = createColorMode(Theme.of(context).brightness);
 
     return FluentScaffold(
       appBar: FluentNavBar(
@@ -144,9 +178,7 @@ class TestHomeView extends StatelessWidget {
         themeColorVariation: FluentThemeColorVariation.brand,
         actions: [
           FluentSwitchToggle(
-              value: Theme
-                  .of(context)
-                  .brightness == Brightness.dark,
+              value: Theme.of(context).brightness == Brightness.dark,
               onChanged: (value) {
                 if (themeModeProviderState.themeMode == ThemeMode.dark) {
                   themeModeProviderState.themeMode = ThemeMode.light;
@@ -158,10 +190,18 @@ class TestHomeView extends StatelessWidget {
         child: FluentSearchBar.leftAligned(
           themeColorVariation: FluentThemeColorVariation.brand,
           hintText: "Search",
+          onEmpty: () {
+            setState(() {
+              queryString = "";
+            });
+          },
           onSearch: (value) async {
             await Future.delayed(
-              Duration(seconds: 2),
+              Duration(seconds: 1),
             );
+            setState(() {
+              queryString = value;
+            });
           },
           onCancelOperation: () {},
         ),
@@ -193,14 +233,13 @@ class TestHomeView extends StatelessWidget {
         body: Column(
           children: [
             ...designTokens.map(
-                  (value) =>
-                  FluentListItemOneLine(
-                    leading: Icon(value.leadingIcon),
-                    text: value.title,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(value.route);
-                    },
-                  ),
+              (value) => FluentListItemOneLine(
+                leading: Icon(value.leadingIcon),
+                text: value.title,
+                onTap: () {
+                  Navigator.of(context).pushNamed(value.route);
+                },
+              ),
             )
           ],
         ),
@@ -216,27 +255,7 @@ class TestHomeView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: FluentSize.size240.value),
               child: Column(
                 children: [
-                  for (CardComponentPage card in cards) ...[
-                    Container(
-                      height: 192,
-                      child: FluentCard(
-                        leading: Icon(FluentIcons.puzzle_cube_piece_20_filled),
-                        text: card.title,
-                        subText: card.description,
-                        coverImage: FluentIcon.outlinedPrimaryIcon(
-                          card.previewIcon,
-                          cornerRadius: FluentCornerRadius.none,
-                          iconSize: FluentSize.size560.value,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(card.route);
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: FluentSize.size120.value,
-                    ),
-                  ],
+                  ...returnComponents(),
                 ],
               ),
             ),
@@ -245,4 +264,30 @@ class TestHomeView extends StatelessWidget {
       ),
     );
   }
+}
+
+class CardComponentPage {
+  final String description;
+  final String title;
+  final String route;
+  final IconData previewIcon;
+
+  CardComponentPage({
+    required this.description,
+    required this.title,
+    required this.route,
+    required this.previewIcon,
+  });
+}
+
+class DesignTokenItem {
+  final String title;
+  final String route;
+  final IconData leadingIcon;
+
+  DesignTokenItem({
+    required this.title,
+    required this.route,
+    required this.leadingIcon,
+  });
 }

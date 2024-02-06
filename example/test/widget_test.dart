@@ -21,6 +21,7 @@ void main() {
     Routes.fluentCardView,
     Routes.fluentToastView,
     Routes.fluentProgressIndicatorsView,
+    Routes.fluentControlsView,
     Routes.shadowView,
     Routes.shapesView,
     Routes.sizeView,
