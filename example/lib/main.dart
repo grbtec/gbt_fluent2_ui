@@ -16,5 +16,5 @@ Future<void> main() async {
   await Future.delayed(Duration(seconds: 3));
 
   debugPrint('runing app (home)');
-  runApp(MyApp(home: TestHomeView()));
+  runApp(MyApp(home: HomeView()));
 }

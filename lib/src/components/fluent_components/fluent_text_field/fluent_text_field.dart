@@ -66,101 +66,106 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final suffixIcon = widget.suffixIcon;
     final onChanged = widget.onChanged;
 
-    return TextField(
-      obscureText: widget.obscureText,
-      readOnly: widget.readOnly,
-      focusNode: fluentTextFieldController._focus,
-      onTapOutside: (event) {
-        FocusScope.of(context).unfocus();
-      },
-      controller: fluentTextFieldController.textEditingController,
-      onChanged: onChanged,
-      cursorColor: colorMode(
-        FluentColors.neutralForeground3Rest,
-        FluentDarkColors.neutralForeground3Rest,
-      ),
-      style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-        fluentColor: hasFocus
-            ? colorMode(
-                FluentColors.neutralForeground1Rest,
-                FluentDarkColors.neutralForeground1Rest,
-              )
-            : colorMode(
-                FluentColors.neutralForeground2Rest,
-                FluentDarkColors.neutralForeground2Rest,
-              ),
-      ),
-      decoration: InputDecoration(
-        label: label != null ? FluentText(label) : null,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
-          fluentColor: widget.hasError
-              ? colorMode(
-                  FluentColors.statusDangerForeground2Rest,
-                  FluentDarkColors.statusDangerForeground2Rest,
-                )
-              : fluentTheme.colorScheme.primary,
+    return Padding(
+      padding: EdgeInsets.only(top: FluentSize.size120.value),
+      child: TextField(
+        obscureText: widget.obscureText,
+        readOnly: widget.readOnly,
+        focusNode: fluentTextFieldController._focus,
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
+        controller: fluentTextFieldController.textEditingController,
+        onChanged: onChanged,
+        cursorColor: colorMode(
+          FluentColors.neutralForeground3Rest,
+          FluentDarkColors.neutralForeground3Rest,
         ),
-        contentPadding: EdgeInsets.zero,
-        hintText: hintText,
-        helperText: assistiveText,
-        helperStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
-          fluentColor: widget.hasError
+        style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+          fluentColor: hasFocus
               ? colorMode(
-                  FluentColors.statusDangerForeground2Rest,
-                  FluentDarkColors.statusDangerForeground2Rest,
+                  FluentColors.neutralForeground1Rest,
+                  FluentDarkColors.neutralForeground1Rest,
                 )
               : colorMode(
                   FluentColors.neutralForeground2Rest,
                   FluentDarkColors.neutralForeground2Rest,
                 ),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.hasError
+        decoration: InputDecoration(
+          label: label != null ? FluentText(label) : null,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+            fluentColor: widget.hasError
+                ? colorMode(
+                    FluentColors.statusDangerForeground2Rest,
+                    FluentDarkColors.statusDangerForeground2Rest,
+                  )
+                : fluentTheme.colorScheme.primary,
+          ),
+          contentPadding: EdgeInsets.zero,
+          hintText: hintText,
+          helperText: assistiveText,
+          helperStyle: fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+            fluentColor: widget.hasError
                 ? colorMode(
                     FluentColors.statusDangerForeground2Rest,
                     FluentDarkColors.statusDangerForeground2Rest,
                   )
                 : colorMode(
-                    FluentColors.neutralStroke1Rest,
-                    FluentDarkColors.neutralStroke1Rest,
+                    FluentColors.neutralForeground2Rest,
+                    FluentDarkColors.neutralForeground2Rest,
                   ),
-            width: FluentStrokeThickness.strokeWidth05.value,
           ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            width: FluentStrokeThickness.strokeWidth05.value,
-            color: widget.hasError
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: widget.hasError
+                  ? colorMode(
+                      FluentColors.statusDangerForeground2Rest,
+                      FluentDarkColors.statusDangerForeground2Rest,
+                    )
+                  : colorMode(
+                      FluentColors.neutralStroke1Rest,
+                      FluentDarkColors.neutralStroke1Rest,
+                    ),
+              width: FluentStrokeThickness.strokeWidth05.value,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              width: FluentStrokeThickness.strokeWidth05.value,
+              color: widget.hasError
+                  ? colorMode(
+                      FluentColors.statusDangerForeground2Rest,
+                      FluentDarkColors.statusDangerForeground2Rest,
+                    )
+                  : FluentColors.of(context)?.brandStroke1Rest ??
+                      // ❕ Never reached fallback
+                      Theme.of(context).primaryColor,
+            ),
+          ),
+          hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+            fluentColor: hasFocus
                 ? colorMode(
-                    FluentColors.statusDangerForeground2Rest,
-                    FluentDarkColors.statusDangerForeground2Rest,
+                    FluentColors.neutralForeground2Rest,
+                    FluentDarkColors.neutralForeground2Rest,
                   )
-                : FluentColors.of(context)?.brandStroke1Rest ??
-                    // ❕ Never reached fallback
-                    Theme.of(context).primaryColor,
+                : colorMode(
+                    FluentColors.neutralForegroundDisabled1Rest,
+                    FluentDarkColors.neutralForegroundDisabled1Rest,
+                  ),
           ),
-        ),
-        hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-          fluentColor: hasFocus
-              ? colorMode(
-                  FluentColors.neutralForeground2Rest,
-                  FluentDarkColors.neutralForeground2Rest,
-                )
-              : colorMode(
-                  FluentColors.neutralForegroundDisabled1Rest,
-                  FluentDarkColors.neutralForegroundDisabled1Rest,
+          suffixIcon: widget.readOnly
+              ? null
+              : TextFieldTrailingIcon(
+                  hasFocus: hasFocus,
+                  isNotEmpty: isNotEmpty,
+                  icon: suffixIcon,
+                  onTapCancelIcon: () {
+                    fluentTextFieldController.textEditingController.value =
+                        TextEditingValue(text: "");
+                  },
                 ),
-        ),
-        suffixIcon:widget.readOnly?null: TextFieldTrailingIcon(
-          hasFocus: hasFocus,
-          isNotEmpty: isNotEmpty,
-          icon: suffixIcon,
-          onTapCancelIcon: () {
-            fluentTextFieldController.textEditingController.value =
-                TextEditingValue(text: "");
-          },
         ),
       ),
     );

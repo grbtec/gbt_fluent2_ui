@@ -13,22 +13,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FluentProvider(
       child: ThemeModeProvider(
-        child: Builder(
-          builder: (context) {
-            final themeMode  = ThemeModeProvider.of(context).themeMode;
+        child: Builder(builder: (context) {
+          final themeMode = ThemeModeProvider.of(context).themeMode;
 
-            return MaterialApp(
-              title: 'Flutter Demo',
-              themeAnimationDuration: Duration.zero,
-              routes: Routes.routingTable,
-
-              theme: theme,
-              darkTheme: darkTheme,
-              themeMode: themeMode,
-              home: home,
-            );
-          }
-        ),
+          return MaterialApp(
+            title: 'Flutter Demo',
+            themeAnimationDuration: Duration.zero,
+            routes: Routes.routingTable,
+            theme: theme,
+            darkTheme: darkTheme,
+            themeMode: themeMode,
+            home: home,
+          );
+        }),
       ),
     );
   }

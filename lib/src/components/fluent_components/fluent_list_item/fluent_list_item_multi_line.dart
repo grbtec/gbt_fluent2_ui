@@ -7,6 +7,7 @@ class FluentListItemMultiLine extends StatelessWidget {
   final String? text;
   final String? subtext;
   final Widget? additionalContent;
+  final void Function()? onTap;
 
   /// FluentList's constructor
   const FluentListItemMultiLine({
@@ -14,6 +15,7 @@ class FluentListItemMultiLine extends StatelessWidget {
     this.leading,
     this.trailing,
     this.text,
+    this.onTap,
     this.subtext,
     this.additionalContent,
   });
@@ -25,74 +27,71 @@ class FluentListItemMultiLine extends StatelessWidget {
     final subtext = this.subtext;
     final additionalContent = this.additionalContent;
 
-    return Column(
-      children: [
-        ListTile(
-          tileColor: colorMode(
-            FluentColors.neutralBackground3Rest,
-            FluentDarkColors.neutralBackground3Rest,
-          ),
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: FluentSize.size160.value,
-            vertical: FluentSize.size120.value,
-          ),
-          title: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leading != null) ...[
-                FluentContainer(
-                  width: FluentSize.size400.value,
-                  height: FluentSize.size400.value,
-                  child: leading,
-                ),
-                SizedBox(
-                  width: FluentSize.size160.value,
-                ),
+    return ListTile(
+      onTap: onTap,
+      tileColor: colorMode(
+        FluentColors.neutralBackground3Rest,
+        FluentDarkColors.neutralBackground3Rest,
+      ),
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: FluentSize.size160.value,
+      ),
+      minVerticalPadding: FluentSize.size120.value,
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (leading != null) ...[
+            FluentContainer(
+              width: FluentSize.size400.value,
+              height: FluentSize.size400.value,
+              child: leading,
+            ),
+            SizedBox(
+              width: FluentSize.size160.value,
+            ),
+          ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (text != null)
+                  FluentText(
+                    text,
+                    style: FluentThemeDataModel.of(context)
+                        .fluentTextTheme
+                        ?.body1
+                        ?.fluentCopyWith(
+                          fluentColor: colorMode(
+                            FluentColors.neutralForeground1Rest,
+                            FluentDarkColors.neutralForeground1Rest,
+                          ),
+                        ),
+                  ),
+                if (subtext != null)
+                  FluentText(
+                    subtext,
+                    style: FluentThemeDataModel.of(context)
+                        .fluentTextTheme
+                        ?.caption1
+                        ?.fluentCopyWith(
+                          fluentColor: colorMode(
+                            FluentColors.neutralForeground2Rest,
+                            FluentDarkColors.neutralForeground2Rest,
+                          ),
+                        ),
+                  ),
+                if (additionalContent != null) additionalContent
               ],
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (text != null)
-                      FluentText(
-                        text,
-                        style: FluentThemeDataModel.of(context)
-                            .fluentTextTheme
-                            ?.body1
-                            ?.fluentCopyWith(
-                              fluentColor: colorMode(
-                                FluentColors.neutralForeground1Rest,
-                                FluentDarkColors.neutralForeground1Rest,
-                              ),
-                            ),
-                      ),
-                    if (subtext != null)
-                      FluentText(
-                        subtext,
-                        style: FluentThemeDataModel.of(context)
-                            .fluentTextTheme
-                            ?.caption1
-                            ?.fluentCopyWith(
-                              fluentColor: colorMode(
-                                FluentColors.neutralForeground2Rest,
-                                FluentDarkColors.neutralForeground2Rest,
-                              ),
-                            ),
-                      ),
-                    if (additionalContent != null) additionalContent
-                  ],
-                ),
-              ),
-              if (trailing != null) ...[
-                SizedBox(
-                  width: FluentSize.size80.value,
-                ),
-                FluentContainer(child: trailing),
-              ],
-            ],
+            ),
           ),
-        ),
-      ],
+          if (trailing != null) ...[
+            SizedBox(
+              width: FluentSize.size80.value,
+            ),
+            FluentContainer(child: trailing),
+          ],
+        ],
+      ),
     );
   }
 }

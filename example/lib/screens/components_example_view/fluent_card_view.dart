@@ -51,7 +51,12 @@ class FluentCardView extends StatelessWidget {
                 FluentCard(
                   text: "Card 3 example",
                   subText: "This is a description text",
-                  leading: Image.network("https://images.pexels.com/photos/4050347/pexels-photo-4050347.jpeg?auto=compress&cs=tinysrgb&w=800"),
+                  leading: Image.asset(
+                    "assets/images/cards/card3.jpeg",
+                    width: double.maxFinite,
+                    height: double.maxFinite,
+                    fit: BoxFit.cover,
+                  ),
                   coverImage: Image.asset(
                     "assets/images/cards/card3.jpeg",
                     width: double.maxFinite,

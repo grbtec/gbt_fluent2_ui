@@ -12,27 +12,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Pump MyApp with Routes.home', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(
-      home: buildByRoute(Routes.home),
-    ));
-  });
+  final routes = <String>[
+    Routes.home,
+    Routes.fluentListView,
+    Routes.fluentAvatarView,
+    Routes.fluentButtonView,
+    Routes.fluentBannerView,
+    Routes.fluentCardView,
+    Routes.fluentToastView,
+    Routes.fluentProgressIndicatorsView,
+    Routes.shadowView,
+    Routes.shapesView,
+    Routes.sizeView,
+    Routes.typographyView,
+  ];
 
-  testWidgets('Pump RHomeView', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    // await tester.pumpWidget(MyApp(
-    //   home: RHomeView(),
-    // ));
-  });
-
+  for (String route in routes) {
+    testWidgets('Pump MyApp with ${route}', (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester.pumpWidget(MyApp(
+        home: buildByRoute(route),
+      ));
+    });
+  }
 
 }
 
 Widget buildByRoute(String route) {
   return Builder(
     builder: (context) {
-      return Routes.routingTable[Routes.home]!(context);
+      return Routes.routingTable[route]!(context);
     },
   );
 }

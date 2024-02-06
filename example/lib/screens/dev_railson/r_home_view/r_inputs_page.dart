@@ -55,7 +55,8 @@ class _RRInputsPageState extends State<RInputsPage> {
               label: "Apenas leitura",
               hintText: "Dica",
               assistiveText: "assistive",
-              controller: FluentTextFieldController()..textEditingController.text = "Read only",
+              controller: FluentTextFieldController()
+                ..textEditingController.text = "Read only",
             ),
             FluentTextField(
               label: "Senha",

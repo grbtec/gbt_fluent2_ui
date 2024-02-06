@@ -102,25 +102,7 @@ class _LHomeViewState extends State<LHomeView> {
               height: 25,
               width: double.maxFinite,
             ),
-            FluentSectionHeader(
-              title: 'Explorar vagas de emprego',
-              actions: FluentSectionHeaderActions(
-                action1: Expanded(
-                  child: FluentContainer(
-                    alignment: Alignment.centerRight,
-                    child: FluentText(
-                      'Ver mais',
-                      style: FluentThemeDataModel.of(context)
-                          .fluentTextTheme
-                          ?.caption1
-                          ?.fluentCopyWith(
-                            fluentColor: FluentColors.neutralForeground2Rest,
-                          ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+
             ButtonsRow(),
             Container(
               padding: EdgeInsets.only(

@@ -1,3 +1,4 @@
+import 'package:example/routing/routes.dart';
 import 'package:example/screens/components_example_view/fluent_avatar_view.dart';
 import 'package:example/screens/components_example_view/fluent_banner_view.dart';
 import 'package:example/screens/components_example_view/fluent_button_view.dart';
@@ -16,25 +17,25 @@ import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 class CardComponentPage {
   final String description;
   final String title;
-  final Widget view;
+  final String route;
   final IconData previewIcon;
 
   CardComponentPage({
     required this.description,
     required this.title,
-    required this.view,
+    required this.route,
     required this.previewIcon,
   });
 }
 
 class DesignTokenItem {
   final String title;
-  final Widget view;
+  final String route;
   final IconData leadingIcon;
 
   DesignTokenItem({
     required this.title,
-    required this.view,
+    required this.route,
     required this.leadingIcon,
   });
 }
@@ -44,63 +45,83 @@ class TestHomeView extends StatelessWidget {
     CardComponentPage(
       title: "Fluent List",
       description: "Lists organize data in rows",
-      view: FluentListView(),
+      route: Routes.fluentListView,
       previewIcon: FluentIcons.list_20_regular,
     ),
     CardComponentPage(
       title: "Fluent Button",
       description: "Lists organize data in rows",
-      view: FluentButtonView(),
+      route: Routes.fluentButtonView,
       previewIcon: FluentIcons.button_20_regular,
     ),
     CardComponentPage(
       title: "Fluent Avatar",
       description:
-          "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
-      view: FluentAvatarView(),
+      "An avatar shows an image or text to represent a person or group as well as gives additional information like their status and activity.",
+      route: Routes.fluentAvatarView,
       previewIcon: FluentIcons.person_circle_20_regular,
     ),
     CardComponentPage(
       description:
-          "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
+      "Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.",
       title: "Fluent Card",
-      view: FluentCardView(),
+      route: Routes.fluentCardView,
       previewIcon: FluentIcons.card_ui_24_regular,
     ),
     CardComponentPage(
       description: "Show only for peristent notifications until completion",
       title: "Fluent Banner",
-      view: FluentBannerView(),
+      route: Routes.fluentBannerView,
       previewIcon: FluentIcons.rectangle_landscape_12_filled,
     ),
     CardComponentPage(
       description:
-          "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
+      "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
       title: "Fluent Toast",
-      view: FluentToastView(),
+      route: Routes.fluentToastView,
       previewIcon: FluentIcons.square_shadow_12_regular,
+    ),
+    CardComponentPage(
+      description:
+      "Assistive texts, icons and suffixes are optional and hidden by default in the text fields components.",
+      title: "Fluent Text Field",
+      route: Routes.fluentTextFieldView,
+      previewIcon: FluentIcons.text_field_16_filled,
+    ),
+    CardComponentPage(
+      description:
+      "Use activity indicators and progress bars to let people know your app isn’t stalled and to give them some idea of how long they’ll be waiting.",
+      title: "Fluent Progress Bar",
+      route: Routes.fluentProgressIndicatorsView,
+      previewIcon: FluentIcons.line_horizontal_1_24_regular,
+    ),
+    CardComponentPage(
+        title: "Fluent Controls",
+        description: 'Fluent Controls Components',
+        route: Routes.fluentControlsView,
+        previewIcon: FluentIcons.checkbox_2_20_regular,
     )
   ];
 
   final designTokens = <DesignTokenItem>[
     DesignTokenItem(
       title: "Shadow",
-      view: ShadowView(),
+      route: Routes.shadowView,
       leadingIcon: FluentIcons.square_shadow_12_regular,
     ),
     DesignTokenItem(
       title: "Size",
-      view: SizeView(),
+      route: Routes.sizeView,
       leadingIcon: FluentIcons.slide_size_20_regular,
     ),
     DesignTokenItem(
       title: "Typography",
-      view: TypographyView(),
+      route: Routes.typographyView,
       leadingIcon: FluentIcons.text_12_regular,
     ),
     DesignTokenItem(
       title: "Shapes",
-      view: ShapesView(),
+      route: Routes.shapesView,
       leadingIcon: FluentIcons.shapes_16_regular,
     )
   ];
@@ -110,7 +131,9 @@ class TestHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeModeProviderState = ThemeModeProvider.of(context);
-    final colorMode = createColorMode(Theme.of(context).brightness);
+    final colorMode = createColorMode(Theme
+        .of(context)
+        .brightness);
 
     return FluentScaffold(
       appBar: FluentNavBar(
@@ -121,7 +144,9 @@ class TestHomeView extends StatelessWidget {
         themeColorVariation: FluentThemeColorVariation.brand,
         actions: [
           FluentSwitchToggle(
-              value: Theme.of(context).brightness == Brightness.dark,
+              value: Theme
+                  .of(context)
+                  .brightness == Brightness.dark,
               onChanged: (value) {
                 if (themeModeProviderState.themeMode == ThemeMode.dark) {
                   themeModeProviderState.themeMode = ThemeMode.light;
@@ -168,19 +193,14 @@ class TestHomeView extends StatelessWidget {
         body: Column(
           children: [
             ...designTokens.map(
-              (value) => FluentListItemOneLine(
-                leading: Icon(value.leadingIcon),
-                text: value.title,
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return value.view;
-                      },
-                    ),
-                  );
-                },
-              ),
+                  (value) =>
+                  FluentListItemOneLine(
+                    leading: Icon(value.leadingIcon),
+                    text: value.title,
+                    onTap: () {
+                      Navigator.of(context).pushNamed(value.route);
+                    },
+                  ),
             )
           ],
         ),
@@ -209,11 +229,7 @@ class TestHomeView extends StatelessWidget {
                           iconSize: FluentSize.size560.value,
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => card.view,
-                            ),
-                          );
+                          Navigator.of(context).pushNamed(card.route);
                         },
                       ),
                     ),
