@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
 
+  print("espere 2 segundos...");
+  await Future.delayed(Duration(seconds: 2));
   debugPrint('main()');
   debugPrint('begin initialization');
 
