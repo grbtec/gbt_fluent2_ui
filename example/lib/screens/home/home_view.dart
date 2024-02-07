@@ -164,6 +164,12 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
+  void clearQueryString() {
+    setState(() {
+      queryString = "";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeModeProviderState = ThemeModeProvider.of(context);
@@ -190,11 +196,7 @@ class _HomeViewState extends State<HomeView> {
         child: FluentSearchBar.leftAligned(
           themeColorVariation: FluentThemeColorVariation.brand,
           hintText: "Search",
-          onEmpty: () {
-            setState(() {
-              queryString = "";
-            });
-          },
+          onEmpty: clearQueryString,
           onSearch: (value) async {
             await Future.delayed(
               Duration(seconds: 1),
@@ -203,7 +205,8 @@ class _HomeViewState extends State<HomeView> {
               queryString = value;
             });
           },
-          onCancelOperation: () {},
+          onClearOperation: clearQueryString,
+          onCancelOperation: clearQueryString,
         ),
       ),
       drawer: FluentLeftNav(

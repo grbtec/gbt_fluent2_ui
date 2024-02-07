@@ -6,38 +6,50 @@ class SplashScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorMode = createColorMode(Theme.of(context).brightness);
+
     return FluentScaffold(
-      body: SafeArea(
-        child: FluentContainer(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/gbt_fluent2_ui.png',
-                    width: 120,
-                    height: 120,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/gbt_logo.png",
-                    width: FluentSize.size200.value,
-                    height: FluentSize.size200.value,
-                  ),
-                  SizedBox(width: FluentSize.size80.value,),
-                  FluentText("GRBTEC", style: FluentThemeDataModel.of(context).fluentTextTheme?.body2,)
-                ],
-              ),
-            ],
+      body: FluentContainer(
+          color: colorMode(
+            FluentColors.neutralBackground1Rest,
+            FluentDarkColors.neutralBackground1Rest,
           ),
-        ),
-      ),
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Expanded(
+                //   child: Center(
+                //     child: Image.asset(
+                //       'assets/images/gbt_fluent2_ui.png',
+                //       width: 120,
+                //       height: 120,
+                //     ),
+                //   ),
+                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/gbt_logo.png",
+                      width: FluentSize.size200.value,
+                      height: FluentSize.size200.value,
+                    ),
+                    SizedBox(
+                      width: FluentSize.size80.value,
+                    ),
+                    FluentText(
+                      "GRBTEC",
+                      style: FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.body2
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

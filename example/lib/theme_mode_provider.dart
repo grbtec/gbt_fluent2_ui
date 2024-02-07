@@ -18,13 +18,13 @@ class ThemeModeProvider extends StatefulWidget {
 }
 
 class _ThemeModeProviderState extends State<ThemeModeProvider> {
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.system;
 
   ThemeMode get themeMode => _themeMode;
 
   void set themeMode(ThemeMode value) {
     _themeMode = value;
-    
+
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setState(() {}));
   }
