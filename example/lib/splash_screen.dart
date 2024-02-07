@@ -19,15 +19,15 @@ class SplashScreenView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Expanded(
-                //   child: Center(
-                //     child: Image.asset(
-                //       'assets/images/gbt_fluent2_ui.png',
-                //       width: 120,
-                //       height: 120,
-                //     ),
-                //   ),
-                // ),
+                Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/gbt_fluent2_ui.png',
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
