@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             themeAnimationDuration: Duration.zero,
+            debugShowCheckedModeBanner: false,
             routes: Routes.routingTable,
             theme: theme,
             darkTheme: darkTheme,
