@@ -1,4 +1,4 @@
-## 4.x
+## 4.5.3
 
 - Reorder colors in theme_data conversion function
 - Fix FluentSearchBar
