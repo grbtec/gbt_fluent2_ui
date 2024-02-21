@@ -49,13 +49,28 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
   }
 
   @override
+  Adaptation<T>? getAdaptation<T>() => adaptationMap[T] as Adaptation<T>?;
+
+  static Map<Type, Adaptation<Object>> _createAdaptationMap(
+      Iterable<Adaptation<Object>> adaptations) {
+    final Map<Type, Adaptation<Object>> adaptationMap =
+        <Type, Adaptation<Object>>{
+      for (final Adaptation<Object> adaptation in adaptations)
+        adaptation.type: adaptation
+    };
+    return adaptationMap;
+  }
+
+
+  @override
   ThemeData copyWith({
     MixedFluentTextTheme? fluentTextTheme,
     MixedFluentStrokeTheme? fluentStrokeTheme,
     MixedFluentShadowTheme? fluentShadowTheme,
     FluentStrokeThickness? fluentStrokeThickness,
     FluentColors? fluentBrandColors,
-
+    Iterable<Adaptation<Object>>? adaptations,
+    Map<Type, Adaptation<Object>>? adaptationMap,
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
     // GENERAL CONFIGURATION). Each section except for deprecations should be
@@ -189,6 +204,10 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       fluentShadowTheme: fluentShadowTheme ?? this.fluentShadowTheme,
       fluentBrandColors: fluentBrandColors ?? this.fluentBrandColors,
 
+      adaptationMap: adaptations != null
+          ? _createAdaptationMap(adaptations)
+          : this.adaptationMap,
+
       // For the sanity of the reader, make sure these properties are in the same
       // order in every place that they are separated by section comments (e.g.
       // GENERAL CONFIGURATION). Each section except for deprecations should be
@@ -297,8 +316,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // ignore: deprecated_member_use_from_same_package
       toggleableActiveColor: _deprecated,
       // ignore: deprecated_member_use_from_same_package
-      selectedRowColor: _deprecated,
-      // ignore: deprecated_member_use_from_same_package
       errorColor: colorScheme?.error ?? this.colorScheme.error,
       // ignore: deprecated_member_use_from_same_package
       backgroundColor: colorScheme?.background ?? this.colorScheme.background,
@@ -315,6 +332,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     required this.fluentStrokeTheme,
     required this.fluentShadowTheme,
     required this.fluentBrandColors,
+    required super.adaptationMap,
 
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
@@ -417,11 +435,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     )
     super.toggleableActiveColor,
     @Deprecated(
-      'No longer used by the framework, please remove any reference to it. '
-      'This feature was deprecated after v3.1.0-0.0.pre.',
-    )
-    super.selectedRowColor,
-    @Deprecated(
       'Use colorScheme.error instead. '
       'This feature was deprecated after v3.3.0-0.5.pre.',
     )
@@ -444,7 +457,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     MixedFluentStrokeTheme? fluentStrokeTheme,
     MixedFluentShadowTheme? fluentShadowTheme,
     FluentColors? fluentBrandColors,
-
+    Iterable<Adaptation<Object>>? adaptations,
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
     // GENERAL CONFIGURATION). Each section except for deprecations should be
@@ -737,11 +750,15 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     toggleButtonsTheme ??= const ToggleButtonsThemeData();
     tooltipTheme ??= const TooltipThemeData();
 
+    adaptations ??= <Adaptation<Object>>[];
+
     return GbtFluentThemeData.raw(
       fluentTextTheme: fluentTextTheme,
       fluentStrokeTheme: fluentStrokeTheme,
       fluentShadowTheme: fluentShadowTheme,
       fluentBrandColors: fluentBrandColors,
+
+      adaptationMap: _createAdaptationMap(adaptations),
 
       // FROM HERE TO BOTTOM IT JUST COPY-AND-PASTE FROM MATERIALTHEME
       // For the sanity of the reader, make sure these properties are in the same
@@ -838,8 +855,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // DEPRECATED (newest deprecations at the bottom)
       // ignore: deprecated_member_use_from_same_package
       toggleableActiveColor: _deprecated,
-      // ignore: deprecated_member_use_from_same_package
-      selectedRowColor: _deprecated,
       // ignore: deprecated_member_use_from_same_package
       errorColor: colorScheme.error,
       // ignore: deprecated_member_use_from_same_package

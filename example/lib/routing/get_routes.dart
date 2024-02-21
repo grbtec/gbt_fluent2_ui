@@ -2,10 +2,8 @@ import 'package:example/routing/routes.dart';
 import 'package:get/get.dart';
 
 
-abstract final interface
-
 // This is the routes list that is passed to getPages in GetMaterialApp
-class GetRoutes {
+ abstract final class GetRoutes {
   static List<GetPage> get getRoutingTable {
     final entries = Routes.routingTable.entries;
 

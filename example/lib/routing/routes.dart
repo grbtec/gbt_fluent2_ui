@@ -15,9 +15,7 @@ import 'package:example/screens/home/test_home_view.dart';
 import 'package:flutter/cupertino.dart';
 
 /// Routes
-abstract final interface
-
-class Routes {
+abstract final class Routes {
   static const home = "/home";
   static const fluentListView = "/fluentListView";
   static const fluentAvatarView = "/fluentAvatarView";
