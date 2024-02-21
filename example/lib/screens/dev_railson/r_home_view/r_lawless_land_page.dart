@@ -198,9 +198,10 @@ class _RLawlessLandState extends State<RLawlessLand> {
                 child: Column(
                   children: [
                     Text("This is a child"),
-                    FluentButton(title: "Content Button", onPressed: () {
-
-                    },)
+                    FluentButton(
+                      title: "Content Button",
+                      onPressed: () {},
+                    )
                   ],
                 ),
               ),

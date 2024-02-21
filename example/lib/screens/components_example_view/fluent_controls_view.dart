@@ -105,9 +105,11 @@ class _FluentControlsViewState extends State<FluentControlsView> {
                 listItems: [
                   FluentListItemMultiLine(
                     text: "Option 1",
-                    onTap: isCheckbox1 ? null : () => setState(() {
-                      _option = Option.option1;
-                    }),
+                    onTap: isCheckbox1
+                        ? null
+                        : () => setState(() {
+                              _option = Option.option1;
+                            }),
                     leading: FluentRadioButton<Option>(
                       value: Option.option1,
                       groupValue: _option,
@@ -116,9 +118,11 @@ class _FluentControlsViewState extends State<FluentControlsView> {
                   ),
                   FluentListItemMultiLine(
                     text: "Option 2",
-                    onTap: isCheckbox1 ? null : () => setState(() {
-                      _option = Option.option2;
-                    }),
+                    onTap: isCheckbox1
+                        ? null
+                        : () => setState(() {
+                              _option = Option.option2;
+                            }),
                     leading: FluentRadioButton<Option>(
                       value: Option.option2,
                       groupValue: _option,
@@ -127,9 +131,11 @@ class _FluentControlsViewState extends State<FluentControlsView> {
                   ),
                   FluentListItemMultiLine(
                     text: "Option 3",
-                    onTap: isCheckbox1 ? null : () => setState(() {
-                      _option = Option.option3;
-                    }),
+                    onTap: isCheckbox1
+                        ? null
+                        : () => setState(() {
+                              _option = Option.option3;
+                            }),
                     leading: FluentRadioButton<Option>(
                       value: Option.option3,
                       groupValue: _option,
@@ -138,9 +144,11 @@ class _FluentControlsViewState extends State<FluentControlsView> {
                   ),
                   FluentListItemMultiLine(
                     text: "Option 4",
-                    onTap: isCheckbox1 ? null : () => setState(() {
-                      _option = Option.option4;
-                    }),
+                    onTap: isCheckbox1
+                        ? null
+                        : () => setState(() {
+                              _option = Option.option4;
+                            }),
                     leading: FluentRadioButton<Option>(
                       value: Option.option4,
                       groupValue: _option,
@@ -154,7 +162,8 @@ class _FluentControlsViewState extends State<FluentControlsView> {
                 listItems: [
                   FluentListItemMultiLine(
                     text: "Disable Radio Buttons Above",
-                    subtext: "If you check here, the radio buttons above will be disabled.",
+                    subtext:
+                        "If you check here, the radio buttons above will be disabled.",
                     leading: FluentCheckbox(
                       value: isCheckbox1,
                       onChanged: (value) {

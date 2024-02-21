@@ -23,8 +23,7 @@ class _ThemeModeProviderState extends State<ThemeModeProvider> {
   void set themeMode(ThemeMode value) {
     _themeMode = value;
 
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

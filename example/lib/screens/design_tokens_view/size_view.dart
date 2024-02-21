@@ -57,7 +57,9 @@ class SizeView extends StatelessWidget {
             children: [
               FluentSectionHeader(title: "Fluent Spacing"),
               FluentCardContainer(
-                shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16,
+                shadow: FluentThemeDataModel.of(context)
+                    .fluentShadowTheme
+                    ?.shadow16,
                 margin:
                     EdgeInsets.symmetric(horizontal: FluentSize.size160.value),
                 padding: EdgeInsets.all(FluentSize.size120.value),
@@ -188,10 +190,10 @@ class SizeView extends StatelessWidget {
                 ),
               ),
               FluentCardContainer(
-                shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16,
-                constraints: BoxConstraints(
-                  maxWidth: 116
-                ),
+                shadow: FluentThemeDataModel.of(context)
+                    .fluentShadowTheme
+                    ?.shadow16,
+                constraints: BoxConstraints(maxWidth: 116),
                 padding: EdgeInsets.symmetric(
                   vertical: FluentSize.size160.value,
                 ),
@@ -213,9 +215,7 @@ class SizeView extends StatelessWidget {
                             .fluentTextTheme
                             ?.caption2
                             ?.fluentCopyWith(
-                          fluentColor: Colors.white,
-                          fluentSize: 10
-                        ),
+                                fluentColor: Colors.white, fluentSize: 10),
                       ),
                     ),
                     FluentContainer(
@@ -261,9 +261,7 @@ class SizeView extends StatelessWidget {
                             .fluentTextTheme
                             ?.caption2
                             ?.fluentCopyWith(
-                            fluentColor: Colors.white,
-                            fluentSize: 10
-                        ),
+                                fluentColor: Colors.white, fluentSize: 10),
                       ),
                     ),
                   ],

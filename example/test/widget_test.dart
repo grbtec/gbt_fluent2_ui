@@ -35,7 +35,6 @@ void main() {
       ));
     });
   }
-
 }
 
 Widget buildByRoute(String route) {

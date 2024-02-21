@@ -86,16 +86,17 @@ class TestHomeView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text("light"),
-                FluentSwitchToggle(value: Theme.of(context).brightness == Brightness.dark, onChanged: (value) {
-                  if(themeModeProviderState.themeMode ==  ThemeMode.dark){
-                    themeModeProviderState.themeMode = ThemeMode.light;
-                  }else{
-                    themeModeProviderState.themeMode = ThemeMode.dark;
-                  }
-
-                },),
+                FluentSwitchToggle(
+                  value: Theme.of(context).brightness == Brightness.dark,
+                  onChanged: (value) {
+                    if (themeModeProviderState.themeMode == ThemeMode.dark) {
+                      themeModeProviderState.themeMode = ThemeMode.light;
+                    } else {
+                      themeModeProviderState.themeMode = ThemeMode.dark;
+                    }
+                  },
+                ),
                 Text("dark"),
-
               ],
             ),
           ],

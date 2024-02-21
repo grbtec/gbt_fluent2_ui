@@ -136,7 +136,6 @@ class ShadowView extends StatelessWidget {
                           cornerRadius: FluentCornerRadius.large,
                         ),
                       ),
-                      
                     ],
                   ),
                 ),
@@ -145,17 +144,14 @@ class ShadowView extends StatelessWidget {
                   titleVariant: SectionHeaderTitleVariant.subtle,
                 ),
                 FluentContainer(
-                  constraints: BoxConstraints(
-                    maxWidth: 284
-                  ),
+                  constraints: BoxConstraints(maxWidth: 284),
                   width: double.maxFinite,
                   color: colorMode(
                     FluentColors.neutralBackground3Rest,
                     FluentDarkColors.neutralBackground3Rest,
                   ),
                   padding: EdgeInsets.all(FluentSize.size360.value),
-                  margin:
-                  EdgeInsets.only(bottom: FluentSize.size120.value),
+                  margin: EdgeInsets.only(bottom: FluentSize.size120.value),
                   child: FluentContainer(
                     width: 70,
                     height: 70,
@@ -218,7 +214,6 @@ class ShadowView extends StatelessWidget {
                           cornerRadius: FluentCornerRadius.large,
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -227,17 +222,14 @@ class ShadowView extends StatelessWidget {
                   titleVariant: SectionHeaderTitleVariant.subtle,
                 ),
                 FluentContainer(
-                  constraints: BoxConstraints(
-                      maxWidth: 284
-                  ),
+                  constraints: BoxConstraints(maxWidth: 284),
                   width: double.maxFinite,
                   color: colorMode(
                     FluentColors.neutralBackground3Rest,
                     FluentDarkColors.neutralBackground3Rest,
                   ),
                   padding: EdgeInsets.all(FluentSize.size360.value),
-                  margin:
-                  EdgeInsets.only(bottom: FluentSize.size120.value),
+                  margin: EdgeInsets.only(bottom: FluentSize.size120.value),
                   child: FluentContainer(
                     width: 70,
                     height: 70,

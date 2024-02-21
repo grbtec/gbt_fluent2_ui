@@ -102,7 +102,6 @@ class _LHomeViewState extends State<LHomeView> {
               height: 25,
               width: double.maxFinite,
             ),
-
             ButtonsRow(),
             Container(
               padding: EdgeInsets.only(

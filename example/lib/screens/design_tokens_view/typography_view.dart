@@ -92,9 +92,12 @@ class TypographyView extends StatelessWidget {
                   FluentSectionHeader(title: value.name),
                   FluentCardContainer(
                     width: double.maxFinite,
-                    margin: EdgeInsets.symmetric(horizontal: FluentSize.size160.value),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: FluentSize.size160.value),
                     padding: EdgeInsets.all(FluentSize.size160.value),
-                    shadow: FluentThemeDataModel.of(context).fluentShadowTheme?.shadow4,
+                    shadow: FluentThemeDataModel.of(context)
+                        .fluentShadowTheme
+                        ?.shadow4,
                     child: FluentText(
                       "This is ${value.name} text",
                       style: value.textStyle,
@@ -108,7 +111,6 @@ class TypographyView extends StatelessWidget {
                     height: FluentSize.size240.value,
                   ),
                 ],
-
               ],
             ),
           ),

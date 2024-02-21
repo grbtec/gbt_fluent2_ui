@@ -26,7 +26,6 @@ class _FluentTextFieldViewState extends State<FluentTextFieldView> {
 
   @override
   Widget build(BuildContext context) {
-
     return FluentScaffold(
       appBar: FluentNavBar(
         title: NavLeftSubtitle(

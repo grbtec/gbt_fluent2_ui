@@ -4,8 +4,6 @@ import 'package:example/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
-
-
   debugPrint('main()');
   debugPrint('begin initialization');
 

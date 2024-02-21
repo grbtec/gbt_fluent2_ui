@@ -39,12 +39,10 @@ class SplashScreenView extends StatelessWidget {
                     SizedBox(
                       width: FluentSize.size80.value,
                     ),
-                    FluentText(
-                      "GRBTEC",
-                      style: FluentThemeDataModel.of(context)
-                          .fluentTextTheme
-                          ?.body2
-                    )
+                    FluentText("GRBTEC",
+                        style: FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.body2)
                   ],
                 ),
               ],

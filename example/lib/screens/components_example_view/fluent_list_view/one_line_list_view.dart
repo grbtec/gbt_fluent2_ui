@@ -22,8 +22,9 @@ class OneLineListExampleView extends StatelessWidget {
                 style: FluentThemeDataModel.of(context).fluentTextTheme?.title2,
               ),
               FluentText("Lists organize data in rows.",
-                  style:
-                  FluentThemeDataModel.of(context).fluentTextTheme?.caption1),
+                  style: FluentThemeDataModel.of(context)
+                      .fluentTextTheme
+                      ?.caption1),
               FluentList.oneLine(
                 sectionHeaderTitle: "Notifications",
                 separator: FluentStrokeDivider(
@@ -59,7 +60,8 @@ class OneLineListExampleView extends StatelessWidget {
                   ),
                   FluentListItemOneLine(
                     text: "Clear Search History",
-                    textColor: colorMode(FluentColors.statusDangerForeground2Rest,
+                    textColor: colorMode(
+                        FluentColors.statusDangerForeground2Rest,
                         FluentDarkColors.statusDangerForeground2Rest),
                     trailing: FluentIcon(
                       FluentIcons.chevron_right_20_filled,

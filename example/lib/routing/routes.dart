@@ -32,8 +32,7 @@ abstract final class Routes {
   static const sizeView = "/sizeView";
   static const typographyView = "/typographyView";
 
-  static Map<String, WidgetBuilder> get routingTable =>
-      {
+  static Map<String, WidgetBuilder> get routingTable => {
         Routes.home: (_) {
           return TestHomeView();
         },
