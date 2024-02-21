@@ -13,21 +13,27 @@ class FluentCard extends StatelessWidget {
   final Color? highlightColor;
 
   /// FluentCard's constructor
-  const FluentCard({
+   FluentCard({
     super.key,
     required this.text,
     this.subText,
     this.coverImage,
     this.onPressed,
     this.highlightColor,
-    this.leading,
     this.leadingBoxSize = 24,
-    @Deprecated("Use 'leading' instead. Since v4.x") this.iconImage,
+    Widget? leading,
+    @Deprecated("Use 'leading' instead. Since v4.x")
+    this.iconImage,
   }) : assert(
             leading != null && iconImage == null ||
                 leading == null && iconImage != null ||
                 leading == null && iconImage == null,
-            "You can't pass both leading and iconImage");
+            "You can't pass both leading and iconImage"), leading = leading ?? (iconImage != null ? Image.network(
+     iconImage.toString(),
+     height: leadingBoxSize,
+     width: leadingBoxSize,
+     fit: BoxFit.cover,
+   ) : null);
 
   Widget conditionalButton({required Widget child}) {
     if (onPressed == null) {
@@ -77,26 +83,7 @@ class FluentCard extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: Row(
                 children: [
-                  // if (iconImage != null) ...[
-                  //   Image.network(
-                  //     iconImage.toString(),
-                  //     height: 24,
-                  //     width: 24,
-                  //     fit: BoxFit.cover,
-                  //   ),
-                  //   const SizedBox(
-                  //     width: 12,
-                  //   ),
-                  // ],
-                  if (iconImage != null) ...[
-                    Image.network(
-                      iconImage.toString(),
-                      height: leadingBoxSize,
-                      width: leadingBoxSize,
-                      fit: BoxFit.cover,
-                    ),
-                    const SizedBox(width: 12),
-                  ] else if (leading != null)
+                   if (leading != null)
                     if (leading is Icon) ...[
                       IconTheme(
                         data: IconThemeData(
