@@ -15,7 +15,7 @@ and the Flutter guide for
 
 
 <p align="center">
-  <img src="/example/assets/images/gbt_fluent2_ui.png" width="200" />
+  <img src="https://github.com/grbtec/gbt_fluent2_ui/assets/94455123/05470ad4-c025-4e3f-b05a-776e90abaef8" width="200" />
 </p>
 
 
