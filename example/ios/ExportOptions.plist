@@ -10,6 +10,8 @@
 	<dict>
 		<key>br.com.grbtec.flutter.fluent2</key>
 		<string>Gbt Fluent2 Example Distribution PP</string>
+		<key>br.com.grbtec.flutter.fluent2</key>
+        <string>Gbt Fluent2 Example Distribution PP - L</string>
 	</dict>
 </dict>
 </plist>
