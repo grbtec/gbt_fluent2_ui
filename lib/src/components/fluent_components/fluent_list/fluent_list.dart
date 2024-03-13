@@ -14,7 +14,7 @@ class FluentList extends StatelessWidget {
   final FluentListType listType;
 
   final String? sectionDescriptionText;
-  final IconData? sectionDescriptionIcon;
+  final Widget? sectionDescriptionLeading;
 
   final List<Widget> listItems;
 
@@ -24,7 +24,7 @@ class FluentList extends StatelessWidget {
     super.key,
     this.sectionHeaderTitle,
     this.sectionHeaderActions,
-    this.sectionDescriptionIcon,
+    this.sectionDescriptionLeading,
     this.sectionDescriptionText,
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
@@ -34,10 +34,10 @@ class FluentList extends StatelessWidget {
   })  : _isOneLine = true,
         listType = FluentListType.oneLine,
         assert(
-          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+          sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
-                  sectionDescriptionIcon != null ||
-              sectionDescriptionText == null && sectionDescriptionIcon == null,
+                  sectionDescriptionLeading != null ||
+              sectionDescriptionText == null && sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -53,7 +53,7 @@ class FluentList extends StatelessWidget {
     super.key,
     this.sectionHeaderTitle,
     this.sectionHeaderActions,
-    this.sectionDescriptionIcon,
+    this.sectionDescriptionLeading,
     this.sectionDescriptionText,
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
@@ -63,10 +63,10 @@ class FluentList extends StatelessWidget {
   })  : _isOneLine = false,
         listType = FluentListType.multiLine,
         assert(
-          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+          sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
-                  sectionDescriptionIcon != null ||
-              sectionDescriptionText == null && sectionDescriptionIcon == null,
+                  sectionDescriptionLeading != null ||
+              sectionDescriptionText == null && sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -84,7 +84,7 @@ class FluentList extends StatelessWidget {
         itemBuilder,
     this.sectionHeaderTitle,
     this.sectionHeaderActions,
-    this.sectionDescriptionIcon,
+    this.sectionDescriptionLeading,
     this.sectionDescriptionText,
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
@@ -94,10 +94,10 @@ class FluentList extends StatelessWidget {
   })  : _isOneLine = true,
         listType = FluentListType.oneLine,
         assert(
-          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+          sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
-                  sectionDescriptionIcon != null ||
-              sectionDescriptionText == null && sectionDescriptionIcon == null,
+                  sectionDescriptionLeading != null ||
+              sectionDescriptionText == null && sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -119,7 +119,7 @@ class FluentList extends StatelessWidget {
         itemBuilder,
     this.sectionHeaderTitle,
     this.sectionHeaderActions,
-    this.sectionDescriptionIcon,
+    this.sectionDescriptionLeading,
     this.sectionDescriptionText,
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
@@ -129,10 +129,10 @@ class FluentList extends StatelessWidget {
   })  : _isOneLine = false,
         listType = FluentListType.multiLine,
         assert(
-          sectionDescriptionText != null && sectionDescriptionIcon == null ||
+          sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
-                  sectionDescriptionIcon != null ||
-              sectionDescriptionText == null && sectionDescriptionIcon == null,
+                  sectionDescriptionLeading != null ||
+              sectionDescriptionText == null && sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -195,7 +195,7 @@ class FluentList extends StatelessWidget {
             if (sectionDescriptionText != null)
               FluentSectionDescription(
                 description: sectionDescriptionText,
-                icon: sectionDescriptionIcon,
+                leading: sectionDescriptionLeading,
                 backgroundColor: sectionDescriptionBackgroundColor,
               ),
           ],

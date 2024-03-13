@@ -18,6 +18,7 @@ class FluentSheet extends StatefulWidget {
   final Widget Function(BuildContext int, double size)? overlayBuilder;
 
   const FluentSheet.bottom({
+    super.key,
     this.controller,
     this.half = false,
     this.headerHeight = 20,
@@ -160,7 +161,8 @@ class _FluentSheetState extends State<FluentSheet> {
                                             height: 4,
                                             color: colorMode(
                                               FluentColors.neutralStroke1Rest,
-                                              FluentDarkColors.neutralStroke1Rest,
+                                              FluentDarkColors
+                                                  .neutralStroke1Rest,
                                             ),
                                           ),
                                         ),

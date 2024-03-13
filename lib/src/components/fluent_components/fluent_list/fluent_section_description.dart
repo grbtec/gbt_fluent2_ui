@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentSectionDescription extends StatelessWidget {
-  final IconData? icon;
+  final Widget? leading;
   final String description;
   final Color? backgroundColor;
   final EdgeInsetsGeometry? padding;
@@ -12,7 +12,7 @@ class FluentSectionDescription extends StatelessWidget {
   const FluentSectionDescription({
     required this.description,
     super.key,
-    this.icon,
+    this.leading,
     this.backgroundColor,
     this.padding,
     this.foregroundColor,
@@ -21,7 +21,7 @@ class FluentSectionDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    final icon = this.icon;
+    final leading = this.leading;
     return FluentContainer(
       color: backgroundColor,
       width: double.infinity,
@@ -35,20 +35,28 @@ class FluentSectionDescription extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (icon != null)
-            Icon(
-              icon,
-              size: FluentSize.size160.value,
-              color: foregroundColor ??
-                  colorMode(
-                    FluentColors.neutralForeground2Rest,
-                    FluentDarkColors.neutralForeground2Rest,
-                  ),
+          if (leading is Icon) ...[
+            IconTheme(
+              data: IconThemeData(
+                color: foregroundColor ??
+                    colorMode(
+                      FluentColors.neutralForeground2Rest,
+                      FluentDarkColors.neutralForeground2Rest,
+                    ),
+                size: FluentSize.size160.value,
+              ),
+              child: leading,
             ),
-          if (icon != null)
-            SizedBox(
+            SizedBox(width: FluentSize.size120.value)
+          ],
+          if (leading != null && leading is! Icon) ...[
+            Container(
               width: FluentSize.size160.value,
+              height: FluentSize.size160.value,
+              child: leading,
             ),
+            SizedBox(width: FluentSize.size120.value)
+          ],
           Expanded(
             child: FluentText(
               description,

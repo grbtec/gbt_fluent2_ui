@@ -123,7 +123,7 @@ class _LHomeViewState extends State<LHomeView> {
                 // sectionHeaderTitleVariant: SectionHeaderTitleVariant.subtle,
                 sectionDescriptionText:
                     'hello i am the list description, and i can give some information for lead you.',
-                sectionDescriptionIcon: Icons.info_outline,
+                sectionDescriptionLeading: Icon(Icons.info_outline),
                 separator: FluentStrokeDivider(
                   startIndent: FluentStrokeBorderIndent.strokeIndent16,
                   style: FluentThemeDataModel.of(context)
