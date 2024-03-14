@@ -68,17 +68,21 @@ class FluentListItemMultiLine extends StatelessWidget {
                         ),
                   ),
                 if (subtext != null)
-                  FluentText(
-                    subtext,
-                    style: FluentThemeDataModel.of(context)
-                        .fluentTextTheme
-                        ?.caption1
-                        ?.fluentCopyWith(
-                          fluentColor: colorMode(
-                            FluentColors.neutralForeground2Rest,
-                            FluentDarkColors.neutralForeground2Rest,
+                  Padding(
+                    padding: EdgeInsets.only(right: FluentSize.size40.value),
+                    child: FluentText(
+                      subtext,
+                      textOverflow: TextOverflow.ellipsis,
+                      style: FluentThemeDataModel.of(context)
+                          .fluentTextTheme
+                          ?.caption1
+                          ?.fluentCopyWith(
+                            fluentColor: colorMode(
+                              FluentColors.neutralForeground2Rest,
+                              FluentDarkColors.neutralForeground2Rest,
+                            ),
                           ),
-                        ),
+                    ),
                   ),
                 if (additionalContent != null) additionalContent
               ],
