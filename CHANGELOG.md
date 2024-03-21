@@ -1,3 +1,8 @@
+## 5.x
+
+- [BREAKING CHANGE] Replace icon property to leading in fluent_section_description.
+- Fix FluentToast dismiss issues.
+
 ## 4.5.3
 
 - Reorder colors in theme_data conversion function

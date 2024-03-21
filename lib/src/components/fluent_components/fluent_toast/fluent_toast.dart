@@ -82,12 +82,20 @@ class FluentToast extends StatefulWidget {
     VoidCallback? onDismissed,
     FluentToast child,
   ) {
+    List<Timer> timers = [];
+    void onDismissedProxy() {
+      for (final timer in timers) {
+        timer.cancel();
+      }
+      onDismissed?.call();
+    }
+
     final fluentToastAnimationController = _FluentToastAnimationController();
     // final List<OverlayEntry> entries = [];
     final overlay = Overlay.of(context);
     final overlayEntry = FluentToastOverlayEntry(
       yOffset: yOffset - MediaQuery.of(overlay.context).viewInsets.bottom,
-      onDismissed: onDismissed,
+      onDismissed: onDismissedProxy,
       child: _FluentToastAnimation(
         controller: fluentToastAnimationController,
         child: child,
@@ -99,13 +107,14 @@ class FluentToast extends StatefulWidget {
 
     if (duration != null) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        Timer(duration - fluentToastAnimationController.animationDuration, () {
+        timers.add(Timer(
+            duration - fluentToastAnimationController.animationDuration, () {
           fluentToastAnimationController.close();
-        });
+        }));
       });
-      Timer(duration, () {
+      timers.add(Timer(duration, () {
         overlayEntry.remove();
-      });
+      }));
     }
   }
 }
