@@ -10,8 +10,8 @@ class FluentToastView extends StatelessWidget {
     void showToast(FluentToastColor color) {
       FluentToast(
           toastColor: color,
-          text: "Fluent 2 is here",
-          subText: "See what’s changed.",
+          title: FluentText("Fluent 2 is here"),
+          text: FluentText("See what’s changed."),
           icon: Icon(FluentIcons.sparkle_20_filled),
           action: Builder(
             builder: (context) => IconButton(

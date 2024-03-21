@@ -16,8 +16,8 @@ class _RToastAndBannerPageState extends State<RToastAndBannerPage> {
   void showToast() {
     FluentToast(
       toastColor: FluentToastColor.danger,
-      text: "Text",
-      subText: "Subtext",
+      title: FluentText("Text"),
+      text: FluentText("Subtext"),
       icon: Icon(Icons.card_giftcard),
       action: Builder(
         builder: (context) {
@@ -25,7 +25,7 @@ class _RToastAndBannerPageState extends State<RToastAndBannerPage> {
             onPressed: () {
               FluentToast.showToast(
                 context: context,
-                text: "Novo Toast",
+                text: FluentText("Novo Toast"),
                 action: FluentToastDismissButton(),
                 duration: Duration(seconds: 5),
               );

@@ -18,8 +18,8 @@ part 'fluent_toast_animation.dart';
 
 class FluentToast extends StatefulWidget {
   final FluentToastColor toastColor;
-  final String text;
-  final String? subText;
+  final FluentText? title;
+  final FluentText text;
   final Widget? icon;
   final Widget? action;
 
@@ -27,7 +27,7 @@ class FluentToast extends StatefulWidget {
     super.key,
     required this.text,
     this.toastColor = FluentToastColor.neutral,
-    this.subText,
+    this.title,
     this.icon,
     this.action,
   });
@@ -52,8 +52,8 @@ class FluentToast extends StatefulWidget {
 
   static void showToast({
     required BuildContext context,
-    required String text,
-    String? subText,
+    FluentText? title,
+    required FluentText text,
     Widget? icon,
     Widget? action,
     Duration? duration = const Duration(seconds: 3),
@@ -67,8 +67,8 @@ class FluentToast extends StatefulWidget {
       onDismissed,
       FluentToast(
         toastColor: FluentToastColor.neutral,
+        title: title,
         text: text,
-        subText: subText,
         icon: icon,
         action: action,
       ),
@@ -86,7 +86,7 @@ class FluentToast extends StatefulWidget {
     // final List<OverlayEntry> entries = [];
     final overlay = Overlay.of(context);
     final overlayEntry = FluentToastOverlayEntry(
-      yOffset: yOffset-MediaQuery.of(overlay.context).viewInsets.bottom,
+      yOffset: yOffset - MediaQuery.of(overlay.context).viewInsets.bottom,
       onDismissed: onDismissed,
       child: _FluentToastAnimation(
         controller: fluentToastAnimationController,
@@ -114,11 +114,12 @@ class _FluentToastState extends State<FluentToast> {
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    final subText = widget.subText;
+    final title = widget.title;
     final icon = widget.icon;
     final action = widget.action;
-    final textColor = switch (widget.toastColor) {
-      FluentToastColor.accent => FluentColors.of(context)?.brandForegroundTintRest,
+    final titleColor = switch (widget.toastColor) {
+      FluentToastColor.accent =>
+        FluentColors.of(context)?.brandForegroundTintRest,
       FluentToastColor.warning => colorMode(
           FluentColors.statusWarningForeground1Rest,
           FluentDarkColors.statusWarningForeground1Rest,
@@ -132,8 +133,9 @@ class _FluentToastState extends State<FluentToast> {
           FluentDarkColors.neutralForeground1Rest,
         ),
     };
-    final subTextColor = switch (widget.toastColor) {
-      FluentToastColor.accent => FluentColors.of(context)?.brandForegroundTintRest,
+    final textColor = switch (widget.toastColor) {
+      FluentToastColor.accent =>
+        FluentColors.of(context)?.brandForegroundTintRest,
       FluentToastColor.warning => colorMode(
           FluentColors.statusWarningForeground1Rest,
           FluentDarkColors.statusWarningForeground1Rest,
@@ -147,8 +149,8 @@ class _FluentToastState extends State<FluentToast> {
           FluentDarkColors.neutralForeground2Rest,
         ),
     };
-    return SizedBox(
-      height: widget.subText != null ? 64 : 52,
+    return Container(
+      constraints: BoxConstraints(minHeight: widget.title != null ? 64 : 52),
       child: Material(
         color: Colors.transparent,
         child: FluentContainer(
@@ -159,7 +161,8 @@ class _FluentToastState extends State<FluentToast> {
             _ => FluentThemeDataModel.of(context).fluentShadowTheme?.shadow16
           },
           color: switch (widget.toastColor) {
-            FluentToastColor.accent => FluentColors.of(context)?.brandBackgroundTintRest,
+            FluentToastColor.accent =>
+              FluentColors.of(context)?.brandBackgroundTintRest,
             FluentToastColor.warning => colorMode(
                 FluentColors.statusWarningBackground1Rest,
                 FluentDarkColors.statusWarningBackground1Rest,
@@ -173,59 +176,61 @@ class _FluentToastState extends State<FluentToast> {
                 FluentDarkColors.neutralBackground4Rest,
               ),
           },
-          child:
-              // unnecessary
-              SizedBox(
-            height: widget.subText != null ? 64 : 52,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  if (icon != null) ...[
-                    IconTheme(
-                      data: IconThemeData(
-                        color: subTextColor,
-                      ),
-                      child: icon,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: FluentSize.size160.value,
+              vertical: title != null ? 12 : 11,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (icon != null) ...[
+                  IconTheme(
+                    data: IconThemeData(
+                      color: textColor,
                     ),
-                    Padding(padding: EdgeInsets.only(right: 16)),
-                  ],
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FluentText(
-                          widget.text,
+                    child: icon,
+                  ),
+                  Padding(padding: EdgeInsets.only(right: 16)),
+                ],
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (title != null)
+                        DefaultTextStyle(
                           style: FluentThemeDataModel.of(context)
                               .fluentTextTheme
                               ?.body2Strong
                               ?.fluentCopyWith(
-                                fluentColor: textColor,
-                              ),
+                                fluentColor: titleColor,
+                              ) as MixedFluentTextStyle,
+                          overflow: TextOverflow.ellipsis,
+                          child: title,
                         ),
-                        if (subText != null)
-                          FluentText(
-                            subText,
-                            style: FluentThemeDataModel.of(context)
-                                .fluentTextTheme
-                                ?.body2
-                                ?.fluentCopyWith(
-                                  fluentColor: subTextColor,
-                                ),
-                          )
-                      ],
-                    ),
-                  ),
-                  if (action != null)
-                    IconTheme(
-                      data: IconThemeData(
-                        color: subTextColor,
+                      DefaultTextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: title != null ? 1 : 2,
+                        style: FluentThemeDataModel.of(context)
+                            .fluentTextTheme
+                            ?.body2
+                            ?.fluentCopyWith(
+                              fluentColor: textColor,
+                            ) as MixedFluentTextStyle,
+                        child: widget.text,
                       ),
-                      child: action,
+                    ],
+                  ),
+                ),
+                if (action != null)
+                  IconTheme(
+                    data: IconThemeData(
+                      color: textColor,
                     ),
-                ],
-              ),
+                    child: action,
+                  ),
+              ],
             ),
           ),
         ),
