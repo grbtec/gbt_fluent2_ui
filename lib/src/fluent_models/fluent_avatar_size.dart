@@ -5,19 +5,19 @@ class FluentAvatarSize {
   const FluentAvatarSize._(this.index, this.value);
 
   static const FluentAvatarSize size16 = FluentAvatarSize._(0, 16);
-  static const FluentAvatarSize size20 = FluentAvatarSize._(0, 20);
-  static const FluentAvatarSize size24 = FluentAvatarSize._(0, 24);
-  static const FluentAvatarSize size28 = FluentAvatarSize._(0, 28);
-  static const FluentAvatarSize size32 = FluentAvatarSize._(0, 32);
-  static const FluentAvatarSize size36 = FluentAvatarSize._(0, 36);
-  static const FluentAvatarSize size40 = FluentAvatarSize._(0, 40);
-  static const FluentAvatarSize size48 = FluentAvatarSize._(0, 48);
-  static const FluentAvatarSize size56 = FluentAvatarSize._(0, 56);
-  static const FluentAvatarSize size64 = FluentAvatarSize._(0, 64);
-  static const FluentAvatarSize size72 = FluentAvatarSize._(0, 72);
-  static const FluentAvatarSize size96 = FluentAvatarSize._(0, 96);
-  static const FluentAvatarSize size120 = FluentAvatarSize._(0, 120);
-  static const FluentAvatarSize size128 = FluentAvatarSize._(0, 128);
+  static const FluentAvatarSize size20 = FluentAvatarSize._(1, 20);
+  static const FluentAvatarSize size24 = FluentAvatarSize._(2, 24);
+  static const FluentAvatarSize size28 = FluentAvatarSize._(3, 28);
+  static const FluentAvatarSize size32 = FluentAvatarSize._(4, 32);
+  static const FluentAvatarSize size36 = FluentAvatarSize._(5, 36);
+  static const FluentAvatarSize size40 = FluentAvatarSize._(6, 40);
+  static const FluentAvatarSize size48 = FluentAvatarSize._(7, 48);
+  static const FluentAvatarSize size56 = FluentAvatarSize._(8, 56);
+  static const FluentAvatarSize size64 = FluentAvatarSize._(9, 64);
+  static const FluentAvatarSize size72 = FluentAvatarSize._(10, 72);
+  static const FluentAvatarSize size96 = FluentAvatarSize._(11, 96);
+  static const FluentAvatarSize size120 = FluentAvatarSize._(12, 120);
+  static const FluentAvatarSize size128 = FluentAvatarSize._(13, 128);
 
   static const List<FluentAvatarSize> values = <FluentAvatarSize>[
     size16,

@@ -37,6 +37,7 @@ export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_card.dart
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_card_container.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_left_nav/fluent_left_nav.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_icon/fluent_icon.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_circular_progress_indicator.dart';
 
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_avatar_size.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_size.dart';
@@ -53,6 +54,7 @@ export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_style.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_text_theme.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_theme_data_model.dart';
 export 'package:gbt_fluent2_ui/src/fluent_models/fluent_theme_variation.dart';
+export 'package:gbt_fluent2_ui/src/fluent_models/fluent_circular_progress_indicator_size.dart';
 
 export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_corner_radius.dart';
 export 'package:gbt_fluent2_ui/src/fluent_with_material/mixed_fluent_font_weight.dart';
