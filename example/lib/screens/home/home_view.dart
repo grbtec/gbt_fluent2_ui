@@ -258,12 +258,6 @@ class _HomeViewState extends State<HomeView> {
               padding: EdgeInsets.symmetric(vertical: FluentSize.size240.value),
               child: Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24),
-                    child: FluentCircularProgressIndicator(
-                      size: FluentCircularProgressIndicatorSize.xLarge,
-                    ),
-                  ),
                   ...returnComponents(),
                 ],
               ),
