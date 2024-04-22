@@ -36,7 +36,10 @@ ButtonStyle _buildFluentButtonAccentStyle(
             FluentDarkColors.neutralForegroundDisabled1Rest,
           );
         }
-        return Colors.white;
+        return colorMode(
+          FluentColors.neutralForeground1Rest,
+          FluentDarkColors.neutralBackground1Rest,
+        );
       },
     ),
   ).merge(
