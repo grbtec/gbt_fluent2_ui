@@ -7,6 +7,7 @@ class FluentListItemMultiLine extends StatelessWidget {
   final String? text;
   final String? subtext;
   final Widget? additionalContent;
+  final Color? tileColor;
   final void Function()? onTap;
 
   /// FluentList's constructor
@@ -14,6 +15,7 @@ class FluentListItemMultiLine extends StatelessWidget {
     super.key,
     this.leading,
     this.trailing,
+    this.tileColor,
     this.text,
     this.onTap,
     this.subtext,
@@ -29,10 +31,7 @@ class FluentListItemMultiLine extends StatelessWidget {
 
     return ListTile(
       onTap: onTap,
-      tileColor: colorMode(
-        FluentColors.neutralBackground3Rest,
-        FluentDarkColors.neutralBackground3Rest,
-      ),
+      tileColor: tileColor,
       contentPadding: EdgeInsets.symmetric(
         horizontal: FluentSize.size160.value,
       ),
