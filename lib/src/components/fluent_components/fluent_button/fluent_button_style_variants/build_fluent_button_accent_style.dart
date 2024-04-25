@@ -7,6 +7,8 @@ ButtonStyle _buildFluentButtonAccentStyle(
   final colorMode = createColorMode(Theme.of(context).brightness);
   final MaterialStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
+  final MaterialStateProperty<Color?>? foregroundColor =
+      fluentButtonStyle.foregroundColor;
 
   return ButtonStyle(
     backgroundColor: backgroundColor ??
@@ -28,20 +30,21 @@ ButtonStyle _buildFluentButtonAccentStyle(
             return FluentColors.of(context)?.brandBackground1Rest;
           },
         ),
-    foregroundColor: MaterialStateProperty.resolveWith(
-      (states) {
-        if (states.contains(MaterialState.disabled)) {
-          return colorMode(
-            FluentColors.neutralForegroundDisabled1Rest,
-            FluentDarkColors.neutralForegroundDisabled1Rest,
-          );
-        }
-        return colorMode(
-          FluentColors.neutralForeground1Rest,
-          FluentDarkColors.neutralBackground1Rest,
-        );
-      },
-    ),
+    foregroundColor: foregroundColor ??
+        MaterialStateProperty.resolveWith(
+          (states) {
+            if (states.contains(MaterialState.disabled)) {
+              return colorMode(
+                FluentColors.neutralForegroundDisabled1Rest,
+                FluentDarkColors.neutralForegroundDisabled1Rest,
+              );
+            }
+            return colorMode(
+              FluentColors.neutralBackground1Rest,
+              FluentDarkColors.neutralBackground1Rest,
+            );
+          },
+        ),
   ).merge(
     _fluentButtonDefaultStyle(
       fluentButtonStyle: fluentButtonStyle,

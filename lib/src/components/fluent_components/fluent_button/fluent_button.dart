@@ -20,6 +20,7 @@ class FluentButton extends StatelessWidget {
   final Icon? icon;
   final void Function()? onPressed;
   final MaterialStateProperty<Color?>? backgroundColor;
+  final MaterialStateProperty<Color?>? foregroundColor;
 
   const FluentButton({
     super.key,
@@ -30,6 +31,7 @@ class FluentButton extends StatelessWidget {
     this.variant = FluentButtonVariant.accent,
     this.size = FluentButtonSize.medium,
     this.backgroundColor,
+    this.foregroundColor,
   });
 
   returnButtonTextStyle({size, fluentTheme}) {
@@ -65,6 +67,7 @@ class FluentButton extends StatelessWidget {
           buttonSize: size,
           buttonVariant: variant,
           backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
           context: context,
         ),
         onPressed: onPressed,
@@ -103,10 +106,12 @@ enum FluentButtonSize { large, medium, small }
 class FluentButtonStyle {
   final FluentButtonSize size;
   final MaterialStateProperty<Color?>? backgroundColor;
+  final MaterialStateProperty<Color?>? foregroundColor;
 
   FluentButtonStyle({
     required this.size,
     this.backgroundColor,
+    this.foregroundColor,
   });
 }
 
@@ -115,19 +120,20 @@ ButtonStyle getStyle({
   required FluentButtonSize buttonSize,
   required BuildContext context,
   MaterialStateProperty<Color?>? backgroundColor,
+  MaterialStateProperty<Color?>? foregroundColor,
 }) {
   return switch (buttonVariant) {
     FluentButtonVariant.accent => _buildFluentButtonAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.outlineAccent => _buildFluentButtonOutlineAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.outline => _buildFluentButtonOutlineStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.subtle => _buildFluentButtonSubtleStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor),
+        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
         context),
   };
 }

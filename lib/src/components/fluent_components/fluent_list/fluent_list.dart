@@ -10,6 +10,7 @@ class FluentList extends StatelessWidget {
   final Color? sectionHeaderBackgroundColor;
   final Color? sectionDescriptionBackgroundColor;
   final Widget? separator;
+  final Color? tilesBackgroundColor;
 
   final FluentListType listType;
 
@@ -29,6 +30,7 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
     this.sectionHeaderBackgroundColor,
+    this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
   })  : _isOneLine = true,
@@ -37,7 +39,8 @@ class FluentList extends StatelessWidget {
           sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
                   sectionDescriptionLeading != null ||
-              sectionDescriptionText == null && sectionDescriptionLeading == null,
+              sectionDescriptionText == null &&
+                  sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -58,6 +61,7 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
     this.sectionHeaderBackgroundColor,
+    this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
   })  : _isOneLine = false,
@@ -66,7 +70,8 @@ class FluentList extends StatelessWidget {
           sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
                   sectionDescriptionLeading != null ||
-              sectionDescriptionText == null && sectionDescriptionLeading == null,
+              sectionDescriptionText == null &&
+                  sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -89,6 +94,7 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderTitleIcon,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
     this.sectionHeaderBackgroundColor,
+    this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
   })  : _isOneLine = true,
@@ -97,7 +103,8 @@ class FluentList extends StatelessWidget {
           sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
                   sectionDescriptionLeading != null ||
-              sectionDescriptionText == null && sectionDescriptionLeading == null,
+              sectionDescriptionText == null &&
+                  sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -122,6 +129,7 @@ class FluentList extends StatelessWidget {
     this.sectionDescriptionLeading,
     this.sectionDescriptionText,
     this.sectionHeaderTitleIcon,
+    this.tilesBackgroundColor,
     this.sectionHeaderTitleVariant = SectionHeaderTitleVariant.bold,
     this.sectionHeaderBackgroundColor,
     this.sectionDescriptionBackgroundColor,
@@ -132,7 +140,8 @@ class FluentList extends StatelessWidget {
           sectionDescriptionText != null && sectionDescriptionLeading == null ||
               sectionDescriptionText != null &&
                   sectionDescriptionLeading != null ||
-              sectionDescriptionText == null && sectionDescriptionLeading == null,
+              sectionDescriptionText == null &&
+                  sectionDescriptionLeading == null,
           'Cannot pass only sectionDescriptionIcon to list section description',
         ),
         assert(
@@ -173,10 +182,13 @@ class FluentList extends StatelessWidget {
                 backgroundColor: sectionHeaderBackgroundColor,
               ),
             FluentContainer(
-              color: colorMode(
-                FluentColors.neutralBackground3Rest,
-                FluentDarkColors.neutralBackground3Rest,
-              ),
+              color: tilesBackgroundColor ??
+                  (_isOneLine
+                      ? colorMode(
+                          FluentColors.neutralBackground3Rest,
+                          FluentDarkColors.neutralBackground3Rest,
+                        )
+                      : null),
               cornerRadius: _isOneLine
                   ? FluentCornerRadius.xLarge
                   : FluentCornerRadius.none,
