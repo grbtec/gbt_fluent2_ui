@@ -7,6 +7,8 @@ const _headerHeight = 52.0;
 
 class FluentSheet extends StatefulWidget {
   final FluentSheetController? controller;
+  final Color? headerColor;
+  final Color? backgroundColor;
   final bool half;
   final double headerHeight;
   final VoidCallback? onMinExtent;
@@ -21,6 +23,8 @@ class FluentSheet extends StatefulWidget {
     super.key,
     this.controller,
     this.half = false,
+    this.headerColor,
+    this.backgroundColor,
     this.headerHeight = 20,
     this.onMinExtent,
     this.onMaxExtent,
@@ -139,10 +143,11 @@ class _FluentSheetState extends State<FluentSheet> {
                               Radius.circular(FluentCornerRadius.xLarge.value),
                         ),
                         child: Container(
-                          color: colorMode(
-                            FluentColors.neutralBackground2Rest,
-                            FluentDarkColors.neutralBackground2Rest,
-                          ),
+                          color: widget.backgroundColor ??
+                              colorMode(
+                                FluentColors.neutralBackground2Rest,
+                                FluentDarkColors.neutralBackground2Rest,
+                              ),
                           child: Stack(
                             children: [
                               Positioned.fill(
@@ -150,25 +155,41 @@ class _FluentSheetState extends State<FluentSheet> {
                                   controller: scrollController,
                                   child: Column(
                                     children: [
-                                      Center(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 8),
-                                          child: FluentContainer(
-                                            cornerRadius:
-                                                FluentCornerRadius.circle,
-                                            width: 36,
-                                            height: 4,
-                                            color: colorMode(
-                                              FluentColors.neutralStroke1Rest,
+                                      Container(
+                                        color: widget.headerColor ??
+                                            colorMode(
+                                              FluentColors
+                                                  .neutralBackground2Rest,
                                               FluentDarkColors
-                                                  .neutralStroke1Rest,
+                                                  .neutralBackground2Rest,
+                                            ),
+                                        child: Center(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 8),
+                                            child: FluentContainer(
+                                              cornerRadius:
+                                                  FluentCornerRadius.circle,
+                                              width: 36,
+                                              height: 4,
+                                              color: colorMode(
+                                                FluentColors.neutralStroke1Rest,
+                                                FluentDarkColors
+                                                    .neutralStroke1Rest,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       if (hasHeader)
-                                        SizedBox(
+                                        Container(
+                                          color: widget.headerColor ??
+                                              colorMode(
+                                                FluentColors
+                                                    .neutralBackground2Rest,
+                                                FluentDarkColors
+                                                    .neutralBackground2Rest,
+                                              ),
                                           height: _headerHeight,
                                           child: Stack(
                                             children: [
