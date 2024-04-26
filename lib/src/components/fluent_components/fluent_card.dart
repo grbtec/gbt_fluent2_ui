@@ -72,7 +72,7 @@ class FluentCard extends StatelessWidget {
     return conditionalButton(
       child: FluentCardContainer(
         width: 280,
-        constraints: BoxConstraints(maxHeight: 192),
+        constraints: coverImage != null ? BoxConstraints(maxHeight: 192 ): null,
         child: Column(
           children: [
             if (coverImage != null)
