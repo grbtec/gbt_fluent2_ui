@@ -11,6 +11,7 @@ class FluentCard extends StatelessWidget {
   final Widget? leading;
   final VoidCallback? onPressed;
   final Color? highlightColor;
+  final bool isFullWidth;
 
   /// FluentCard's constructor
    FluentCard({
@@ -18,6 +19,7 @@ class FluentCard extends StatelessWidget {
     required this.text,
     this.subText,
     this.coverImage,
+    this.isFullWidth = false,
     this.onPressed,
     this.highlightColor,
     this.leadingBoxSize = 24,
@@ -71,7 +73,7 @@ class FluentCard extends StatelessWidget {
 
     return conditionalButton(
       child: FluentCardContainer(
-        width: 280,
+        width: isFullWidth ? double.maxFinite : 280,
         constraints: coverImage != null ? BoxConstraints(maxHeight: 192 ): null,
         child: Column(
           children: [
