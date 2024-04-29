@@ -3,12 +3,14 @@ import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentListItemMultiLine extends StatelessWidget {
   final Widget? leading;
+  final double? leadingBoxSize;
   final Widget? trailing;
   final String? text;
   final String? subtext;
   final Widget? additionalContent;
   final Color? tileColor;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   /// FluentList's constructor
   const FluentListItemMultiLine({
@@ -17,7 +19,9 @@ class FluentListItemMultiLine extends StatelessWidget {
     this.trailing,
     this.tileColor,
     this.text,
+    this.leadingBoxSize = 40,
     this.onTap,
+    this.onLongPress,
     this.subtext,
     this.additionalContent,
   });
@@ -34,15 +38,19 @@ class FluentListItemMultiLine extends StatelessWidget {
       tileColor: tileColor,
       contentPadding: EdgeInsets.symmetric(
         horizontal: FluentSize.size160.value,
+        vertical: FluentSize.size120.value,
       ),
-      minVerticalPadding: FluentSize.size120.value,
+      minVerticalPadding: 0,
+      horizontalTitleGap: 0,
+      onLongPress: onLongPress,
+      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
       title: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (leading != null) ...[
             FluentContainer(
-              width: FluentSize.size400.value,
-              height: FluentSize.size400.value,
+              width: leadingBoxSize,
+              height: leadingBoxSize,
               child: leading,
             ),
             SizedBox(

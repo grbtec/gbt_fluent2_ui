@@ -11,6 +11,7 @@ class FluentList extends StatelessWidget {
   final Color? sectionDescriptionBackgroundColor;
   final Widget? separator;
   final Color? tilesBackgroundColor;
+  final EdgeInsetsGeometry? padding;
 
   final FluentListType listType;
 
@@ -33,6 +34,7 @@ class FluentList extends StatelessWidget {
     this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
+    this.padding,
   })  : _isOneLine = true,
         listType = FluentListType.oneLine,
         assert(
@@ -64,6 +66,7 @@ class FluentList extends StatelessWidget {
     this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
+    this.padding,
   })  : _isOneLine = false,
         listType = FluentListType.multiLine,
         assert(
@@ -97,6 +100,7 @@ class FluentList extends StatelessWidget {
     this.tilesBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
+    this.padding,
   })  : _isOneLine = true,
         listType = FluentListType.oneLine,
         assert(
@@ -134,6 +138,7 @@ class FluentList extends StatelessWidget {
     this.sectionHeaderBackgroundColor,
     this.sectionDescriptionBackgroundColor,
     this.separator,
+    this.padding,
   })  : _isOneLine = false,
         listType = FluentListType.multiLine,
         assert(
@@ -161,14 +166,16 @@ class FluentList extends StatelessWidget {
     final sectionHeaderTitle = this.sectionHeaderTitle;
     final sectionDescriptionText = this.sectionDescriptionText;
     final separator = this.separator;
+    final padding = this.padding;
     return Container(
-      padding: _isOneLine
-          ? EdgeInsets.only(
-              top: FluentSize.size160.value,
-              left: FluentSize.size160.value,
-              right: FluentSize.size160.value,
-            )
-          : EdgeInsets.zero,
+      padding: padding ??
+           (_isOneLine
+              ? EdgeInsets.only(
+                  top: FluentSize.size160.value,
+                  left: FluentSize.size160.value,
+                  right: FluentSize.size160.value,
+                )
+              : EdgeInsets.zero),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
