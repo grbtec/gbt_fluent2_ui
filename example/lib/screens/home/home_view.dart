@@ -50,6 +50,12 @@ class _HomeViewState extends State<HomeView> {
       previewIcon: FluentIcons.rectangle_landscape_12_filled,
     ),
     CardComponentPage(
+      description: "Sheets help enable a simple task that people can complete before returning to the parent view",
+      title: "Fluent Sheet",
+      route: Routes.fluentSheetView,
+      previewIcon: FluentIcons.document_24_regular,
+    ),
+    CardComponentPage(
       description:
           "Toast notifications can be dismissed automatically or after the user performs the action/cancel.",
       title: "Fluent Toast",
