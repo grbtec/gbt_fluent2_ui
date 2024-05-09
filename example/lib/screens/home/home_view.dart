@@ -50,7 +50,8 @@ class _HomeViewState extends State<HomeView> {
       previewIcon: FluentIcons.rectangle_landscape_12_filled,
     ),
     CardComponentPage(
-      description: "Sheets help enable a simple task that people can complete before returning to the parent view",
+      description:
+          "Sheets help enable a simple task that people can complete before returning to the parent view",
       title: "Fluent Sheet",
       route: Routes.fluentSheetView,
       previewIcon: FluentIcons.document_24_regular,
@@ -81,7 +82,13 @@ class _HomeViewState extends State<HomeView> {
       description: 'Fluent Controls Components',
       route: Routes.fluentControlsView,
       previewIcon: FluentIcons.checkbox_2_20_regular,
-    )
+    ),
+    // CardComponentPage(
+    //   title: "Popover",
+    //   description: 'Popover Components',
+    //   route: Routes.fluentPopoverView,
+    //   previewIcon: FluentIcons.square_24_regular,
+    // )
   ];
 
   final designTokens = <DesignTokenItem>[
@@ -203,6 +210,10 @@ class _HomeViewState extends State<HomeView> {
           themeColorVariation: FluentThemeColorVariation.brand,
           hintText: "Search",
           onEmpty: clearQueryString,
+          trailingIcon: FluentTooltip(
+            message: "Tooltip",
+            child: Icon(FluentIcons.question_20_regular),
+          ),
           onSearch: (value) async {
             await Future.delayed(
               Duration(seconds: 1),
