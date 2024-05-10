@@ -88,76 +88,85 @@ class _FluentPopoverState extends State<FluentPopover> {
             right => Alignment.centerLeft,
             int() => throw "Invalid direction",
           },
-          child: Flex(
-            direction: widget.axis,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (popOverDirection == bottom) _Arrow.top(color: popOverColor),
-              if (popOverDirection == right) _Arrow.left(color: popOverColor),
-              Flexible(
-                child: FluentContainer(
-                  cornerRadius: FluentCornerRadius.xLarge,
-                  shadow: FluentThemeDataModel.of(context)
-                      .fluentShadowTheme
-                      ?.shadow16,
-                  color: popOverColor,
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if ((widget.title ?? widget.subtitle) != null) ...[
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: 44,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    if (widget.title != null) widget.title!,
-                                    if (widget.subtitle != null)
-                                      widget.subtitle!,
-                                  ],
+          child: _Animation(
+            direction: switch (popOverDirection) {
+              top => _AnimationDirection.top,
+              bottom => _AnimationDirection.bottom,
+              left => _AnimationDirection.left,
+              right => _AnimationDirection.right,
+              int() => throw "Invalid direction",
+            },
+            child: Flex(
+              direction: widget.axis,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (popOverDirection == bottom) _Arrow.top(color: popOverColor),
+                if (popOverDirection == right) _Arrow.left(color: popOverColor),
+                Flexible(
+                  child: FluentContainer(
+                    cornerRadius: FluentCornerRadius.xLarge,
+                    shadow: FluentThemeDataModel.of(context)
+                        .fluentShadowTheme
+                        ?.shadow16,
+                    color: popOverColor,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if ((widget.title ?? widget.subtitle) != null) ...[
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 44,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      if (widget.title != null) widget.title!,
+                                      if (widget.subtitle != null)
+                                        widget.subtitle!,
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 1,
-                                child: ClipRRect(
-                                  child: Opacity(
-                                    opacity: 0.5,
-                                    child: FluentContainer(
-                                      strokeStyle:
-                                      FluentThemeDataModel.of(context)
-                                          .fluentStrokeTheme
-                                          ?.stroke1,
-                                      child: Opacity(
-                                          opacity: 0,
-                                          child: Column(
-                                            children: [
-                                              widget.body,
-                                              if (widget.title != null)
-                                                widget.title!,
-                                              if (widget.subtitle != null)
-                                                widget.subtitle!,
-                                            ],
-                                          )),
+                                SizedBox(
+                                  height: 1,
+                                  child: ClipRRect(
+                                    child: Opacity(
+                                      opacity: 0.5,
+                                      child: FluentContainer(
+                                        strokeStyle:
+                                            FluentThemeDataModel.of(context)
+                                                .fluentStrokeTheme
+                                                ?.stroke1,
+                                        child: Opacity(
+                                            opacity: 0,
+                                            child: Column(
+                                              children: [
+                                                widget.body,
+                                                if (widget.title != null)
+                                                  widget.title!,
+                                                if (widget.subtitle != null)
+                                                  widget.subtitle!,
+                                              ],
+                                            )),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
+                          ],
+                          widget.body,
                         ],
-                        widget.body,
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              if (popOverDirection == top) _Arrow.bottom(color: popOverColor),
-              if (popOverDirection == left) _Arrow.right(color: popOverColor),
-            ],
+                if (popOverDirection == top) _Arrow.bottom(color: popOverColor),
+                if (popOverDirection == left) _Arrow.right(color: popOverColor),
+              ],
+            ),
           ),
         ),
       ),
@@ -315,4 +324,33 @@ class _ArrowCustomClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+}
+
+enum _AnimationDirection { top, bottom, left, right }
+
+class _Animation extends StatelessWidget {
+  final Widget child;
+  final _AnimationDirection direction;
+
+  const _Animation({required this.child, required this.direction});
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: 1),
+        duration: Duration(milliseconds: 200),
+        builder: (BuildContext context, double value, Widget? child) {
+          return Transform.scale(
+            alignment: switch (direction) {
+              _AnimationDirection.top => Alignment.bottomCenter,
+              _AnimationDirection.bottom => Alignment.topCenter,
+              _AnimationDirection.left => Alignment.centerRight,
+              _AnimationDirection.right => Alignment.centerLeft,
+            },
+            scale: value,
+            child: child,
+          );
+        },
+        child: child);
+  }
 }
