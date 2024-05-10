@@ -83,12 +83,12 @@ class _HomeViewState extends State<HomeView> {
       route: Routes.fluentControlsView,
       previewIcon: FluentIcons.checkbox_2_20_regular,
     ),
-    // CardComponentPage(
-    //   title: "Popover",
-    //   description: 'Popover Components',
-    //   route: Routes.fluentPopoverView,
-    //   previewIcon: FluentIcons.square_24_regular,
-    // )
+    CardComponentPage(
+      title: "Popover",
+      description: 'Popover Components',
+      route: Routes.fluentPopoverView,
+      previewIcon: FluentIcons.square_24_regular,
+    )
   ];
 
   final designTokens = <DesignTokenItem>[

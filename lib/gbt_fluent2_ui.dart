@@ -10,6 +10,7 @@ export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_tab_bar/f
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_nav_bar/fluent_navbar.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_toast/fluent_toast.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_tooltip/fluent_tooltip.dart';
+export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_popover/fluent_popover.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_banner/fluent_banner.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_scaffold/fluent_scaffold.dart';
 export 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_provider.dart';
