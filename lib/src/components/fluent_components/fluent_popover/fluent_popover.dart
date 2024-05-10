@@ -157,7 +157,11 @@ class _FluentPopoverState extends State<FluentPopover> {
                               ],
                             ),
                           ],
-                          widget.body,
+                          Flexible(
+                            child: SingleChildScrollView(
+                              child: widget.body,
+                            ),
+                          ),
                         ],
                       ),
                     ),
