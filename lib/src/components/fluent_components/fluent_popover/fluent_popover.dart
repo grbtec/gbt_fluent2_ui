@@ -123,9 +123,27 @@ class _FluentPopoverState extends State<FluentPopover> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      if (widget.title != null) widget.title!,
+                                      if (widget.title != null)
+                                        DefaultTextStyle(
+                                            style: FluentThemeDataModel.of(
+                                                            context)
+                                                        .fluentTextTheme
+                                                        ?.body1Strong
+                                                    as MixedFluentTextStyle? ??
+                                                DefaultTextStyle.of(context)
+                                                    .style,
+                                            child: widget.title!),
                                       if (widget.subtitle != null)
-                                        widget.subtitle!,
+                                        DefaultTextStyle(
+                                          style: FluentThemeDataModel.of(
+                                                          context)
+                                                      .fluentTextTheme
+                                                      ?.caption2
+                                                  as MixedFluentTextStyle? ??
+                                              DefaultTextStyle.of(context)
+                                                  .style,
+                                          child: widget.subtitle!,
+                                        ),
                                     ],
                                   ),
                                 ),

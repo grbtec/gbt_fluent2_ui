@@ -29,15 +29,8 @@ class _FluentPopoverViewState extends State<FluentPopoverView> {
               axis = Axis.values[(axis.index + 1) % Axis.values.length];
             });
           },
-          title: FluentText(
-            "Title",
-            style:
-                FluentThemeDataModel.of(context).fluentTextTheme?.body1Strong,
-          ),
-          subtitle: FluentText(
-            "Subtitle",
-            style: FluentThemeDataModel.of(context).fluentTextTheme?.caption2,
-          ),
+          title: FluentText("Title"),
+          subtitle: FluentText("Subtitle"),
           body: Column(
             children: [
               Padding(
