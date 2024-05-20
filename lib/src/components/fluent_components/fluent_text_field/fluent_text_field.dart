@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_debug.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_text_field/text_field_trailing_icon.dart';
@@ -18,6 +19,32 @@ class FluentTextField extends StatefulWidget {
   final bool readOnly;
   final bool hasError;
   final bool obscureText;
+  final TextInputType? keyboardType;
+  final void Function()? onTap;
+  final TextAlign textAlign;
+  final int? maxLines;
+  final bool autofocus;
+  final bool autocorrect;
+  final Clip clipBehavior;
+  final Widget? Function(
+    BuildContext, {
+    required int currentLength,
+    required bool isFocused,
+    required int? maxLength,
+  })? buildCounter;
+  final Color? cursorErrorColor;
+  final bool canRequestFocus;
+  final double? cursorHeight;
+  final bool? enabled;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool enableSuggestions;
+  final int? maxLength;
+  final bool expands;
+  final TextMagnifierConfiguration? magnifierConfiguration;
+  final void Function()? onEditingComplete;
+  final String obscuringCharacter;
+  final void Function(String)? onSubmitted;
+  final ScrollController? scrollController;
 
   const FluentTextField({
     super.key,
@@ -33,6 +60,27 @@ class FluentTextField extends StatefulWidget {
     this.readOnly = false,
     this.hasError = false,
     this.obscureText = false,
+    this.keyboardType,
+    this.onTap,
+    this.textAlign = TextAlign.start,
+    this.maxLines = 1,
+    this.autofocus = false,
+    this.autocorrect = true,
+    this.clipBehavior = Clip.hardEdge,
+    this.buildCounter,
+    this.cursorErrorColor,
+    this.canRequestFocus = true,
+    this.cursorHeight,
+    this.enabled,
+    this.inputFormatters,
+    this.enableSuggestions = true,
+    this.maxLength,
+    this.expands = false,
+    this.magnifierConfiguration,
+    this.onEditingComplete,
+    this.obscuringCharacter = '•',
+    this.onSubmitted,
+    this.scrollController,
   });
 
   @override
@@ -74,6 +122,27 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final prefixIcon = widget.prefixIcon;
     final prefix = widget.prefix;
     final onChanged = widget.onChanged;
+    final keyboardType = widget.keyboardType;
+    final onTap = widget.onTap;
+    final textAlign = widget.textAlign;
+    final maxLines = widget.maxLines;
+    final autofocus = widget.autofocus;
+    final autocorrect = widget.autocorrect;
+    final clipBehavior = widget.clipBehavior;
+    final buildCounter = widget.buildCounter;
+    final cursorErrorColor = widget.cursorErrorColor;
+    final canRequestFocus = widget.canRequestFocus;
+    final cursorHeight = widget.cursorHeight;
+    final enabled = widget.enabled;
+    final inputFormatters = widget.inputFormatters;
+    final enableSuggestions = widget.enableSuggestions;
+    final maxLength = widget.maxLength;
+    final expands = widget.expands;
+    final magnifierConfiguration = widget.magnifierConfiguration;
+    final onEditingComplete = widget.onEditingComplete;
+    final obscuringCharacter = widget.obscuringCharacter;
+    final onSubmitted = widget.onSubmitted;
+    final scrollController = widget.scrollController;
 
     return Row(
       children: [
@@ -98,9 +167,32 @@ class _FluentTextFieldState extends State<FluentTextField> {
         Expanded(
           child: Container(
             padding: EdgeInsets.only(
-                top: FluentSize.size120.value, left: FluentSize.size160.value),
+              top: FluentSize.size120.value,
+              left: FluentSize.size160.value,
+            ),
             child: TextField(
+              keyboardType: keyboardType,
+              onTap: onTap,
+              textAlign: textAlign,
+              maxLines: maxLines,
+              autofocus: autofocus,
+              autocorrect: autocorrect,
+              clipBehavior: clipBehavior,
+              buildCounter: buildCounter,
               obscureText: widget.obscureText,
+              cursorErrorColor: cursorErrorColor,
+              canRequestFocus: canRequestFocus,
+              cursorHeight: cursorHeight,
+              enabled: enabled,
+              inputFormatters: inputFormatters,
+              enableSuggestions: enableSuggestions,
+              maxLength: maxLength,
+              expands: expands,
+              magnifierConfiguration: magnifierConfiguration,
+              onEditingComplete: onEditingComplete,
+              obscuringCharacter: obscuringCharacter,
+              onSubmitted: onSubmitted,
+              scrollController: scrollController,
               readOnly: widget.readOnly,
               focusNode: fluentTextFieldController._focus,
               onTapOutside: (event) {
