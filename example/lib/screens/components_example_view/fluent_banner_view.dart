@@ -12,17 +12,17 @@ class FluentBannerView extends StatefulWidget {
 class _FluentBannerViewState extends State<FluentBannerView> {
   bool isLoading = false;
 
-  final banner1 = FluentBanner(
+  final banner1 = const FluentBanner(
     bannerColor: FluentBannerColor.accent,
     text: "It's me Mario",
   );
 
-  final banner2 = FluentBanner(
+  final banner2 = const FluentBanner(
     bannerColor: FluentBannerColor.accent,
     text: "Sem conexão com a internet.",
   );
 
-  final banner3 = FluentBanner(
+  final banner3 = const FluentBanner(
     bannerColor: FluentBannerColor.accent,
     text: "Conexão restaurada.",
   );

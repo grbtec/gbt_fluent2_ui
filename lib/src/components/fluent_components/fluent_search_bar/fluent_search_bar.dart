@@ -15,7 +15,7 @@ class FluentSearchBar extends StatefulWidget {
   final void Function()? onClearOperation;
   final void Function()? onEmpty;
   final SearchBarAlignment searchBarAlignment;
-  final Icon? trailingIcon;
+  final Widget? trailingIcon;
   final void Function()? onTapTrailingIcon;
   final String? hintText;
   final Color? cancelTextColor;
@@ -117,7 +117,7 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
 
   Widget? buildTrailingIcon(
     BuildContext context, {
-    Icon? icon,
+    Widget? icon,
     required bool isNotEmpty,
     required bool hasFocus,
     required bool isLoading,

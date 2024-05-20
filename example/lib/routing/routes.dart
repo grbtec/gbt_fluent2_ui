@@ -4,7 +4,9 @@ import 'package:example/screens/components_example_view/fluent_button_view.dart'
 import 'package:example/screens/components_example_view/fluent_card_view.dart';
 import 'package:example/screens/components_example_view/fluent_controls_view.dart';
 import 'package:example/screens/components_example_view/fluent_list_view/fluent_list_example_view.dart';
+import 'package:example/screens/components_example_view/fluent_popover_view.dart';
 import 'package:example/screens/components_example_view/fluent_progress_indicators_view.dart';
+import 'package:example/screens/components_example_view/fluent_sheet_view.dart';
 import 'package:example/screens/components_example_view/fluent_text_field_view.dart';
 import 'package:example/screens/components_example_view/fluent_toast_view.dart';
 import 'package:example/screens/design_tokens_view/shadow_view.dart';
@@ -20,12 +22,14 @@ abstract final class Routes {
   static const fluentListView = "/fluentListView";
   static const fluentAvatarView = "/fluentAvatarView";
   static const fluentBannerView = "/fluentBannerView";
+  static const fluentSheetView = "/fluentSheetView";
   static const fluentButtonView = "/fluentButtonView";
   static const fluentCardView = "/fluentCardView";
   static const fluentToastView = "/fluentToastView";
   static const fluentTextFieldView = "/fluentTextField";
   static const fluentProgressIndicatorsView = "/fluentProgressIndicatorsView";
   static const fluentControlsView = "/fluentControlsView";
+  static const fluentPopoverView = "/fluentPopoverView";
 
   static const shadowView = "/shadowView";
   static const shapesView = "/shapesView";
@@ -45,6 +49,9 @@ abstract final class Routes {
         Routes.fluentBannerView: (_) {
           return FluentBannerView();
         },
+        Routes.fluentSheetView: (_) {
+          return FluentSheetView();
+        },
         Routes.fluentButtonView: (_) {
           return FluentButtonView();
         },
@@ -62,6 +69,9 @@ abstract final class Routes {
         },
         Routes.fluentControlsView: (_) {
           return FluentControlsView();
+        },
+        Routes.fluentPopoverView: (_) {
+          return FluentPopoverView();
         },
         Routes.shadowView: (_) {
           return ShadowView();

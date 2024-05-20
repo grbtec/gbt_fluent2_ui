@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 part 'fluent_sheet_controller.dart';
+part 'show_fluent_sheet.dart';
 
 const _headerHeight = 52.0;
 
