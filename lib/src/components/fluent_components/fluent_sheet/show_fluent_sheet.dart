@@ -9,8 +9,10 @@ void showFluentBottomSheet({
   Widget? headerLeading,
   Color? backgroundColor,
   Widget? headerTrailing,
-}){
-
+  double headerHeight = 20,
+  VoidCallback? onMaxExtent,
+  Widget Function(BuildContext int, double size)? overlayBuilder,
+}) {
   final controller = FluentSheetController();
 
   late BuildContext innerContext;
@@ -25,12 +27,15 @@ void showFluentBottomSheet({
       backgroundColor: backgroundColor,
       headerTrailing: headerTrailing,
       headerLeading: headerLeading,
+      headerHeight: headerHeight,
       onMinExtent: () {
-        if(ModalRoute.of(context) == route){
+        if (ModalRoute.of(context) == route) {
           Navigator.of(context).pop();
         }
       },
+      onMaxExtent: onMaxExtent,
       child: child,
+      overlayBuilder: overlayBuilder,
     );
   },);
   Navigator.of(context).push(route).whenComplete(() {
