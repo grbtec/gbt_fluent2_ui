@@ -1,6 +1,6 @@
 part of 'fluent_sheet.dart';
 
-void showFluentBottomSheet({
+Future<void> showFluentBottomSheet({
   required BuildContext context,
   required Widget child,
   bool half = false,
@@ -42,7 +42,7 @@ void showFluentBottomSheet({
       );
     },
   );
-  Navigator.of(context).push(route).whenComplete(() {
+  final future = Navigator.of(context).push(route).whenComplete(() {
     Future(() => controller.dispose());
   });
 
@@ -55,4 +55,5 @@ void showFluentBottomSheet({
       );
     }
   });
+  return future;
 }
