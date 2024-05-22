@@ -17,27 +17,31 @@ void showFluentBottomSheet({
 
   late BuildContext innerContext;
   late final DialogRoute route;
-  route = DialogRoute(context: context, builder: (context) {
-    innerContext = context;
-    return FluentSheet.bottom(
-      half: half,
-      controller: controller,
-      headerTitle: headerTitle,
-      headerColor: headerColor,
-      backgroundColor: backgroundColor,
-      headerTrailing: headerTrailing,
-      headerLeading: headerLeading,
-      headerHeight: headerHeight,
-      onMinExtent: () {
-        if (ModalRoute.of(context) == route) {
-          Navigator.of(context).pop();
-        }
-      },
-      onMaxExtent: onMaxExtent,
-      child: child,
-      overlayBuilder: overlayBuilder,
-    );
-  },);
+  route = DialogRoute(
+    context: context,
+    useSafeArea: false,
+    builder: (context) {
+      innerContext = context;
+      return FluentSheet.bottom(
+        half: half,
+        controller: controller,
+        headerTitle: headerTitle,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        headerTrailing: headerTrailing,
+        headerLeading: headerLeading,
+        headerHeight: headerHeight,
+        onMinExtent: () {
+          if (ModalRoute.of(context) == route) {
+            Navigator.of(context).pop();
+          }
+        },
+        onMaxExtent: onMaxExtent,
+        child: child,
+        overlayBuilder: overlayBuilder,
+      );
+    },
+  );
   Navigator.of(context).push(route).whenComplete(() {
     Future(() => controller.dispose());
   });
