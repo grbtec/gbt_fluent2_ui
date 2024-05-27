@@ -20,10 +20,6 @@ class TextFieldTrailingIcon extends StatelessWidget {
     final colorMode = createColorMode(Theme.of(context).brightness);
     final suffixIcon = this.suffixIcon;
 
-    print("isNotEmpty: $isNotEmpty");
-    print("hasFocus: $hasFocus");
-    print("===================================");
-
     final Widget trailingWidget = suffixIcon != null
         ? IconTheme(
             data: IconThemeData(

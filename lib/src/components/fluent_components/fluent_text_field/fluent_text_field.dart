@@ -149,10 +149,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
         final isNotEmpty = fluentTextFieldController
             .textEditingController.value.text.isNotEmpty;
         final hasFocus = fluentTextFieldController.hasFocus;
-        print("value: ${fluentTextFieldController.textEditingController.text}");
-        print("widget.readOnly: ${widget.readOnly}");
-        print("FOCUS hasFocus: ${hasFocus.value}");
-        print("isNotEmpty && hasFocus: ${isNotEmpty && hasFocus.value}");
+
 
         return Row(
           children: [

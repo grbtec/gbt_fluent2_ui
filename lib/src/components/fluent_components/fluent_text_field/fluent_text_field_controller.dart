@@ -31,7 +31,7 @@ class FluentTextFieldController {
   FluentTextFieldController() {
     _focus.addListener(() {
       hasFocus.value = _focus.hasFocus;
-      print('focus changed: ${_focus.hasFocus}');
+
     });
   }
 
