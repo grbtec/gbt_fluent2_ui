@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentTextFieldView extends StatefulWidget {
@@ -51,6 +52,7 @@ class _FluentTextFieldViewState extends State<FluentTextFieldView> {
                   FluentTextField(
                     label: "Name",
                     hintText: "Timothy",
+                    suffixIcon: Icon(FluentIcons.eye_24_regular),
                     controller: controller,
                   ),
                   SizedBox(height: FluentSize.size120.value),

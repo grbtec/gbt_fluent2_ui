@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gbt_fluent2_ui/gbt_fluent2_debug.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_text_field/text_field_trailing_icon.dart';
 

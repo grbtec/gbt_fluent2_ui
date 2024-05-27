@@ -6,7 +6,7 @@ import 'package:example/screens/dev_railson/r_home_view/r_progress_bar_page.dart
 import 'package:example/screens/dev_railson/r_home_view/r_progress_indicator_page.dart';
 import 'package:example/screens/dev_railson/r_home_view/r_toast_and_banner_page.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_essentials/gbt_essentials.dart';
+
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RHomeView extends StatefulWidget {
@@ -28,7 +28,7 @@ class _RHomeViewState extends State<RHomeView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    debug(Theme.of(context).colorScheme.primary);
+
 
     final rootBottomSheet = this.rootBottomSheet;
     return Stack(
@@ -78,7 +78,7 @@ class _RHomeViewState extends State<RHomeView> with TickerProviderStateMixin {
             bottomNavigationBar: FluentTabBar.bottomLabel(
               controller: controller.fluentTabBarController,
               onChanged: (value) {
-                debug("Mudou para a tab $value");
+
               },
               items: [
                 FluentTabBarItemBottomLabel(
@@ -128,7 +128,7 @@ class _MyBottomSheet extends StatefulWidget {
   final VoidCallback onClose;
 
   const _MyBottomSheet({
-    super.key,
+
     required this.onClose,
   });
 

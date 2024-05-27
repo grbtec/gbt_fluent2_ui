@@ -99,6 +99,7 @@ class MultiLineListExampleView extends StatelessWidget {
             ),
             FluentList.multiLine(
               sectionHeaderTitle: "Messages",
+              separator: FluentStrokeDivider(height: 0,),
               listItems: [
                 ...exampleListUsers.map(
                   (user) => FluentListItemMultiLine(
@@ -119,6 +120,7 @@ class MultiLineListExampleView extends StatelessWidget {
             ),
             FluentList.multiLine(
               sectionHeaderTitle: "Recent Files",
+              separator: FluentStrokeDivider(),
               listItems: [
                 FluentListItemMultiLine(
                   text: "S&A Brainstorm",

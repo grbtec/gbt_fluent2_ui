@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gbt_essentials/gbt_essentials.dart';
+
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class RProgressIndicatorPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
   bool isLoading = false;
 
   Future<void> onRefresh() async {
-    debug("Fetching");
+
     setState(() {
       isLoading = true;
     });
@@ -32,7 +32,7 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
         isLoading = false;
       });
     }
-    debug("Terminou");
+
   }
 
   @override
