@@ -114,9 +114,6 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final hintText = widget.hintText;
     final assistiveText = widget.assistiveText;
     final errorText = widget.errorText;
-    final hasFocus = fluentTextFieldController.hasFocus;
-    final isNotEmpty =
-        fluentTextFieldController.textEditingController.value.text.isNotEmpty;
     final label = widget.label;
     final suffixIcon = widget.suffixIcon;
     final prefixIcon = widget.prefixIcon;
@@ -144,178 +141,195 @@ class _FluentTextFieldState extends State<FluentTextField> {
     final onSubmitted = widget.onSubmitted;
     final scrollController = widget.scrollController;
 
-    return Row(
-      children: [
-        if (prefixIcon != null) ...[
-          SizedBox(
-            width: FluentSize.size160.value,
-          ),
-          prefixIcon is Icon
-              ? IconTheme(
-                  data: IconThemeData(
-                    size: FluentSize.size240.value,
-                    color: hasFocus
-                        ? FluentColors.of(context)?.brandForeground1Rest
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        fluentTextFieldController.hasFocus,
+        fluentTextFieldController.textEditingController,
+      ]),
+      builder: (context, child) {
+        final isNotEmpty = fluentTextFieldController
+            .textEditingController.value.text.isNotEmpty;
+        final hasFocus = fluentTextFieldController.hasFocus;
+        print("value: ${fluentTextFieldController.textEditingController.text}");
+        print("widget.readOnly: ${widget.readOnly}");
+        print("FOCUS hasFocus: ${hasFocus.value}");
+        print("isNotEmpty && hasFocus: ${isNotEmpty && hasFocus.value}");
+
+        return Row(
+          children: [
+            if (prefixIcon != null) ...[
+              SizedBox(
+                width: FluentSize.size160.value,
+              ),
+              prefixIcon is Icon
+                  ? IconTheme(
+                      data: IconThemeData(
+                        size: FluentSize.size240.value,
+                        color: hasFocus.value
+                            ? FluentColors.of(context)?.brandForeground1Rest
+                            : colorMode(
+                                FluentColors.neutralForeground2Rest,
+                                FluentDarkColors.neutralForeground2Rest,
+                              ),
+                      ),
+                      child: prefixIcon)
+                  : prefixIcon
+            ],
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: FluentSize.size120.value,
+                  left: FluentSize.size160.value,
+                ),
+                child: TextField(
+                  keyboardType: keyboardType,
+                  onTap: onTap,
+                  textAlign: textAlign,
+                  maxLines: maxLines,
+                  autofocus: autofocus,
+                  autocorrect: autocorrect,
+                  clipBehavior: clipBehavior,
+                  buildCounter: buildCounter,
+                  obscureText: widget.obscureText,
+                  cursorErrorColor: cursorErrorColor,
+                  canRequestFocus: canRequestFocus,
+                  cursorHeight: cursorHeight,
+                  enabled: enabled,
+                  inputFormatters: inputFormatters,
+                  enableSuggestions: enableSuggestions,
+                  maxLength: maxLength,
+                  expands: expands,
+                  magnifierConfiguration: magnifierConfiguration,
+                  onEditingComplete: onEditingComplete,
+                  obscuringCharacter: obscuringCharacter,
+                  onSubmitted: onSubmitted,
+                  scrollController: scrollController,
+                  readOnly: widget.readOnly,
+                  focusNode: fluentTextFieldController._focus,
+                  onTapOutside: (event) {
+                    FocusScope.of(context).unfocus();
+                  },
+                  controller: fluentTextFieldController.textEditingController,
+                  onChanged: onChanged,
+                  cursorColor: colorMode(
+                    FluentColors.neutralForeground3Rest,
+                    FluentDarkColors.neutralForeground3Rest,
+                  ),
+                  style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+                    fluentColor: hasFocus.value
+                        ? colorMode(
+                            FluentColors.neutralForeground1Rest,
+                            FluentDarkColors.neutralForeground1Rest,
+                          )
                         : colorMode(
                             FluentColors.neutralForeground2Rest,
                             FluentDarkColors.neutralForeground2Rest,
                           ),
                   ),
-                  child: prefixIcon)
-              : prefixIcon
-        ],
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.only(
-              top: FluentSize.size120.value,
-              left: FluentSize.size160.value,
-            ),
-            child: TextField(
-              keyboardType: keyboardType,
-              onTap: onTap,
-              textAlign: textAlign,
-              maxLines: maxLines,
-              autofocus: autofocus,
-              autocorrect: autocorrect,
-              clipBehavior: clipBehavior,
-              buildCounter: buildCounter,
-              obscureText: widget.obscureText,
-              cursorErrorColor: cursorErrorColor,
-              canRequestFocus: canRequestFocus,
-              cursorHeight: cursorHeight,
-              enabled: enabled,
-              inputFormatters: inputFormatters,
-              enableSuggestions: enableSuggestions,
-              maxLength: maxLength,
-              expands: expands,
-              magnifierConfiguration: magnifierConfiguration,
-              onEditingComplete: onEditingComplete,
-              obscuringCharacter: obscuringCharacter,
-              onSubmitted: onSubmitted,
-              scrollController: scrollController,
-              readOnly: widget.readOnly,
-              focusNode: fluentTextFieldController._focus,
-              onTapOutside: (event) {
-                FocusScope.of(context).unfocus();
-              },
-              controller: fluentTextFieldController.textEditingController,
-              onChanged: onChanged,
-              cursorColor: colorMode(
-                FluentColors.neutralForeground3Rest,
-                FluentDarkColors.neutralForeground3Rest,
-              ),
-              style: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-                fluentColor: hasFocus
-                    ? colorMode(
-                        FluentColors.neutralForeground1Rest,
-                        FluentDarkColors.neutralForeground1Rest,
-                      )
-                    : colorMode(
-                        FluentColors.neutralForeground2Rest,
-                        FluentDarkColors.neutralForeground2Rest,
-                      ),
-              ),
-              decoration: InputDecoration(
-                label: label != null ? FluentText(label) : null,
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                labelStyle:
-                    fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
-                  fluentColor: widget.hasError
-                      ? colorMode(
-                          FluentColors.statusDangerForeground2Rest,
-                          FluentDarkColors.statusDangerForeground2Rest,
-                        )
-                      : hasFocus
-                          ? fluentTheme.colorScheme.primary
+                  decoration: InputDecoration(
+                    label: label != null ? FluentText(label) : null,
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    labelStyle:
+                        fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+                      fluentColor: widget.hasError
+                          ? colorMode(
+                              FluentColors.statusDangerForeground2Rest,
+                              FluentDarkColors.statusDangerForeground2Rest,
+                            )
+                          : hasFocus.value
+                              ? fluentTheme.colorScheme.primary
+                              : colorMode(
+                                  FluentColors.neutralForeground2Rest,
+                                  FluentDarkColors.neutralForeground2Rest,
+                                ),
+                    ),
+                    contentPadding:
+                        EdgeInsets.only(right: FluentSize.size160.value),
+                    hintText: hintText,
+                    helperText: assistiveText,
+                    error: errorText != null
+                        ? FluentText(
+                            errorText,
+                            textAlign: TextAlign.start,
+                            style: FluentThemeDataModel.of(context)
+                                .fluentTextTheme
+                                ?.caption2
+                                ?.fluentCopyWith(
+                                  fluentColor:
+                                      FluentColors.statusDangerForeground2Rest,
+                                ),
+                          )
+                        : null,
+                    helperStyle:
+                        fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
+                      fluentColor: widget.hasError
+                          ? colorMode(
+                              FluentColors.statusDangerForeground2Rest,
+                              FluentDarkColors.statusDangerForeground2Rest,
+                            )
                           : colorMode(
                               FluentColors.neutralForeground2Rest,
                               FluentDarkColors.neutralForeground2Rest,
                             ),
-                ),
-                contentPadding:
-                    EdgeInsets.only(right: FluentSize.size160.value),
-                hintText: hintText,
-                helperText: assistiveText,
-                error: errorText != null
-                    ? FluentText(
-                        errorText,
-                        textAlign: TextAlign.start,
-                        style: FluentThemeDataModel.of(context)
-                            .fluentTextTheme
-                            ?.caption2
-                            ?.fluentCopyWith(
-                              fluentColor:
-                                  FluentColors.statusDangerForeground2Rest,
-                            ),
-                      )
-                    : null,
-                helperStyle:
-                    fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
-                  fluentColor: widget.hasError
-                      ? colorMode(
-                          FluentColors.statusDangerForeground2Rest,
-                          FluentDarkColors.statusDangerForeground2Rest,
-                        )
-                      : colorMode(
-                          FluentColors.neutralForeground2Rest,
-                          FluentDarkColors.neutralForeground2Rest,
-                        ),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: widget.hasError
-                        ? colorMode(
-                            FluentColors.statusDangerForeground2Rest,
-                            FluentDarkColors.statusDangerForeground2Rest,
-                          )
-                        : colorMode(
-                            FluentColors.neutralStroke1Rest,
-                            FluentDarkColors.neutralStroke1Rest,
-                          ),
-                    width: FluentStrokeThickness.strokeWidth05.value,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    width: FluentStrokeThickness.strokeWidth05.value,
-                    color: widget.hasError
-                        ? colorMode(
-                            FluentColors.statusDangerForeground2Rest,
-                            FluentDarkColors.statusDangerForeground2Rest,
-                          )
-                        : FluentColors.of(context)?.brandStroke1Rest ??
-                            // ❕ Never reached fallback
-                            Theme.of(context).primaryColor,
-                  ),
-                ),
-                hintStyle: fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
-                  fluentColor: hasFocus
-                      ? colorMode(
-                          FluentColors.neutralForeground2Rest,
-                          FluentDarkColors.neutralForeground2Rest,
-                        )
-                      : colorMode(
-                          FluentColors.neutralForegroundDisabled1Rest,
-                          FluentDarkColors.neutralForegroundDisabled1Rest,
-                        ),
-                ),
-                prefix: prefix,
-                suffixIcon: widget.readOnly
-                    ? null
-                    : TextFieldTrailingIcon(
-                        hasFocus: hasFocus,
-                        isNotEmpty: isNotEmpty,
-                        suffixIcon: suffixIcon,
-                        onTapCancelIcon: () {
-                          fluentTextFieldController.textEditingController
-                              .value = TextEditingValue(text: "");
-                        },
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: widget.hasError
+                            ? colorMode(
+                                FluentColors.statusDangerForeground2Rest,
+                                FluentDarkColors.statusDangerForeground2Rest,
+                              )
+                            : colorMode(
+                                FluentColors.neutralStroke1Rest,
+                                FluentDarkColors.neutralStroke1Rest,
+                              ),
+                        width: FluentStrokeThickness.strokeWidth05.value,
                       ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        width: FluentStrokeThickness.strokeWidth05.value,
+                        color: widget.hasError
+                            ? colorMode(
+                                FluentColors.statusDangerForeground2Rest,
+                                FluentDarkColors.statusDangerForeground2Rest,
+                              )
+                            : FluentColors.of(context)?.brandStroke1Rest ??
+                                // ❕ Never reached fallback
+                                Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    hintStyle:
+                        fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
+                      fluentColor: hasFocus.value
+                          ? colorMode(
+                              FluentColors.neutralForeground2Rest,
+                              FluentDarkColors.neutralForeground2Rest,
+                            )
+                          : colorMode(
+                              FluentColors.neutralForegroundDisabled1Rest,
+                              FluentDarkColors.neutralForegroundDisabled1Rest,
+                            ),
+                    ),
+                    prefix: prefix,
+                    suffixIcon: widget.readOnly
+                        ? null
+                        : TextFieldTrailingIcon(
+                            hasFocus: hasFocus.value,
+                            isNotEmpty: isNotEmpty,
+                            suffixIcon: suffixIcon,
+                            onTapCancelIcon: () {
+                              fluentTextFieldController.textEditingController
+                                  .value = TextEditingValue(text: "");
+                            },
+                          ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        )
-      ],
+            )
+          ],
+        );
+      },
     );
   }
 }

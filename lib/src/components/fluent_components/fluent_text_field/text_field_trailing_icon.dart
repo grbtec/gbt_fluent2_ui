@@ -21,6 +21,10 @@ class TextFieldTrailingIcon extends StatelessWidget {
     final colorMode = createColorMode(Theme.of(context).brightness);
     final suffixIcon = this.suffixIcon;
 
+    print("isNotEmpty: $isNotEmpty");
+    print("hasFocus: $hasFocus");
+    print("===================================");
+
     final Widget trailingWidget = suffixIcon != null
         ? IconTheme(
             data: IconThemeData(
@@ -36,8 +40,16 @@ class TextFieldTrailingIcon extends StatelessWidget {
 
     return FluentContainer(
       child: isNotEmpty && hasFocus
-          ? CancelIcon(
+          ? GestureDetector(
               onTap: onTapCancelIcon,
+              child: Icon(
+                Icons.cancel,
+                size: FluentSize.size200.value,
+                color: colorMode(
+                  FluentColors.neutralForeground3Rest,
+                  FluentDarkColors.neutralForeground3Rest,
+                ),
+              ),
             )
           : trailingWidget,
     );

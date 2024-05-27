@@ -6,7 +6,9 @@ class FluentTextFieldController {
   bool _isLoading = false;
   final FocusNode _focus = FocusNode();
 
-  bool get hasFocus => _focus.hasFocus;
+  ValueNotifier<bool> hasFocus = ValueNotifier(false);
+
+  // bool get hasFocus => _focus.hasFocus;
 
   @Deprecated("There is no sense of existing it here")
   String get queryString => textEditingController.value.text;
@@ -27,11 +29,10 @@ class FluentTextFieldController {
   }
 
   FluentTextFieldController() {
-    if (GbtFluent2Debug.printIsEnabled) {
-      _focus.addListener(() {
-        print('focus changed: ${_focus.hasFocus}');
-      });
-    }
+    _focus.addListener(() {
+      hasFocus.value = _focus.hasFocus;
+      print('focus changed: ${_focus.hasFocus}');
+    });
   }
 
   void dispose() {
