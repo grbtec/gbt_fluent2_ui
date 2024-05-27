@@ -12,7 +12,7 @@ class FluentTextField extends StatefulWidget {
   final String? label;
   final String? assistiveText;
   final String? errorText;
-  final Icon? suffixIcon;
+  final Widget? suffixIcon;
   final Widget? prefixIcon;
   final Widget? prefix;
   final void Function(String value)? onChanged;
@@ -305,7 +305,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                     : TextFieldTrailingIcon(
                         hasFocus: hasFocus,
                         isNotEmpty: isNotEmpty,
-                        icon: suffixIcon,
+                        suffixIcon: suffixIcon,
                         onTapCancelIcon: () {
                           fluentTextFieldController.textEditingController
                               .value = TextEditingValue(text: "");

@@ -4,7 +4,7 @@ import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_search_ba
 
 class TextFieldTrailingIcon extends StatelessWidget {
   final void Function() onTapCancelIcon;
-  final Icon? icon;
+  final Widget? suffixIcon;
   final bool isNotEmpty;
   final bool hasFocus;
 
@@ -13,32 +13,15 @@ class TextFieldTrailingIcon extends StatelessWidget {
     required this.hasFocus,
     required this.isNotEmpty,
     required this.onTapCancelIcon,
-    this.icon,
+    this.suffixIcon,
   });
-
-  Widget iconToWidget(BuildContext context, Icon? icon) {
-    final colorMode = createColorMode(Theme.of(context).brightness);
-
-    if (icon != null) {
-      return IconTheme(
-        data: IconThemeData(
-          size: FluentSize.size240.value,
-          color: colorMode(
-            FluentColors.neutralForeground2Rest,
-            FluentDarkColors.neutralForeground2Rest,
-          ),
-        ),
-        child: icon,
-      );
-    } else {
-      return SizedBox();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    final Widget trailingWidget = icon != null
+    final suffixIcon = this.suffixIcon;
+
+    final Widget trailingWidget = suffixIcon != null
         ? IconTheme(
             data: IconThemeData(
               size: FluentSize.size240.value,
@@ -47,7 +30,7 @@ class TextFieldTrailingIcon extends StatelessWidget {
                 FluentDarkColors.neutralForeground2Rest,
               ),
             ),
-            child: iconToWidget(context, icon),
+            child: suffixIcon,
           )
         : SizedBox();
 
