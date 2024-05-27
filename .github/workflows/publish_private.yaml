@@ -20,7 +20,8 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           cache: true
-          channel: 'stable'
+          channel: stable
+          flutter-version: 3.19.6
 
       - name: Authenticate
         run: echo "${{secrets.JETBRAINS_SPACE_TOKEN}}" | dart pub token add https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/

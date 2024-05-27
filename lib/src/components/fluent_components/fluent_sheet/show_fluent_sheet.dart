@@ -1,6 +1,6 @@
 part of 'fluent_sheet.dart';
 
-void showFluentBottomSheet({
+Future<void> showFluentBottomSheet({
   required BuildContext context,
   required Widget child,
   bool half = false,
@@ -9,31 +9,40 @@ void showFluentBottomSheet({
   Widget? headerLeading,
   Color? backgroundColor,
   Widget? headerTrailing,
-}){
-
+  double headerHeight = 20,
+  VoidCallback? onMaxExtent,
+  Widget Function(BuildContext int, double size)? overlayBuilder,
+}) {
   final controller = FluentSheetController();
 
   late BuildContext innerContext;
   late final DialogRoute route;
-  route = DialogRoute(context: context, builder: (context) {
-    innerContext = context;
-    return FluentSheet.bottom(
-      half: half,
-      controller: controller,
-      headerTitle: headerTitle,
-      headerColor: headerColor,
-      backgroundColor: backgroundColor,
-      headerTrailing: headerTrailing,
-      headerLeading: headerLeading,
-      onMinExtent: () {
-        if(ModalRoute.of(context) == route){
-          Navigator.of(context).pop();
-        }
-      },
-      child: child,
-    );
-  },);
-  Navigator.of(context).push(route).whenComplete(() {
+  route = DialogRoute(
+    context: context,
+    useSafeArea: false,
+    builder: (context) {
+      innerContext = context;
+      return FluentSheet.bottom(
+        half: half,
+        controller: controller,
+        headerTitle: headerTitle,
+        headerColor: headerColor,
+        backgroundColor: backgroundColor,
+        headerTrailing: headerTrailing,
+        headerLeading: headerLeading,
+        headerHeight: headerHeight,
+        onMinExtent: () {
+          if (ModalRoute.of(context) == route) {
+            Navigator.of(context).pop();
+          }
+        },
+        onMaxExtent: onMaxExtent,
+        child: child,
+        overlayBuilder: overlayBuilder,
+      );
+    },
+  );
+  final future = Navigator.of(context).push(route).whenComplete(() {
     Future(() => controller.dispose());
   });
 
@@ -46,4 +55,5 @@ void showFluentBottomSheet({
       );
     }
   });
+  return future;
 }
