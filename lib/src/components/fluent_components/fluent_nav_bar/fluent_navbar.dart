@@ -15,6 +15,7 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
   final FluentThemeColorVariation themeColorVariation;
   final Color? backgroundColor;
   final Gradient? gradient;
+  final EdgeInsets? childPadding;
 
   /// FluentNavBar's constructor
   const FluentNavBar({
@@ -27,6 +28,7 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
     this.themeColorVariation = FluentThemeColorVariation.neutral,
     this.backgroundColor,
     this.gradient,
+    this.childPadding,
   });
 
   @override
@@ -169,7 +171,7 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: childPadding ?? EdgeInsets.only(
                         right: FluentSize.size160.value,
                         left: FluentSize.size160.value,
                         bottom: FluentSize.size80.value,
