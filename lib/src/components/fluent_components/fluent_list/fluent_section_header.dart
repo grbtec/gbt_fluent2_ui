@@ -85,7 +85,7 @@ class FluentSectionHeader extends StatelessWidget {
               children: [
                 if (action1 != null) ...[
                   if (action1 is Icon)
-                    IconTheme(
+                    IconTheme.merge(
                         data: IconThemeData(size: FluentSize.size200.value),
                         child: action1)
                   else
@@ -94,7 +94,7 @@ class FluentSectionHeader extends StatelessWidget {
                 if (action2 != null) ...[
                   SizedBox(width: FluentSize.size200.value),
                   if (action2 is Icon)
-                    IconTheme(
+                    IconTheme.merge(
                         data: IconThemeData(size: FluentSize.size200.value),
                         child: action2)
                   else
