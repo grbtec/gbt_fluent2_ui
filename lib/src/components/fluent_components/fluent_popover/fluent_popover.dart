@@ -1,9 +1,13 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
+part 'fluent_popover_controller.dart';
+
 class FluentPopover extends StatefulWidget {
+  final FluentPopoverController? controller;
   final Widget? title;
   final Widget? subtitle;
   final Widget body;
@@ -14,6 +18,7 @@ class FluentPopover extends StatefulWidget {
 
   FluentPopover({
     super.key,
+    this.controller,
     this.title,
     this.subtitle,
     required this.body,
@@ -28,7 +33,8 @@ class FluentPopover extends StatefulWidget {
 }
 
 class _FluentPopoverState extends State<FluentPopover> {
-  final controller = OverlayPortalController();
+  late final FluentPopoverController controller =
+      widget.controller ?? _InternalFluentPopoverController();
 
   Widget overlayChildBuilder(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
@@ -53,9 +59,7 @@ class _FluentPopoverState extends State<FluentPopover> {
         FluentDarkColors.neutralBackground4Rest);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () {
-        controller.hide();
-      },
+      onTap: controller.hide,
       child: Padding(
         padding: switch (popOverDirection) {
           left => EdgeInsets.only(
@@ -203,7 +207,7 @@ class _FluentPopoverState extends State<FluentPopover> {
   @override
   Widget build(BuildContext context) {
     return OverlayPortal(
-        controller: controller,
+        controller: controller.overlayController,
         overlayChildBuilder: overlayChildBuilder,
         child: Stack(
           fit: StackFit.passthrough,
@@ -376,3 +380,5 @@ class _Animation extends StatelessWidget {
         child: child);
   }
 }
+
+class _InternalFluentPopoverController extends FluentPopoverController {}
