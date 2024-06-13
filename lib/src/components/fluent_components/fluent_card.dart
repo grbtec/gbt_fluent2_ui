@@ -14,7 +14,7 @@ class FluentCard extends StatelessWidget {
   final bool isFullWidth;
 
   /// FluentCard's constructor
-   FluentCard({
+  FluentCard({
     super.key,
     required this.text,
     this.subText,
@@ -24,43 +24,59 @@ class FluentCard extends StatelessWidget {
     this.highlightColor,
     this.leadingBoxSize = 24,
     Widget? leading,
-    @Deprecated("Use 'leading' instead. Since v4.x")
-    this.iconImage,
-  }) : assert(
+    @Deprecated("Use 'leading' instead. Since v4.x") this.iconImage,
+  })  : assert(
             leading != null && iconImage == null ||
                 leading == null && iconImage != null ||
                 leading == null && iconImage == null,
-            "You can't pass both leading and iconImage"), leading = leading ?? (iconImage != null ? Image.network(
-     iconImage.toString(),
-     height: leadingBoxSize,
-     width: leadingBoxSize,
-     fit: BoxFit.cover,
-   ) : null);
+            "You can't pass both leading and iconImage"),
+        leading = leading ??
+            (iconImage != null
+                ? Image.network(
+                    iconImage.toString(),
+                    height: leadingBoxSize,
+                    width: leadingBoxSize,
+                    fit: BoxFit.cover,
+                  )
+                : null);
 
   Widget conditionalButton({required Widget child}) {
     if (onPressed == null) {
       return child;
     }
-    return Stack(
-      fit: StackFit.passthrough,
-      children: [
-        child,
-        ClipRRect(
-          borderRadius: BorderRadius.circular(FluentCornerRadius.large.value),
-          child: RawMaterialButton(
-            highlightColor: highlightColor,
-            visualDensity: VisualDensity(
-              horizontal: VisualDensity.minimumDensity,
-              vertical: VisualDensity.minimumDensity,
-            ),
-            onPressed: onPressed,
-            child: Opacity(
-              opacity: 0,
-              child: child,
-            ),
-          ),
-        )
-      ],
+    Size size = Size.zero;
+    return StatefulBuilder(
+      builder: (BuildContext context, void Function(void Function()) setState) {
+        return Stack(
+          fit: StackFit.passthrough,
+          children: [
+            Builder(builder: (context) {
+              if (size == Size.zero) {
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  setState(() => size = context.size ?? size);
+                });
+              }
+              return child;
+            }),
+            ClipRRect(
+              borderRadius:
+                  BorderRadius.circular(FluentCornerRadius.large.value),
+              child: RawMaterialButton(
+                highlightColor: highlightColor,
+                visualDensity: VisualDensity(
+                  horizontal: VisualDensity.minimumDensity,
+                  vertical: VisualDensity.minimumDensity,
+                ),
+                onPressed: onPressed,
+                child: SizedBox(
+                  width:size.width,
+                  height:size.height,
+                ),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -74,7 +90,7 @@ class FluentCard extends StatelessWidget {
     return conditionalButton(
       child: FluentCardContainer(
         width: isFullWidth ? double.maxFinite : 280,
-        constraints: coverImage != null ? BoxConstraints(maxHeight: 192 ): null,
+        constraints: coverImage != null ? BoxConstraints(maxHeight: 192) : null,
         child: Column(
           children: [
             if (coverImage != null)
@@ -85,7 +101,7 @@ class FluentCard extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: Row(
                 children: [
-                   if (leading != null)
+                  if (leading != null)
                     if (leading is Icon) ...[
                       IconTheme(
                         data: IconThemeData(
