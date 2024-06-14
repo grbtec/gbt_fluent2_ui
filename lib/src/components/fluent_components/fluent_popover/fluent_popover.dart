@@ -56,6 +56,7 @@ class _FluentPopoverState extends State<FluentPopover> {
 
     final popOverColor = colorMode(FluentColors.neutralBackground4Rest,
         FluentDarkColors.neutralBackground4Rest);
+
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: controller.hide,
@@ -127,22 +128,22 @@ class _FluentPopoverState extends State<FluentPopover> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       if (widget.title != null)
-                                        DefaultTextStyle(
+                                        DefaultTextStyle.merge(
                                             style: FluentThemeDataModel.of(
                                                             context)
                                                         .fluentTextTheme
                                                         ?.body1Strong
-                                                    as MixedFluentTextStyle? ??
+                                                    as TextStyle? ??
                                                 DefaultTextStyle.of(context)
                                                     .style,
                                             child: widget.title!),
                                       if (widget.subtitle != null)
-                                        DefaultTextStyle(
+                                        DefaultTextStyle.merge(
                                           style: FluentThemeDataModel.of(
                                                           context)
                                                       .fluentTextTheme
                                                       ?.caption2
-                                                  as MixedFluentTextStyle? ??
+                                                  as TextStyle? ??
                                               DefaultTextStyle.of(context)
                                                   .style,
                                           child: widget.subtitle!,
