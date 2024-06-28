@@ -17,25 +17,15 @@ class FluentColors {
   static const Color controlsNavBarForeground1Rest = Color(0xFFFFFFFF);
   static const Color controlsNavBarForeground2Rest = Color(0xFFFFFFFF);
 
-  @Deprecated("Use 'controlsHudForeground1Rest' instead. Since v4.x")
-  static const Color controlsHudForeground1 = Color(0xFF3D3D3D);
   static const Color controlsHudForeground1Rest = Color(0xFF3D3D3D);
-  @Deprecated("Use 'controlsHudForeground2Rest' instead. Since v4.x")
-  static const Color controlsHudForeground2 = Color(0xFF8F8F8F);
   static const Color controlsHudForeground2Rest = Color(0xFF8F8F8F);
 
   static const Color neutralForeground1Rest = Color(0xFF242424);
   static const Color neutralForeground2Rest = Color(0xFF616161);
   static const Color neutralForeground3Rest = Color(0xFF808080);
-  @Deprecated("Use 'neutralForegroundStaticLightRest' instead. Since v4.x")
-  static const Color neutralForegroundStaticLight = Color(0xFFFFFFFF);
   static const Color neutralForegroundStaticLightRest = Color(0xFFFFFFFF);
 
-  @Deprecated("Use 'neutralForegroundDisabled1Rest' instead. Since v4.x")
-  static const Color neutralForegroundDisabled1 = Color(0xFFBDBDBD);
   static const Color neutralForegroundDisabled1Rest = Color(0xFFBDBDBD);
-  @Deprecated("Use 'neutralForegroundDisabled2Rest' instead. Since v4.x")
-  static const Color neutralForegroundDisabled2 = Color(0xFFFFFFFF);
   static const Color neutralForegroundDisabled2Rest = Color(0xFFFFFFFF);
 
   static const Color neutralBackground1Rest = Color(0xFFFFFFFF);
@@ -118,8 +108,6 @@ class FluentColors {
   final Color brandBackground2Selected;
   final Color brandBackground3Rest;
 
-  @Deprecated("Use 'brandBackgroundTintRest' instead. Since v4.x")
-  Color get brandBackgroundTint => brandBackgroundTintRest;
   final Color brandBackgroundTintRest;
   final Color brandBackgroundDisabledRest;
 
@@ -127,8 +115,6 @@ class FluentColors {
   final Color brandForeground1Pressed;
   final Color brandForeground1Selected;
 
-  @Deprecated("Use 'brandForegroundTintRest' instead. Since v4.x")
-  Color get brandForegroundTint => brandForegroundTintRest;
   final Color brandForegroundTintRest;
   final Color brandForegroundDisabled1Rest;
   final Color brandForegroundDisabled2Rest;
@@ -145,27 +131,18 @@ class FluentColors {
     required this.brandBackground2Pressed,
     required this.brandBackground2Selected,
     required this.brandBackground3Rest,
-    @Deprecated("Use 'brandBackgroundTintRest' instead. Since v4.x")
-    Color? brandBackgroundTint,
-    Color? brandBackgroundTintRest,
+    required this.brandBackgroundTintRest,
     required this.brandBackgroundDisabledRest,
     required this.brandForeground1Rest,
     required this.brandForeground1Pressed,
     required this.brandForeground1Selected,
-    @Deprecated("Use 'brandForegroundTintRest' instead. Since v4.x")
-    Color? brandForegroundTint,
-    Color? brandForegroundTintRest,
+    required this.brandForegroundTintRest,
     required this.brandForegroundDisabled1Rest,
     required this.brandForegroundDisabled2Rest,
     required this.brandStroke1Rest,
     required this.brandStroke1Pressed,
     required this.brandStroke1Selected,
-  })  : assert(brandBackgroundTint != null || brandBackgroundTintRest != null, "'brandBackgroundTintRest' is required"),
-        assert(brandForegroundTint != null || brandForegroundTintRest != null, "'brandForegroundTintRest' is required"),
-        brandBackgroundTintRest =
-            (brandBackgroundTintRest ?? brandBackgroundTint)!,
-        brandForegroundTintRest =
-            (brandForegroundTintRest ?? brandForegroundTint)!;
+  });
 
   static FluentColors? of(BuildContext context) {
     return FluentThemeDataModel.of(context).fluentBrandColors;

@@ -5,8 +5,6 @@ class FluentCard extends StatelessWidget {
   final Widget? coverImage;
   final String text;
   final String? subText;
-  @Deprecated("Use 'leading' instead. Since v4.x")
-  final Uri? iconImage;
   final double? leadingBoxSize;
   final Widget? leading;
   final VoidCallback? onPressed;
@@ -23,22 +21,8 @@ class FluentCard extends StatelessWidget {
     this.onPressed,
     this.highlightColor,
     this.leadingBoxSize = 24,
-    Widget? leading,
-    @Deprecated("Use 'leading' instead. Since v4.x") this.iconImage,
-  })  : assert(
-            leading != null && iconImage == null ||
-                leading == null && iconImage != null ||
-                leading == null && iconImage == null,
-            "You can't pass both leading and iconImage"),
-        leading = leading ??
-            (iconImage != null
-                ? Image.network(
-                    iconImage.toString(),
-                    height: leadingBoxSize,
-                    width: leadingBoxSize,
-                    fit: BoxFit.cover,
-                  )
-                : null);
+    this.leading,
+  });
 
   Widget conditionalButton({required Widget child}) {
     if (onPressed == null) {
@@ -69,8 +53,8 @@ class FluentCard extends StatelessWidget {
                 ),
                 onPressed: onPressed,
                 child: SizedBox(
-                  width:size.width,
-                  height:size.height,
+                  width: size.width,
+                  height: size.height,
                 ),
               ),
             )

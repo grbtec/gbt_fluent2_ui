@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' as material;
 import 'package:gbt_fluent2_ui/src/components/fluent_components/fluent_banner/fluent_banner.dart';
 
 extension FluentBannerMaterialExtension on FluentBanner {
-  PersistentBottomSheetController showBottomSheet<@Deprecated("Since v4.x") T>(
+  PersistentBottomSheetController showBottomSheet(
       {required BuildContext context, required Future<void> future}) {
     final controller = material.showBottomSheet(
       context: context,

@@ -1,7 +1,8 @@
-## 5.x
+## 5.10.3
 
 - [BREAKING CHANGE] Replace icon property to leading in fluent_section_description.
 - Fix FluentToast dismiss issues.
+- Remove deprecated code
 
 ## 4.5.3
 
