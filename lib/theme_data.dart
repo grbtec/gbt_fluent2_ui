@@ -158,11 +158,13 @@ GbtFluentThemeData getTheme({
         cornerRadius: MixedFluentCornerRadius.xLarge,
       ),
     ),
+    scaffoldBackgroundColor: colorMode(FluentColors.neutralBackground1Rest,
+        FluentDarkColors.neutralBackground1Rest),
+    dialogBackgroundColor: colorMode(FluentColors.neutralBackground1Rest,
+        FluentDarkColors.neutralBackground1Rest),
     colorScheme: ColorScheme.fromSeed(
       seedColor: brandColor,
       brightness: brightness,
-      background: colorMode(FluentColors.neutralBackground1Rest,
-          FluentDarkColors.neutralBackground1Rest),
     ),
   );
 }

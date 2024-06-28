@@ -6,22 +6,22 @@ ButtonStyle _fluentButtonDefaultStyle(
   final fluentTheme = FluentThemeDataModel.of(context) as GbtFluentThemeData;
 
   return ButtonStyle(
-    minimumSize: MaterialStateProperty.all(Size(
+    minimumSize: WidgetStateProperty.all(Size(
         64,
         fluentButtonStyle.size == FluentButtonSize.small
             ? 28
             : fluentButtonStyle.size == FluentButtonSize.medium
                 ? 40
                 : 52)),
-    shape: MaterialStateProperty.all(
+    shape: WidgetStateProperty.all(
       RoundedRectangleBorder(
         borderRadius: fluentButtonStyle.size == FluentButtonSize.large
             ? BorderRadius.circular(FluentCornerRadius.xLarge.value)
             : BorderRadius.circular(FluentCornerRadius.large.value),
       ),
     ),
-    padding: MaterialStateProperty.resolveWith(
-      (Set<MaterialState> states) {
+    padding: WidgetStateProperty.resolveWith(
+      (Set<WidgetState> states) {
         return switch (fluentButtonStyle.size) {
           FluentButtonSize.small => EdgeInsets.symmetric(
               vertical: 0, horizontal: FluentSize.size80.value),
@@ -32,8 +32,8 @@ ButtonStyle _fluentButtonDefaultStyle(
         };
       },
     ),
-    textStyle: MaterialStateProperty.resolveWith(
-      (Set<MaterialState> states) {
+    textStyle: WidgetStateProperty.resolveWith(
+      (Set<WidgetState> states) {
         return switch (fluentButtonStyle.size) {
           FluentButtonSize.small => fluentTheme.fluentTextTheme?.caption1Strong,
           FluentButtonSize.medium =>
@@ -43,8 +43,8 @@ ButtonStyle _fluentButtonDefaultStyle(
       },
     ),
     iconSize: fluentButtonStyle.size == FluentButtonSize.small
-        ? MaterialStateProperty.all(FluentSize.size160.value)
-        : MaterialStateProperty.all(FluentSize.size200.value),
+        ? WidgetStateProperty.all(FluentSize.size160.value)
+        : WidgetStateProperty.all(FluentSize.size200.value),
     animationDuration: Duration.zero,
   );
 }

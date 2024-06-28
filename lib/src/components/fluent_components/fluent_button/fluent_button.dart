@@ -19,8 +19,8 @@ class FluentButton extends StatelessWidget {
   final String title;
   final Icon? icon;
   final void Function()? onPressed;
-  final MaterialStateProperty<Color?>? backgroundColor;
-  final MaterialStateProperty<Color?>? foregroundColor;
+  final WidgetStateProperty<Color?>? backgroundColor;
+  final WidgetStateProperty<Color?>? foregroundColor;
 
   const FluentButton({
     super.key,
@@ -105,8 +105,8 @@ enum FluentButtonSize { large, medium, small }
 
 class FluentButtonStyle {
   final FluentButtonSize size;
-  final MaterialStateProperty<Color?>? backgroundColor;
-  final MaterialStateProperty<Color?>? foregroundColor;
+  final WidgetStateProperty<Color?>? backgroundColor;
+  final WidgetStateProperty<Color?>? foregroundColor;
 
   FluentButtonStyle({
     required this.size,
@@ -119,8 +119,8 @@ ButtonStyle getStyle({
   required FluentButtonVariant buttonVariant,
   required FluentButtonSize buttonSize,
   required BuildContext context,
-  MaterialStateProperty<Color?>? backgroundColor,
-  MaterialStateProperty<Color?>? foregroundColor,
+  WidgetStateProperty<Color?>? backgroundColor,
+  WidgetStateProperty<Color?>? foregroundColor,
 }) {
   return switch (buttonVariant) {
     FluentButtonVariant.accent => _buildFluentButtonAccentStyle(

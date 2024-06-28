@@ -69,14 +69,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     MixedFluentShadowTheme? fluentShadowTheme,
     FluentStrokeThickness? fluentStrokeThickness,
     FluentColors? fluentBrandColors,
-    Iterable<Adaptation<Object>>? adaptations,
-    Map<Type, Adaptation<Object>>? adaptationMap,
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
     // GENERAL CONFIGURATION). Each section except for deprecations should be
     // alphabetical by symbol name.
 
     // GENERAL CONFIGURATION
+    Iterable<Adaptation<Object>>? adaptations,
     bool? applyElevationOverlayColor,
     NoDefaultCupertinoThemeData? cupertinoOverrideTheme,
     Iterable<ThemeExtension<dynamic>>? extensions,
@@ -86,7 +85,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     TargetPlatform? platform,
     ScrollbarThemeData? scrollbarTheme,
     InteractiveInkFeatureFactory? splashFactory,
-    bool? useMaterial3,
     VisualDensity? visualDensity,
     // COLOR
     // [colorScheme] is the preferred way to configure colors. The other color
@@ -164,80 +162,48 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     TextSelectionThemeData? textSelectionTheme,
     TimePickerThemeData? timePickerTheme,
     ToggleButtonsThemeData? toggleButtonsTheme,
-    TooltipThemeData?
-        tooltipTheme, // DEPRECATED (newest deprecations at the bottom)
+    TooltipThemeData? tooltipTheme,
+    // DEPRECATED (newest deprecations at the bottom)
     @Deprecated(
-        'Use ThemeData.useMaterial3 or override ScrollBehavior.buildOverscrollIndicator. '
-        'This feature was deprecated after v2.13.0-0.0.pre.')
-    AndroidOverscrollIndicator? androidOverscrollIndicator,
-    @Deprecated(
-      'No longer used by the framework, please remove any reference to it. '
-      'For more information, consult the migration guide at '
-      'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
-      'This feature was deprecated after v3.4.0-19.0.pre.',
+      'Use a ThemeData constructor (.from, .light, or .dark) instead. '
+          'These constructors all have a useMaterial3 argument, '
+          'and they set appropriate default values based on its value. '
+          'See the useMaterial3 API documentation for full details. '
+          'This feature was deprecated after v3.13.0-0.2.pre.',
     )
-    Color? toggleableActiveColor,
-    @Deprecated(
-      'No longer used by the framework, please remove any reference to it. '
-      'This feature was deprecated after v3.1.0-0.0.pre.',
-    )
-    Color? selectedRowColor,
-    @Deprecated(
-      'Use colorScheme.error instead. '
-      'This feature was deprecated after v2.6.0-11.0.pre.',
-    )
-    Color? errorColor,
-    @Deprecated(
-      'Use colorScheme.background instead. '
-      'This feature was deprecated after v2.6.0-11.0.pre.',
-    )
-    Color? backgroundColor,
-    @Deprecated(
-      'Use BottomAppBarTheme.color instead. '
-      'This feature was deprecated after v3.3.0-0.6.pre.',
-    )
-    Color? bottomAppBarColor,
+    bool? useMaterial3,
   }) {
+    // cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
     return GbtFluentThemeData.raw(
       fluentTextTheme: fluentTextTheme ?? this.fluentTextTheme,
       fluentStrokeTheme: fluentStrokeTheme ?? this.fluentStrokeTheme,
       fluentShadowTheme: fluentShadowTheme ?? this.fluentShadowTheme,
       fluentBrandColors: fluentBrandColors ?? this.fluentBrandColors,
-
-      adaptationMap: adaptations != null
-          ? _createAdaptationMap(adaptations)
-          : this.adaptationMap,
-
       // For the sanity of the reader, make sure these properties are in the same
       // order in every place that they are separated by section comments (e.g.
       // GENERAL CONFIGURATION). Each section except for deprecations should be
       // alphabetical by symbol name.
 
       // GENERAL CONFIGURATION
-      applyElevationOverlayColor:
-          applyElevationOverlayColor ?? this.applyElevationOverlayColor,
-      extensions: (extensions != null)
-          ? _themeExtensionIterableToMap(extensions)
-          : this.extensions,
+      adaptationMap: adaptations != null ? _createAdaptationMap(adaptations) : adaptationMap,
+      applyElevationOverlayColor: applyElevationOverlayColor ?? this.applyElevationOverlayColor,
+      // cupertinoOverrideTheme: cupertinoOverrideTheme ?? this.cupertinoOverrideTheme,
+      extensions: (extensions != null) ? _themeExtensionIterableToMap(extensions) : this.extensions,
       inputDecorationTheme: inputDecorationTheme ?? this.inputDecorationTheme,
-      materialTapTargetSize:
-          materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
       pageTransitionsTheme: pageTransitionsTheme ?? this.pageTransitionsTheme,
       platform: platform ?? this.platform,
       scrollbarTheme: scrollbarTheme ?? this.scrollbarTheme,
       splashFactory: splashFactory ?? this.splashFactory,
+      // When deprecated useMaterial3 removed, maintain `this.useMaterial3` here
+      // for == evaluation.
       useMaterial3: useMaterial3 ?? this.useMaterial3,
       visualDensity: visualDensity ?? this.visualDensity,
       // COLOR
       canvasColor: canvasColor ?? this.canvasColor,
       cardColor: cardColor ?? this.cardColor,
-      colorScheme: (colorScheme ?? this.colorScheme).copyWith(
-        brightness: brightness,
-        error: errorColor ?? this.colorScheme.error,
-        background: backgroundColor ?? this.colorScheme.background,
-      ),
-      dialogBackgroundColor:
-          dialogBackgroundColor ?? this.dialogBackgroundColor,
+      colorScheme: (colorScheme ?? this.colorScheme).copyWith(brightness: brightness),
+      dialogBackgroundColor: dialogBackgroundColor ?? this.dialogBackgroundColor,
       disabledColor: disabledColor ?? this.disabledColor,
       dividerColor: dividerColor ?? this.dividerColor,
       focusColor: focusColor ?? this.focusColor,
@@ -248,13 +214,11 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       primaryColor: primaryColor ?? this.primaryColor,
       primaryColorDark: primaryColorDark ?? this.primaryColorDark,
       primaryColorLight: primaryColorLight ?? this.primaryColorLight,
-      scaffoldBackgroundColor:
-          scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
+      scaffoldBackgroundColor: scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
       secondaryHeaderColor: secondaryHeaderColor ?? this.secondaryHeaderColor,
       shadowColor: shadowColor ?? this.shadowColor,
       splashColor: splashColor ?? this.splashColor,
-      unselectedWidgetColor:
-          unselectedWidgetColor ?? this.unselectedWidgetColor,
+      unselectedWidgetColor: unselectedWidgetColor ?? this.unselectedWidgetColor,
       // TYPOGRAPHY & ICONOGRAPHY
       iconTheme: iconTheme ?? this.iconTheme,
       primaryIconTheme: primaryIconTheme ?? this.primaryIconTheme,
@@ -267,8 +231,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       badgeTheme: badgeTheme ?? this.badgeTheme,
       bannerTheme: bannerTheme ?? this.bannerTheme,
       bottomAppBarTheme: bottomAppBarTheme ?? this.bottomAppBarTheme,
-      bottomNavigationBarTheme:
-          bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
+      bottomNavigationBarTheme: bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
       bottomSheetTheme: bottomSheetTheme ?? this.bottomSheetTheme,
       buttonBarTheme: buttonBarTheme ?? this.buttonBarTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
@@ -284,21 +247,18 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       elevatedButtonTheme: elevatedButtonTheme ?? this.elevatedButtonTheme,
       expansionTileTheme: expansionTileTheme ?? this.expansionTileTheme,
       filledButtonTheme: filledButtonTheme ?? this.filledButtonTheme,
-      floatingActionButtonTheme:
-          floatingActionButtonTheme ?? this.floatingActionButtonTheme,
+      floatingActionButtonTheme: floatingActionButtonTheme ?? this.floatingActionButtonTheme,
       iconButtonTheme: iconButtonTheme ?? this.iconButtonTheme,
       listTileTheme: listTileTheme ?? this.listTileTheme,
       menuBarTheme: menuBarTheme ?? this.menuBarTheme,
       menuButtonTheme: menuButtonTheme ?? this.menuButtonTheme,
       menuTheme: menuTheme ?? this.menuTheme,
       navigationBarTheme: navigationBarTheme ?? this.navigationBarTheme,
-      navigationDrawerTheme:
-          navigationDrawerTheme ?? this.navigationDrawerTheme,
+      navigationDrawerTheme: navigationDrawerTheme ?? this.navigationDrawerTheme,
       navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
       outlinedButtonTheme: outlinedButtonTheme ?? this.outlinedButtonTheme,
       popupMenuTheme: popupMenuTheme ?? this.popupMenuTheme,
-      progressIndicatorTheme:
-          progressIndicatorTheme ?? this.progressIndicatorTheme,
+      progressIndicatorTheme: progressIndicatorTheme ?? this.progressIndicatorTheme,
       radioTheme: radioTheme ?? this.radioTheme,
       searchBarTheme: searchBarTheme ?? this.searchBarTheme,
       searchViewTheme: searchViewTheme ?? this.searchViewTheme,
@@ -320,14 +280,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     required this.fluentStrokeTheme,
     required this.fluentShadowTheme,
     required this.fluentBrandColors,
-    required super.adaptationMap,
-
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
     // GENERAL CONFIGURATION). Each section except for deprecations should be
     // alphabetical by symbol name.
 
     // GENERAL CONFIGURATION
+    required super.adaptationMap,
     required super.applyElevationOverlayColor,
     // required super.cupertinoOverrideTheme,
     required super.extensions,
@@ -423,15 +382,15 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     MixedFluentStrokeTheme? fluentStrokeTheme,
     MixedFluentShadowTheme? fluentShadowTheme,
     FluentColors? fluentBrandColors,
-    Iterable<Adaptation<Object>>? adaptations,
     // For the sanity of the reader, make sure these properties are in the same
     // order in every place that they are separated by section comments (e.g.
     // GENERAL CONFIGURATION). Each section except for deprecations should be
     // alphabetical by symbol name.
 
     // GENERAL CONFIGURATION
+    Iterable<Adaptation<Object>>? adaptations,
     bool? applyElevationOverlayColor,
-    // ⚠️ NO CUPERTINO NoDefaultCupertinoThemeData? cupertinoOverrideTheme,
+    NoDefaultCupertinoThemeData? cupertinoOverrideTheme,
     Iterable<ThemeExtension<dynamic>>? extensions,
     InputDecorationTheme? inputDecorationTheme,
     MaterialTapTargetSize? materialTapTargetSize,
@@ -525,8 +484,9 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     TooltipThemeData? tooltipTheme,
   }) {
     // GENERAL CONFIGURATION
-    // ⚠️ cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
+    cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
     extensions ??= <ThemeExtension<dynamic>>[];
+    adaptations ??= <Adaptation<Object>>[];
     inputDecorationTheme ??= const InputDecorationTheme();
     platform ??= defaultTargetPlatform;
     switch (platform) {
@@ -542,44 +502,43 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     pageTransitionsTheme ??= const PageTransitionsTheme();
     scrollbarTheme ??= const ScrollbarThemeData();
     visualDensity ??= VisualDensity.defaultDensityForPlatform(platform);
-    useMaterial3 ??= false;
+    useMaterial3 ??= true;
     final bool useInkSparkle = platform == TargetPlatform.android && !kIsWeb;
     splashFactory ??= useMaterial3
-        ? useInkSparkle
-            ? InkSparkle.splashFactory
-            : InkRipple.splashFactory
+        ? useInkSparkle ? InkSparkle.splashFactory : InkRipple.splashFactory
         : InkSplash.splashFactory;
 
     // COLOR
-    assert(colorScheme?.brightness == null ||
-        brightness == null ||
-        colorScheme!.brightness == brightness);
+    assert(
+    colorScheme?.brightness == null || brightness == null || colorScheme!.brightness == brightness,
+    'ThemeData.brightness does not match ColorScheme.brightness. '
+        'Either override ColorScheme.brightness or ThemeData.brightness to '
+        'match the other.'
+    );
     assert(colorSchemeSeed == null || colorScheme == null);
     assert(colorSchemeSeed == null || primarySwatch == null);
     assert(colorSchemeSeed == null || primaryColor == null);
-    final Brightness effectiveBrightness =
-        brightness ?? colorScheme?.brightness ?? Brightness.light;
+    final Brightness effectiveBrightness = brightness ?? colorScheme?.brightness ?? Brightness.light;
     final bool isDark = effectiveBrightness == Brightness.dark;
-
     if (colorSchemeSeed != null || useMaterial3) {
       if (colorSchemeSeed != null) {
-        colorScheme = ColorScheme.fromSeed(
-            seedColor: colorSchemeSeed, brightness: effectiveBrightness);
+        colorScheme = ColorScheme.fromSeed(seedColor: colorSchemeSeed, brightness: effectiveBrightness);
       }
       colorScheme ??= isDark ? _colorSchemeDarkM3 : _colorSchemeLightM3;
 
       // For surfaces that use primary color in light themes and surface color in dark
-      final Color primarySurfaceColor =
-          isDark ? colorScheme.surface : colorScheme.primary;
-      final Color onPrimarySurfaceColor =
-          isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+      final Color primarySurfaceColor = isDark ? colorScheme.surface : colorScheme.primary;
+      final Color onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
       // Default some of the color settings to values from the color scheme
       primaryColor ??= primarySurfaceColor;
+      // ignore: deprecated_member_use
       canvasColor ??= colorScheme.background;
+      // ignore: deprecated_member_use
       scaffoldBackgroundColor ??= colorScheme.background;
       cardColor ??= colorScheme.surface;
       dividerColor ??= colorScheme.outline;
+      // ignore: deprecated_member_use
       dialogBackgroundColor ??= colorScheme.background;
       indicatorColor ??= onPrimarySurfaceColor;
       applyElevationOverlayColor ??= brightness == Brightness.dark;
@@ -587,18 +546,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     applyElevationOverlayColor ??= false;
     primarySwatch ??= Colors.blue;
     primaryColor ??= isDark ? Colors.grey[900]! : primarySwatch;
-    final Brightness estimatedPrimaryColorBrightness =
-        ThemeData.estimateBrightnessForColor(primaryColor);
+    final Brightness estimatedPrimaryColorBrightness = ThemeData.estimateBrightnessForColor(primaryColor);
     primaryColorLight ??= isDark ? Colors.grey[500]! : primarySwatch[100]!;
     primaryColorDark ??= isDark ? Colors.black : primarySwatch[700]!;
-    final bool primaryIsDark =
-        estimatedPrimaryColorBrightness == Brightness.dark;
-    focusColor ??= isDark
-        ? Colors.white.withOpacity(0.12)
-        : Colors.black.withOpacity(0.12);
-    hoverColor ??= isDark
-        ? Colors.white.withOpacity(0.04)
-        : Colors.black.withOpacity(0.04);
+    final bool primaryIsDark = estimatedPrimaryColorBrightness == Brightness.dark;
+    focusColor ??= isDark ? Colors.white.withOpacity(0.12) : Colors.black.withOpacity(0.12);
+    hoverColor ??= isDark ? Colors.white.withOpacity(0.04) : Colors.black.withOpacity(0.04);
     shadowColor ??= Colors.black;
     canvasColor ??= isDark ? Colors.grey[850]! : Colors.grey[50]!;
     scaffoldBackgroundColor ??= canvasColor;
@@ -618,9 +571,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     // Spec doesn't specify a dark theme secondaryHeaderColor, this is a guess.
     secondaryHeaderColor ??= isDark ? Colors.grey[700]! : primarySwatch[50]!;
     dialogBackgroundColor ??= isDark ? Colors.grey[800]! : Colors.white;
-    indicatorColor ??= colorScheme.secondary == primaryColor
-        ? Colors.white
-        : colorScheme.secondary;
+    indicatorColor ??= colorScheme.secondary == primaryColor ? Colors.white : colorScheme.secondary;
     hintColor ??= isDark ? Colors.white60 : Colors.black.withOpacity(0.6);
     // The default [buttonTheme] is here because it doesn't use the defaults for
     // [disabledColor], [highlightColor], and [splashColor].
@@ -635,8 +586,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       materialTapTargetSize: materialTapTargetSize,
     );
     disabledColor ??= isDark ? Colors.white38 : Colors.black38;
-    highlightColor ??=
-        isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
+    highlightColor ??= isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
     splashColor ??= isDark ? _kDarkThemeSplashColor : _kLightThemeSplashColor;
 
     // TYPOGRAPHY & ICONOGRAPHY
@@ -644,18 +594,14 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
         ? Typography.material2021(platform: platform, colorScheme: colorScheme)
         : Typography.material2014(platform: platform);
     TextTheme defaultTextTheme = isDark ? typography.white : typography.black;
-    TextTheme defaultPrimaryTextTheme =
-        primaryIsDark ? typography.white : typography.black;
+    TextTheme defaultPrimaryTextTheme = primaryIsDark ? typography.white : typography.black;
     if (fontFamily != null) {
       defaultTextTheme = defaultTextTheme.apply(fontFamily: fontFamily);
-      defaultPrimaryTextTheme =
-          defaultPrimaryTextTheme.apply(fontFamily: fontFamily);
+      defaultPrimaryTextTheme = defaultPrimaryTextTheme.apply(fontFamily: fontFamily);
     }
     if (fontFamilyFallback != null) {
-      defaultTextTheme =
-          defaultTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
-      defaultPrimaryTextTheme =
-          defaultPrimaryTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
+      defaultTextTheme = defaultTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
+      defaultPrimaryTextTheme = defaultPrimaryTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
     }
     if (package != null) {
       defaultTextTheme = defaultTextTheme.apply(package: package);
@@ -663,12 +609,8 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     }
     textTheme = defaultTextTheme.merge(textTheme);
     primaryTextTheme = defaultPrimaryTextTheme.merge(primaryTextTheme);
-    iconTheme ??= isDark
-        ? const IconThemeData(color: kDefaultIconLightColor)
-        : const IconThemeData(color: kDefaultIconDarkColor);
-    primaryIconTheme ??= primaryIsDark
-        ? const IconThemeData(color: Colors.white)
-        : const IconThemeData(color: Colors.black);
+    iconTheme ??= isDark ? IconThemeData(color: kDefaultIconLightColor) : IconThemeData(color: kDefaultIconDarkColor);
+    primaryIconTheme ??= primaryIsDark ? const IconThemeData(color: Colors.white) : const IconThemeData(color: Colors.black);
 
     // COMPONENT THEMES
     appBarTheme ??= const AppBarTheme();
@@ -715,9 +657,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     timePickerTheme ??= const TimePickerThemeData();
     toggleButtonsTheme ??= const ToggleButtonsThemeData();
     tooltipTheme ??= const TooltipThemeData();
-
-    adaptations ??= <Adaptation<Object>>[];
-
     return GbtFluentThemeData.raw(
       fluentTextTheme: fluentTextTheme,
       fluentStrokeTheme: fluentStrokeTheme,
@@ -835,30 +774,52 @@ const ColorScheme _colorSchemeLightM3 = ColorScheme(
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFEADDFF),
   onPrimaryContainer: Color(0xFF21005D),
+  primaryFixed: Color(0xFFEADDFF),
+  primaryFixedDim: Color(0xFFD0BCFF),
+  onPrimaryFixed: Color(0xFF21005D),
+  onPrimaryFixedVariant: Color(0xFF4F378B),
   secondary: Color(0xFF625B71),
   onSecondary: Color(0xFFFFFFFF),
   secondaryContainer: Color(0xFFE8DEF8),
   onSecondaryContainer: Color(0xFF1D192B),
+  secondaryFixed: Color(0xFFE8DEF8),
+  secondaryFixedDim: Color(0xFFCCC2DC),
+  onSecondaryFixed: Color(0xFF1D192B),
+  onSecondaryFixedVariant: Color(0xFF4A4458),
   tertiary: Color(0xFF7D5260),
   onTertiary: Color(0xFFFFFFFF),
   tertiaryContainer: Color(0xFFFFD8E4),
   onTertiaryContainer: Color(0xFF31111D),
+  tertiaryFixed: Color(0xFFFFD8E4),
+  tertiaryFixedDim: Color(0xFFEFB8C8),
+  onTertiaryFixed: Color(0xFF31111D),
+  onTertiaryFixedVariant: Color(0xFF633B48),
   error: Color(0xFFB3261E),
   onError: Color(0xFFFFFFFF),
   errorContainer: Color(0xFFF9DEDC),
   onErrorContainer: Color(0xFF410E0B),
-  background: Color(0xFFFFFBFE),
-  onBackground: Color(0xFF1C1B1F),
-  surface: Color(0xFFFFFBFE),
-  onSurface: Color(0xFF1C1B1F),
+  // ignore: deprecated_member_use
+  background: Color(0xFFFEF7FF),
+  // ignore: deprecated_member_use
+  onBackground: Color(0xFF1D1B20),
+  surface: Color(0xFFFEF7FF),
+  surfaceBright: Color(0xFFFEF7FF),
+  surfaceContainerLowest: Color(0xFFFFFFFF),
+  surfaceContainerLow: Color(0xFFF7F2FA),
+  surfaceContainer: Color(0xFFF3EDF7),
+  surfaceContainerHigh: Color(0xFFECE6F0),
+  surfaceContainerHighest: Color(0xFFE6E0E9),
+  surfaceDim: Color(0xFFDED8E1),
+  onSurface: Color(0xFF1D1B20),
+  // ignore: deprecated_member_use
   surfaceVariant: Color(0xFFE7E0EC),
   onSurfaceVariant: Color(0xFF49454F),
   outline: Color(0xFF79747E),
   outlineVariant: Color(0xFFCAC4D0),
   shadow: Color(0xFF000000),
   scrim: Color(0xFF000000),
-  inverseSurface: Color(0xFF313033),
-  onInverseSurface: Color(0xFFF4EFF4),
+  inverseSurface: Color(0xFF322F35),
+  onInverseSurface: Color(0xFFF5EFF7),
   inversePrimary: Color(0xFFD0BCFF),
   // The surfaceTint color is set to the same color as the primary.
   surfaceTint: Color(0xFF6750A4),
@@ -870,42 +831,55 @@ const ColorScheme _colorSchemeDarkM3 = ColorScheme(
   onPrimary: Color(0xFF381E72),
   primaryContainer: Color(0xFF4F378B),
   onPrimaryContainer: Color(0xFFEADDFF),
+  primaryFixed: Color(0xFFEADDFF),
+  primaryFixedDim: Color(0xFFD0BCFF),
+  onPrimaryFixed: Color(0xFF21005D),
+  onPrimaryFixedVariant: Color(0xFF4F378B),
   secondary: Color(0xFFCCC2DC),
   onSecondary: Color(0xFF332D41),
   secondaryContainer: Color(0xFF4A4458),
   onSecondaryContainer: Color(0xFFE8DEF8),
+  secondaryFixed: Color(0xFFE8DEF8),
+  secondaryFixedDim: Color(0xFFCCC2DC),
+  onSecondaryFixed: Color(0xFF1D192B),
+  onSecondaryFixedVariant: Color(0xFF4A4458),
   tertiary: Color(0xFFEFB8C8),
   onTertiary: Color(0xFF492532),
   tertiaryContainer: Color(0xFF633B48),
   onTertiaryContainer: Color(0xFFFFD8E4),
+  tertiaryFixed: Color(0xFFFFD8E4),
+  tertiaryFixedDim: Color(0xFFEFB8C8),
+  onTertiaryFixed: Color(0xFF31111D),
+  onTertiaryFixedVariant: Color(0xFF633B48),
   error: Color(0xFFF2B8B5),
   onError: Color(0xFF601410),
   errorContainer: Color(0xFF8C1D18),
   onErrorContainer: Color(0xFFF9DEDC),
-  background: Color(0xFF1C1B1F),
-  onBackground: Color(0xFFE6E1E5),
-  surface: Color(0xFF1C1B1F),
-  onSurface: Color(0xFFE6E1E5),
+  // ignore: deprecated_member_use
+  background: Color(0xFF141218),
+  // ignore: deprecated_member_use
+  onBackground: Color(0xFFE6E0E9),
+  surface: Color(0xFF141218),
+  surfaceBright: Color(0xFF3B383E),
+  surfaceContainerLowest: Color(0xFF0F0D13),
+  surfaceContainerLow: Color(0xFF1D1B20),
+  surfaceContainer: Color(0xFF211F26),
+  surfaceContainerHigh: Color(0xFF2B2930),
+  surfaceContainerHighest: Color(0xFF36343B),
+  surfaceDim: Color(0xFF141218),
+  onSurface: Color(0xFFE6E0E9),
+  // ignore: deprecated_member_use
   surfaceVariant: Color(0xFF49454F),
   onSurfaceVariant: Color(0xFFCAC4D0),
   outline: Color(0xFF938F99),
   outlineVariant: Color(0xFF49454F),
   shadow: Color(0xFF000000),
   scrim: Color(0xFF000000),
-  inverseSurface: Color(0xFFE6E1E5),
-  onInverseSurface: Color(0xFF313033),
+  inverseSurface: Color(0xFFE6E0E9),
+  onInverseSurface: Color(0xFF322F35),
   inversePrimary: Color(0xFF6750A4),
   // The surfaceTint color is set to the same color as the primary.
   surfaceTint: Color(0xFFD0BCFF),
 );
 
 // END GENERATED TOKEN PROPERTIES - ColorScheme
-
-/// Quick FIx
-///
-const Color kDefaultIconLightColor = Colors.white;
-
-/// The default color for [ThemeData.iconTheme] when [ThemeData.brightness] is
-/// [Brightness.dark]. This color is used in [IconButton] to detect whether
-/// [IconTheme.of(context).color] is the same as the default color of [ThemeData.iconTheme].
-const Color kDefaultIconDarkColor = Colors.black87;

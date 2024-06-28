@@ -6,7 +6,7 @@ ButtonStyle _buildFluentButtonSubtleStyle(
 ) {
   final colorMode = createColorMode(Theme.of(context).brightness);
   final FluentButtonSize size = fluentButtonStyle.size;
-  final MaterialStateProperty<Color?>? backgroundColor =
+  final WidgetStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
   final Color? foregroundPressedColor =
       FluentColors.of(context)?.brandForeground1Pressed;
@@ -21,9 +21,9 @@ ButtonStyle _buildFluentButtonSubtleStyle(
 
   return ButtonStyle(
     backgroundColor:
-        backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
-    shape: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.focused)) {
+        backgroundColor ?? WidgetStateProperty.all(Colors.transparent),
+    shape: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.focused)) {
         return RoundedRectangleBorder(
           side: BorderSide(
             color: colorMode(
@@ -41,22 +41,22 @@ ButtonStyle _buildFluentButtonSubtleStyle(
       }
       return null;
     }),
-    foregroundColor: MaterialStateProperty.resolveWith(
+    foregroundColor: WidgetStateProperty.resolveWith(
       (states) {
         if (states.length == 1) {
           return switch (states.single) {
-            MaterialState.pressed => foregroundPressedColor,
-            MaterialState.focused => foregroundFocusedColor,
-            MaterialState.disabled => foregroundDisabledColor,
+            WidgetState.pressed => foregroundPressedColor,
+            WidgetState.focused => foregroundFocusedColor,
+            WidgetState.disabled => foregroundDisabledColor,
             _ => null,
           };
         }
         return foregroundRestColor;
       },
     ),
-    shadowColor: MaterialStateProperty.all(Colors.transparent),
-    surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
-    overlayColor: MaterialStateProperty.all(Colors.transparent),
+    shadowColor: WidgetStateProperty.all(Colors.transparent),
+    surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+    overlayColor: WidgetStateProperty.all(Colors.transparent),
   ).merge(_fluentButtonDefaultStyle(
       fluentButtonStyle: fluentButtonStyle, context: context));
 }

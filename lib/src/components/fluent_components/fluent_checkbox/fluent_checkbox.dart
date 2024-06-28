@@ -51,9 +51,9 @@ class FluentCheckbox extends StatelessWidget {
                               ?.brandBackgroundDisabledRest
                       : Colors.transparent,
                   child: Checkbox(
-                    overlayColor: MaterialStatePropertyAll(Colors.transparent),
+                    overlayColor: WidgetStatePropertyAll(Colors.transparent),
                     activeColor: Colors.transparent,
-                    fillColor: MaterialStatePropertyAll(Colors.transparent),
+                    fillColor: WidgetStatePropertyAll(Colors.transparent),
                     shape: CircleBorder(),
                     side: BorderSide(color: Colors.transparent),
                     value: value,

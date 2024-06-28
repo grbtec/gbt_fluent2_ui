@@ -5,22 +5,22 @@ ButtonStyle _buildFluentButtonAccentStyle(
   BuildContext context,
 ) {
   final colorMode = createColorMode(Theme.of(context).brightness);
-  final MaterialStateProperty<Color?>? backgroundColor =
+  final WidgetStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
-  final MaterialStateProperty<Color?>? foregroundColor =
+  final WidgetStateProperty<Color?>? foregroundColor =
       fluentButtonStyle.foregroundColor;
 
   return ButtonStyle(
     backgroundColor: backgroundColor ??
-        MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
+        WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
             if (states.length == 1) {
               return switch (states.single) {
-                MaterialState.pressed =>
+                WidgetState.pressed =>
                   FluentColors.of(context)?.brandBackground1Pressed,
-                MaterialState.focused =>
+                WidgetState.focused =>
                   FluentColors.of(context)?.brandBackground1Selected,
-                MaterialState.disabled => colorMode(
+                WidgetState.disabled => colorMode(
                     FluentColors.neutralBackground5Rest,
                     FluentDarkColors.neutralBackground5Rest,
                   ),
@@ -31,9 +31,9 @@ ButtonStyle _buildFluentButtonAccentStyle(
           },
         ),
     foregroundColor: foregroundColor ??
-        MaterialStateProperty.resolveWith(
+        WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.disabled)) {
+            if (states.contains(WidgetState.disabled)) {
               return colorMode(
                 FluentColors.neutralForegroundDisabled1Rest,
                 FluentDarkColors.neutralForegroundDisabled1Rest,

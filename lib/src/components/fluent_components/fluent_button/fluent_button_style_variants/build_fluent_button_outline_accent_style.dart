@@ -6,7 +6,7 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
 ) {
   final colorMode = createColorMode(Theme.of(context).brightness);
   final FluentButtonSize size = fluentButtonStyle.size;
-  final MaterialStateProperty<Color?>? backgroundColor =
+  final WidgetStateProperty<Color?>? backgroundColor =
       fluentButtonStyle.backgroundColor;
   final strokeRestColor = FluentColors.of(context)?.brandStroke1Rest;
   final strokePressedColor = FluentColors.of(context)?.brandStroke1Pressed;
@@ -21,12 +21,12 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
 
   return ButtonStyle(
     backgroundColor:
-        backgroundColor ?? MaterialStateProperty.all(Colors.transparent),
-    shape: MaterialStateProperty.resolveWith(
+        backgroundColor ?? WidgetStateProperty.all(Colors.transparent),
+    shape: WidgetStateProperty.resolveWith(
       (states) {
         if (states.length == 1) {
           return switch (states.single) {
-            MaterialState.pressed => strokePressedColor != null
+            WidgetState.pressed => strokePressedColor != null
                 ? RoundedRectangleBorder(
                     side: BorderSide(
                       color: strokePressedColor,
@@ -38,7 +38,7 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
                     ),
                   )
                 : null,
-            MaterialState.focused => RoundedRectangleBorder(
+            WidgetState.focused => RoundedRectangleBorder(
                 side: BorderSide(
                     color: strokeFocusedColor,
                     width: FluentStrokeThickness.strokeWidth20.value),
@@ -48,7 +48,7 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
                       : FluentCornerRadius.large.value,
                 ),
               ),
-            MaterialState.disabled => RoundedRectangleBorder(
+            WidgetState.disabled => RoundedRectangleBorder(
                 side: BorderSide(
                   color: strokeDisabledColor,
                 ),
@@ -75,22 +75,22 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
             : null;
       },
     ),
-    foregroundColor: MaterialStateProperty.resolveWith(
+    foregroundColor: WidgetStateProperty.resolveWith(
       (states) {
         if (states.length == 1) {
           return switch (states.single) {
-            MaterialState.pressed =>
+            WidgetState.pressed =>
               FluentColors.of(context)?.brandForeground1Pressed,
-            MaterialState.focused =>
+            WidgetState.focused =>
               FluentColors.of(context)?.brandForeground1Rest,
-            MaterialState.disabled => colorMode(
+            WidgetState.disabled => colorMode(
                 FluentColors.neutralForegroundDisabled1Rest,
                 FluentDarkColors.neutralForegroundDisabled1Rest,
               ),
             _ => null,
           };
         }
-        if (states.contains(MaterialState.disabled)) {
+        if (states.contains(WidgetState.disabled)) {
           return colorMode(
             FluentColors.neutralForegroundDisabled1Rest,
             FluentDarkColors.neutralForegroundDisabled1Rest,
@@ -99,9 +99,9 @@ ButtonStyle _buildFluentButtonOutlineAccentStyle(
         return FluentColors.of(context)?.brandForeground1Rest;
       },
     ),
-    shadowColor: MaterialStateProperty.all(Colors.transparent),
-    surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
-    overlayColor: MaterialStateProperty.all(Colors.transparent),
+    shadowColor: WidgetStateProperty.all(Colors.transparent),
+    surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+    overlayColor: WidgetStateProperty.all(Colors.transparent),
   ).merge(_fluentButtonDefaultStyle(
       fluentButtonStyle: fluentButtonStyle, context: context));
 }
