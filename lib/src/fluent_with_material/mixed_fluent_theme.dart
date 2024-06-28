@@ -312,18 +312,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       timePickerTheme: timePickerTheme ?? this.timePickerTheme,
       toggleButtonsTheme: toggleButtonsTheme ?? this.toggleButtonsTheme,
       tooltipTheme: tooltipTheme ?? this.tooltipTheme,
-      // DEPRECATED (newest deprecations at the bottom)
-      // ignore: deprecated_member_use_from_same_package
-      toggleableActiveColor: _deprecated,
-      // ignore: deprecated_member_use_from_same_package
-      errorColor: colorScheme?.error ?? this.colorScheme.error,
-      // ignore: deprecated_member_use_from_same_package
-      backgroundColor: colorScheme?.background ?? this.colorScheme.background,
-      // ignore: deprecated_member_use_from_same_package
-      bottomAppBarColor: bottomAppBarTheme?.color ??
-          this.bottomAppBarTheme.color ??
-          // ignore: deprecated_member_use_from_same_package
-          _deprecated,
     );
   }
 
@@ -427,28 +415,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     required super.timePickerTheme,
     required super.toggleButtonsTheme,
     required super.tooltipTheme,
-    @Deprecated(
-      'No longer used by the framework, please remove any reference to it. '
-      'For more information, consult the migration guide at '
-      'https://flutter.dev/docs/release/breaking-changes/toggleable-active-color#migration-guide. '
-      'This feature was deprecated after v3.4.0-19.0.pre.',
-    )
-    super.toggleableActiveColor,
-    @Deprecated(
-      'Use colorScheme.error instead. '
-      'This feature was deprecated after v3.3.0-0.5.pre.',
-    )
-    super.errorColor,
-    @Deprecated(
-      'Use colorScheme.background instead. '
-      'This feature was deprecated after v3.3.0-0.5.pre.',
-    )
-    super.backgroundColor,
-    @Deprecated(
-      'Use BottomAppBarTheme.color instead. '
-      'This feature was deprecated after v3.3.0-0.6.pre.',
-    )
-    super.bottomAppBarColor,
   }) : super.raw(cupertinoOverrideTheme: null);
 
   /// GbtFluentThemeData constructor
@@ -852,15 +818,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       timePickerTheme: timePickerTheme,
       toggleButtonsTheme: toggleButtonsTheme,
       tooltipTheme: tooltipTheme,
-      // DEPRECATED (newest deprecations at the bottom)
-      // ignore: deprecated_member_use_from_same_package
-      toggleableActiveColor: _deprecated,
-      // ignore: deprecated_member_use_from_same_package
-      errorColor: colorScheme.error,
-      // ignore: deprecated_member_use_from_same_package
-      backgroundColor: colorScheme.background,
-      // ignore: deprecated_member_use_from_same_package
-      bottomAppBarColor: bottomAppBarTheme.color ?? _deprecated,
     );
   }
 }
@@ -952,7 +909,3 @@ const Color kDefaultIconLightColor = Colors.white;
 /// [Brightness.dark]. This color is used in [IconButton] to detect whether
 /// [IconTheme.of(context).color] is the same as the default color of [ThemeData.iconTheme].
 const Color kDefaultIconDarkColor = Colors.black87;
-
-@Deprecated(
-    "Deprecated since Flutter 3.x, remove it as soon as possible in Flutter 4.x")
-const Color _deprecated = Colors.red;

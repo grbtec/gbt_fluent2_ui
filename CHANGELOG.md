@@ -1,3 +1,8 @@
+## 6.0.0
+
+- Change sdk constraints to ^3.4.0
+- Change flutter constraints to ^3.22.0
+
 ## 5.10.3
 
 - [BREAKING CHANGE] Replace icon property to leading in fluent_section_description.
