@@ -19,7 +19,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.19.6
+          flutter-version: 3.22.2
 
       - name: Remove private dev_dependencies
         run: dart run remove_private_dependencies.dart
