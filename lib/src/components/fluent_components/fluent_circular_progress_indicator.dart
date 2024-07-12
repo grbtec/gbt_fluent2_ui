@@ -53,8 +53,8 @@ class FluentCircularProgressIndicator extends StatelessWidget {
         backgroundColor: backgroundColor,
         color: color ??
             colorMode(
-              FluentColors.neutralForeground2Rest,
-              FluentDarkColors.neutralForeground2Rest,
+              FluentColors.controlsHudForeground2Rest,
+              FluentDarkColors.controlsHudForeground2Rest,
             ),
         strokeWidth: strokeWidth ?? fluentStrokeWidth,
       ),
