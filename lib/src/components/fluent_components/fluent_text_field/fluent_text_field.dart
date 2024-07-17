@@ -225,7 +225,8 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   decoration: InputDecoration(
                     label: label != null
                         ? Transform.scale(
-                      scale: 1 / .75,
+                            scale: 1 / .75,
+                            alignment: Alignment.centerLeft,
                             child: FluentText(label),
                           )
                         : null,
