@@ -3,6 +3,7 @@ import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class FluentListItemOneLine extends StatelessWidget {
   final Widget? leading;
+  final double? leadingBoxSize;
   final Widget? trailing;
   final String text;
   final void Function()? onTap;
@@ -16,6 +17,7 @@ class FluentListItemOneLine extends StatelessWidget {
     this.leading,
     this.trailing,
     this.textColor,
+    this.leadingBoxSize = 24,
   });
 
   @override
@@ -36,8 +38,8 @@ class FluentListItemOneLine extends StatelessWidget {
           children: [
             if (leading != null) ...[
               FluentContainer(
-                width: FluentSize.size240.value,
-                height: FluentSize.size240.value,
+                width: leadingBoxSize,
+                height: leadingBoxSize,
                 child: leading is Icon
                     ? IconTheme(
                         data: IconThemeData(
