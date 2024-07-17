@@ -223,7 +223,12 @@ class _FluentTextFieldState extends State<FluentTextField> {
                           ),
                   ),
                   decoration: InputDecoration(
-                    label: label != null ? FluentText(label) : null,
+                    label: label != null
+                        ? Transform.scale(
+                      scale: 1 / .75,
+                            child: FluentText(label),
+                          )
+                        : null,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle:
                         fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
