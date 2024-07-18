@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gbt_fluent2_ui/fluent_icons.dart';
 import 'package:gbt_fluent2_ui/gbt_fluent2_ui.dart';
 
 class TextFieldTrailingIcon extends StatelessWidget {
@@ -38,8 +39,8 @@ class TextFieldTrailingIcon extends StatelessWidget {
           ? GestureDetector(
               onTap: onTapCancelIcon,
               child: Icon(
-                Icons.cancel,
-                size: FluentSize.size200.value,
+                FluentIcons.dismiss_circle_24_filled,
+                size: FluentSize.size240.value,
                 color: colorMode(
                   FluentColors.neutralForeground3Rest,
                   FluentDarkColors.neutralForeground3Rest,

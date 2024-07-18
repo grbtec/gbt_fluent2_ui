@@ -150,7 +150,6 @@ class _FluentTextFieldState extends State<FluentTextField> {
             .textEditingController.value.text.isNotEmpty;
         final hasFocus = fluentTextFieldController.hasFocus;
 
-
         return Row(
           children: [
             if (prefixIcon != null) ...[
@@ -172,9 +171,9 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   : prefixIcon
             ],
             Expanded(
-              child: Container(
+              child: Padding(
                 padding: EdgeInsets.only(
-                  top: FluentSize.size120.value,
+                  top: FluentSize.size240.value,
                   left: FluentSize.size160.value,
                 ),
                 child: TextField(
@@ -224,10 +223,13 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   ),
                   decoration: InputDecoration(
                     label: label != null
-                        ? Transform.scale(
-                            scale: 1 / .75,
-                            alignment: Alignment.centerLeft,
-                            child: FluentText(label),
+                        ? Transform.translate(
+                            offset: Offset(0, -12),
+                            child: Transform.scale(
+                              scale: 1 / .75,
+                              alignment: Alignment.centerLeft,
+                              child: FluentText(label),
+                            ),
                           )
                         : null,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -245,8 +247,9 @@ class _FluentTextFieldState extends State<FluentTextField> {
                                   FluentDarkColors.neutralForeground2Rest,
                                 ),
                     ),
-                    contentPadding:
-                        EdgeInsets.only(right: FluentSize.size160.value),
+                    contentPadding: EdgeInsets.only(
+                      right: FluentSize.size160.value,
+                    ),
                     hintText: hintText,
                     helperText: assistiveText,
                     error: errorText != null
@@ -305,12 +308,12 @@ class _FluentTextFieldState extends State<FluentTextField> {
                         fluentTheme.fluentTextTheme?.body1?.fluentCopyWith(
                       fluentColor: hasFocus.value
                           ? colorMode(
-                              FluentColors.neutralForeground2Rest,
-                              FluentDarkColors.neutralForeground2Rest,
+                              FluentColors.neutralForeground1Rest,
+                              FluentDarkColors.neutralForeground1Rest,
                             )
                           : colorMode(
-                              FluentColors.neutralForegroundDisabled1Rest,
-                              FluentDarkColors.neutralForegroundDisabled1Rest,
+                              FluentColors.neutralForeground2Rest,
+                              FluentDarkColors.neutralForeground2Rest,
                             ),
                     ),
                     prefix: prefix,
