@@ -232,13 +232,15 @@ class _FluentToastState extends State<FluentToast> {
                     ],
                   ),
                 ),
-                if (action != null)
+                if (action != null) ...[
+                  SizedBox(width: FluentSize.size160.value),
                   IconTheme(
                     data: IconThemeData(
                       color: textColor,
                     ),
                     child: action,
                   ),
+                ]
               ],
             ),
           ),
