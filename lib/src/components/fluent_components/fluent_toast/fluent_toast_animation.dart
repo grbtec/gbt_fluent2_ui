@@ -23,6 +23,7 @@ class _FluentToastAnimationState extends State<_FluentToastAnimation> {
   }
 
   Future<void> onClose() async {
+    if (!mounted) return;
     setState(() {
       animationValue = 0;
     });
@@ -49,6 +50,7 @@ class _FluentToastAnimationController {
   final Duration animationDuration = Duration(milliseconds: 300);
   bool _attached = false;
   late Future<void> Function() _attachedClose;
+
   Future<void> Function() get close => _attachedClose;
 
   _FluentToastAnimationController();
