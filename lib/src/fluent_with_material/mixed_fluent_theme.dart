@@ -61,7 +61,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     return adaptationMap;
   }
 
-
   @override
   ThemeData copyWith({
     MixedFluentTextTheme? fluentTextTheme,
@@ -166,10 +165,10 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     // DEPRECATED (newest deprecations at the bottom)
     @Deprecated(
       'Use a ThemeData constructor (.from, .light, or .dark) instead. '
-          'These constructors all have a useMaterial3 argument, '
-          'and they set appropriate default values based on its value. '
-          'See the useMaterial3 API documentation for full details. '
-          'This feature was deprecated after v3.13.0-0.2.pre.',
+      'These constructors all have a useMaterial3 argument, '
+      'and they set appropriate default values based on its value. '
+      'See the useMaterial3 API documentation for full details. '
+      'This feature was deprecated after v3.13.0-0.2.pre.',
     )
     bool? useMaterial3,
   }) {
@@ -185,12 +184,18 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // alphabetical by symbol name.
 
       // GENERAL CONFIGURATION
-      adaptationMap: adaptations != null ? _createAdaptationMap(adaptations) : adaptationMap,
-      applyElevationOverlayColor: applyElevationOverlayColor ?? this.applyElevationOverlayColor,
+      adaptationMap: adaptations != null
+          ? _createAdaptationMap(adaptations)
+          : adaptationMap,
+      applyElevationOverlayColor:
+          applyElevationOverlayColor ?? this.applyElevationOverlayColor,
       // cupertinoOverrideTheme: cupertinoOverrideTheme ?? this.cupertinoOverrideTheme,
-      extensions: (extensions != null) ? _themeExtensionIterableToMap(extensions) : this.extensions,
+      extensions: (extensions != null)
+          ? _themeExtensionIterableToMap(extensions)
+          : this.extensions,
       inputDecorationTheme: inputDecorationTheme ?? this.inputDecorationTheme,
-      materialTapTargetSize: materialTapTargetSize ?? this.materialTapTargetSize,
+      materialTapTargetSize:
+          materialTapTargetSize ?? this.materialTapTargetSize,
       pageTransitionsTheme: pageTransitionsTheme ?? this.pageTransitionsTheme,
       platform: platform ?? this.platform,
       scrollbarTheme: scrollbarTheme ?? this.scrollbarTheme,
@@ -202,8 +207,10 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       // COLOR
       canvasColor: canvasColor ?? this.canvasColor,
       cardColor: cardColor ?? this.cardColor,
-      colorScheme: (colorScheme ?? this.colorScheme).copyWith(brightness: brightness),
-      dialogBackgroundColor: dialogBackgroundColor ?? this.dialogBackgroundColor,
+      colorScheme:
+          (colorScheme ?? this.colorScheme).copyWith(brightness: brightness),
+      dialogBackgroundColor:
+          dialogBackgroundColor ?? this.dialogBackgroundColor,
       disabledColor: disabledColor ?? this.disabledColor,
       dividerColor: dividerColor ?? this.dividerColor,
       focusColor: focusColor ?? this.focusColor,
@@ -214,11 +221,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       primaryColor: primaryColor ?? this.primaryColor,
       primaryColorDark: primaryColorDark ?? this.primaryColorDark,
       primaryColorLight: primaryColorLight ?? this.primaryColorLight,
-      scaffoldBackgroundColor: scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
+      scaffoldBackgroundColor:
+          scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
       secondaryHeaderColor: secondaryHeaderColor ?? this.secondaryHeaderColor,
       shadowColor: shadowColor ?? this.shadowColor,
       splashColor: splashColor ?? this.splashColor,
-      unselectedWidgetColor: unselectedWidgetColor ?? this.unselectedWidgetColor,
+      unselectedWidgetColor:
+          unselectedWidgetColor ?? this.unselectedWidgetColor,
       // TYPOGRAPHY & ICONOGRAPHY
       iconTheme: iconTheme ?? this.iconTheme,
       primaryIconTheme: primaryIconTheme ?? this.primaryIconTheme,
@@ -231,7 +240,8 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       badgeTheme: badgeTheme ?? this.badgeTheme,
       bannerTheme: bannerTheme ?? this.bannerTheme,
       bottomAppBarTheme: bottomAppBarTheme ?? this.bottomAppBarTheme,
-      bottomNavigationBarTheme: bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
+      bottomNavigationBarTheme:
+          bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
       bottomSheetTheme: bottomSheetTheme ?? this.bottomSheetTheme,
       buttonBarTheme: buttonBarTheme ?? this.buttonBarTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
@@ -247,18 +257,21 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       elevatedButtonTheme: elevatedButtonTheme ?? this.elevatedButtonTheme,
       expansionTileTheme: expansionTileTheme ?? this.expansionTileTheme,
       filledButtonTheme: filledButtonTheme ?? this.filledButtonTheme,
-      floatingActionButtonTheme: floatingActionButtonTheme ?? this.floatingActionButtonTheme,
+      floatingActionButtonTheme:
+          floatingActionButtonTheme ?? this.floatingActionButtonTheme,
       iconButtonTheme: iconButtonTheme ?? this.iconButtonTheme,
       listTileTheme: listTileTheme ?? this.listTileTheme,
       menuBarTheme: menuBarTheme ?? this.menuBarTheme,
       menuButtonTheme: menuButtonTheme ?? this.menuButtonTheme,
       menuTheme: menuTheme ?? this.menuTheme,
       navigationBarTheme: navigationBarTheme ?? this.navigationBarTheme,
-      navigationDrawerTheme: navigationDrawerTheme ?? this.navigationDrawerTheme,
+      navigationDrawerTheme:
+          navigationDrawerTheme ?? this.navigationDrawerTheme,
       navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
       outlinedButtonTheme: outlinedButtonTheme ?? this.outlinedButtonTheme,
       popupMenuTheme: popupMenuTheme ?? this.popupMenuTheme,
-      progressIndicatorTheme: progressIndicatorTheme ?? this.progressIndicatorTheme,
+      progressIndicatorTheme:
+          progressIndicatorTheme ?? this.progressIndicatorTheme,
       radioTheme: radioTheme ?? this.radioTheme,
       searchBarTheme: searchBarTheme ?? this.searchBarTheme,
       searchViewTheme: searchViewTheme ?? this.searchViewTheme,
@@ -505,30 +518,37 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     useMaterial3 ??= true;
     final bool useInkSparkle = platform == TargetPlatform.android && !kIsWeb;
     splashFactory ??= useMaterial3
-        ? useInkSparkle ? InkSparkle.splashFactory : InkRipple.splashFactory
+        ? useInkSparkle
+            ? InkSparkle.splashFactory
+            : InkRipple.splashFactory
         : InkSplash.splashFactory;
 
     // COLOR
     assert(
-    colorScheme?.brightness == null || brightness == null || colorScheme!.brightness == brightness,
-    'ThemeData.brightness does not match ColorScheme.brightness. '
+        colorScheme?.brightness == null ||
+            brightness == null ||
+            colorScheme!.brightness == brightness,
+        'ThemeData.brightness does not match ColorScheme.brightness. '
         'Either override ColorScheme.brightness or ThemeData.brightness to '
-        'match the other.'
-    );
+        'match the other.');
     assert(colorSchemeSeed == null || colorScheme == null);
     assert(colorSchemeSeed == null || primarySwatch == null);
     assert(colorSchemeSeed == null || primaryColor == null);
-    final Brightness effectiveBrightness = brightness ?? colorScheme?.brightness ?? Brightness.light;
+    final Brightness effectiveBrightness =
+        brightness ?? colorScheme?.brightness ?? Brightness.light;
     final bool isDark = effectiveBrightness == Brightness.dark;
     if (colorSchemeSeed != null || useMaterial3) {
       if (colorSchemeSeed != null) {
-        colorScheme = ColorScheme.fromSeed(seedColor: colorSchemeSeed, brightness: effectiveBrightness);
+        colorScheme = ColorScheme.fromSeed(
+            seedColor: colorSchemeSeed, brightness: effectiveBrightness);
       }
       colorScheme ??= isDark ? _colorSchemeDarkM3 : _colorSchemeLightM3;
 
       // For surfaces that use primary color in light themes and surface color in dark
-      final Color primarySurfaceColor = isDark ? colorScheme.surface : colorScheme.primary;
-      final Color onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+      final Color primarySurfaceColor =
+          isDark ? colorScheme.surface : colorScheme.primary;
+      final Color onPrimarySurfaceColor =
+          isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
       // Default some of the color settings to values from the color scheme
       primaryColor ??= primarySurfaceColor;
@@ -546,12 +566,18 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     applyElevationOverlayColor ??= false;
     primarySwatch ??= Colors.blue;
     primaryColor ??= isDark ? Colors.grey[900]! : primarySwatch;
-    final Brightness estimatedPrimaryColorBrightness = ThemeData.estimateBrightnessForColor(primaryColor);
+    final Brightness estimatedPrimaryColorBrightness =
+        ThemeData.estimateBrightnessForColor(primaryColor);
     primaryColorLight ??= isDark ? Colors.grey[500]! : primarySwatch[100]!;
     primaryColorDark ??= isDark ? Colors.black : primarySwatch[700]!;
-    final bool primaryIsDark = estimatedPrimaryColorBrightness == Brightness.dark;
-    focusColor ??= isDark ? Colors.white.withOpacity(0.12) : Colors.black.withOpacity(0.12);
-    hoverColor ??= isDark ? Colors.white.withOpacity(0.04) : Colors.black.withOpacity(0.04);
+    final bool primaryIsDark =
+        estimatedPrimaryColorBrightness == Brightness.dark;
+    focusColor ??= isDark
+        ? Colors.white.withOpacity(0.12)
+        : Colors.black.withOpacity(0.12);
+    hoverColor ??= isDark
+        ? Colors.white.withOpacity(0.04)
+        : Colors.black.withOpacity(0.04);
     shadowColor ??= Colors.black;
     canvasColor ??= isDark ? Colors.grey[850]! : Colors.grey[50]!;
     scaffoldBackgroundColor ??= canvasColor;
@@ -571,7 +597,9 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     // Spec doesn't specify a dark theme secondaryHeaderColor, this is a guess.
     secondaryHeaderColor ??= isDark ? Colors.grey[700]! : primarySwatch[50]!;
     dialogBackgroundColor ??= isDark ? Colors.grey[800]! : Colors.white;
-    indicatorColor ??= colorScheme.secondary == primaryColor ? Colors.white : colorScheme.secondary;
+    indicatorColor ??= colorScheme.secondary == primaryColor
+        ? Colors.white
+        : colorScheme.secondary;
     hintColor ??= isDark ? Colors.white60 : Colors.black.withOpacity(0.6);
     // The default [buttonTheme] is here because it doesn't use the defaults for
     // [disabledColor], [highlightColor], and [splashColor].
@@ -586,7 +614,8 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       materialTapTargetSize: materialTapTargetSize,
     );
     disabledColor ??= isDark ? Colors.white38 : Colors.black38;
-    highlightColor ??= isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
+    highlightColor ??=
+        isDark ? _kDarkThemeHighlightColor : _kLightThemeHighlightColor;
     splashColor ??= isDark ? _kDarkThemeSplashColor : _kLightThemeSplashColor;
 
     // TYPOGRAPHY & ICONOGRAPHY
@@ -594,14 +623,18 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
         ? Typography.material2021(platform: platform, colorScheme: colorScheme)
         : Typography.material2014(platform: platform);
     TextTheme defaultTextTheme = isDark ? typography.white : typography.black;
-    TextTheme defaultPrimaryTextTheme = primaryIsDark ? typography.white : typography.black;
+    TextTheme defaultPrimaryTextTheme =
+        primaryIsDark ? typography.white : typography.black;
     if (fontFamily != null) {
       defaultTextTheme = defaultTextTheme.apply(fontFamily: fontFamily);
-      defaultPrimaryTextTheme = defaultPrimaryTextTheme.apply(fontFamily: fontFamily);
+      defaultPrimaryTextTheme =
+          defaultPrimaryTextTheme.apply(fontFamily: fontFamily);
     }
     if (fontFamilyFallback != null) {
-      defaultTextTheme = defaultTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
-      defaultPrimaryTextTheme = defaultPrimaryTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
+      defaultTextTheme =
+          defaultTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
+      defaultPrimaryTextTheme =
+          defaultPrimaryTextTheme.apply(fontFamilyFallback: fontFamilyFallback);
     }
     if (package != null) {
       defaultTextTheme = defaultTextTheme.apply(package: package);
@@ -609,8 +642,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     }
     textTheme = defaultTextTheme.merge(textTheme);
     primaryTextTheme = defaultPrimaryTextTheme.merge(primaryTextTheme);
-    iconTheme ??= isDark ? IconThemeData(color: kDefaultIconLightColor) : IconThemeData(color: kDefaultIconDarkColor);
-    primaryIconTheme ??= primaryIsDark ? const IconThemeData(color: Colors.white) : const IconThemeData(color: Colors.black);
+    iconTheme ??= isDark
+        ? IconThemeData(color: kDefaultIconLightColor)
+        : IconThemeData(color: kDefaultIconDarkColor);
+    primaryIconTheme ??= primaryIsDark
+        ? const IconThemeData(color: Colors.white)
+        : const IconThemeData(color: Colors.black);
 
     // COMPONENT THEMES
     appBarTheme ??= const AppBarTheme();

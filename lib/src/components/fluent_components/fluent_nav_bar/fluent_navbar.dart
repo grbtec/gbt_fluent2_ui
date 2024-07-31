@@ -171,11 +171,12 @@ class FluentNavBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: childPadding ?? EdgeInsets.only(
-                        right: FluentSize.size160.value,
-                        left: FluentSize.size160.value,
-                        bottom: FluentSize.size80.value,
-                      ),
+                      padding: childPadding ??
+                          EdgeInsets.only(
+                            right: FluentSize.size160.value,
+                            left: FluentSize.size160.value,
+                            bottom: FluentSize.size80.value,
+                          ),
                       child: child,
                     ),
                     FluentStrokeDivider()

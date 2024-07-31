@@ -35,7 +35,7 @@ class _FluentActivityIndicatorState extends State<FluentActivityIndicator> {
     }
 
     final value = widget.value;
-    if(value == null){
+    if (value == null) {
       return SizedBox.shrink();
     }
     return SizedBox(

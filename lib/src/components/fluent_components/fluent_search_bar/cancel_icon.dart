@@ -15,7 +15,8 @@ class CancelIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isNeutral = themeColorVariation != null && themeColorVariation == FluentThemeColorVariation.neutral;
+    final isNeutral = themeColorVariation != null &&
+        themeColorVariation == FluentThemeColorVariation.neutral;
 
     final colorMode = createColorMode(Theme.of(context).brightness);
     return Stack(
@@ -27,7 +28,9 @@ class CancelIcon extends StatelessWidget {
           child: isLoading
               ? CircularProgressIndicator(
                   color: colorMode(
-                    isNeutral ? FluentColors.neutralForeground3Rest : FluentDarkColors.neutralForeground1Rest,
+                    isNeutral
+                        ? FluentColors.neutralForeground3Rest
+                        : FluentDarkColors.neutralForeground1Rest,
                     FluentDarkColors.neutralForeground3Rest,
                   ),
                   strokeWidth: FluentStrokeThickness.strokeWidth20.value,
@@ -40,7 +43,9 @@ class CancelIcon extends StatelessWidget {
             Icons.cancel,
             size: FluentSize.size200.value,
             color: colorMode(
-              isNeutral ? FluentColors.neutralForeground3Rest : FluentDarkColors.neutralForeground1Rest,
+              isNeutral
+                  ? FluentColors.neutralForeground3Rest
+                  : FluentDarkColors.neutralForeground1Rest,
               FluentDarkColors.neutralForeground2Rest,
             ),
           ),

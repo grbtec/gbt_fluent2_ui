@@ -30,7 +30,7 @@ class FluentCircularProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorMode = createColorMode(Theme.of(context).brightness);
-    final ratio = switch (size){
+    final ratio = switch (size) {
       FluentCircularProgressIndicatorSize.xSmall => 0.8369,
       FluentCircularProgressIndicatorSize.small => 0.8756,
       FluentCircularProgressIndicatorSize.medium => 0.8369,
@@ -38,7 +38,7 @@ class FluentCircularProgressIndicator extends StatelessWidget {
       _ => 0.7783, // xLarge
     };
 
-    final fluentStrokeWidth = size.value*((1-ratio)/2);
+    final fluentStrokeWidth = size.value * ((1 - ratio) / 2);
 
     return SizedBox(
       width: size.value,

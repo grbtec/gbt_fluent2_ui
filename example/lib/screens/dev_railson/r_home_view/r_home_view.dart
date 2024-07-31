@@ -28,8 +28,6 @@ class _RHomeViewState extends State<RHomeView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
-
     final rootBottomSheet = this.rootBottomSheet;
     return Stack(
       children: [
@@ -77,9 +75,7 @@ class _RHomeViewState extends State<RHomeView> with TickerProviderStateMixin {
             // ),
             bottomNavigationBar: FluentTabBar.bottomLabel(
               controller: controller.fluentTabBarController,
-              onChanged: (value) {
-
-              },
+              onChanged: (value) {},
               items: [
                 FluentTabBarItemBottomLabel(
                   label: 'Toast & Banner',
@@ -128,7 +124,6 @@ class _MyBottomSheet extends StatefulWidget {
   final VoidCallback onClose;
 
   const _MyBottomSheet({
-
     required this.onClose,
   });
 

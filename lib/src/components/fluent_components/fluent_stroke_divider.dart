@@ -50,9 +50,8 @@ class FluentStrokeDivider extends StatelessWidget {
                   bottom: strokeGapWithoutThickness,
                 ),
                 child: FluentStrokeBorder(
-                  cornerRadius: cornerRadius ?? FluentCornerRadius.circle,
-                  strokeStyle: style
-                ),
+                    cornerRadius: cornerRadius ?? FluentCornerRadius.circle,
+                    strokeStyle: style),
               ),
             ),
           ),

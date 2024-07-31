@@ -32,21 +32,21 @@ class FluentCardContainer extends StatelessWidget {
     final colorMode = createColorMode(Theme.of(context).brightness);
 
     return FluentContainer(
-        padding: padding,
-        alignment: alignment,
-        margin: margin,
-        width: width,
-        height: height,
-        constraints: constraints,
-        color: color ?? colorMode(
-          FluentColors.neutralBackground2Rest,
-          FluentDarkColors.neutralBackground2Rest,
-        ),
-        cornerRadius: cornerRadius,
-        shadow: shadow ??
-            FluentThemeDataModel.of(context).fluentShadowTheme?.shadow2,
-        child: child,
-
+      padding: padding,
+      alignment: alignment,
+      margin: margin,
+      width: width,
+      height: height,
+      constraints: constraints,
+      color: color ??
+          colorMode(
+            FluentColors.neutralBackground2Rest,
+            FluentDarkColors.neutralBackground2Rest,
+          ),
+      cornerRadius: cornerRadius,
+      shadow:
+          shadow ?? FluentThemeDataModel.of(context).fluentShadowTheme?.shadow2,
+      child: child,
     );
   }
 }

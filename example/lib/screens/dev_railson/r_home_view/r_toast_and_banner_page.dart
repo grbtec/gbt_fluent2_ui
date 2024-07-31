@@ -37,9 +37,7 @@ class _RToastAndBannerPageState extends State<RToastAndBannerPage> {
     ).show(
       context: context,
       duration: null,
-      onDismissed: () {
-
-      },
+      onDismissed: () {},
     );
   }
 

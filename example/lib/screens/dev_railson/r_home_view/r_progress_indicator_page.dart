@@ -15,7 +15,6 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
   bool isLoading = false;
 
   Future<void> onRefresh() async {
-
     setState(() {
       isLoading = true;
     });
@@ -32,7 +31,6 @@ class _RProgressIndicatorPageState extends State<RProgressIndicatorPage> {
         isLoading = false;
       });
     }
-
   }
 
   @override

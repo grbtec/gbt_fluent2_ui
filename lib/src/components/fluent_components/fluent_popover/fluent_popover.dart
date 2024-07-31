@@ -129,23 +129,23 @@ class _FluentPopoverState extends State<FluentPopover> {
                                     children: [
                                       if (widget.title != null)
                                         DefaultTextStyle.merge(
-                                            style: FluentThemeDataModel.of(
-                                                            context)
-                                                        .fluentTextTheme
-                                                        ?.body1Strong
-                                                    as TextStyle? ??
-                                                DefaultTextStyle.of(context)
-                                                    .style,
+                                            style:
+                                                FluentThemeDataModel.of(context)
+                                                            .fluentTextTheme
+                                                            ?.body1Strong
+                                                        as TextStyle? ??
+                                                    DefaultTextStyle.of(context)
+                                                        .style,
                                             child: widget.title!),
                                       if (widget.subtitle != null)
                                         DefaultTextStyle.merge(
-                                          style: FluentThemeDataModel.of(
-                                                          context)
-                                                      .fluentTextTheme
-                                                      ?.caption2
-                                                  as TextStyle? ??
-                                              DefaultTextStyle.of(context)
-                                                  .style,
+                                          style:
+                                              FluentThemeDataModel.of(context)
+                                                          .fluentTextTheme
+                                                          ?.caption2
+                                                      as TextStyle? ??
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
                                           child: widget.subtitle!,
                                         ),
                                     ],

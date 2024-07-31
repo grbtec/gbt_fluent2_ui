@@ -80,7 +80,8 @@ class MixedFluentShadow implements FluentShadow {
     );
   }
 
-  factory MixedFluentShadow.hightElevation(int shadowNumber, [Brightness brightness = Brightness.light]) {
+  factory MixedFluentShadow.hightElevation(int shadowNumber,
+      [Brightness brightness = Brightness.light]) {
     final double blurShadow1 = 1.0 * shadowNumber;
     final double blurShadow2 = brightness == Brightness.light ? 8 : 2;
     const double xAxis = 0;

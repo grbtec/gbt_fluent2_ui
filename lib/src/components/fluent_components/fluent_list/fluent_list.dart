@@ -169,7 +169,7 @@ class FluentList extends StatelessWidget {
     final padding = this.padding;
     return Container(
       padding: padding ??
-           (_isOneLine
+          (_isOneLine
               ? EdgeInsets.only(
                   top: FluentSize.size160.value,
                   left: FluentSize.size160.value,

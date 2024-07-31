@@ -4,15 +4,19 @@ class FluentCircularProgressIndicatorSize {
 
   const FluentCircularProgressIndicatorSize._(this.index, this.value);
 
+  static const FluentCircularProgressIndicatorSize xSmall =
+      FluentCircularProgressIndicatorSize._(0, 12);
+  static const FluentCircularProgressIndicatorSize small =
+      FluentCircularProgressIndicatorSize._(1, 16);
+  static const FluentCircularProgressIndicatorSize medium =
+      FluentCircularProgressIndicatorSize._(2, 24);
+  static const FluentCircularProgressIndicatorSize large =
+      FluentCircularProgressIndicatorSize._(3, 32);
+  static const FluentCircularProgressIndicatorSize xLarge =
+      FluentCircularProgressIndicatorSize._(4, 36);
 
-  static const FluentCircularProgressIndicatorSize xSmall = FluentCircularProgressIndicatorSize._(0, 12);
-  static const FluentCircularProgressIndicatorSize small = FluentCircularProgressIndicatorSize._(1, 16);
-  static const FluentCircularProgressIndicatorSize medium = FluentCircularProgressIndicatorSize._(2, 24);
-  static const FluentCircularProgressIndicatorSize large = FluentCircularProgressIndicatorSize._(3, 32);
-  static const FluentCircularProgressIndicatorSize xLarge = FluentCircularProgressIndicatorSize._(4, 36);
-
-
-  static const List<FluentCircularProgressIndicatorSize> values = <FluentCircularProgressIndicatorSize>[
+  static const List<FluentCircularProgressIndicatorSize> values =
+      <FluentCircularProgressIndicatorSize>[
     xSmall,
     small,
     medium,

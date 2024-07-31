@@ -124,16 +124,28 @@ ButtonStyle getStyle({
 }) {
   return switch (buttonVariant) {
     FluentButtonVariant.accent => _buildFluentButtonAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
+        FluentButtonStyle(
+            size: buttonSize,
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.outlineAccent => _buildFluentButtonOutlineAccentStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
+        FluentButtonStyle(
+            size: buttonSize,
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.outline => _buildFluentButtonOutlineStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
+        FluentButtonStyle(
+            size: buttonSize,
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor),
         context),
     FluentButtonVariant.subtle => _buildFluentButtonSubtleStyle(
-        FluentButtonStyle(size: buttonSize, backgroundColor: backgroundColor, foregroundColor: foregroundColor),
+        FluentButtonStyle(
+            size: buttonSize,
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor),
         context),
   };
 }
