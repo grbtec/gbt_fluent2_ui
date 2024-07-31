@@ -1,3 +1,7 @@
+## 6.x
+
+- Fix FluentToast dismiss issues.
+
 ## 6.0.0
 
 - Change sdk constraints to ^3.4.0
