@@ -316,7 +316,21 @@ class _FluentSearchBarState extends State<FluentSearchBar> {
                     'Is value changed? => ${searchBarController.queryString}');
               }
             },
-            child: FluentText('Cancelar'),
+            child: FluentText(
+              'Cancelar',
+              style: FluentThemeDataModel.of(context)
+                  .fluentTextTheme
+                  ?.body1
+                  ?.fluentCopyWith(
+                    fluentColor: colorMode(
+                      widget.themeColorVariation ==
+                              FluentThemeColorVariation.neutral
+                          ? FluentColors.neutralForeground1Rest
+                          : FluentDarkColors.neutralForeground1Rest,
+                      FluentDarkColors.neutralForeground1Rest,
+                    ),
+                  ),
+            ),
           )
         ],
       ],
