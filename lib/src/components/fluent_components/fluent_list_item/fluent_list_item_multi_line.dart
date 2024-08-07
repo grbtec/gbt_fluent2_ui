@@ -48,7 +48,7 @@ class FluentListItemMultiLine extends StatelessWidget {
       visualDensity: VisualDensity(horizontal: 0, vertical: -4),
       title: Row(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: additionalContent != null? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
           if (leading != null) ...[
             FluentContainer(
