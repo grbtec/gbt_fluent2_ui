@@ -46,6 +46,7 @@ class FluentListItemMultiLine extends StatelessWidget {
       visualDensity: VisualDensity(horizontal: 0, vertical: -4),
       title: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (leading != null) ...[
             FluentContainer(
@@ -99,7 +100,9 @@ class FluentListItemMultiLine extends StatelessWidget {
             SizedBox(
               width: FluentSize.size80.value,
             ),
-            FluentContainer(child: trailing),
+            FluentContainer(
+              child: trailing,
+            ),
           ],
         ],
       ),
