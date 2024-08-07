@@ -5,6 +5,7 @@ class FluentListItemMultiLine extends StatelessWidget {
   final Widget? leading;
   final double? leadingBoxSize;
   final Widget? trailing;
+  final double? trailingHeight;
   final String? text;
   final String? subtext;
   final Widget? additionalContent;
@@ -16,6 +17,7 @@ class FluentListItemMultiLine extends StatelessWidget {
   const FluentListItemMultiLine({
     super.key,
     this.leading,
+    this.trailingHeight = 40,
     this.trailing,
     this.tileColor,
     this.text,
@@ -101,6 +103,7 @@ class FluentListItemMultiLine extends StatelessWidget {
               width: FluentSize.size80.value,
             ),
             FluentContainer(
+              height: trailingHeight,
               child: trailing,
             ),
           ],
