@@ -261,7 +261,10 @@ class _FluentTextFieldState extends State<FluentTextField> {
                                 ?.caption2
                                 ?.fluentCopyWith(
                                   fluentColor:
-                                      FluentColors.statusDangerForeground2Rest,
+                                      colorMode(
+                                          FluentColors.statusDangerForeground2Rest,
+                                          FluentDarkColors.statusDangerForeground2Rest,
+                                      ),
                                 ),
                           )
                         : null,
