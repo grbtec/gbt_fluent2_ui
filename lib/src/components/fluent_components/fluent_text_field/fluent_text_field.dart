@@ -202,7 +202,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                   readOnly: widget.readOnly,
                   focusNode: fluentTextFieldController._focus,
                   onTapOutside: (event) {
-                    FocusScope.of(context).unfocus();
+                    fluentTextFieldController._focus.unfocus();
                   },
                   controller: fluentTextFieldController.textEditingController,
                   onChanged: onChanged,
