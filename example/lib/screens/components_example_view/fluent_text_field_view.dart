@@ -74,9 +74,19 @@ class _FluentTextFieldViewState extends State<FluentTextFieldView> {
                     hintText: "Password",
                     obscureText: true,
                   ),
-                  SizedBox(
-                    height: FluentSize.size480.value,
+                  SizedBox(height: FluentSize.size120.value),
+                  FluentTextField(
+                    hintText: "Read Only",
+                    readOnly: true,
+                    controller: FluentTextFieldController()..textEditingController.text = "Copy me\n2\n3\n4",
+                    // maxLines: 1,
                   ),
+                  SizedBox(height: FluentSize.size120.value),
+                  FluentTextField(
+                    hintText: "No Label",
+                    // maxLines: 1,
+                  ),
+                  SizedBox(height: FluentSize.size480.value),
                   FluentButton(
                     title: "Continue",
                     variant: FluentButtonVariant.outline,
