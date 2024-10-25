@@ -1,6 +1,7 @@
-## 6.x
+## 6.0.14
 
 - Fix FluentToast dismiss issues.
+- Fix FluentTextField spacing
 
 ## 6.0.0
 
