@@ -173,7 +173,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: FluentSize.size240.value,
+                  top: label == null ? 0 : FluentSize.size240.value,
                   left: FluentSize.size160.value,
                 ),
                 child: TextField(
@@ -231,7 +231,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                               child: FluentText(label),
                             ),
                           )
-                        : null,
+                        : SizedBox.shrink(),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle:
                         fluentTheme.fluentTextTheme?.caption2?.fluentCopyWith(
@@ -249,6 +249,7 @@ class _FluentTextFieldState extends State<FluentTextField> {
                     ),
                     contentPadding: EdgeInsets.only(
                       right: FluentSize.size160.value,
+                      bottom: 13
                     ),
                     hintText: hintText,
                     helperText: assistiveText,
