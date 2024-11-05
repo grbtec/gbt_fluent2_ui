@@ -2,6 +2,11 @@
 
 - Fix FluentToast dismiss issues.
 - Fix FluentTextField spacing
+- Fix _focus in onTapOutside in fluentTextField
+- Fix alignment in FluentListItemMultiline
+- Align trailing in FluentListItemMultiLine
+- Align label in FluentTextField
+- Fix scale in FluentTextField
 
 ## 6.0.0
 
