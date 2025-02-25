@@ -167,7 +167,7 @@ jobs:
           popd
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: flutter-ios-${{env.FLAVOR}}-release-${{ steps.variables.outputs.app_version }}
           path: ${{format('{0}/*-ios-*.zip',env.PROJECT)}}
