@@ -73,6 +73,11 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     // GENERAL CONFIGURATION). Each section except for deprecations should be
     // alphabetical by symbol name.
 
+    // For the sanity of the reader, make sure these properties are in the same
+    // order in every place that they are separated by section comments (e.g.
+    // GENERAL CONFIGURATION). Each section except for deprecations should be
+    // alphabetical by symbol name.
+
     // GENERAL CONFIGURATION
     Iterable<Adaptation<Object>>? adaptations,
     bool? applyElevationOverlayColor,
@@ -86,14 +91,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     InteractiveInkFeatureFactory? splashFactory,
     VisualDensity? visualDensity,
     // COLOR
-    // [colorScheme] is the preferred way to configure colors. The other color
-    // properties will gradually be phased out, see
-    // https://github.com/flutter/flutter/issues/91772.
+    ColorScheme? colorScheme,
     Brightness? brightness,
+    // [colorScheme] is the preferred way to configure colors. The [Color] properties
+    // listed below (as well as primarySwatch) will gradually be phased out, see
+    // https://github.com/flutter/flutter/issues/91772.
     Color? canvasColor,
     Color? cardColor,
-    ColorScheme? colorScheme,
-    Color? dialogBackgroundColor,
     Color? disabledColor,
     Color? dividerColor,
     Color? focusColor,
@@ -123,14 +127,14 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     BottomAppBarTheme? bottomAppBarTheme,
     BottomNavigationBarThemeData? bottomNavigationBarTheme,
     BottomSheetThemeData? bottomSheetTheme,
-    ButtonBarThemeData? buttonBarTheme,
     ButtonThemeData? buttonTheme,
-    CardTheme? cardTheme,
+    Object? cardTheme,
     CheckboxThemeData? checkboxTheme,
     ChipThemeData? chipTheme,
     DataTableThemeData? dataTableTheme,
     DatePickerThemeData? datePickerTheme,
-    DialogTheme? dialogTheme,
+    // TODO(QuncCccccc): Change the parameter type to DialogThemeData
+    Object? dialogTheme,
     DividerThemeData? dividerTheme,
     DrawerThemeData? drawerTheme,
     DropdownMenuThemeData? dropdownMenuTheme,
@@ -156,7 +160,8 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     SliderThemeData? sliderTheme,
     SnackBarThemeData? snackBarTheme,
     SwitchThemeData? switchTheme,
-    TabBarTheme? tabBarTheme,
+    // TODO(QuncCccccc): Change the parameter type to TabBarThemeData
+    Object? tabBarTheme,
     TextButtonThemeData? textButtonTheme,
     TextSelectionThemeData? textSelectionTheme,
     TimePickerThemeData? timePickerTheme,
@@ -171,7 +176,49 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       'This feature was deprecated after v3.13.0-0.2.pre.',
     )
     bool? useMaterial3,
+    @Deprecated(
+      'Use OverflowBar instead. '
+      'This feature was deprecated after v3.21.0-10.0.pre.',
+    )
+    ButtonBarThemeData? buttonBarTheme,
+    @Deprecated(
+      'Use DialogThemeData.backgroundColor instead. '
+      'This feature was deprecated after v3.27.0-0.1.pre.',
+    )
+    Color? dialogBackgroundColor,
   }) {
+    cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
+
+    // TODO(QuncCccccc): Clean it up once the type of `cardTheme` is changed to `CardThemeData`
+    if (cardTheme != null) {
+      if (cardTheme is CardTheme) {
+        cardTheme = cardTheme.data;
+      } else if (cardTheme is! CardThemeData) {
+        throw ArgumentError(
+            'cardTheme must be either a CardThemeData or a CardTheme');
+      }
+    }
+
+    // TODO(QuncCccccc): Clean this up once the type of `dialogTheme` is changed to `DialogThemeData`
+    if (dialogTheme != null) {
+      if (dialogTheme is DialogTheme) {
+        dialogTheme = dialogTheme.data;
+      } else if (dialogTheme is! DialogThemeData) {
+        throw ArgumentError(
+            'dialogTheme must be either a DialogThemeData or a DialogTheme');
+      }
+    }
+
+    // TODO(QuncCccccc): Clean this up once the type of `tabBarTheme` is changed to `TabBarThemeData`
+    if (tabBarTheme != null) {
+      if (tabBarTheme is TabBarTheme) {
+        tabBarTheme = tabBarTheme.data;
+      } else if (tabBarTheme is! TabBarThemeData) {
+        throw ArgumentError(
+            'tabBarTheme must be either a TabBarThemeData or a TabBarTheme');
+      }
+    }
+
     // cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
     return GbtFluentThemeData.raw(
       fluentTextTheme: fluentTextTheme ?? this.fluentTextTheme,
@@ -245,12 +292,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       bottomSheetTheme: bottomSheetTheme ?? this.bottomSheetTheme,
       buttonBarTheme: buttonBarTheme ?? this.buttonBarTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
-      cardTheme: cardTheme ?? this.cardTheme,
+      cardTheme: cardTheme as CardThemeData? ?? this.cardTheme,
       checkboxTheme: checkboxTheme ?? this.checkboxTheme,
       chipTheme: chipTheme ?? this.chipTheme,
       dataTableTheme: dataTableTheme ?? this.dataTableTheme,
       datePickerTheme: datePickerTheme ?? this.datePickerTheme,
-      dialogTheme: dialogTheme ?? this.dialogTheme,
+      dialogTheme: dialogTheme as DialogThemeData? ?? this.dialogTheme,
       dividerTheme: dividerTheme ?? this.dividerTheme,
       drawerTheme: drawerTheme ?? this.drawerTheme,
       dropdownMenuTheme: dropdownMenuTheme ?? this.dropdownMenuTheme,
@@ -279,7 +326,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       sliderTheme: sliderTheme ?? this.sliderTheme,
       snackBarTheme: snackBarTheme ?? this.snackBarTheme,
       switchTheme: switchTheme ?? this.switchTheme,
-      tabBarTheme: tabBarTheme ?? this.tabBarTheme,
+      tabBarTheme: tabBarTheme as TabBarThemeData? ?? this.tabBarTheme,
       textButtonTheme: textButtonTheme ?? this.textButtonTheme,
       textSelectionTheme: textSelectionTheme ?? this.textSelectionTheme,
       timePickerTheme: timePickerTheme ?? this.timePickerTheme,
@@ -458,12 +505,12 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     BottomSheetThemeData? bottomSheetTheme,
     ButtonBarThemeData? buttonBarTheme,
     ButtonThemeData? buttonTheme,
-    CardTheme? cardTheme,
+    CardThemeData? cardTheme,
     CheckboxThemeData? checkboxTheme,
     ChipThemeData? chipTheme,
     DataTableThemeData? dataTableTheme,
     DatePickerThemeData? datePickerTheme,
-    DialogTheme? dialogTheme,
+    DialogThemeData? dialogTheme,
     DividerThemeData? dividerTheme,
     DrawerThemeData? drawerTheme,
     DropdownMenuThemeData? dropdownMenuTheme,
@@ -489,7 +536,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     SliderThemeData? sliderTheme,
     SnackBarThemeData? snackBarTheme,
     SwitchThemeData? switchTheme,
-    TabBarTheme? tabBarTheme,
+    TabBarThemeData? tabBarTheme,
     TextButtonThemeData? textButtonTheme,
     TextSelectionThemeData? textSelectionTheme,
     TimePickerThemeData? timePickerTheme,
@@ -657,12 +704,30 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     bottomNavigationBarTheme ??= const BottomNavigationBarThemeData();
     bottomSheetTheme ??= const BottomSheetThemeData();
     buttonBarTheme ??= const ButtonBarThemeData();
-    cardTheme ??= const CardTheme();
+    // TODO(QuncCccccc): Clean it up once the type of `cardTheme` is changed to `CardThemeData`
+    if (cardTheme != null) {
+      if (cardTheme is CardTheme) {
+        cardTheme = cardTheme;
+      } else if (cardTheme is! CardThemeData) {
+        throw ArgumentError(
+            'cardTheme must be either a CardThemeData or a CardTheme');
+      }
+    }
+    cardTheme ??= const CardThemeData();
     checkboxTheme ??= const CheckboxThemeData();
     chipTheme ??= const ChipThemeData();
     dataTableTheme ??= const DataTableThemeData();
     datePickerTheme ??= const DatePickerThemeData();
-    dialogTheme ??= const DialogTheme();
+    // TODO(QuncCccccc): Clean this up once the type of `dialogTheme` is changed to `DialogThemeData`
+    if (dialogTheme != null) {
+      if (dialogTheme is DialogTheme) {
+        dialogTheme = dialogTheme;
+      } else if (dialogTheme is! DialogThemeData) {
+        throw ArgumentError(
+            'dialogTheme must be either a DialogThemeData or a DialogTheme');
+      }
+    }
+    dialogTheme ??= const DialogThemeData();
     dividerTheme ??= const DividerThemeData();
     drawerTheme ??= const DrawerThemeData();
     dropdownMenuTheme ??= const DropdownMenuThemeData();
@@ -688,7 +753,16 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     sliderTheme ??= const SliderThemeData();
     snackBarTheme ??= const SnackBarThemeData();
     switchTheme ??= const SwitchThemeData();
-    tabBarTheme ??= const TabBarTheme();
+    // TODO(QuncCccccc): Clean this up once the type of `tabBarTheme` is changed to `TabBarThemeData`
+    if (tabBarTheme != null) {
+      if (tabBarTheme is TabBarTheme) {
+        tabBarTheme = tabBarTheme;
+      } else if (tabBarTheme is! TabBarThemeData) {
+        throw ArgumentError(
+            'tabBarTheme must be either a TabBarThemeData or a TabBarTheme');
+      }
+    }
+    tabBarTheme ??= const TabBarThemeData();
     textButtonTheme ??= const TextButtonThemeData();
     textSelectionTheme ??= const TextSelectionThemeData();
     timePickerTheme ??= const TimePickerThemeData();
