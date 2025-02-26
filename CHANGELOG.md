@@ -1,3 +1,9 @@
+## 7.0.0
+
+- [BREAKING CHANGE] Remove deprecated code
+- Change sdk constraints to ^3.7.0
+- Change flutter constraints to ^3.29.0
+
 ## 6.0.14
 
 - Fix FluentToast dismiss issues.
