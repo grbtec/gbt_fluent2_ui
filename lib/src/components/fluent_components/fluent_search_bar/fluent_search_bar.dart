@@ -28,14 +28,12 @@ class FluentSearchBar extends StatefulWidget {
     required this.onCancelOperation,
     this.onClearOperation,
     this.onEmpty,
-    @Deprecated("This property is deprecated and will be removed in future "
-        "versions. Consider removing or ignoring this property.")
-    this.searchBarAlignment = SearchBarAlignment.centered,
     this.cancelTextColor,
     this.hintText,
     this.themeColorVariation = FluentThemeColorVariation.neutral,
   })  : trailingIcon = null,
-        onTapTrailingIcon = null;
+        onTapTrailingIcon = null,
+        searchBarAlignment = SearchBarAlignment.centered;
 
   FluentSearchBar.leftAligned({
     super.key,
@@ -45,13 +43,10 @@ class FluentSearchBar extends StatefulWidget {
     required this.onCancelOperation,
     this.onClearOperation,
     this.onEmpty,
-    @Deprecated("This property is deprecated and will be removed in future "
-        "versions. Consider removing or ignoring this property.")
-    this.searchBarAlignment = SearchBarAlignment.leftAligned,
     this.cancelTextColor,
     this.hintText,
     this.themeColorVariation = FluentThemeColorVariation.neutral,
-  });
+  }) : searchBarAlignment = SearchBarAlignment.leftAligned;
 
   @override
   State<FluentSearchBar> createState() => _FluentSearchBarState();
