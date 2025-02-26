@@ -80,7 +80,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.22.2
+          flutter-version: 3.29.0
 
       - name: Authenticate
         run: echo "${{secrets.JETBRAINS_SPACE_TOKEN}}" | dart pub token add https://dart.pkg.jetbrains.space/grbtec-com/p/main/dart/
