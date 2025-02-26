@@ -187,7 +187,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     )
     Color? dialogBackgroundColor,
   }) {
-    cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
+    // cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
 
     // TODO(QuncCccccc): Clean it up once the type of `cardTheme` is changed to `CardThemeData`
     if (cardTheme != null) {
@@ -219,7 +219,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       }
     }
 
-    // cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
     return GbtFluentThemeData.raw(
       fluentTextTheme: fluentTextTheme ?? this.fluentTextTheme,
       fluentStrokeTheme: fluentStrokeTheme ?? this.fluentStrokeTheme,
@@ -257,6 +256,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       colorScheme:
           (colorScheme ?? this.colorScheme).copyWith(brightness: brightness),
       dialogBackgroundColor:
+      // ignore: deprecated_member_use
           dialogBackgroundColor ?? this.dialogBackgroundColor,
       disabledColor: disabledColor ?? this.disabledColor,
       dividerColor: dividerColor ?? this.dividerColor,
@@ -290,6 +290,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
       bottomNavigationBarTheme:
           bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
       bottomSheetTheme: bottomSheetTheme ?? this.bottomSheetTheme,
+      // ignore: deprecated_member_use
       buttonBarTheme: buttonBarTheme ?? this.buttonBarTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
       cardTheme: cardTheme as CardThemeData? ?? this.cardTheme,
@@ -503,6 +504,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     BottomAppBarTheme? bottomAppBarTheme,
     BottomNavigationBarThemeData? bottomNavigationBarTheme,
     BottomSheetThemeData? bottomSheetTheme,
+    // ignore: deprecated_member_use
     ButtonBarThemeData? buttonBarTheme,
     ButtonThemeData? buttonTheme,
     CardThemeData? cardTheme,
@@ -620,11 +622,11 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     final bool primaryIsDark =
         estimatedPrimaryColorBrightness == Brightness.dark;
     focusColor ??= isDark
-        ? Colors.white.withOpacity(0.12)
-        : Colors.black.withOpacity(0.12);
+        ? Colors.white.withAlpha((255*0.12).toInt())
+        : Colors.black.withAlpha((255*0.12).toInt());
     hoverColor ??= isDark
-        ? Colors.white.withOpacity(0.04)
-        : Colors.black.withOpacity(0.04);
+        ? Colors.white.withAlpha((255*0.04).toInt())
+        : Colors.black.withAlpha((255*0.04).toInt());
     shadowColor ??= Colors.black;
     canvasColor ??= isDark ? Colors.grey[850]! : Colors.grey[50]!;
     scaffoldBackgroundColor ??= canvasColor;
@@ -647,7 +649,7 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     indicatorColor ??= colorScheme.secondary == primaryColor
         ? Colors.white
         : colorScheme.secondary;
-    hintColor ??= isDark ? Colors.white60 : Colors.black.withOpacity(0.6);
+    hintColor ??= isDark ? Colors.white60 : Colors.black.withAlpha((255*0.6).toInt());
     // The default [buttonTheme] is here because it doesn't use the defaults for
     // [disabledColor], [highlightColor], and [splashColor].
     buttonTheme ??= ButtonThemeData(
@@ -703,30 +705,13 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     bottomAppBarTheme ??= const BottomAppBarTheme();
     bottomNavigationBarTheme ??= const BottomNavigationBarThemeData();
     bottomSheetTheme ??= const BottomSheetThemeData();
+    // ignore: deprecated_member_use
     buttonBarTheme ??= const ButtonBarThemeData();
-    // TODO(QuncCccccc): Clean it up once the type of `cardTheme` is changed to `CardThemeData`
-    if (cardTheme != null) {
-      if (cardTheme is CardTheme) {
-        cardTheme = cardTheme;
-      } else if (cardTheme is! CardThemeData) {
-        throw ArgumentError(
-            'cardTheme must be either a CardThemeData or a CardTheme');
-      }
-    }
     cardTheme ??= const CardThemeData();
     checkboxTheme ??= const CheckboxThemeData();
     chipTheme ??= const ChipThemeData();
     dataTableTheme ??= const DataTableThemeData();
     datePickerTheme ??= const DatePickerThemeData();
-    // TODO(QuncCccccc): Clean this up once the type of `dialogTheme` is changed to `DialogThemeData`
-    if (dialogTheme != null) {
-      if (dialogTheme is DialogTheme) {
-        dialogTheme = dialogTheme;
-      } else if (dialogTheme is! DialogThemeData) {
-        throw ArgumentError(
-            'dialogTheme must be either a DialogThemeData or a DialogTheme');
-      }
-    }
     dialogTheme ??= const DialogThemeData();
     dividerTheme ??= const DividerThemeData();
     drawerTheme ??= const DrawerThemeData();
@@ -753,15 +738,6 @@ class GbtFluentThemeData extends ThemeData implements FluentThemeDataModel {
     sliderTheme ??= const SliderThemeData();
     snackBarTheme ??= const SnackBarThemeData();
     switchTheme ??= const SwitchThemeData();
-    // TODO(QuncCccccc): Clean this up once the type of `tabBarTheme` is changed to `TabBarThemeData`
-    if (tabBarTheme != null) {
-      if (tabBarTheme is TabBarTheme) {
-        tabBarTheme = tabBarTheme;
-      } else if (tabBarTheme is! TabBarThemeData) {
-        throw ArgumentError(
-            'tabBarTheme must be either a TabBarThemeData or a TabBarTheme');
-      }
-    }
     tabBarTheme ??= const TabBarThemeData();
     textButtonTheme ??= const TextButtonThemeData();
     textSelectionTheme ??= const TextSelectionThemeData();

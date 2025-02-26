@@ -105,7 +105,7 @@ class FluentIcon extends StatelessWidget {
         colorScheme ?? FluentColors.of(context)?.brandBackground1Rest,
       FluentIconVariant.outlinedPrimaryIcon =>
         FluentColors.of(context)?.brandBackgroundTintRest,
-      FluentIconVariant.outlineIcon => colorScheme?.withOpacity(0.3) ??
+      FluentIconVariant.outlineIcon => colorScheme?.withAlpha((255*0.3).toInt()) ??
           colorMode(
             FluentColors.neutralBackground5Rest,
             FluentDarkColors.neutralBackground5Rest,

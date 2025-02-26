@@ -41,9 +41,9 @@ class MixedFluentShadow implements FluentShadow {
   });
 
   static double _getColorLuminosity(Color color) {
-    return (0.2126 * color.red) +
-        (0.7152 * color.green) +
-        (0.0722 * color.blue);
+    return (0.2126 * color.r * 255) +
+        (0.7152 * color.g * 255) +
+        (0.0722 * color.b * 255);
   }
 
   factory MixedFluentShadow.lowElevation(int shadowNumber,
@@ -59,12 +59,12 @@ class MixedFluentShadow implements FluentShadow {
     final BoxShadow boxShadow1 = BoxShadow(
       blurRadius: blurShadow1,
       offset: Offset(xAxis, yAxisShadow1),
-      color: Colors.black.withOpacity(opacityShadow1),
+      color: Colors.black.withAlpha((255*opacityShadow1).toInt()),
     );
     final BoxShadow boxShadow2 = BoxShadow(
       blurRadius: blurShadow2,
       offset: Offset(xAxis, yAxisShadow2),
-      color: Colors.black.withOpacity(opacityShadow2),
+      color: Colors.black.withAlpha((255*opacityShadow2).toInt()),
     );
 
     return MixedFluentShadow._(
@@ -93,12 +93,12 @@ class MixedFluentShadow implements FluentShadow {
     final BoxShadow boxShadow1 = BoxShadow(
       blurRadius: blurShadow1,
       offset: Offset(xAxis, yAxisShadow1),
-      color: Colors.black.withOpacity(opacityShadow1),
+      color: Colors.black.withAlpha((255*opacityShadow1).toInt()),
     );
     final BoxShadow boxShadow2 = BoxShadow(
       blurRadius: blurShadow2,
       offset: const Offset(xAxis, yAxisShadow2),
-      color: Colors.black.withOpacity(opacityShadow2),
+      color: Colors.black.withAlpha((255*opacityShadow2).toInt()),
     );
 
     return MixedFluentShadow._(
@@ -137,12 +137,12 @@ class MixedFluentShadow implements FluentShadow {
     final BoxShadow boxShadow1 = BoxShadow(
       blurRadius: blurShadow1,
       offset: Offset(xAxis, yAxisShadow1),
-      color: Colors.black.withOpacity(opacityShadow1),
+      color: Colors.black.withAlpha((255*opacityShadow1).toInt()),
     );
     final BoxShadow boxShadow2 = BoxShadow(
       blurRadius: blurShadow2,
       offset: Offset(xAxis, yAxisShadow2),
-      color: Colors.black.withOpacity(opacityShadow2),
+      color: Colors.black.withAlpha((255*opacityShadow2).toInt()),
     );
 
     return MixedFluentShadow._(
