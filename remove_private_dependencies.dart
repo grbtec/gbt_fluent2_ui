@@ -22,18 +22,23 @@ void main() async {
   await Future.delayed(Duration(seconds: 1));
 
   final result1 = Process.runSync("git", ["add", "."]);
+  print("git add");
   print(result1.stdout);
   print(result1.stderr);
 
   final result2 = Process.runSync(
     "git",
     [
+      "-c",
+      "user.name=CI Bot",
+      "-c",
+      "user.email=ci_bot@example.com",
       "commit",
       "-m",
       "build: remove private dependencies from pubspec.yaml and example/pubspec.yaml",
     ],
-    environment: {"GIT_AUTHOR_NAME": "CI Bot", "GIT_AUTHOR_EMAIL": "ci_bot@example.com"},
   );
+  print("git commit");
   print(result2.stdout);
   print(result2.stderr);
 }
